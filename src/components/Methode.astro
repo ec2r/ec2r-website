@@ -5,48 +5,60 @@ const energies = [
     name: 'PROJET +',
     qualifier: 'mobilisant',
     description: 'Un élan collectif, une force et une voie tracée vers nos succès. Finalité désirée, valeur ajoutée collective, sens tracé.',
-    color: 'bg-energy-dark',
-    icon: '🎯',
+    color: 'energy-dark',
   },
   {
     num: 2,
     name: 'ÉNERGIES +',
     qualifier: 'centrées',
     description: 'Tous à l\'unisson pour coopérer efficacement. Attentes claires, cohérence globale, dynamique coopérative.',
-    color: 'bg-energy-green',
-    icon: '⚡',
+    color: 'energy-green',
   },
   {
     num: 3,
     name: 'EXIGENCES +',
     qualifier: 'responsabilisantes',
     description: 'Une progression claire, orientée solutions, accompagnée. Progressivité marquée, solutions recherchées.',
-    color: 'bg-energy-beige',
-    icon: '📐',
+    color: 'energy-beige',
   },
   {
     num: 4,
     name: 'LEADERSHIP +',
     qualifier: 'bienveillant',
-    description: 'Confiance diffusée, le "comment" animé, les efforts récompensés. Compensation juste, confiance diffusée.',
-    color: 'bg-energy-green',
-    icon: '🤝',
+    description: 'Confiance diffusée, le « comment » animé, les efforts récompensés. Compensation juste.',
+    color: 'energy-green',
   },
   {
     num: 5,
     name: 'GOUVERNANCE +',
     qualifier: 'engageante',
-    description: 'Livrables collectifs tenus, contributions individuelles assurées. Actions mises en œuvre, traitement équitable.',
-    color: 'bg-energy-dark',
-    icon: '⚖️',
+    description: 'Livrables collectifs tenus, contributions individuelles assurées. Actions mises en œuvre.',
+    color: 'energy-dark',
   },
   {
     num: 6,
     name: '(RE)MOBILISATION +',
     qualifier: 'durable',
-    description: 'Animés, guidés, agiles, pour tenir la longueur. Séquençage long, données fiables, organisation agile.',
-    color: 'bg-energy-dark',
-    icon: '🔄',
+    description: 'Animés, guidés, agiles, pour tenir la longueur. Séquençage long, organisation agile.',
+    color: 'energy-dark',
+  },
+];
+
+const piliers = [
+  {
+    title: 'Granularité actionnable',
+    description: 'Pas un score global flou. 18 batteries, 9 niveaux chacune : on sait exactement où agir. Le diagnostic est chirurgical — pas « vos équipes manquent de cohésion », mais quel comportement, dans quelle énergie, à quel niveau.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/></svg>`,
+  },
+  {
+    title: 'Pont diagnostic → action',
+    description: 'Le diagnostic ne reste pas sur une slide. Chaque batterie identifiée déclenche une fiche booster — un comportement décisif, en étapes pratiques, dans votre vocabulaire métier. Du constat au passage à l\'acte.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`,
+  },
+  {
+    title: 'Boucle complète',
+    description: 'Diagnostic collectif, profiling individuel, mentorat, fiches booster, suivi dans le temps. Pas un one-shot : une boucle qui accélère le passage du constat à l\'action, mesurable à chaque étape.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>`,
   },
 ];
 ---
@@ -68,11 +80,32 @@ const energies = [
       </p>
     </div>
 
-    <!-- Philosophy block -->
-    <div class="grid md:grid-cols-2 gap-12 mb-20">
+    <!-- 3 DIFFERENTIATORS — new from transcripts -->
+    <div class="grid md:grid-cols-3 gap-8 mb-24">
+      {piliers.map((pilier, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <div class="relative group h-full">
+            <!-- Gradient top bar -->
+            <div class="h-1 energy-gradient-bar rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="bg-slate-50 rounded-b-lg rounded-t-lg group-hover:rounded-t-none p-8 h-full border border-slate-100 
+                        group-hover:border-energy-dark/20 group-hover:shadow-xl group-hover:shadow-energy-dark/5 transition-all duration-500">
+              <div class="w-12 h-12 rounded-xl bg-navy-950 text-energy-green flex items-center justify-center mb-5" set:html={pilier.icon} />
+              <h3 class="font-display font-bold text-xl text-navy-950 mb-3">{pilier.title}</h3>
+              <p class="text-slate-600 leading-relaxed text-[0.95rem]">{pilier.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Philosophy blocks -->
+    <div class="grid md:grid-cols-2 gap-8 mb-20">
       <div class="reveal reveal-delay-1">
-        <div class="bg-slate-50 rounded-lg p-8 h-full border border-slate-100">
-          <h3 class="font-display font-bold text-xl text-navy-900 mb-4">Mobiliser ≠ Motiver</h3>
+        <div class="bg-slate-50 rounded-xl p-8 h-full border border-slate-100 hover:border-navy-200 transition-colors duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-2 h-8 bg-energy-dark rounded-full"></div>
+            <h3 class="font-display font-bold text-xl text-navy-900">Mobiliser ≠ Motiver</h3>
+          </div>
           <p class="text-slate-600 leading-relaxed">
             <strong class="text-navy-950">Motiver</strong> est court terme et individuel. 
             <strong class="text-energy-dark">Mobiliser</strong> est durable et collectif. 
@@ -82,8 +115,11 @@ const energies = [
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="bg-slate-50 rounded-lg p-8 h-full border border-slate-100">
-          <h3 class="font-display font-bold text-xl text-navy-900 mb-4">Le thermomètre de mobilisation</h3>
+        <div class="bg-slate-50 rounded-xl p-8 h-full border border-slate-100 hover:border-navy-200 transition-colors duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-2 h-8 bg-gradient-to-b from-energy-red to-energy-dark rounded-full"></div>
+            <h3 class="font-display font-bold text-xl text-navy-900">Le thermomètre de mobilisation</h3>
+          </div>
           <p class="text-slate-600 leading-relaxed">
             De « Divergent » à « Aligné », 9 niveaux pour diagnostiquer l'état d'esprit 
             de chaque collaborateur et du collectif. Pas une note — un vocabulaire partagé pour 
@@ -94,68 +130,114 @@ const energies = [
     </div>
 
     <!-- 6 energies grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {energies.map((energy, i) => (
         <div class={`reveal reveal-delay-${(i % 3) + 1}`}>
-          <div class="group relative bg-white border border-slate-200 rounded-lg p-6 
+          <div class="group relative bg-white border border-slate-200 rounded-xl p-6 
                       hover:border-energy-dark/30 hover:shadow-lg hover:shadow-energy-dark/5 
-                      transition-all duration-300 h-full">
-            <!-- Energy level indicator -->
-            <div class="flex items-center gap-3 mb-4">
-              <div class={`w-10 h-10 rounded-full ${energy.color} bg-opacity-15 flex items-center justify-center text-lg`}>
-                {energy.icon}
+                      transition-all duration-300 h-full overflow-hidden">
+            
+            <!-- Subtle glow on hover -->
+            <div class={`absolute -top-12 -right-12 w-24 h-24 bg-${energy.color} rounded-full opacity-0 
+                         group-hover:opacity-[0.06] blur-2xl transition-opacity duration-500`}></div>
+            
+            <div class="relative">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs text-slate-400 font-mono tracking-wider">0{energy.num}</span>
+                <div class={`w-3 h-3 rounded-full bg-${energy.color} opacity-40 group-hover:opacity-100 transition-opacity`}></div>
               </div>
-              <div>
-                <span class="text-xs text-slate-400 font-mono">0{energy.num}</span>
+
+              <h3 class="font-display font-bold text-navy-950 text-lg mb-1">{energy.name}</h3>
+              <p class="text-sm text-energy-dark font-medium mb-3">{energy.qualifier}</p>
+              <p class="text-sm text-slate-500 leading-relaxed">{energy.description}</p>
+
+              <!-- Battery bar -->
+              <div class="mt-5 h-1 bg-slate-100 rounded-full overflow-hidden">
+                <div 
+                  class={`h-full rounded-full bg-${energy.color} transition-all duration-1000 ease-out`}
+                  style="width: 0%"
+                  data-fill={`${40 + i * 10}%`}
+                ></div>
               </div>
-            </div>
-
-            <h3 class="font-display font-bold text-navy-950 text-lg mb-1">
-              {energy.name}
-            </h3>
-            <p class="text-sm text-energy-dark font-medium mb-3">{energy.qualifier}</p>
-            <p class="text-sm text-slate-500 leading-relaxed">{energy.description}</p>
-
-            <!-- Battery bar at bottom -->
-            <div class="mt-4 h-1 bg-slate-100 rounded-full overflow-hidden">
-              <div 
-                class={`h-full rounded-full ${energy.color} transition-all duration-1000 group-hover:w-full`} 
-                style="width: 0%"
-              ></div>
             </div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Two paths -->
+    <!-- Two paths — elevated with profiling standalone -->
     <div class="mt-20 reveal">
-      <div class="bg-navy-950 rounded-xl p-8 md:p-12">
-        <h3 class="font-display font-bold text-2xl text-white mb-8 text-center">Deux parcours d'entrée</h3>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-energy-dark/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-energy-green text-2xl">👥</span>
+      <div class="bg-navy-950 rounded-2xl overflow-hidden">
+        <div class="p-8 md:p-12">
+          <h3 class="font-display font-bold text-2xl text-white mb-3 text-center">Deux parcours, une méthode</h3>
+          <p class="text-white/50 text-sm text-center max-w-lg mx-auto mb-10">
+            Le profiling individuel est un service actif — pas une option future. 
+            Chaque parcours est légitime et mène au même objectif : le passage à l'acte.
+          </p>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/5 rounded-xl p-8 border border-white/10 hover:border-energy-green/30 transition-colors duration-300">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-energy-dark/20 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-semibold text-white text-lg">Collectif → Individuel</h4>
+              </div>
+              <p class="text-white/60 text-sm leading-relaxed mb-4">
+                Baromètre des énergies collectives d'abord, puis profil de leadership augmenté 
+                pour identifier la part de chacun dans le diagnostic.
+              </p>
+              <div class="flex items-center gap-2 text-energy-green/70 text-xs font-medium">
+                <span>Baromètre</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span>Profil Leader</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span>Mentorat</span>
+              </div>
             </div>
-            <h4 class="font-display font-semibold text-white mb-2">Collectif → Individuel</h4>
-            <p class="text-white/60 text-sm leading-relaxed">
-              Baromètre des énergies collectives d'abord, puis profil de leadership augmenté 
-              pour identifier la part de chacun dans le diagnostic.
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-energy-dark/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-energy-green text-2xl">👤</span>
+            <div class="bg-white/5 rounded-xl p-8 border border-white/10 hover:border-energy-green/30 transition-colors duration-300">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-energy-dark/20 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <h4 class="font-display font-semibold text-white text-lg">Individuel → Collectif</h4>
+              </div>
+              <p class="text-white/60 text-sm leading-relaxed mb-4">
+                Profil de Leadership Augmenté d'abord (partenariat TMA), puis baromètre 
+                pour comprendre la dynamique de l'équipe.
+              </p>
+              <div class="flex items-center gap-2 text-energy-green/70 text-xs font-medium">
+                <span>Profil Leader</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span>Mentorat</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span>Baromètre</span>
+              </div>
             </div>
-            <h4 class="font-display font-semibold text-white mb-2">Individuel → Collectif</h4>
-            <p class="text-white/60 text-sm leading-relaxed">
-              Profil de leadership augmenté d'abord (partenariat TMA), puis baromètre 
-              pour comprendre la dynamique de l'équipe.
-            </p>
           </div>
         </div>
+        <!-- Gradient bar at bottom -->
+        <div class="energy-gradient-bar h-1"></div>
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  // Animate battery bars on scroll
+  const bars = document.querySelectorAll('[data-fill]');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target as HTMLElement;
+        el.style.width = el.dataset.fill || '0%';
+        barObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  bars.forEach(bar => barObserver.observe(bar));
+</script>

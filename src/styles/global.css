@@ -18,17 +18,18 @@
   }
 
   ::selection {
-    @apply bg-navy-900/10;
+    background: rgba(22, 101, 52, 0.12);
   }
 }
 
 @layer components {
   .section-label {
-    @apply text-xs uppercase tracking-[0.15em] font-semibold text-energy-dark mb-3;
+    @apply text-xs uppercase tracking-[0.2em] font-semibold text-energy-dark mb-4;
+    letter-spacing: 0.2em;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-navy-950 leading-tight mb-6;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-navy-950 leading-[1.15] mb-6;
   }
 
   .section-text {
@@ -37,30 +38,41 @@
 
   .btn-primary {
     @apply inline-flex items-center gap-2 px-8 py-4 bg-navy-900 text-white font-display font-semibold 
-           text-sm tracking-wide rounded-sm transition-all duration-300
-           hover:bg-energy-dark hover:shadow-lg hover:shadow-energy-dark/20;
+           text-sm tracking-wide rounded-lg transition-all duration-300
+           hover:bg-energy-dark hover:shadow-lg hover:shadow-energy-dark/20
+           active:scale-[0.98];
   }
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 
-           font-display font-semibold text-sm tracking-wide rounded-sm transition-all duration-300
-           hover:bg-navy-900 hover:text-white;
+           font-display font-semibold text-sm tracking-wide rounded-lg transition-all duration-300
+           hover:bg-navy-900 hover:text-white active:scale-[0.98];
   }
 
   .energy-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-energy-red via-energy-yellow to-energy-dark;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #DC2626, #EAB308, #C9A56E, #22C55E, #166534);
+    background-size: 200% auto;
+    animation: gradientShift 6s ease-in-out infinite;
   }
 
   .energy-gradient-bar {
-    @apply h-1 bg-gradient-to-r from-energy-red via-energy-yellow via-energy-beige via-energy-green to-energy-dark;
+    background: linear-gradient(90deg, #DC2626, #EAB308, #C9A56E, #22C55E, #166534);
   }
 }
 
-/* Scroll-triggered animations */
+/* Animated gradient for hero text */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* Scroll-triggered reveal — smoother cubic-bezier */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -74,12 +86,43 @@
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 
-/* Battery animation */
+/* Futuristic subtle grid overlay — for hero and dark sections */
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Smooth glow effect for interactive elements */
+.glow-hover {
+  transition: box-shadow 0.4s ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 40px -12px rgba(22, 101, 52, 0.15);
+}
+
+/* Battery component animations */
 @keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 4px currentColor); }
-  50% { filter: drop-shadow(0 0 12px currentColor); }
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(22, 101, 52, 0.2)); }
+  50% { filter: drop-shadow(0 0 20px rgba(22, 101, 52, 0.35)); }
 }
 
 .battery-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar (subtle) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 32, 96, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 32, 96, 0.3);
 }

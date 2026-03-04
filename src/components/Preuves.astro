@@ -1,45 +1,48 @@
 ---
 /*
-  PLACEHOLDER : ces témoignages seront remplacés par de vrais verbatim clients.
-  Sources attendues :
-  - Témoignages LinkedIn (URL à collecter auprès de Stéphane)
-  - Extraits mails clients (avec accord)
-  - Données avant/après baromètre
-  - Vidéos sportifs YouTube
+  PLACEHOLDER : témoignages à remplacer par de vrais verbatim clients.
+  Sources identifiées (transcripts 05/03) :
+  - 3 ans de commentaires LinkedIn à miner systématiquement
+  - Témoignage MEDEF Martinique (ambassadrice spontanée)
+  - Laforêt : "résultats au-dessus des autres franchises"
+  - Données avant/après baromètre (cabinet accompagné)
+  - Pipeline Exponance / Dorothée Damien
   
-  Les cas ci-dessous sont illustratifs du rendu final.
+  Les cas ci-dessous illustrent le rendu visé — l'effet "waouh" en démo.
 */
 
 const testimonials = [
   {
     quote: "Après les formations avec ce qui se fait de mieux en termes de management, le réseau avait eu des résultats au-dessus des autres franchises.",
     author: "Directeur réseau",
-    role: "Réseau national d'agences — N°2 du secteur",
-    context: "Témoignage à valider / anonymiser",
+    role: "Réseau national — N°2 du secteur immobilier",
+    type: "Résultat terrain",
   },
   {
-    quote: "Ce qui change, c'est qu'on ne parle plus de ressenti mais de faits. Le diagnostic est chirurgical : on sait exactement quoi adresser.",
-    author: "Placeholder — Verbatim client",
-    role: "Cabinet d'expertise comptable",
-    context: "À remplacer par témoignage réel",
+    quote: "Tu adresses le climat, pas la météo. Ce qu'on a essayé pendant un an avec des avatars IA, vous le faites avec une méthode qui tient la route.",
+    author: "Ancienne stagiaire AG2R",
+    role: "Vers le MEDEF Martinique — ambassadrice spontanée",
+    type: "Comparaison concurrence",
   },
   {
-    quote: "On a fait ce qu'on recommande : partir du réel, identifier chirurgicalement, passer à l'acte. Le baromètre montre des indicateurs en progression.",
-    author: "Placeholder — Verbatim client",
-    role: "Accompagnement collectif sur 12 mois",
-    context: "À remplacer par données avant/après",
+    quote: "Ce qui change, c'est qu'on ne parle plus de ressenti mais de faits. Le diagnostic est chirurgical : on sait exactement quoi adresser, dans quel ordre.",
+    author: "Verbatim client à confirmer",
+    role: "Cabinet d'expertise comptable accompagné",
+    type: "Diagnostic",
   },
 ];
 
-const videoPlaceholders = [
+const videos = [
   {
-    title: "Regards croisés Ep.1 : mobilisons nos énergies vers la performance",
-    description: "Avec Vincent Clarico (Équipe de France, recordman monde) — Parallèle performance sportive et organisations.",
+    title: "Regards croisés Ep.1",
+    subtitle: "Mobilisons nos énergies vers la performance",
+    description: "Avec Vincent Clarico, recordman du monde et entraîneur Équipe de France.",
     youtubeId: "jhq47z0GanA",
   },
   {
-    title: "Regards croisés Ep.2 : REMOBILISER ses énergies",
-    description: "Avec Marie-Laure Brunet (double médaillée olympique) — Performance durable et remobilisation.",
+    title: "Regards croisés Ep.2",
+    subtitle: "REMOBILISER ses énergies",
+    description: "Avec Marie-Laure Brunet, double médaillée olympique de biathlon.",
     youtubeId: "e3KEgfNuNzQ",
   },
 ];
@@ -65,35 +68,45 @@ const videoPlaceholders = [
     <div class="grid md:grid-cols-3 gap-6 mb-20">
       {testimonials.map((t, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
-          <div class="bg-white rounded-lg p-8 h-full border border-slate-200 relative">
-            <!-- Quote mark -->
-            <div class="text-energy-dark/20 text-6xl font-serif leading-none absolute top-4 right-6">"</div>
+          <div class="bg-white rounded-xl p-8 h-full border border-slate-200 relative group
+                      hover:shadow-lg hover:shadow-navy-900/5 hover:border-energy-dark/20 transition-all duration-500">
+            <!-- Type badge -->
+            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] 
+                         px-3 py-1 rounded-full mb-5">
+              {t.type}
+            </span>
+
+            <!-- Quote -->
+            <div class="relative mb-6">
+              <div class="text-energy-dark/10 text-7xl font-serif leading-none absolute -top-4 -left-2 select-none">"</div>
+              <blockquote class="text-slate-700 leading-relaxed relative z-10 pl-4">
+                {t.quote}
+              </blockquote>
+            </div>
             
-            <blockquote class="text-slate-700 leading-relaxed mb-6 relative z-10">
-              {t.quote}
-            </blockquote>
-            
-            <div class="border-t border-slate-100 pt-4">
+            <!-- Author -->
+            <div class="border-t border-slate-100 pt-4 mt-auto">
               <p class="font-display font-semibold text-navy-950 text-sm">{t.author}</p>
               <p class="text-slate-500 text-sm">{t.role}</p>
-              {t.context && (
-                <p class="text-xs text-energy-beige mt-1 italic">{t.context}</p>
-              )}
             </div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Video embeds -->
+    <!-- Video section -->
     <div class="reveal">
-      <h3 class="font-display font-bold text-2xl text-navy-950 mb-8">
-        Performance et mobilisation — Regards croisés
-      </h3>
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-2 h-8 bg-gradient-to-b from-energy-red to-energy-dark rounded-full"></div>
+        <h3 class="font-display font-bold text-2xl text-navy-950">
+          Performance et mobilisation
+        </h3>
+      </div>
       <div class="grid md:grid-cols-2 gap-8">
-        {videoPlaceholders.map((video) => (
+        {videos.map((video) => (
           <div class="group">
-            <div class="relative aspect-video bg-navy-950 rounded-lg overflow-hidden mb-4">
+            <div class="relative aspect-video bg-navy-950 rounded-xl overflow-hidden shadow-lg 
+                        shadow-navy-900/10 group-hover:shadow-xl transition-shadow duration-300">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
                 title={video.title}
@@ -104,27 +117,40 @@ const videoPlaceholders = [
                 loading="lazy"
               ></iframe>
             </div>
-            <h4 class="font-display font-semibold text-navy-950 mb-1">{video.title}</h4>
-            <p class="text-sm text-slate-500">{video.description}</p>
+            <div class="mt-4">
+              <h4 class="font-display font-semibold text-navy-950">{video.title}</h4>
+              <p class="text-sm text-energy-dark font-medium">{video.subtitle}</p>
+              <p class="text-sm text-slate-500 mt-1">{video.description}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Data proof placeholder -->
+    <!-- LinkedIn mining teaser -->
     <div class="mt-16 reveal">
-      <div class="bg-white border border-slate-200 rounded-xl p-8 md:p-12 text-center">
-        <div class="max-w-md mx-auto">
-          <div class="w-16 h-16 bg-energy-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-energy-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-            </svg>
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12">
+        <div class="grid md:grid-cols-[1fr,auto] gap-8 items-center">
+          <div>
+            <h4 class="font-display font-bold text-xl text-navy-950 mb-3">
+              3 ans de retours terrain
+            </h4>
+            <p class="text-slate-600 leading-relaxed">
+              Depuis 3 ans, clients et partenaires partagent leurs retours sur LinkedIn — 
+              des commentaires authentiques, non sollicités, qui disent mieux que n'importe quel 
+              discours marketing ce que la méthode EC²R change concrètement.
+            </p>
+            <p class="text-sm text-slate-400 mt-3 italic">
+              Sélection de témoignages LinkedIn à intégrer prochainement.
+            </p>
           </div>
-          <h4 class="font-display font-bold text-xl text-navy-950 mb-3">Données avant/après baromètre</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Visualisation interactive des indicateurs de progression — à intégrer avec les données 
-            réelles d'un cabinet accompagné (T0 → T+n). Bientôt disponible.
-          </p>
+          <div class="flex-shrink-0">
+            <div class="w-20 h-20 rounded-2xl bg-navy-950/[0.04] flex items-center justify-center">
+              <svg class="w-10 h-10 text-navy-900/20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>
