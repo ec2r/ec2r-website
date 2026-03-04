@@ -1,0 +1,118 @@
+---
+/*
+  PLACEHOLDER : photos et bios à remplacer par les vraies informations.
+  Photos nécessaires : Stéphane, Luc, Jean-François, Arnaud, Laurent.
+*/
+
+const team = [
+  {
+    name: 'Stéphane Flahaut',
+    role: 'Fondateur & Président',
+    bio: 'Porteur de la méthode EC²R depuis plus de 4 ans. Construit des collectifs et s\'assure que les comportements facilitent la dynamique. Garant de l\'intégrité de la méthode.',
+    highlight: true,
+  },
+  {
+    name: 'Luc Letoffe',
+    role: 'Interface Méthode × Technologie',
+    bio: 'Passe de l\'idéation à la situation avec une vision performance. Facilite le passage à l\'acte en connectant la méthode EC²R à la puissance technologique.',
+    highlight: true,
+  },
+  {
+    name: 'Jean-François Morin',
+    role: 'Co-fondateur',
+    bio: 'Co-fondateur de la méthode EC²R, « entraîneur d\'entraîneurs ». Associé de la méthode depuis ses origines.',
+    highlight: false,
+  },
+  {
+    name: 'Arnaud Bochurberg',
+    role: 'Interlocuteur EC²R',
+    bio: 'Accompagne les organisations dans le déploiement de la méthode. Placeholder — bio à compléter.',
+    highlight: false,
+  },
+  {
+    name: 'Laurent',
+    role: 'À définir',
+    bio: 'Placeholder — bio et rôle à compléter.',
+    highlight: false,
+  },
+];
+---
+
+<section id="equipe" class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    
+    <div class="max-w-3xl mb-16 reveal">
+      <p class="section-label">L'équipe</p>
+      <h2 class="section-title">
+        Des gens qui passent<br/>
+        <span class="energy-gradient-text">à l'acte</span>.
+      </h2>
+      <p class="section-text">
+        Pas de consultants interchangeables. Des profils complémentaires qui croient 
+        en la différenciation et qui ont prouvé la puissance de la méthode.
+      </p>
+    </div>
+
+    <!-- Key members (Stéphane + Luc) -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      {team.filter(m => m.highlight).map((member, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <div class="bg-white rounded-xl overflow-hidden border border-slate-200 h-full">
+            <!-- Photo placeholder -->
+            <div class="aspect-[4/3] bg-gradient-to-br from-navy-900 to-navy-950 relative flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-24 h-24 rounded-full bg-white/10 border-2 border-white/20 mx-auto mb-4 flex items-center justify-center">
+                  <span class="text-white/40 text-3xl font-display font-bold">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
+                <p class="text-white/30 text-xs">Photo à ajouter</p>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="font-display font-bold text-xl text-navy-950 mb-1">{member.name}</h3>
+              <p class="text-energy-dark font-medium text-sm mb-4">{member.role}</p>
+              <p class="text-slate-600 leading-relaxed text-sm">{member.bio}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Other members -->
+    <div class="grid sm:grid-cols-3 gap-6">
+      {team.filter(m => !m.highlight).map((member, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <div class="bg-white rounded-lg p-6 border border-slate-200 h-full">
+            <!-- Small photo placeholder -->
+            <div class="w-16 h-16 rounded-full bg-navy-900/5 border border-slate-200 mb-4 flex items-center justify-center">
+              <span class="text-navy-900/30 text-lg font-display font-bold">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <h3 class="font-display font-semibold text-navy-950 mb-1">{member.name}</h3>
+            <p class="text-energy-dark text-sm font-medium mb-3">{member.role}</p>
+            <p class="text-slate-500 text-sm leading-relaxed">{member.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Seminar photos -->
+    <div class="mt-16 reveal">
+      <h3 class="font-display font-bold text-xl text-navy-950 mb-6 text-center">Sur le terrain</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <!-- Placeholder for real seminar photos -->
+        {[1,2,3,4].map(() => (
+          <div class="aspect-[4/3] bg-navy-900/5 rounded-lg flex items-center justify-center border border-slate-200">
+            <p class="text-slate-400 text-xs text-center px-4">Photo séminaire<br/>à intégrer</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-slate-400 mt-4 italic">
+        Photos des séminaires Auditec Label Antilles, CROEC Martinique et autres missions.
+      </p>
+    </div>
+
+  </div>
+</section>

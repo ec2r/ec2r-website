@@ -1,0 +1,133 @@
+---
+/*
+  PLACEHOLDER : ces témoignages seront remplacés par de vrais verbatim clients.
+  Sources attendues :
+  - Témoignages LinkedIn (URL à collecter auprès de Stéphane)
+  - Extraits mails clients (avec accord)
+  - Données avant/après baromètre
+  - Vidéos sportifs YouTube
+  
+  Les cas ci-dessous sont illustratifs du rendu final.
+*/
+
+const testimonials = [
+  {
+    quote: "Après les formations avec ce qui se fait de mieux en termes de management, le réseau avait eu des résultats au-dessus des autres franchises.",
+    author: "Directeur réseau",
+    role: "Réseau national d'agences — N°2 du secteur",
+    context: "Témoignage à valider / anonymiser",
+  },
+  {
+    quote: "Ce qui change, c'est qu'on ne parle plus de ressenti mais de faits. Le diagnostic est chirurgical : on sait exactement quoi adresser.",
+    author: "Placeholder — Verbatim client",
+    role: "Cabinet d'expertise comptable",
+    context: "À remplacer par témoignage réel",
+  },
+  {
+    quote: "On a fait ce qu'on recommande : partir du réel, identifier chirurgicalement, passer à l'acte. Le baromètre montre des indicateurs en progression.",
+    author: "Placeholder — Verbatim client",
+    role: "Accompagnement collectif sur 12 mois",
+    context: "À remplacer par données avant/après",
+  },
+];
+
+const videoPlaceholders = [
+  {
+    title: "Regards croisés Ep.1 : mobilisons nos énergies vers la performance",
+    description: "Avec Vincent Clarico (Équipe de France, recordman monde) — Parallèle performance sportive et organisations.",
+    youtubeId: "jhq47z0GanA",
+  },
+  {
+    title: "Regards croisés Ep.2 : REMOBILISER ses énergies",
+    description: "Avec Marie-Laure Brunet (double médaillée olympique) — Performance durable et remobilisation.",
+    youtubeId: "e3KEgfNuNzQ",
+  },
+];
+---
+
+<section id="preuves" class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    
+    <div class="max-w-3xl mb-16 reveal">
+      <p class="section-label">Les preuves</p>
+      <h2 class="section-title">
+        Ce que disent<br/>
+        <span class="energy-gradient-text">ceux qui le vivent</span>.
+      </h2>
+      <p class="section-text">
+        Pas de promesses marketing. Des résultats concrets, des mots de clients, 
+        des données mesurables. La vraie preuve, c'est quand les clients racontent 
+        avec leurs mots ce que ça a changé.
+      </p>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="grid md:grid-cols-3 gap-6 mb-20">
+      {testimonials.map((t, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <div class="bg-white rounded-lg p-8 h-full border border-slate-200 relative">
+            <!-- Quote mark -->
+            <div class="text-energy-dark/20 text-6xl font-serif leading-none absolute top-4 right-6">"</div>
+            
+            <blockquote class="text-slate-700 leading-relaxed mb-6 relative z-10">
+              {t.quote}
+            </blockquote>
+            
+            <div class="border-t border-slate-100 pt-4">
+              <p class="font-display font-semibold text-navy-950 text-sm">{t.author}</p>
+              <p class="text-slate-500 text-sm">{t.role}</p>
+              {t.context && (
+                <p class="text-xs text-energy-beige mt-1 italic">{t.context}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Video embeds -->
+    <div class="reveal">
+      <h3 class="font-display font-bold text-2xl text-navy-950 mb-8">
+        Performance et mobilisation — Regards croisés
+      </h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        {videoPlaceholders.map((video) => (
+          <div class="group">
+            <div class="relative aspect-video bg-navy-950 rounded-lg overflow-hidden mb-4">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
+                title={video.title}
+                class="absolute inset-0 w-full h-full"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <h4 class="font-display font-semibold text-navy-950 mb-1">{video.title}</h4>
+            <p class="text-sm text-slate-500">{video.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Data proof placeholder -->
+    <div class="mt-16 reveal">
+      <div class="bg-white border border-slate-200 rounded-xl p-8 md:p-12 text-center">
+        <div class="max-w-md mx-auto">
+          <div class="w-16 h-16 bg-energy-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-energy-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+          </div>
+          <h4 class="font-display font-bold text-xl text-navy-950 mb-3">Données avant/après baromètre</h4>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            Visualisation interactive des indicateurs de progression — à intégrer avec les données 
+            réelles d'un cabinet accompagné (T0 → T+n). Bientôt disponible.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

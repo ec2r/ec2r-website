@@ -8,6 +8,15 @@ Thumbs.db
 *.swp
 *.swo
 
-# Build
+# Dependencies
 node_modules/
+
+# Build
 dist/
+
+# Astro
+.astro/
+
+# Env
+.env
+.env.*

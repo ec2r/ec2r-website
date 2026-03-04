@@ -1,0 +1,69 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Partir du réel',
+    description: 'Nous avons collecté ce que disent les clients — témoignages, commentaires LinkedIn, données du baromètre. Pas un discours marketing : le réel.',
+    accent: 'energy-red',
+  },
+  {
+    num: '02',
+    title: 'Identifier chirurgicalement',
+    description: 'L\'IA nous a aidé à structurer et croiser les retours. Chaque affirmation de ce site est adossée à une preuve client, pas à une promesse.',
+    accent: 'energy-yellow',
+  },
+  {
+    num: '03',
+    title: 'Construire le passage à l\'acte',
+    description: 'Le workflow IA + compétences EC²R pour accélérer la formalisation. On a fait ce qu\'on recommande : expérimenter, ajuster, livrer.',
+    accent: 'energy-green',
+  },
+  {
+    num: '04',
+    title: 'Montrer le processus',
+    description: 'Ce site est lui-même une démonstration. Pas un résultat figé : un processus vivant qui documente sa propre construction.',
+    accent: 'energy-dark',
+  },
+];
+---
+
+<section id="demarche" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      
+      <!-- Left: intro -->
+      <div class="lg:sticky lg:top-32 reveal">
+        <p class="section-label">La démarche</p>
+        <h2 class="section-title">
+          Ce site est une<br/>
+          <span class="energy-gradient-text">mise en abyme</span>.
+        </h2>
+        <p class="section-text mb-8">
+          Nous avons utilisé l'IA pour partir du réel. Nous avons utilisé les relations entre IA 
+          et les comportements EC²R pour accélérer le passage à l'acte. 
+          Le site documente sa propre construction — parce que montrer le processus, 
+          pas juste le résultat, c'est ça l'approche EC²R.
+        </p>
+        <p class="text-sm text-slate-400 italic">
+          "On essaye de voir, on expérimente, on travaille avec des gens pertinents."
+        </p>
+      </div>
+
+      <!-- Right: steps -->
+      <div class="space-y-8">
+        {steps.map((step, i) => (
+          <div class={`reveal reveal-delay-${i + 1}`}>
+            <div class="relative pl-8 border-l-2 border-slate-200 hover:border-energy-dark transition-colors duration-300 py-2">
+              <div class="absolute left-[-9px] top-3 w-4 h-4 rounded-full bg-white border-2 border-slate-300"></div>
+              <span class="text-xs font-mono text-slate-400 mb-1 block">{step.num}</span>
+              <h3 class="font-display font-bold text-xl text-navy-950 mb-2">{step.title}</h3>
+              <p class="text-slate-600 leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

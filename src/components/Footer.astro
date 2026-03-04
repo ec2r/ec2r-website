@@ -1,0 +1,26 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <!-- Logo + copyright -->
+      <div class="flex items-center gap-4">
+        <img src="/images/logo-ec2r.png" alt="EC²R" class="h-6 opacity-60" />
+        <span class="text-white/30 text-sm">
+          © {currentYear} EC²R Conseil. Méthode EC²R ©
+        </span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6 text-white/30 text-sm">
+        <span>29 rue du Pont, 92200 Neuilly-sur-Seine</span>
+        <span class="hidden md:inline">·</span>
+        <a href="#" class="hover:text-white/60 transition-colors">Mentions légales</a>
+      </div>
+
+    </div>
+  </div>
+</footer>

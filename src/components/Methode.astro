@@ -1,0 +1,161 @@
+---
+const energies = [
+  {
+    num: 1,
+    name: 'PROJET +',
+    qualifier: 'mobilisant',
+    description: 'Un élan collectif, une force et une voie tracée vers nos succès. Finalité désirée, valeur ajoutée collective, sens tracé.',
+    color: 'bg-energy-dark',
+    icon: '🎯',
+  },
+  {
+    num: 2,
+    name: 'ÉNERGIES +',
+    qualifier: 'centrées',
+    description: 'Tous à l\'unisson pour coopérer efficacement. Attentes claires, cohérence globale, dynamique coopérative.',
+    color: 'bg-energy-green',
+    icon: '⚡',
+  },
+  {
+    num: 3,
+    name: 'EXIGENCES +',
+    qualifier: 'responsabilisantes',
+    description: 'Une progression claire, orientée solutions, accompagnée. Progressivité marquée, solutions recherchées.',
+    color: 'bg-energy-beige',
+    icon: '📐',
+  },
+  {
+    num: 4,
+    name: 'LEADERSHIP +',
+    qualifier: 'bienveillant',
+    description: 'Confiance diffusée, le "comment" animé, les efforts récompensés. Compensation juste, confiance diffusée.',
+    color: 'bg-energy-green',
+    icon: '🤝',
+  },
+  {
+    num: 5,
+    name: 'GOUVERNANCE +',
+    qualifier: 'engageante',
+    description: 'Livrables collectifs tenus, contributions individuelles assurées. Actions mises en œuvre, traitement équitable.',
+    color: 'bg-energy-dark',
+    icon: '⚖️',
+  },
+  {
+    num: 6,
+    name: '(RE)MOBILISATION +',
+    qualifier: 'durable',
+    description: 'Animés, guidés, agiles, pour tenir la longueur. Séquençage long, données fiables, organisation agile.',
+    color: 'bg-energy-dark',
+    icon: '🔄',
+  },
+];
+---
+
+<section id="methode" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    
+    <!-- Intro -->
+    <div class="max-w-3xl mb-20 reveal">
+      <p class="section-label">La méthode</p>
+      <h2 class="section-title">
+        6 énergies collectives.<br/>
+        18 batteries.<br/>
+        Un diagnostic <span class="energy-gradient-text">chirurgical</span>.
+      </h2>
+      <p class="section-text">
+        EC²R identifie les leviers de mobilisation collective avec précision. Pas de promesses abstraites, 
+        pas de développement personnel : du développement professionnel, ancré dans la réalité de votre collectif.
+      </p>
+    </div>
+
+    <!-- Philosophy block -->
+    <div class="grid md:grid-cols-2 gap-12 mb-20">
+      <div class="reveal reveal-delay-1">
+        <div class="bg-slate-50 rounded-lg p-8 h-full border border-slate-100">
+          <h3 class="font-display font-bold text-xl text-navy-900 mb-4">Mobiliser ≠ Motiver</h3>
+          <p class="text-slate-600 leading-relaxed">
+            <strong class="text-navy-950">Motiver</strong> est court terme et individuel. 
+            <strong class="text-energy-dark">Mobiliser</strong> est durable et collectif. 
+            La méthode EC²R ne cherche pas à motiver vos équipes — elle identifie ce qui empêche 
+            le collectif de trouver son propre équilibre et de passer à l'acte.
+          </p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="bg-slate-50 rounded-lg p-8 h-full border border-slate-100">
+          <h3 class="font-display font-bold text-xl text-navy-900 mb-4">Le thermomètre de mobilisation</h3>
+          <p class="text-slate-600 leading-relaxed">
+            De « Divergent » à « Aligné », 9 niveaux pour diagnostiquer l'état d'esprit 
+            de chaque collaborateur et du collectif. Pas une note — un vocabulaire partagé pour 
+            comprendre où en est votre organisation et quoi faire ensuite.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 energies grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {energies.map((energy, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="group relative bg-white border border-slate-200 rounded-lg p-6 
+                      hover:border-energy-dark/30 hover:shadow-lg hover:shadow-energy-dark/5 
+                      transition-all duration-300 h-full">
+            <!-- Energy level indicator -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class={`w-10 h-10 rounded-full ${energy.color} bg-opacity-15 flex items-center justify-center text-lg`}>
+                {energy.icon}
+              </div>
+              <div>
+                <span class="text-xs text-slate-400 font-mono">0{energy.num}</span>
+              </div>
+            </div>
+
+            <h3 class="font-display font-bold text-navy-950 text-lg mb-1">
+              {energy.name}
+            </h3>
+            <p class="text-sm text-energy-dark font-medium mb-3">{energy.qualifier}</p>
+            <p class="text-sm text-slate-500 leading-relaxed">{energy.description}</p>
+
+            <!-- Battery bar at bottom -->
+            <div class="mt-4 h-1 bg-slate-100 rounded-full overflow-hidden">
+              <div 
+                class={`h-full rounded-full ${energy.color} transition-all duration-1000 group-hover:w-full`} 
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Two paths -->
+    <div class="mt-20 reveal">
+      <div class="bg-navy-950 rounded-xl p-8 md:p-12">
+        <h3 class="font-display font-bold text-2xl text-white mb-8 text-center">Deux parcours d'entrée</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-energy-dark/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-energy-green text-2xl">👥</span>
+            </div>
+            <h4 class="font-display font-semibold text-white mb-2">Collectif → Individuel</h4>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Baromètre des énergies collectives d'abord, puis profil de leadership augmenté 
+              pour identifier la part de chacun dans le diagnostic.
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-energy-dark/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-energy-green text-2xl">👤</span>
+            </div>
+            <h4 class="font-display font-semibold text-white mb-2">Individuel → Collectif</h4>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Profil de leadership augmenté d'abord (partenariat TMA), puis baromètre 
+              pour comprendre la dynamique de l'équipe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

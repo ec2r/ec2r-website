@@ -1,0 +1,78 @@
+---
+import Battery from './Battery.astro';
+
+/*
+  Variantes d'accroche (à valider avec Stéphane) :
+  1. "Mobiliser n'est pas motiver. C'est passer à l'acte, ensemble."
+  2. "Quand un collectif trouve son énergie, il passe à l'acte."
+  3. "Le collectif sait. On l'aide à agir."
+  4. "Du diagnostic chirurgical au passage à l'acte."
+  5. "On ne motive pas. On mobilise. On agit."
+  6. "L'année des choix. Le temps du passage à l'acte."
+  7. "Identifier chirurgicalement. Agir collectivement."
+  8. "La force est déjà dans le collectif. On la libère."
+  9. "Acteur, pas spectateur. Le passage à l'acte commence ici."
+  10. "De l'énergie du collectif au passage à l'acte."
+*/
+---
+
+<section id="accueil" class="relative min-h-screen flex items-center overflow-hidden bg-navy-950">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
+  
+  <!-- Subtle geometric decoration -->
+  <div class="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full border border-white/[0.04] translate-x-1/3"></div>
+  <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full border border-energy-dark/10"></div>
+
+  <!-- Energy gradient line at top -->
+  <div class="absolute top-0 left-0 right-0 energy-gradient-bar h-1"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-32 lg:py-0">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      
+      <!-- Text -->
+      <div class="order-2 lg:order-1">
+        <p class="text-energy-green text-sm font-semibold tracking-[0.2em] uppercase mb-6 animate-fade-in" style="animation-delay: 0.2s">
+          Méthode EC²R
+        </p>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1] mb-8 opacity-0 animate-fade-up" style="animation-delay: 0.4s">
+          On ne motive pas.<br/>
+          On <span class="energy-gradient-text">mobilise</span>.<br/>
+          On agit.
+        </h1>
+
+        <p class="text-lg md:text-xl text-white/60 leading-relaxed max-w-lg mb-10 opacity-0 animate-fade-up" style="animation-delay: 0.7s">
+          Un diagnostic chirurgical des énergies collectives pour passer de l'intention au passage à l'acte. 
+          Du développement professionnel, pas personnel.
+        </p>
+
+        <div class="flex flex-wrap gap-4 opacity-0 animate-fade-up" style="animation-delay: 1s">
+          <a href="#methode" class="btn-primary">
+            Découvrir la méthode
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+          <a href="#contact" class="btn-secondary border-white/20 text-white/70 hover:bg-white/10 hover:text-white hover:border-white/40">
+            Parlons-en
+          </a>
+        </div>
+      </div>
+
+      <!-- Battery visual -->
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div class="w-40 md:w-48 lg:w-56 opacity-0 animate-fade-in" style="animation-delay: 0.3s">
+          <Battery />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
