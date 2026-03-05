@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Mentions légales — EC²R">
+  <main class="min-h-screen bg-navy-950">
+    
+    <!-- Header -->
+    <div class="border-b border-white/10">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+        <a href="/" class="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-8 group">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Retour à l'accueil
+        </a>
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-white">
+          Mentions légales
+        </h1>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-16">
+      <div class="prose prose-invert prose-lg max-w-none">
+        
+        <section class="mb-12">
+          <h2 class="text-2xl font-display font-bold text-white mb-6">
+            Éditeur du site
+          </h2>
+          <div class="text-white/70 space-y-3 leading-relaxed">
+            <p><strong class="text-white/90">Raison sociale :</strong> EC²R Conseil <span class="text-yellow-400/80">[À COMPLÉTER : forme juridique et SIREN]</span></p>
+            <p><strong class="text-white/90">Adresse :</strong> 29 rue du Pont, 92200 Neuilly-sur-Seine</p>
+            <p><strong class="text-white/90">Email :</strong> <span class="text-yellow-400/80">[À COMPLÉTER]</span></p>
+            <p><strong class="text-white/90">Téléphone :</strong> <span class="text-yellow-400/80">[À COMPLÉTER]</span></p>
+            <p><strong class="text-white/90">Directeur de la publication :</strong> Stéphane Flahaut</p>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-display font-bold text-white mb-6">
+            Hébergeur
+          </h2>
+          <div class="text-white/70 space-y-3 leading-relaxed">
+            <p><strong class="text-white/90">GitHub Pages</strong></p>
+            <p>GitHub, Inc.<br />
+            88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+            <p><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-energy-light hover:text-energy transition-colors underline">https://github.com</a></p>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-display font-bold text-white mb-6">
+            Propriété intellectuelle
+          </h2>
+          <div class="text-white/70 space-y-3 leading-relaxed">
+            <p>
+              L'ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes, sons, logiciels, méthode EC²R) 
+              est la propriété exclusive d'EC²R Conseil, à l'exception des marques, logos ou contenus appartenant à d'autres sociétés 
+              partenaires ou auteurs.
+            </p>
+            <p>
+              Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments 
+              est strictement interdite sans l'accord exprès par écrit d'EC²R Conseil.
+            </p>
+            <p>
+              Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les 
+              articles L.335-2 et suivants du Code de la propriété intellectuelle.
+            </p>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-display font-bold text-white mb-6">
+            Crédits
+          </h2>
+          <div class="text-white/70 leading-relaxed">
+            <p>Site conçu et développé par EC²R Conseil.</p>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-display font-bold text-white mb-6">
+            Données personnelles
+          </h2>
+          <div class="text-white/70 space-y-3 leading-relaxed">
+            <p>
+              Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection 
+              des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données 
+              personnelles vous concernant.
+            </p>
+            <p>
+              Ce site ne collecte aucune donnée personnelle sans votre consentement explicite.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        
+        <div class="flex items-center gap-4">
+          <img src="/images/logo-ec2r.png" alt="EC²R" class="h-6 opacity-60" />
+          <span class="text-white/30 text-sm">
+            © {new Date().getFullYear()} EC²R Conseil. Méthode EC²R ©
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6 text-white/30 text-sm">
+          <span>29 rue du Pont, 92200 Neuilly-sur-Seine</span>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+</Layout>

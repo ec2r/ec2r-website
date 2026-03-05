@@ -59,7 +59,7 @@
             <label for="name" class="block text-white/70 text-sm font-medium mb-2">Nom</label>
             <input 
               type="text" id="name" name="name" required
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 
+              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base 
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50 
                      focus:ring-1 focus:ring-energy-green/30 transition-colors"
               placeholder="Votre nom"
@@ -70,7 +70,7 @@
             <label for="email" class="block text-white/70 text-sm font-medium mb-2">Email</label>
             <input 
               type="email" id="email" name="email" required
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 
+              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base 
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50 
                      focus:ring-1 focus:ring-energy-green/30 transition-colors"
               placeholder="votre@email.com"
@@ -83,7 +83,7 @@
             </label>
             <input 
               type="text" id="referral" name="referral"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 
+              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base 
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50 
                      focus:ring-1 focus:ring-energy-green/30 transition-colors"
               placeholder="Nom de la personne ou contexte"
@@ -94,11 +94,23 @@
             <label for="message" class="block text-white/70 text-sm font-medium mb-2">Message</label>
             <textarea 
               id="message" name="message" rows="4"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 
+              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base 
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50 
                      focus:ring-1 focus:ring-energy-green/30 transition-colors resize-none"
               placeholder="Ce qui vous amène, votre contexte..."
             ></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input 
+              type="checkbox" id="consent" name="consent" required
+              class="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-energy-green 
+                     focus:ring-energy-green/30 focus:ring-offset-0 cursor-pointer"
+            />
+            <label for="consent" class="text-white/50 text-xs leading-relaxed cursor-pointer">
+              J'accepte que mes données soient traitées par EC²R Conseil pour répondre à ma demande, 
+              conformément à la <a href="/politique-de-confidentialite" class="text-energy-green/70 hover:text-energy-green underline">politique de confidentialité</a>.
+            </label>
           </div>
 
           <button type="submit" class="btn-primary w-full justify-center bg-energy-dark hover:bg-energy-green hover:text-navy-950">

@@ -97,4 +97,13 @@ const links = [
       menuClose.classList.add('hidden');
     });
   });
+
+  // Close on scroll
+  window.addEventListener('scroll', () => {
+    if (!menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+      menuOpen.classList.remove('hidden');
+      menuClose.classList.add('hidden');
+    }
+  });
 </script>
