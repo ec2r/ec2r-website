@@ -1,25 +1,19 @@
 ---
-/*
-  PLACEHOLDER : photos à remplacer par les vrais portraits.
-  Photos nécessaires : Stéphane, Luc, Jean-François, Arnaud.
-  
-  NOTE: Laurent Prost (Grant Thornton) retiré du site public.
-  Raison : positionnement GT incompatible avec affichage public
-  (concurrents dans la commission CROEC, rôle officiel = expert-comptable de la méthode).
-  Il peut apparaître sur les versions démo internes uniquement.
-*/
-
 const founders = [
   {
-    name: 'Stéphane Flahaut',
+    name: 'Stéphane',
+    namePlus: 'Flau',
+    fullName: 'Stéphane Flahaut',
     role: 'Fondateur & Président',
-    bio: 'Porteur de la méthode EC²R depuis plus de 4 ans. Construit des collectifs et s\'assure que les comportements facilitent la dynamique. Garant de l\'intégrité de la méthode.',
+    bio: 'Porteur de la méthode EC²R depuis plus de 5 ans. Construit des collectifs et s\'assure que les comportements facilitent la dynamique. Garant, avec l\'IA, de l\'intégrité de la méthode.',
     initials: 'SF',
   },
   {
-    name: 'Luc Letoffe',
+    name: 'Luc',
+    namePlus: 'Létoffé',
+    fullName: 'Luc Létoffé',
     role: 'Co-design Méthode × Technologie',
-    bio: 'Passe de l\'idéation à la situation. Remplace une équipe de codeurs par du co-design en direct : formalise le brief avec les experts métiers, avance, livre. L\'IA au service du passage à l\'acte, pas l\'inverse.',
+    bio: 'Bien nommé, passe de l\'idéation à la situation. Remplace votre équipe de codeurs par du co-design en direct. Formalise le brief avec les experts métiers, avance, livre.',
     initials: 'LL',
   },
 ];
@@ -28,14 +22,26 @@ const team = [
   {
     name: 'Jean-François Morin',
     role: 'Co-fondateur',
-    bio: 'Co-fondateur de la méthode EC²R, « entraîneur d\'entraîneurs ». Associé depuis les origines.',
+    bio: 'Co-fondateur de la méthode EC²R, « entraîneur d\'entraîneurs ». Associé depuis les origines, ancrage terrain et transmission.',
     initials: 'JFM',
   },
   {
     name: 'Arnaud Bochurberg',
-    role: 'Interlocuteur EC²R',
-    bio: 'Accompagne les organisations dans le déploiement opérationnel de la méthode.',
+    role: 'Expert & Prescripteur',
+    bio: 'Accompagne les organisations dans le déploiement opérationnel. Expert des dynamiques de transformation et de la mise en acte.',
     initials: 'AB',
+  },
+  {
+    name: 'Jean Zuccarelli',
+    role: 'Praticien EC²R',
+    bio: 'Place réservée — profil en cours d\'intégration.',
+    initials: 'JZ',
+  },
+  {
+    name: 'Maria Emilia Garcia',
+    role: 'Praticienne EC²R',
+    bio: 'Place réservée — profil en cours d\'intégration.',
+    initials: 'MEG',
   },
 ];
 ---
@@ -44,18 +50,19 @@ const team = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     
     <div class="max-w-3xl mb-16 reveal">
-      <p class="section-label">L'équipe</p>
+      <p class="section-label">Les praticiens</p>
       <h2 class="section-title">
         Des gens qui passent<br/>
         <span class="energy-gradient-text">à l'acte</span>.
       </h2>
       <p class="section-text">
-        Pas de consultants interchangeables. Des profils complémentaires qui croient 
-        en la différenciation et qui ont prouvé la puissance de la méthode sur le terrain.
+        Pas de consultants interchangeables. Des profils expertise complémentaires qui croient 
+        en la différenciation, qui ont expérimenté et démontré la puissance de la méthode sur le terrain, 
+        qui savent la traduire dans vos quotidiens métiers.
       </p>
     </div>
 
-    <!-- Founders (Stéphane + Luc) — large cards -->
+    <!-- Founders (Stéphane + Luc) — large cards with + styling -->
     <div class="grid md:grid-cols-2 gap-8 mb-12">
       {founders.map((member, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
@@ -64,7 +71,6 @@ const team = [
             <!-- Photo placeholder -->
             <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
                         relative flex items-center justify-center overflow-hidden">
-              <!-- Geometric accent -->
               <div class="absolute inset-0 opacity-[0.03]">
                 <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-white"></div>
                 <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-white"></div>
@@ -81,7 +87,9 @@ const team = [
               </div>
             </div>
             <div class="p-8">
-              <h3 class="font-display font-bold text-xl text-navy-950 mb-1">{member.name}</h3>
+              <h3 class="font-display font-bold text-xl text-navy-950 mb-1">
+                {member.name}<span class="plus-accent">+</span> {member.namePlus}
+              </h3>
               <p class="text-energy-dark font-semibold text-sm mb-4">{member.role}</p>
               <p class="text-slate-600 leading-relaxed">{member.bio}</p>
             </div>
@@ -90,8 +98,8 @@ const team = [
       ))}
     </div>
 
-    <!-- Other members -->
-    <div class="grid sm:grid-cols-2 gap-6 mb-16">
+    <!-- Other team members -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       {team.map((member, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
           <div class="bg-white rounded-xl p-6 border border-slate-200 h-full 

@@ -1,19 +1,5 @@
 ---
 import Battery from './Battery.astro';
-
-/*
-  Variantes d'accroche (à valider avec Stéphane) :
-  1. "Mobiliser n'est pas motiver. C'est passer à l'acte, ensemble."
-  2. "Quand un collectif trouve son énergie, il passe à l'acte."
-  3. "Le collectif sait. On l'aide à agir."
-  4. "Du diagnostic chirurgical au passage à l'acte."
-  5. "On ne motive pas. On mobilise. On agit."
-  6. "L'année des choix. Le temps du passage à l'acte."
-  7. "Identifier chirurgicalement. Agir collectivement."
-  8. "La force est déjà dans le collectif. On la libère."
-  9. "Acteur, pas spectateur. Le passage à l'acte commence ici."
-  10. "De l'énergie du collectif au passage à l'acte."
-*/
 ---
 
 <section id="accueil" class="relative min-h-screen flex items-center overflow-hidden bg-navy-950">
@@ -37,24 +23,36 @@ import Battery from './Battery.astro';
       <!-- Text -->
       <div class="order-2 lg:order-1">
         <p class="text-energy-green text-sm font-semibold tracking-[0.2em] uppercase mb-6 animate-fade-in" style="animation-delay: 0.2s">
-          Méthode EC²R
+          Méthode EC²R ©
         </p>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1] mb-8 opacity-0 animate-fade-up" style="animation-delay: 0.4s">
-          On ne motive pas.<br/>
-          On <span class="energy-gradient-text">mobilise</span>.<br/>
-          On agit.
+        <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-display font-extrabold text-white leading-[1.1] mb-4 opacity-0 animate-fade-up" style="animation-delay: 0.4s">
+          Nos énergies<br/>
+          <span class="energy-gradient-text">plus collectives</span>
         </h1>
 
-        <p class="text-lg md:text-xl text-white/60 leading-relaxed max-w-lg mb-4 opacity-0 animate-fade-up" style="animation-delay: 0.7s">
+        <!-- Animated rotating tagline -->
+        <div class="text-2xl md:text-3xl font-display font-bold text-white/80 mb-8 h-[2.5em] md:h-[2em] opacity-0 animate-fade-up" style="animation-delay: 0.6s">
+          <span class="text-white/50">pour </span>
+          <span id="rotating-tagline" class="rotating-words">
+            <span class="word active">une croissance plus responsable</span>
+            <span class="word">un changement plus réaliste</span>
+            <span class="word">des résultats plus concrets</span>
+            <span class="word">une réactivité plus collective</span>
+          </span>
+        </div>
+
+        <p class="text-lg md:text-xl text-white/60 leading-relaxed max-w-lg mb-4 opacity-0 animate-fade-up" style="animation-delay: 0.8s">
           Pas le Netflix de la formation.<br/>
           Le <strong class="text-white">Waze du comportement professionnel</strong>.
         </p>
-        <p class="text-base text-white/40 leading-relaxed max-w-lg mb-10 opacity-0 animate-fade-up" style="animation-delay: 0.85s">
-          Un IRM organisationnel qui mesure les énergies collectives, identifie chirurgicalement les leviers et accompagne le passage à l'acte. Pour que les collaborateurs s'engagent vraiment — pas juste qu'ils soient bien au travail.
+        <p class="text-base text-white/40 leading-relaxed max-w-lg mb-10 opacity-0 animate-fade-up" style="animation-delay: 0.95s">
+          Un IRM organisationnel qui mesure les énergies collectives, identifie chirurgicalement 
+          les leviers de mobilisation et accompagne le passage à l'acte. 
+          Pour que les collaborateurs s'engagent vraiment — pas juste qu'ils soient bien au travail.
         </p>
 
-        <div class="flex flex-wrap gap-4 opacity-0 animate-fade-up" style="animation-delay: 1s">
+        <div class="flex flex-wrap gap-4 opacity-0 animate-fade-up" style="animation-delay: 1.1s">
           <a href="#methode" class="btn-primary w-full sm:w-auto justify-center">
             Découvrir la méthode
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,3 +81,18 @@ import Battery from './Battery.astro';
     </svg>
   </div>
 </section>
+
+<script>
+  // Rotating tagline words
+  const container = document.getElementById('rotating-tagline');
+  if (container) {
+    const words = container.querySelectorAll('.word');
+    let current = 0;
+
+    setInterval(() => {
+      words[current].classList.remove('active');
+      current = (current + 1) % words.length;
+      words[current].classList.add('active');
+    }, 3000);
+  }
+</script>

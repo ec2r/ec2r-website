@@ -1,14 +1,17 @@
 ---
 const links = [
-  { href: '#methode', label: 'Méthode' },
-  { href: '#preuves', label: 'Preuves' },
-  { href: '#demarche', label: 'Démarche' },
-  { href: '#equipe', label: 'Équipe' },
+  { href: '#methode', label: 'La Méthode' },
+  { href: '#preuves', label: 'Ils le vivent' },
+  { href: '#protocole', label: 'Le Protocole' },
+  { href: '#equipe', label: 'Les Praticiens' },
   { href: '#contact', label: 'Parlons-en' },
 ];
 ---
 
-<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+
+<nav id="nav" class="fixed top-[3px] left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
     <!-- Logo -->
     <a href="#" class="flex items-center gap-3 group">
@@ -69,8 +72,9 @@ const links = [
   const menu = document.getElementById('mobile-menu')!;
   const menuOpen = document.getElementById('menu-open')!;
   const menuClose = document.getElementById('menu-close')!;
+  const progress = document.getElementById('scroll-progress')!;
 
-  // Scroll: transparent → solid bg
+  // Scroll: transparent → solid bg + progress bar
   let scrolled = false;
   window.addEventListener('scroll', () => {
     const isScrolled = window.scrollY > 40;
@@ -80,6 +84,12 @@ const links = [
       nav.classList.toggle('backdrop-blur-lg', isScrolled);
       nav.classList.toggle('shadow-lg', isScrolled);
     }
+
+    // Update scroll progress
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progress.style.width = scrollPercent + '%';
   });
 
   // Mobile toggle

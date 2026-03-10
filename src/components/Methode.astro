@@ -2,44 +2,44 @@
 const energies = [
   {
     num: 1,
-    name: 'PROJET +',
+    name: 'Projeter',
     qualifier: 'mobilisant',
     description: 'Un élan collectif, une force et une voie tracée vers nos succès. Finalité désirée, valeur ajoutée collective, sens tracé.',
     color: 'energy-dark',
   },
   {
     num: 2,
-    name: 'ÉNERGIES +',
-    qualifier: 'centrées',
-    description: 'Tous à l\'unisson pour coopérer efficacement. Attentes claires, cohérence globale, dynamique coopérative.',
+    name: 'Centrer',
+    qualifier: 'vers la réussite',
+    description: 'Tous à l\'unisson pour coopérer efficacement. Attentes claires, cohérence globale, dynamique coopérative orientée résultats.',
     color: 'energy-green',
   },
   {
     num: 3,
-    name: 'EXIGENCES +',
-    qualifier: 'responsabilisantes',
-    description: 'Une progression claire, orientée solutions, accompagnée. Progressivité marquée, solutions recherchées.',
+    name: 'Fédérer',
+    qualifier: 'coopérative',
+    description: 'La force du collectif nait de la coopération réelle — pas d\'un discours. Tensions adressées, complémentarités activées.',
     color: 'energy-beige',
   },
   {
     num: 4,
-    name: 'LEADERSHIP +',
-    qualifier: 'bienveillant',
-    description: 'Confiance diffusée, le « comment » animé, les efforts récompensés. Compensation juste.',
-    color: 'energy-green',
+    name: 'Exiger',
+    qualifier: 'avancer / résultats',
+    description: 'Une progression claire, orientée solutions, accompagnée. Responsabiliser plutôt que culpabiliser. Du constat au passage à l\'acte.',
+    color: 'energy-yellow',
   },
   {
     num: 5,
-    name: 'GOUVERNANCE +',
-    qualifier: 'engageante',
-    description: 'Livrables collectifs tenus, contributions individuelles assurées. Actions mises en œuvre.',
-    color: 'energy-dark',
+    name: 'Animer',
+    qualifier: 'confiance / gouvernance',
+    description: 'Confiance diffusée, le « comment » animé, les efforts récompensés. Le leadership distribué qui donne envie d\'avancer.',
+    color: 'energy-green',
   },
   {
     num: 6,
-    name: '(RE)MOBILISATION +',
-    qualifier: 'durable',
-    description: 'Animés, guidés, agiles, pour tenir la longueur. Séquençage long, organisation agile.',
+    name: 'Autonomiser',
+    qualifier: 'agile / amélioration continue',
+    description: 'Animés, guidés, agiles, pour tenir la longueur. Organisation apprenante, séquençage long, amélioration continue.',
     color: 'energy-dark',
   },
 ];
@@ -52,12 +52,12 @@ const piliers = [
   },
   {
     title: 'Pont diagnostic → action',
-    description: 'Le diagnostic ne reste pas sur une slide. Chaque batterie identifiée déclenche une fiche booster — un comportement décisif, en étapes pratiques, dans votre vocabulaire métier. Du constat au passage à l\'acte.',
+    description: 'Le diagnostic ne reste pas sur une slide. Chaque batterie identifiée déclenche un comportement décisif, en étapes pratiques, dans votre vocabulaire métier. Du levier au comportement, du constat au passage à l\'acte.',
     icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`,
   },
   {
     title: 'Boucle complète',
-    description: 'Diagnostic collectif, profiling individuel, mentorat, fiches booster, suivi dans le temps. Pas un one-shot : une boucle qui accélère le passage du constat à l\'action, mesurable à chaque étape.',
+    description: 'Diagnostic collectif, profiling individuel, mentorat IA, fiches booster, suivi dans le temps. Pas un one-shot : une boucle qui accélère le passage du constat à l\'action, mesurable à chaque étape.',
     icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>`,
   },
 ];
@@ -70,32 +70,15 @@ const piliers = [
     <div class="max-w-3xl mb-20 reveal">
       <p class="section-label">La méthode</p>
       <h2 class="section-title">
-        6 énergies collectives.<br/>
-        18 batteries.<br/>
-        Un diagnostic <span class="energy-gradient-text">chirurgical</span>.
+        On ne motive pas<span class="plus-accent">+</span><br/>
+        On <span class="energy-gradient-text">mobilise</span> plus<span class="plus-accent">+</span><br/>
+        On agit plus<span class="plus-accent">+</span>
       </h2>
       <p class="section-text">
-        EC²R identifie les leviers de mobilisation collective avec précision. Pas de promesses abstraites, 
-        pas de développement personnel : du développement professionnel, ancré dans la réalité de votre collectif.
+        6 énergies collectives. 18 batteries. 9 niveaux. Un diagnostic <strong class="text-navy-950">chirurgical</strong> qui identifie 
+        les leviers de mobilisation collective avec précision. Pas de promesses abstraites, pas de développement uniquement personnel : 
+        du professionnel ancré dans la réalité de votre collectif.
       </p>
-    </div>
-
-    <!-- 3 DIFFERENTIATORS — new from transcripts -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-      {piliers.map((pilier, i) => (
-        <div class={`reveal reveal-delay-${i + 1}`}>
-          <div class="relative group h-full">
-            <!-- Gradient top bar -->
-            <div class="h-1 energy-gradient-bar rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="bg-slate-50 rounded-b-lg rounded-t-lg group-hover:rounded-t-none p-8 h-full border border-slate-100 
-                        group-hover:border-energy-dark/20 group-hover:shadow-xl group-hover:shadow-energy-dark/5 transition-all duration-500">
-              <div class="w-12 h-12 rounded-xl bg-navy-950 text-energy-green flex items-center justify-center mb-5" set:html={pilier.icon} />
-              <h3 class="font-display font-bold text-xl text-navy-950 mb-3">{pilier.title}</h3>
-              <p class="text-slate-600 leading-relaxed text-[0.95rem]">{pilier.description}</p>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
 
     <!-- Philosophy blocks -->
@@ -122,8 +105,8 @@ const piliers = [
           <p class="text-slate-600 leading-relaxed">
             <strong class="text-navy-950">Motiver</strong> est court terme et individuel. 
             <strong class="text-energy-dark">Mobiliser</strong> est durable et collectif. 
-            L'écart entre ceux qui passent à l'acte et ceux qui ne font pas devient abyssal.
-            Le sujet n'est pas de prendre des décisions — c'est de s'assurer qu'il y a un passage à l'acte après.
+            L'écart entre ceux qui passent à l'acte et ceux qui attendent devient abyssal.
+            La vitesse bat la taille. La densité bat le volume.
           </p>
         </div>
       </div>
@@ -134,15 +117,37 @@ const piliers = [
             <h3 class="font-display font-bold text-xl text-navy-900">Méthode vivante</h3>
           </div>
           <p class="text-slate-600 leading-relaxed">
-            Les praticiens incarnent et adaptent la méthode. La plateforme capitalise en temps réel pour garder cohérence et suivi.
+            Les praticiens incarnent et adaptent la méthode. La plateforme capitalise en temps réel.
             L'IA est <strong class="text-navy-950">gardienne de la méthode</strong>, pas un substitut à l'humain.
-            Chirurgical, immersif, évolutif.
+            Chirurgical, immersif, évolutif — un écosystème de transformation comportementale.
           </p>
         </div>
       </div>
     </div>
 
+    <!-- 3 DIFFERENTIATORS -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+      {piliers.map((pilier, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <div class="relative group h-full">
+            <div class="h-1 energy-gradient-bar rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="bg-slate-50 rounded-b-lg rounded-t-lg group-hover:rounded-t-none p-8 h-full border border-slate-100 
+                        group-hover:border-energy-dark/20 group-hover:shadow-xl group-hover:shadow-energy-dark/5 transition-all duration-500">
+              <div class="w-12 h-12 rounded-xl bg-navy-950 text-energy-green flex items-center justify-center mb-5" set:html={pilier.icon} />
+              <h3 class="font-display font-bold text-xl text-navy-950 mb-3">{pilier.title}</h3>
+              <p class="text-slate-600 leading-relaxed text-[0.95rem]">{pilier.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
     <!-- 6 energies grid -->
+    <div class="mb-8 reveal">
+      <h3 class="font-display font-bold text-2xl text-navy-950 mb-2">Les 6 énergies<span class="plus-accent">+</span></h3>
+      <p class="text-slate-500 text-sm">Chaque énergie, un levier. Chaque levier, un passage à l'acte.</p>
+    </div>
+
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {energies.map((energy, i) => (
         <div class={`reveal reveal-delay-${(i % 3) + 1}`}>
@@ -150,7 +155,6 @@ const piliers = [
                       hover:border-energy-dark/30 hover:shadow-lg hover:shadow-energy-dark/5 
                       transition-all duration-300 h-full overflow-hidden">
             
-            <!-- Subtle glow on hover -->
             <div class={`absolute -top-12 -right-12 w-24 h-24 bg-${energy.color} rounded-full opacity-0 
                          group-hover:opacity-[0.06] blur-2xl transition-opacity duration-500`}></div>
             
@@ -160,7 +164,9 @@ const piliers = [
                 <div class={`w-3 h-3 rounded-full bg-${energy.color} opacity-40 group-hover:opacity-100 transition-opacity`}></div>
               </div>
 
-              <h3 class="font-display font-bold text-navy-950 text-lg mb-1">{energy.name}</h3>
+              <h3 class="font-display font-bold text-navy-950 text-lg mb-1">
+                {energy.name}<span class="plus-accent">+</span>
+              </h3>
               <p class="text-sm text-energy-dark font-medium mb-3">{energy.qualifier}</p>
               <p class="text-sm text-slate-500 leading-relaxed">{energy.description}</p>
 
@@ -176,66 +182,6 @@ const piliers = [
           </div>
         </div>
       ))}
-    </div>
-
-    <!-- Two paths — elevated with profiling standalone -->
-    <div class="mt-20 reveal">
-      <div class="bg-navy-950 rounded-2xl overflow-hidden">
-        <div class="p-8 md:p-12">
-          <h3 class="font-display font-bold text-2xl text-white mb-3 text-center">Deux parcours, une méthode</h3>
-          <p class="text-white/50 text-sm text-center max-w-lg mx-auto mb-10">
-            Le profiling individuel est un service actif — pas une option future.
-            Chaque parcours est légitime et mène au même objectif : le passage à l'acte.
-            La méthode EC²R est autonome — les outils de profiling viennent enrichir le diagnostic, pas le définir.
-          </p>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white/5 rounded-xl p-6 md:p-8 border border-white/10 hover:border-energy-green/30 transition-colors duration-300">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-energy-dark/20 rounded-xl flex items-center justify-center">
-                  <svg class="w-6 h-6 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                  </svg>
-                </div>
-                <h4 class="font-display font-semibold text-white text-lg">Collectif → Individuel</h4>
-              </div>
-              <p class="text-white/60 text-sm leading-relaxed mb-4">
-                Baromètre des énergies collectives d'abord, puis profil de leadership augmenté 
-                pour identifier la part de chacun dans le diagnostic.
-              </p>
-              <div class="flex flex-wrap items-center gap-2 text-energy-green/70 text-xs font-medium">
-                <span>Baromètre</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                <span>Profil Leader</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                <span>Mentorat</span>
-              </div>
-            </div>
-            <div class="bg-white/5 rounded-xl p-6 md:p-8 border border-white/10 hover:border-energy-green/30 transition-colors duration-300">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-energy-dark/20 rounded-xl flex items-center justify-center">
-                  <svg class="w-6 h-6 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
-                </div>
-                <h4 class="font-display font-semibold text-white text-lg">Individuel → Collectif</h4>
-              </div>
-              <p class="text-white/60 text-sm leading-relaxed mb-4">
-                Profil de Leadership Augmenté d'abord — soft skills, zones de responsabilité,
-                leviers individuels — puis baromètre pour comprendre la dynamique de l'équipe.
-              </p>
-              <div class="flex flex-wrap items-center gap-2 text-energy-green/70 text-xs font-medium">
-                <span>Profil Leader</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                <span>Mentorat</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                <span>Baromètre</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Gradient bar at bottom -->
-        <div class="energy-gradient-bar h-1"></div>
-      </div>
     </div>
 
   </div>

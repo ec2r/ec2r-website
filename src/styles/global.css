@@ -67,7 +67,49 @@
   50% { background-position: 100% center; }
 }
 
-/* Scroll-triggered reveal — smoother cubic-bezier */
+/* ── Rotating words animation ── */
+.rotating-words {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.rotating-words .word {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(20px);
+  white-space: nowrap;
+}
+
+.rotating-words .word.active {
+  opacity: 1;
+  position: relative;
+  transform: translateY(0);
+}
+
+/* ── Scroll progress bar ── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  z-index: 100;
+  background: linear-gradient(90deg, #DC2626, #EAB308, #C9A56E, #22C55E, #166534);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ── Counter animation ── */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Scroll-triggered reveal ── */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -85,8 +127,9 @@
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
 
-/* Futuristic subtle grid overlay — for hero and dark sections */
+/* ── Futuristic grid overlay ── */
 .grid-overlay {
   background-image: 
     linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
@@ -94,15 +137,7 @@
   background-size: 60px 60px;
 }
 
-/* Smooth glow effect for interactive elements */
-.glow-hover {
-  transition: box-shadow 0.4s ease;
-}
-.glow-hover:hover {
-  box-shadow: 0 0 40px -12px rgba(22, 101, 52, 0.15);
-}
-
-/* Battery component animations */
+/* ── Battery glow ── */
 @keyframes pulse-glow {
   0%, 100% { filter: drop-shadow(0 0 6px rgba(22, 101, 52, 0.2)); }
   50% { filter: drop-shadow(0 0 20px rgba(22, 101, 52, 0.35)); }
@@ -112,7 +147,25 @@
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
-/* Custom scrollbar (subtle) */
+/* ── Plus accent (superscript +) ── */
+.plus-accent {
+  color: #22C55E;
+  font-weight: 800;
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* ── Wall tags ── */
+.wall-tag {
+  @apply inline-block px-4 py-2 rounded-full text-sm border transition-all duration-300 cursor-default;
+}
+
+.wall-tag:hover {
+  @apply shadow-md scale-105;
+}
+
+/* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;
 }
