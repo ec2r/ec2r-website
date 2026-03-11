@@ -1,16 +1,17 @@
 ---
 interface Props {
-  fr: { method: string; proof: string; protocol: string; practitioners: string; contact: string };
-  en: { method: string; proof: string; protocol: string; practitioners: string; contact: string };
+  fr: { method: string; proof: string; testimonials: string; protocol: string; practitioners: string; contact: string };
+  en: { method: string; proof: string; testimonials: string; protocol: string; practitioners: string; contact: string };
 }
 const { fr, en } = Astro.props;
 
 const links = [
-  { href: '#methode',   fr: fr.method,        en: en.method },
-  { href: '#preuves',   fr: fr.proof,         en: en.proof },
-  { href: '#protocole', fr: fr.protocol,       en: en.protocol },
-  { href: '#equipe',    fr: fr.practitioners,  en: en.practitioners },
-  { href: '#contact',   fr: fr.contact,        en: en.contact },
+  { href: '#methode',      fr: fr.method,        en: en.method },
+  { href: '#preuves',      fr: fr.proof,         en: en.proof },
+  { href: '#temoignages',  fr: fr.testimonials,  en: en.testimonials },
+  { href: '#protocole',    fr: fr.protocol,      en: en.protocol },
+  { href: '#equipe',       fr: fr.practitioners, en: en.practitioners },
+  { href: '#contact',      fr: fr.contact,       en: en.contact },
 ];
 ---
 
