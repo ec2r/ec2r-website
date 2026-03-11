@@ -45,11 +45,13 @@ const links = [
     <div class="flex items-center gap-3">
       <!-- Lang toggle -->
       <button id="lang-toggle" aria-label="Switch language"
-        class="flex items-center gap-1 text-xs font-semibold tracking-widest text-white/40 
-               hover:text-white/80 transition-colors duration-200 border border-white/10 
+        class="flex items-center gap-1.5 text-xs font-semibold tracking-widest text-white/60
+               hover:text-white/90 transition-colors duration-200 border border-white/10
                hover:border-white/30 rounded-md px-2.5 py-1.5">
+        <span id="lang-fr-flag" class="text-base leading-none">🇫🇷</span>
         <span id="lang-current">FR</span>
-        <span class="text-white/20">·</span>
+        <span class="text-white/20 mx-0.5">·</span>
+        <span id="lang-en-flag" class="text-base leading-none" style="opacity:0.4">🇬🇧</span>
         <span id="lang-other" class="text-white/25">EN</span>
       </button>
 
@@ -99,6 +101,12 @@ const links = [
     document.documentElement.setAttribute('data-lang', next); // déclenche l'Observer
     langCur.textContent = next.toUpperCase();
     langOth.textContent = next === 'fr' ? 'EN' : 'FR';
+    const frFlag = document.getElementById('lang-fr-flag') as HTMLElement;
+    const enFlag = document.getElementById('lang-en-flag') as HTMLElement;
+    if (frFlag && enFlag) {
+      frFlag.style.opacity = next === 'fr' ? '1' : '0.4';
+      enFlag.style.opacity = next === 'en' ? '1' : '0.4';
+    }
   });
 
   // ── Scroll ────────────────────────────────────────────────────────

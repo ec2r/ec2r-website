@@ -44,8 +44,8 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
 
         <!-- sub1 : structure fixe, seuls les textes changent via data attrs -->
         <p class="text-lg md:text-xl text-white/60 leading-relaxed max-w-lg mb-4 opacity-0 animate-fade-up" style="animation-delay: 0.8s">
-          <span id="hero-sub1" data-i18n-fr={fr.hero.sub1} data-i18n-en={en.hero.sub1}>{fr.hero.sub1}</span><br/>
-          <span>Le <strong id="hero-sub1b" class="text-white" data-i18n-fr={fr.hero.sub1b} data-i18n-en={en.hero.sub1b}>{fr.hero.sub1b}</strong>.</span>
+          <span>Pas le Netflix de <strong id="netflix-cycling" class="text-white" style="transition: opacity 0.2s ease">{(fr.hero as any).sub1Cycling ? (fr.hero as any).sub1Cycling[0] : 'la formation'}</strong>.</span><br/>
+          <span>Le Waze du <strong id="waze-cycling" class="text-white" style="transition: opacity 0.2s ease">{(fr.hero as any).sub1bCycling ? (fr.hero as any).sub1bCycling[0] : 'comportement professionnel'}</strong>.</span>
         </p>
         <p id="hero-sub2" class="text-base text-white/40 leading-relaxed max-w-lg mb-10 opacity-0 animate-fade-up"
            style="animation-delay: 0.95s"
@@ -84,7 +84,7 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
                     <svg width="28" height="34" viewBox="0 0 28 34" fill="none" class="text-energy-green/60 group-hover:text-energy-green transition-colors duration-200">
                       <rect x="1" y="5" width="26" height="28" rx="3" stroke="currentColor" stroke-width="1.6" fill="none"/>
                       <rect x="9" y="1" width="10" height="5" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
-                      <text x="14" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor" font-family="system-ui">{i + 1}</text>
+                      <text x="14" y="23" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor" font-family="system-ui">E{i + 1}</text>
                     </svg>
                   )}
                 </span>
@@ -171,6 +171,42 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
       words[current].classList.add('active');
     }, 3000);
   }
+
+  // ── Netflix / Waze cycling ──
+  const netflixEl = document.getElementById('netflix-cycling') as HTMLElement;
+  const wazeEl    = document.getElementById('waze-cycling') as HTMLElement;
+
+  const netflixFr = ['la formation', 'le conseil', 'la RH', 'le co-développement', 'le management'];
+  const netflixEn = ['training', 'consulting', 'HR', 'co-development', 'management'];
+  const wazeFr    = ['comportement professionnel', 'changement', 'mobilisation collective'];
+  const wazeEn    = ['professional behaviour', 'change', 'collective mobilisation'];
+
+  let nIdx = 0;
+  let wIdx = 0;
+
+  function cycleWord(el: HTMLElement | null, arrFr: string[], arrEn: string[], idx: number): number {
+    if (!el) return idx;
+    const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.textContent = lang === 'en' ? arrEn[idx] : arrFr[idx];
+      el.style.opacity = '1';
+    }, 200);
+    return (idx + 1) % arrFr.length;
+  }
+
+  setInterval(() => { nIdx = cycleWord(netflixEl, netflixFr, netflixEn, nIdx); }, 2500);
+  setInterval(() => { wIdx = cycleWord(wazeEl, wazeFr, wazeEn, wIdx); }, 3200);
+
+  // Update on lang change
+  const heroLangObserver = new MutationObserver(() => {
+    const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+    const ni = nIdx > 0 ? nIdx - 1 : netflixFr.length - 1;
+    const wi = wIdx > 0 ? wIdx - 1 : wazeFr.length - 1;
+    if (netflixEl) netflixEl.textContent = lang === 'en' ? netflixEn[ni] : netflixFr[ni];
+    if (wazeEl)    wazeEl.textContent    = lang === 'en' ? wazeEn[wi]    : wazeFr[wi];
+  });
+  heroLangObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
 
   // ── Accordion + tabs + swipe ──
   document.addEventListener('DOMContentLoaded', () => {
