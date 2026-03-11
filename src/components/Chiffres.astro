@@ -1,36 +1,30 @@
 ---
-const stats = [
-  { value: 5, suffix: ' ans', label: 'de méthode éprouvée sur le terrain' },
-  { value: 162, suffix: '', label: 'batteries comportementales analysées' },
-  { value: 6, suffix: '', label: 'énergies collectives cartographiées' },
-  { value: 9, suffix: ' niveaux', label: 'de granularité par batterie' },
-];
+interface Props {
+  fr: { stats: { suffix: string; label: string }[] };
+  en: { stats: { suffix: string; label: string }[] };
+}
+const { fr, en } = Astro.props;
+
+const values = [5, 162, 6, 9];
 ---
 
 <section class="py-20 lg:py-24 bg-navy-950 relative overflow-hidden">
-  <!-- Subtle grid overlay -->
   <div class="absolute inset-0 grid-overlay"></div>
-  
-  <!-- Energy gradient bars -->
   <div class="absolute top-0 left-0 right-0 energy-gradient-bar h-[2px]"></div>
   <div class="absolute bottom-0 left-0 right-0 energy-gradient-bar h-[2px]"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-      {stats.map((stat, i) => (
+      {fr.stats.map((stat, i) => (
         <div class={`text-center reveal reveal-delay-${i + 1}`}>
           <div class="mb-3">
-            <span 
-              class="counter-value text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white"
-              data-target={stat.value}
-            >
-              0
-            </span>
-            <span class="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-energy-green">
-              {stat.suffix}
-            </span>
+            <span class="counter-value text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white"
+                  data-target={values[i]}>0</span>
+            <span class="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-energy-green"
+                  data-i18n-fr={stat.suffix} data-i18n-en={en.stats[i].suffix}>{stat.suffix}</span>
           </div>
-          <p class="text-white/50 text-sm md:text-base leading-relaxed">{stat.label}</p>
+          <p class="text-white/50 text-sm md:text-base leading-relaxed"
+             data-i18n-fr={stat.label} data-i18n-en={en.stats[i].label}>{stat.label}</p>
         </div>
       ))}
     </div>
@@ -38,9 +32,7 @@ const stats = [
 </section>
 
 <script>
-  // Animated counters on scroll
   const counters = document.querySelectorAll('.counter-value[data-target]');
-  
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -48,24 +40,17 @@ const stats = [
         const target = parseInt(el.dataset.target || '0');
         const duration = 2000;
         const start = performance.now();
-        
         const animate = (now: number) => {
           const elapsed = now - start;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
           const eased = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.round(target * eased).toString();
-          
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          }
+          if (progress < 1) requestAnimationFrame(animate);
         };
-        
         requestAnimationFrame(animate);
         counterObserver.unobserve(el);
       }
     });
   }, { threshold: 0.5 });
-  
   counters.forEach(counter => counterObserver.observe(counter));
 </script>

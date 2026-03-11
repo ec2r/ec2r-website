@@ -13,11 +13,16 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <style>
+    /* i18n : masque les blocs de la langue inactive avant JS */
+    [data-lang="fr"] [data-i18n-lang="en"] { display: none !important; }
+    [data-lang="en"] [data-i18n-lang="fr"] { display: none !important; }
+  </style>
   
   <!-- OG -->
   <meta property="og:title" content={title} />
@@ -34,6 +39,27 @@ const {
   <slot />
 
   <script>
+    // ── i18n global ──────────────────────────────────────────────────
+    // Tous les éléments avec data-i18n ont aussi data-i18n-fr et data-i18n-en
+    function applyI18n(lang: string) {
+      document.querySelectorAll<HTMLElement>('[data-i18n-fr]').forEach(el => {
+        const val = lang === 'en' ? el.dataset.i18nEn : el.dataset.i18nFr;
+        if (val !== undefined) el.textContent = val;
+      });
+      // lang attr sur html
+      document.documentElement.setAttribute('lang', lang);
+    }
+
+    // Écoute les changements de data-lang sur <html>
+    new MutationObserver(() => {
+      applyI18n(document.documentElement.getAttribute('data-lang') || 'fr');
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
+
+    // Init au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+      applyI18n(document.documentElement.getAttribute('data-lang') || 'fr');
+    });
+
     // Scroll reveal
     const observer = new IntersectionObserver(
       (entries) => {

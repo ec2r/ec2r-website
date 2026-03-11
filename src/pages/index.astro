@@ -10,18 +10,38 @@ import Equipe from '../components/Equipe.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { translations } from '../i18n/translations';
+import type { Lang } from '../i18n/translations';
+
+// Site statique : on génère les deux langs, le JS côté client sélectionne la bonne
+const fr = translations.fr;
+const en = translations.en;
 ---
 
 <Layout>
-  <Nav />
+  <Nav fr={fr.nav} en={en.nav} />
   <main>
-    <Hero />
-    <Methode />
-    <Chiffres />
-    <Preuves />
-    <Protocole />
+    <Hero fr={fr} en={en} />
+    <Methode fr={fr.methode} en={en.methode} />
+    <Chiffres fr={fr.chiffres} en={en.chiffres} />
+    <Preuves fr={fr.preuves} en={en.preuves} />
+    <Protocole fr={fr.protocole} en={en.protocole} />
     <Equipe />
-    <Contact />
+    <Contact fr={fr.contact} en={en.contact} />
+    <Footer fr={fr.footer} en={en.footer} />
   </main>
-  <Footer />
 </Layout>
+
+<!-- Détection langue : navigator.language → localStorage → fallback fr -->
+<script>
+  (function() {
+    const stored = localStorage.getItem('ec2r-lang');
+    let lang = stored || '';
+    if (!lang) {
+      const nav = navigator.language || navigator.languages?.[0] || 'fr';
+      lang = nav.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+      localStorage.setItem('ec2r-lang', lang);
+    }
+    document.documentElement.setAttribute('data-lang', lang);
+  })();
+</script>

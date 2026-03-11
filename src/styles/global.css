@@ -92,17 +92,7 @@
   transform: translateY(0);
 }
 
-/* ── Scroll progress bar ── */
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  z-index: 100;
-  background: linear-gradient(90deg, #DC2626, #EAB308, #C9A56E, #22C55E, #166534);
-  width: 0%;
-  transition: width 0.1s linear;
-}
+/* ── Scroll progress bar — styles gérés inline dans Nav.astro ── */
 
 /* ── Counter animation ── */
 .counter-value {

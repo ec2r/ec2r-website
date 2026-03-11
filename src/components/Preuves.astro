@@ -1,112 +1,70 @@
 ---
-const testimonials = [
-  {
-    quote: "Après les formations avec ce qui se fait de mieux en termes de management, le réseau avait eu des résultats au-dessus des autres franchises.",
-    author: "Directeur réseau",
-    role: "Réseau national — N°2 du secteur immobilier",
-    type: "Résultat terrain",
-  },
-  {
-    quote: "Tu adresses le climat, pas la météo. Ce qu'on a essayé pendant un an avec des avatars IA, vous le faites avec une méthode qui tient la route.",
-    author: "Ancienne stagiaire AG2R",
-    role: "Vers le MEDEF Martinique — ambassadrice spontanée",
-    type: "Comparaison concurrence",
-  },
-  {
-    quote: "Ce qui change, c'est qu'on ne parle plus de ressenti mais de faits. Le diagnostic est chirurgical : on sait exactement quoi adresser, dans quel ordre.",
-    author: "Cabinet accompagné",
-    role: "Cabinet d'expertise comptable",
-    type: "Diagnostic",
-  },
-];
-
-const wallTags = [
-  { text: 'chirurgical', color: 'bg-energy-dark/10 text-energy-dark border-energy-dark/20' },
-  { text: 'passage à l\'acte', color: 'bg-navy-900/10 text-navy-900 border-navy-900/20' },
-  { text: 'collectif vivant', color: 'bg-energy-green/10 text-energy-dark border-energy-green/30' },
-  { text: 'résultats concrets', color: 'bg-energy-yellow/10 text-yellow-700 border-energy-yellow/30' },
-  { text: 'engagement réel', color: 'bg-energy-dark/10 text-energy-dark border-energy-dark/20' },
-  { text: 'méthode vivante', color: 'bg-energy-green/10 text-energy-dark border-energy-green/30' },
-  { text: 'transformation durable', color: 'bg-navy-900/10 text-navy-900 border-navy-900/20' },
-  { text: 'leadership distribué', color: 'bg-energy-beige/20 text-yellow-800 border-energy-beige/40' },
-  { text: 'IRM organisationnel', color: 'bg-energy-dark/10 text-energy-dark border-energy-dark/20' },
-  { text: 'mobilisation', color: 'bg-energy-green/10 text-energy-dark border-energy-green/30' },
-  { text: 'co-design', color: 'bg-navy-900/10 text-navy-900 border-navy-900/20' },
-  { text: 'énergie collective', color: 'bg-energy-yellow/10 text-yellow-700 border-energy-yellow/30' },
-];
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
 
 const videos = [
-  {
-    title: "Regards croisés Ep.1",
-    subtitle: "Mobilisons nos énergies vers la performance",
-    description: "Avec Vincent Clarico, recordman du monde et entraîneur Équipe de France.",
-    youtubeId: "jhq47z0GanA",
-  },
-  {
-    title: "Regards croisés Ep.2",
-    subtitle: "REMOBILISER ses énergies",
-    description: "Avec Marie-Laure Brunet, double médaillée olympique de biathlon.",
-    youtubeId: "e3KEgfNuNzQ",
-  },
+  { title: "Regards croisés Ep.1", subtitle: "Mobilisons nos énergies vers la performance", description: "Avec Vincent Clarico, recordman du monde et entraîneur Équipe de France.", youtubeId: "jhq47z0GanA" },
+  { title: "Regards croisés Ep.2", subtitle: "REMOBILISER ses énergies", description: "Avec Marie-Laure Brunet, double médaillée olympique de biathlon.", youtubeId: "e3KEgfNuNzQ" },
+];
+
+const wallTagColors = [
+  'bg-energy-dark/10 text-energy-dark border-energy-dark/20',
+  'bg-navy-900/10 text-navy-900 border-navy-900/20',
+  'bg-energy-green/10 text-energy-dark border-energy-green/30',
+  'bg-energy-yellow/10 text-yellow-700 border-energy-yellow/30',
+  'bg-energy-dark/10 text-energy-dark border-energy-dark/20',
+  'bg-energy-green/10 text-energy-dark border-energy-green/30',
+  'bg-navy-900/10 text-navy-900 border-navy-900/20',
+  'bg-energy-beige/20 text-yellow-800 border-energy-beige/40',
+  'bg-energy-dark/10 text-energy-dark border-energy-dark/20',
+  'bg-energy-green/10 text-energy-dark border-energy-green/30',
+  'bg-navy-900/10 text-navy-900 border-navy-900/20',
+  'bg-energy-yellow/10 text-yellow-700 border-energy-yellow/30',
 ];
 ---
 
 <section id="preuves" class="py-24 lg:py-32 bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    
+
     <div class="max-w-3xl mb-16 reveal">
-      <p class="section-label">Ils le vivent</p>
+      <p class="section-label" data-i18n-fr={fr.label} data-i18n-en={en.label}>{fr.label}</p>
       <h2 class="section-title">
-        Ce que disent<br/>
-        <span class="energy-gradient-text">ceux qui le vivent</span>.
+        <span data-i18n-fr={fr.title1} data-i18n-en={en.title1}>{fr.title1}</span><br/>
+        <span class="energy-gradient-text" data-i18n-fr={fr.title2} data-i18n-en={en.title2}>{fr.title2}</span>.
       </h2>
-      <p class="section-text">
-        Pas de promesses marketing. Des résultats concrets, des mots de clients, 
-        des données mesurables. Comportement observable + impact réel.
-      </p>
+      <p class="section-text" data-i18n-fr={fr.intro} data-i18n-en={en.intro}>{fr.intro}</p>
     </div>
 
-    <!-- Wall of tags / mur de témoignages -->
+    <!-- Wall of tags -->
     <div class="mb-16 reveal">
       <div class="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
-        <h3 class="font-display font-semibold text-navy-950 text-lg mb-6">Ce qu'ils retiennent</h3>
-        <div class="flex flex-wrap gap-3">
-          {wallTags.map((tag, i) => (
-            <span 
-              class={`wall-tag ${tag.color}`}
-              style={`animation: fadeSlideTag 0.3s ease-out ${0.05 * i}s both`}
-            >
-              {tag.text}
-            </span>
+        <h3 class="font-display font-semibold text-navy-950 text-lg mb-6"
+            data-i18n-fr={fr.wallTitle} data-i18n-en={en.wallTitle}>{fr.wallTitle}</h3>
+        <div class="flex flex-wrap gap-3" id="wall-tags-container">
+          {fr.wallTags.map((tag: string, i: number) => (
+            <span class={`wall-tag ${wallTagColors[i]}`}
+                  style={`animation: fadeSlideTag 0.3s ease-out ${0.05 * i}s both`}
+                  data-i18n-fr={tag} data-i18n-en={en.wallTags[i]}>{tag}</span>
           ))}
-          <span class="wall-tag bg-white text-slate-400 border-dashed border-slate-300 italic">
-            + votre mot bientôt
-          </span>
+          <span class="wall-tag bg-white text-slate-400 border-dashed border-slate-300 italic"
+                data-i18n-fr={fr.wallMore} data-i18n-en={en.wallMore}>{fr.wallMore}</span>
         </div>
-        <p class="text-slate-400 text-xs mt-6 italic">
-          Mur de contribution ouvert — inspiration Châteauform. Laissez votre empreinte.
-        </p>
+        <p class="text-slate-400 text-xs mt-6 italic"
+           data-i18n-fr={fr.wallNote} data-i18n-en={en.wallNote}>{fr.wallNote}</p>
       </div>
     </div>
 
     <!-- Testimonials -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-      {testimonials.map((t, i) => (
+      {fr.testimonials.map((t: any, i: number) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
           <div class="bg-white rounded-xl p-8 h-full border border-slate-200 relative group
                       hover:shadow-lg hover:shadow-navy-900/5 hover:border-energy-dark/20 transition-all duration-500">
-            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] 
-                         px-3 py-1 rounded-full mb-5">
-              {t.type}
-            </span>
-
+            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] px-3 py-1 rounded-full mb-5">{t.type}</span>
             <div class="relative mb-6">
               <div class="text-energy-dark/10 text-7xl font-serif leading-none absolute -top-4 -left-2 select-none">"</div>
-              <blockquote class="text-slate-700 leading-relaxed relative z-10 pl-4">
-                {t.quote}
-              </blockquote>
+              <blockquote class="text-slate-700 leading-relaxed relative z-10 pl-4">{t.quote}</blockquote>
             </div>
-            
             <div class="border-t border-slate-100 pt-4 mt-auto">
               <p class="font-display font-semibold text-navy-950 text-sm">{t.author}</p>
               <p class="text-slate-500 text-sm">{t.role}</p>
@@ -116,31 +74,23 @@ const videos = [
       ))}
     </div>
 
-    <!-- Video section — trajectoire -->
+    <!-- Videos -->
     <div class="reveal">
       <div class="flex items-center gap-3 mb-2">
         <div class="w-2 h-8 bg-gradient-to-b from-energy-red to-energy-dark rounded-full"></div>
-        <h3 class="font-display font-bold text-2xl text-navy-950">
-          Performance et mobilisation
-        </h3>
+        <h3 class="font-display font-bold text-2xl text-navy-950"
+            data-i18n-fr={fr.trajTitle} data-i18n-en={en.trajTitle}>{fr.trajTitle}</h3>
       </div>
-      <p class="text-slate-500 text-sm mb-8 ml-5">
-        Vidéos de la trajectoire EC²R — 5 ans de terrain documentés.
-      </p>
+      <p class="text-slate-500 text-sm mb-8 ml-5"
+         data-i18n-fr={fr.trajSub} data-i18n-en={en.trajSub}>{fr.trajSub}</p>
       <div class="grid md:grid-cols-2 gap-8">
-        {videos.map((video) => (
+        {videos.map(video => (
           <div class="group">
-            <div class="relative aspect-video bg-navy-950 rounded-xl overflow-hidden shadow-lg 
-                        shadow-navy-900/10 group-hover:shadow-xl transition-shadow duration-300">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
-                title={video.title}
-                class="absolute inset-0 w-full h-full"
-                frameborder="0"
+            <div class="relative aspect-video bg-navy-950 rounded-xl overflow-hidden shadow-lg shadow-navy-900/10 group-hover:shadow-xl transition-shadow duration-300">
+              <iframe src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
+                title={video.title} class="absolute inset-0 w-full h-full" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
+                allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="mt-4">
               <h4 class="font-display font-semibold text-navy-950">{video.title}</h4>
@@ -152,25 +102,21 @@ const videos = [
       </div>
     </div>
 
-    <!-- Trajectory / Musée teaser -->
+    <!-- Musée -->
     <div class="mt-16 reveal">
       <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12">
         <div class="grid md:grid-cols-[1fr,auto] gap-8 items-center">
           <div>
             <p class="text-xs text-slate-400 uppercase tracking-wider font-medium mb-3">Trajectoire</p>
-            <h4 class="font-display font-bold text-xl text-navy-950 mb-3">
-              5 ans de terrain — notre petit musée
-            </h4>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Des premiers séminaires aux déploiements multi-sites. Des slides originales aux protocoles augmentés par l'IA.
-              Chaque année a été un point de rupture — nous documentons le chemin parcouru, pas pour l'ego, pour la preuve.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs text-slate-400">
-              <span class="px-3 py-1 rounded-full bg-slate-100">2021 — Genèse</span>
-              <span class="px-3 py-1 rounded-full bg-slate-100">2022 — Terrain</span>
-              <span class="px-3 py-1 rounded-full bg-slate-100">2023 — Méthode</span>
-              <span class="px-3 py-1 rounded-full bg-slate-100">2024 — Plateforme</span>
-              <span class="px-3 py-1 rounded-full bg-slate-100">2025 — IA</span>
+            <h4 class="font-display font-bold text-xl text-navy-950 mb-3"
+                data-i18n-fr={fr.museeTitle} data-i18n-en={en.museeTitle}>{fr.museeTitle}</h4>
+            <p class="text-slate-600 leading-relaxed mb-4"
+               data-i18n-fr={fr.museeSub} data-i18n-en={en.museeSub}>{fr.museeSub}</p>
+            <div class="flex flex-wrap gap-2 text-xs text-slate-400" id="musee-years">
+              {fr.museeYears.map((y: string, i: number) => (
+                <span class="px-3 py-1 rounded-full bg-slate-100"
+                      data-i18n-fr={y} data-i18n-en={en.museeYears[i]}>{y}</span>
+              ))}
             </div>
           </div>
           <div class="flex-shrink-0 hidden md:block">

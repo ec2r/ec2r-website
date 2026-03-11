@@ -1,28 +1,28 @@
 ---
+interface Props {
+  fr: { address: string; legal: string; privacy: string };
+  en: { address: string; legal: string; privacy: string };
+}
+const { fr, en } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-navy-950 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-      
-      <!-- Logo + copyright -->
       <div class="flex items-center gap-4">
         <img src="/images/logo-ec2r.png" alt="EC²R" class="h-6 opacity-60" />
-        <span class="text-white/30 text-sm">
-          © {currentYear} EC²R Conseil. Méthode EC²R ©
-        </span>
+        <span class="text-white/30 text-sm">© {currentYear} EC²R Conseil. Méthode EC²R ©</span>
       </div>
-
-      <!-- Links -->
       <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-white/30 text-sm text-center sm:text-left">
-        <span>29 rue du Pont, 92200 Neuilly-sur-Seine</span>
+        <span data-i18n-fr={fr.address} data-i18n-en={en.address}>{fr.address}</span>
         <span class="hidden md:inline">·</span>
-        <a href="/mentions-legales" class="hover:text-white/60 transition-colors">Mentions légales</a>
+        <a href="/mentions-legales" class="hover:text-white/60 transition-colors"
+           data-i18n-fr={fr.legal} data-i18n-en={en.legal}>{fr.legal}</a>
         <span class="hidden md:inline">·</span>
-        <a href="/politique-de-confidentialite" class="hover:text-white/60 transition-colors">Politique de confidentialité</a>
+        <a href="/politique-de-confidentialite" class="hover:text-white/60 transition-colors"
+           data-i18n-fr={fr.privacy} data-i18n-en={en.privacy}>{fr.privacy}</a>
       </div>
-
     </div>
   </div>
 </footer>
