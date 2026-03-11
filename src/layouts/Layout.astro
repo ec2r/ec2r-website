@@ -40,25 +40,50 @@ const {
 
   <script>
     // ── i18n global ──────────────────────────────────────────────────
-    // Tous les éléments avec data-i18n ont aussi data-i18n-fr et data-i18n-en
     function applyI18n(lang: string) {
       document.querySelectorAll<HTMLElement>('[data-i18n-fr]').forEach(el => {
+        // Ne modifier que les feuilles (pas d'éléments enfants non-texte)
+        const hasChildElements = Array.from(el.childNodes).some(n => n.nodeType === 1);
+        if (hasChildElements) return;
         const val = lang === 'en' ? el.dataset.i18nEn : el.dataset.i18nFr;
-        if (val !== undefined) el.textContent = val;
+        if (val !== undefined && val !== '') el.textContent = val;
       });
-      // lang attr sur html
+      // Placeholders inputs/textarea
+      document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-placeholder-fr]').forEach(el => {
+        el.placeholder = lang === 'en'
+          ? (el.dataset.placeholderEn || el.dataset.placeholderFr || '')
+          : (el.dataset.placeholderFr || '');
+      });
       document.documentElement.setAttribute('lang', lang);
     }
 
-    // Écoute les changements de data-lang sur <html>
-    new MutationObserver(() => {
-      applyI18n(document.documentElement.getAttribute('data-lang') || 'fr');
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
+    // Détection initiale : localStorage → navigator.language → fr
+    function detectLang(): string {
+      const stored = localStorage.getItem('ec2r-lang');
+      if (stored === 'fr' || stored === 'en') return stored;
+      const nav = (navigator.language || 'fr').toLowerCase();
+      return nav.startsWith('fr') ? 'fr' : 'en';
+    }
 
-    // Init au chargement
+    // Au chargement du DOM : set data-lang et applique les textes
     document.addEventListener('DOMContentLoaded', () => {
-      applyI18n(document.documentElement.getAttribute('data-lang') || 'fr');
+      const lang = detectLang();
+      localStorage.setItem('ec2r-lang', lang);
+      document.documentElement.setAttribute('data-lang', lang);
+      applyI18n(lang);
+
+      // Met à jour le bouton toggle si déjà rendu
+      const cur = document.getElementById('lang-current');
+      const oth = document.getElementById('lang-other');
+      if (cur) cur.textContent = lang.toUpperCase();
+      if (oth) oth.textContent = lang === 'fr' ? 'EN' : 'FR';
     });
+
+    // Écoute les changements (déclenchés par le toggle dans Nav)
+    new MutationObserver(() => {
+      const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+      applyI18n(lang);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
 
     // Scroll reveal
     const observer = new IntersectionObserver(

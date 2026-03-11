@@ -32,16 +32,4 @@ const en = translations.en;
   </main>
 </Layout>
 
-<!-- Détection langue : navigator.language → localStorage → fallback fr -->
-<script>
-  (function() {
-    const stored = localStorage.getItem('ec2r-lang');
-    let lang = stored || '';
-    if (!lang) {
-      const nav = navigator.language || navigator.languages?.[0] || 'fr';
-      lang = nav.toLowerCase().startsWith('fr') ? 'fr' : 'en';
-      localStorage.setItem('ec2r-lang', lang);
-    }
-    document.documentElement.setAttribute('data-lang', lang);
-  })();
-</script>
+

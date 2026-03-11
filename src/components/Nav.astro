@@ -89,25 +89,16 @@ const links = [
   const langCur  = document.getElementById('lang-current')!;
   const langOth  = document.getElementById('lang-other')!;
 
-  // ── Lang init ──────────────────────────────────────────────────────
-  function getCurrentLang(): string {
-    return document.documentElement.getAttribute('data-lang') || 'fr';
-  }
-
-  function applyLang(lang: string) {
-    document.documentElement.setAttribute('data-lang', lang);
-    document.documentElement.setAttribute('lang', lang);
-    localStorage.setItem('ec2r-lang', lang);
-    langCur.textContent = lang.toUpperCase();
-    langOth.textContent = lang === 'fr' ? 'EN' : 'FR';
-  }
-
-  // Init display from stored/detected lang
-  applyLang(getCurrentLang());
-
+  // ── Lang toggle ────────────────────────────────────────────────────
+  // La détection initiale est dans Layout.astro (DOMContentLoaded)
+  // Ici on gère juste le clic utilisateur
   langBtn.addEventListener('click', () => {
-    const next = getCurrentLang() === 'fr' ? 'en' : 'fr';
-    applyLang(next);
+    const cur = document.documentElement.getAttribute('data-lang') || 'fr';
+    const next = cur === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('ec2r-lang', next);
+    document.documentElement.setAttribute('data-lang', next); // déclenche l'Observer
+    langCur.textContent = next.toUpperCase();
+    langOth.textContent = next === 'fr' ? 'EN' : 'FR';
   });
 
   // ── Scroll ────────────────────────────────────────────────────────
