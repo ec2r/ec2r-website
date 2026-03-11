@@ -34,26 +34,26 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
         </h1>
 
         <div class="mb-8 opacity-0 animate-fade-up font-mono" style="animation-delay: 0.6s">
-          <div class="space-y-1 text-lg md:text-xl">
-            <div class="flex items-center gap-3">
-              <span class="text-energy-green font-bold text-2xl">E</span>
+          <div class="space-y-1 text-lg md:text-xl" id="ec2r-lines">
+            <div class="ec2r-line flex items-center gap-3 opacity-0" style="transition: opacity 0.3s ease">
+              <span class="text-energy-green font-bold text-2xl w-8">E</span>
               <span class="text-white/20">·····</span>
               <span class="text-white/70" data-i18n-fr="Énergie" data-i18n-en="Energy">Énergie</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-energy-green font-bold text-2xl">C</span>
+            <div class="ec2r-line flex items-center gap-3 opacity-0" style="transition: opacity 0.3s ease">
+              <span class="text-energy-green font-bold text-2xl w-8">C</span>
               <span class="text-white/20">·····</span>
               <span class="text-white/70" data-i18n-fr="Collective" data-i18n-en="Collective">Collective</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-energy-green font-bold text-2xl">²C</span>
+            <div class="ec2r-line flex items-center gap-3 opacity-0" style="transition: opacity 0.3s ease">
+              <span class="text-energy-green font-bold text-2xl w-8">²C</span>
               <span class="text-white/20">·····</span>
-              <span id="c2-cycling" class="text-white font-semibold" style="transition: opacity 0.2s ease">Croissance</span>
+              <span id="c2-cycling" class="text-white font-semibold"></span><span id="c2-caret" class="text-energy-green/60 animate-pulse">_</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-energy-green font-bold text-2xl">R</span>
+            <div class="ec2r-line flex items-center gap-3 opacity-0" style="transition: opacity 0.3s ease">
+              <span class="text-energy-green font-bold text-2xl w-8">R</span>
               <span class="text-white/20">·····</span>
-              <span id="r-cycling" class="text-white font-semibold" style="transition: opacity 0.2s ease">Responsable</span>
+              <span id="r-cycling" class="text-white font-semibold"></span><span id="r-caret" class="text-energy-green/60 animate-pulse">_</span>
             </div>
           </div>
         </div>
@@ -85,8 +85,10 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
 
       <!-- Droite : situations accordion -->
       <div class="order-2 opacity-0 animate-fade-in" style="animation-delay: 0.5s">
-        <p class="text-xs uppercase tracking-[0.2em] font-semibold text-white/30 mb-4"
+        <p class="text-xs uppercase tracking-[0.2em] font-semibold text-white/30 mb-1"
            data-i18n-fr={fr.hero.situationsLabel} data-i18n-en={en.hero.situationsLabel}>{fr.hero.situationsLabel}</p>
+        <p class="text-xs text-white/20 italic mb-4"
+           data-i18n-fr={fr.hero.situationsHint} data-i18n-en={en.hero.situationsHint}>{fr.hero.situationsHint}</p>
 
         <div class="space-y-1.5" id="hero-situations">
           {fr.situations.map((s: any, i: number) => (
@@ -151,10 +153,15 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
                   </div>
                 </div>
 
-                <div class="flex justify-center gap-1.5 pb-2">
-                  <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-energy-green" data-dot="0"></span>
-                  <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-white/20" data-dot="1"></span>
-                  <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-white/20" data-dot="2"></span>
+                <div class="flex items-center justify-between px-4 pb-3 pt-1">
+                  <div class="flex gap-1.5">
+                    <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-energy-green" data-dot="0"></span>
+                    <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-white/20" data-dot="1"></span>
+                    <span class="swipe-dot w-1.5 h-1.5 rounded-full bg-white/20" data-dot="2"></span>
+                  </div>
+                  <button class="sit-validate text-xs text-white/30 hover:text-energy-green border border-white/10 hover:border-energy-green/40 rounded-full px-3 py-1 transition-all duration-200">
+                    Je le vis
+                  </button>
                 </div>
               </div>
 
@@ -174,6 +181,13 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
     data-waze-en={JSON.stringify((en.hero as any).sub1bCycling || [])}
   ></div>
 
+  <!-- Bandeau "Je le vis" CTA -->
+  <div id="sit-cta-banner" class="hidden fixed bottom-0 left-0 right-0 z-40 bg-navy-950/95 backdrop-blur border-t border-energy-green/20 py-3 px-6 text-center">
+    <span class="text-white/70 text-sm">Vous vous reconnaissez dans <strong id="sit-count" class="text-energy-green">0</strong> situation(s) —</span>
+    <a href="#contact" class="text-energy-green font-semibold text-sm ml-2 hover:underline">on s'en parle ?</a>
+    <button id="sit-banner-close" class="ml-4 text-white/30 hover:text-white/60 text-xs">✕</button>
+  </div>
+
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -188,38 +202,102 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
 </style>
 
 <script>
-  // ── EC²R decomposition cycling ──
+  // ── EC²R decomposition : apparition séquentielle + typewriter ──
   const c2El = document.getElementById('c2-cycling') as HTMLElement;
-  const rEl = document.getElementById('r-cycling') as HTMLElement;
+  const rEl  = document.getElementById('r-cycling')  as HTMLElement;
+  const c2Caret = document.getElementById('c2-caret') as HTMLElement;
+  const rCaret  = document.getElementById('r-caret')  as HTMLElement;
+
   const c2Fr = ['Croissance', 'Changement', 'Comportement'];
   const c2En = ['Growth', 'Change', 'Behaviour'];
-  const rFr = ['Responsable', 'Réaliste', 'Rapide', 'Rassurant'];
-  const rEn = ['Responsible', 'Realistic', 'Rapid', 'Reassuring'];
+  const rFr  = ['Responsable', 'Réaliste', 'Rapide', 'Rassurant'];
+  const rEn  = ['Responsible', 'Realistic', 'Rapid', 'Reassuring'];
   let c2Idx = 0, rIdx = 0;
+  let ec2rReady = false;
 
-  function cycleEC2R(el: HTMLElement | null, arrFr: string[], arrEn: string[], idx: number): number {
-    if (!el) return idx;
+  // Typewriter : tape lettre par lettre, attend, efface, recommence
+  function typewriterCycle(
+    el: HTMLElement,
+    arrFr: string[], arrEn: string[],
+    idxRef: { v: number },
+    onDone?: () => void
+  ) {
     const lang = document.documentElement.getAttribute('data-lang') || 'fr';
-    el.style.opacity = '0';
-    setTimeout(() => {
-      el.textContent = lang === 'en' ? arrEn[idx] : arrFr[idx];
-      el.style.opacity = '1';
-    }, 200);
-    return (idx + 1) % arrFr.length;
+    const word = lang === 'en' ? arrEn[idxRef.v] : arrFr[idxRef.v];
+    idxRef.v = (idxRef.v + 1) % arrFr.length;
+
+    let i = 0;
+    el.textContent = '';
+
+    // Tape
+    const typeInterval = setInterval(() => {
+      el.textContent = word.slice(0, i + 1);
+      i++;
+      if (i >= word.length) {
+        clearInterval(typeInterval);
+        // Pause affichage
+        setTimeout(() => {
+          // Efface
+          let j = word.length;
+          const eraseInterval = setInterval(() => {
+            j--;
+            el.textContent = word.slice(0, j);
+            if (j <= 0) {
+              clearInterval(eraseInterval);
+              onDone?.();
+            }
+          }, 40);
+        }, 1800);
+      }
+    }, 55);
   }
 
-  setInterval(() => { c2Idx = cycleEC2R(c2El, c2Fr, c2En, c2Idx); }, 2500);
-  setInterval(() => { rIdx = cycleEC2R(rEl, rFr, rEn, rIdx); }, 3200);
+  function startC2Cycle() {
+    const ref = { v: c2Idx };
+    typewriterCycle(c2El, c2Fr, c2En, ref, () => {
+      c2Idx = ref.v;
+      setTimeout(startC2Cycle, 200);
+    });
+  }
 
-  // Update EC²R on lang change
-  const ec2rLangObserver = new MutationObserver(() => {
+  function startRCycle() {
+    const ref = { v: rIdx };
+    typewriterCycle(rEl, rFr, rEn, ref, () => {
+      rIdx = ref.v;
+      setTimeout(startRCycle, 200);
+    });
+  }
+
+  // Apparition séquentielle des 4 lignes (après fade-in du bloc)
+  const ec2rLines = document.querySelectorAll<HTMLElement>('.ec2r-line');
+  const EC2R_LINE_DELAY = 320; // ms entre chaque ligne
+
+  function revealEC2RLines() {
+    ec2rLines.forEach((line, i) => {
+      setTimeout(() => {
+        line.style.opacity = '1';
+        // Sur la 3e ligne (²C), démarrer le typewriter
+        if (i === 2) setTimeout(startC2Cycle, 200);
+        // Sur la 4e ligne (R), démarrer le typewriter avec décalage
+        if (i === 3) setTimeout(startRCycle, 600);
+      }, i * EC2R_LINE_DELAY);
+    });
+    ec2rReady = true;
+  }
+
+  // Déclencher après le fade-in initial (animation-delay 0.6s + durée ~0.5s)
+  setTimeout(revealEC2RLines, 1200);
+
+  // Update EC²R on lang change : re-type le mot courant immédiatement
+  new MutationObserver(() => {
+    if (!ec2rReady) return;
     const lang = document.documentElement.getAttribute('data-lang') || 'fr';
-    const ci = c2Idx > 0 ? c2Idx - 1 : c2Fr.length - 1;
-    const ri = rIdx > 0 ? rIdx - 1 : rFr.length - 1;
-    if (c2El) c2El.textContent = lang === 'en' ? c2En[ci] : c2Fr[ci];
-    if (rEl) rEl.textContent = lang === 'en' ? rEn[ri] : rFr[ri];
-  });
-  ec2rLangObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
+    // On laisse le cycle gérer la langue au prochain mot — les éléments fixes
+    const fixedE  = ec2rLines[0]?.querySelector('[data-i18n-fr]') as HTMLElement;
+    const fixedC  = ec2rLines[1]?.querySelector('[data-i18n-fr]') as HTMLElement;
+    if (fixedE) fixedE.textContent = lang === 'en' ? 'Energy' : 'Énergie';
+    if (fixedC) fixedC.textContent = lang === 'en' ? 'Collective' : 'Collective';
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
 
   // ── Netflix / Waze cycling ──
   const netflixEl  = document.getElementById('netflix-cycling') as HTMLElement;
@@ -361,6 +439,40 @@ const nums = ['①','②','③','④','⑤','⑥','↗'];
     // Init
     const initLang = document.documentElement.getAttribute('data-lang') || 'fr';
     updateSituationsLang(initLang);
+
+    // ── "Je le vis" interactif ──
+    const validated = new Set<string>();
+    const banner  = document.getElementById('sit-cta-banner') as HTMLElement;
+    const countEl = document.getElementById('sit-count') as HTMLElement;
+    const closeBtn= document.getElementById('sit-banner-close') as HTMLElement;
+
+    closeBtn?.addEventListener('click', () => banner.classList.add('hidden'));
+
+    document.querySelectorAll<HTMLElement>('.sit-validate').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sitItem = btn.closest<HTMLElement>('.sit-item');
+        if (!sitItem) return;
+        const idx = sitItem.dataset.sitIdx || '';
+
+        if (validated.has(idx)) {
+          validated.delete(idx);
+          sitItem.style.borderColor = '';
+          btn.textContent = 'Je le vis';
+          btn.classList.remove('text-energy-green', 'border-energy-green/40');
+          btn.classList.add('text-white/30', 'border-white/10');
+        } else {
+          validated.add(idx);
+          sitItem.style.borderColor = 'rgba(74,222,128,0.35)';
+          btn.textContent = '✓ Je le vis';
+          btn.classList.add('text-energy-green', 'border-energy-green/40');
+          btn.classList.remove('text-white/30', 'border-white/10');
+        }
+
+        countEl.textContent = String(validated.size);
+        banner.classList.toggle('hidden', validated.size < 2);
+        sessionStorage.setItem('ec2r-situations', JSON.stringify([...validated]));
+      });
+    });
   });
 
 
