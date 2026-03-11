@@ -18,11 +18,8 @@ const {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <style>
-    /* i18n : masque les blocs de la langue inactive avant JS */
-    [data-lang="fr"] [data-i18n-lang="en"] { display: none !important; }
-    [data-lang="en"] [data-i18n-lang="fr"] { display: none !important; }
-  </style>
+  <!-- i18n critical CSS inline — injected as raw HTML to prevent Astro from bundling it -->
+  <Fragment set:html={`<style>[data-lang="fr"] [data-i18n-lang="en"]{display:none!important}[data-lang="en"] [data-i18n-lang="fr"]{display:none!important}</style>`} />
   
   <!-- OG -->
   <meta property="og:title" content={title} />

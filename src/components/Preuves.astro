@@ -60,14 +60,18 @@ const wallTagColors = [
         <div class={`reveal reveal-delay-${i + 1}`}>
           <div class="bg-white rounded-xl p-8 h-full border border-slate-200 relative group
                       hover:shadow-lg hover:shadow-navy-900/5 hover:border-energy-dark/20 transition-all duration-500">
-            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] px-3 py-1 rounded-full mb-5">{t.type}</span>
+            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] px-3 py-1 rounded-full mb-5"
+                  data-i18n-fr={t.type} data-i18n-en={en.testimonials[i].type}>{t.type}</span>
             <div class="relative mb-6">
               <div class="text-energy-dark/10 text-7xl font-serif leading-none absolute -top-4 -left-2 select-none">"</div>
-              <blockquote class="text-slate-700 leading-relaxed relative z-10 pl-4">{t.quote}</blockquote>
+              <blockquote class="text-slate-700 leading-relaxed relative z-10 pl-4"
+                          data-i18n-fr={t.quote} data-i18n-en={en.testimonials[i].quote}>{t.quote}</blockquote>
             </div>
             <div class="border-t border-slate-100 pt-4 mt-auto">
-              <p class="font-display font-semibold text-navy-950 text-sm">{t.author}</p>
-              <p class="text-slate-500 text-sm">{t.role}</p>
+              <p class="font-display font-semibold text-navy-950 text-sm"
+                 data-i18n-fr={t.author} data-i18n-en={en.testimonials[i].author}>{t.author}</p>
+              <p class="text-slate-500 text-sm"
+                 data-i18n-fr={t.role} data-i18n-en={en.testimonials[i].role}>{t.role}</p>
             </div>
           </div>
         </div>
