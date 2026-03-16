@@ -51,6 +51,31 @@ const {
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/logo-ec2r.png" />
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EC²R Conseil",
+    "url": "https://methode-ec2r.com",
+    "logo": new URL('/images/logo-ec2r.png', Astro.url).href,
+    "description": "Méthode EC²R : mobiliser les énergies collectives de performance. Coaching managérial, baromètre organisationnel, IA mentor.",
+    "founder": {
+      "@type": "Person",
+      "name": "Stéphane Flahaut",
+      "jobTitle": "Fondateur EC²R Conseil"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@methode-ec2r.com",
+      "contactType": "customer service",
+      "availableLanguage": ["French", "English"]
+    },
+    "sameAs": [
+      "https://www.youtube.com/@stephaneflahaut-ec2rconseil",
+      "https://www.linkedin.com/in/stephane-flahaut"
+    ]
+  })} />
 </head>
 <body>
   <slot />
