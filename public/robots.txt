@@ -1,8 +1,5 @@
-# Robots.txt pour EC2R Website (pre-production)
-# Site pas encore prêt pour indexation publique
-
+# Robots.txt — EC2R Website
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap sera disponible en production
 Sitemap: https://methode-ec2r.com/sitemap-index.xml
