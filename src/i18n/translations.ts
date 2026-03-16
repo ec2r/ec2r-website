@@ -144,7 +144,7 @@ export const translations = {
       label: 'Ils le vivent',
       title1: "Ils l'ont déjà vécu,",
       title2: 'ils vous le racontent',
-      intro: "Pas de promesses marketing. Des résultats concrets, les mots de nos clients depuis 5 ans. Pas de témoignages sollicités, pas de citations anonymisées — ce sont les mots publiés spontanément sur LinkedIn par des dirigeants, des présidents d'entre professionnels, des managers de terrain, des universitaires. Des données plus mesurables. Des comportements plus observables. Un impact déjà+ réel.",
+      intro: "Pas de promesses marketing. Des résultats concrets, les mots de nos clients depuis 5 ans. Pas de témoignages sollicités, pas de citations anonymisées — ce sont les mots publiés spontanément sur LinkedIn par des dirigeants, des présidents d'ordres professionnels, des managers de terrain. Des données mesurables. Des comportements observables. Un impact déjà+ réel.",
       wallTitle: 'Ce qu\'ils retiennent',
       wallCloudNote: 'Mur de contribution ouvert — les mots grandissent avec la méthode.',
       wallWords: {
@@ -154,25 +154,25 @@ export const translations = {
       },
       linkedinPosts: [
         {
-          name: 'Directeur réseau',
-          title: 'Réseau national — N°2 immobilier',
-          quote: "Après les formations avec ce qui se fait de mieux en termes de management, le réseau avait eu des résultats au-dessus des autres franchises.",
-          keywords: ['résultats', 'management'],
+          name: 'Anil Adiceam',
+          title: 'Délégué général adjoint — Fondation AG2R LA MONDIALE',
+          quote: "Un modèle, un accompagnement, une démarche méthodologique réellement innovants, et d'une efficacité redoutable ! Le leadership bienveillant à la portée de tous les managers.",
+          keywords: ['innovant', 'efficacité redoutable', 'leadership'],
+          type: 'Direction',
+        },
+        {
+          name: 'Christophe DUBOIS-DAMIEN',
+          title: 'CEO · Président Comité Économie IESF',
+          quote: "Stéphane Flahaut est un des meilleurs spécialistes des problèmes de leadership.",
+          keywords: ['leadership', 'spécialiste'],
+          type: 'Institutionnel',
+        },
+        {
+          name: 'Florence BEAUCOUSIN',
+          title: 'Directrice Formation Laforêt France',
+          quote: "Les appels que j'ai reçus après chacune des sessions étaient positifs et porteurs de demandes pour de nouvelles journées à programmer !",
+          keywords: ['résultats', 'demande', 'récurrence'],
           type: 'Résultat terrain',
-        },
-        {
-          name: 'Ancienne stagiaire AG2R',
-          title: 'Vers le MEDEF Martinique — ambassadrice spontanée',
-          quote: "Tu adresses le climat, pas la météo. Ce qu'on a essayé pendant un an avec des avatars IA, vous le faites avec une méthode qui tient la route.",
-          keywords: ['climat', 'méthode'],
-          type: 'Comparaison terrain',
-        },
-        {
-          name: 'Cabinet accompagné',
-          title: "Cabinet d'expertise comptable",
-          quote: "Ce qui change, c'est qu'on ne parle plus de ressenti mais de faits. Le diagnostic est chirurgical : on sait exactement quoi adresser, dans quel ordre.",
-          keywords: ['chirurgical', 'faits'],
-          type: 'Diagnostic',
         },
         {
           name: 'Emmanuel ETARD',
@@ -183,7 +183,7 @@ export const translations = {
         },
         {
           name: 'Valérie-Anne LAUHON',
-          title: 'Présidente de l\'Ordre des EC Martinique',
+          title: "Présidente de l'Ordre des EC Martinique",
           quote: "Ta bienveillance, ton énergie et ton regard éclairant sur le leadership nous ont tous boostés. Un vrai temps fort, humain, sincère et porteur de sens.",
           keywords: ['leadership', 'sens'],
           type: 'Institutionnel',
@@ -282,8 +282,8 @@ export const translations = {
           bio: "Entraîneur d'entraîneurs et de sportifs professionnels et champions. Ancrage terrain et transmission. Associé depuis les origines.",
         },
         {
-          role: 'Associé EC²R Conseil — Expert & Prescripteur',
-          bio: "Expert en profilage comportemental. Fondateur du Groupe Alar. Accompagne les organisations dans le déploiement opérationnel et la mise en acte.",
+          role: 'Associé EC²R Conseil — Expert en communication solutionnelle & profilage',
+          bio: "Président du Groupe Alard. Professeur associé en Psycho-sociologie de la Communication à l'Université Gustave Eiffel depuis 28 ans. Conférencier, formateur et coach de dirigeants. Auteur de « La Communication Solutionnelle » et « Rendre Possible l'Impossible ». Officier des Palmes Académiques. 1750+ leaders accompagnés.",
         },
         {
           role: 'Facilitatrice EC²R — Logistique, équipe, déploiement',
@@ -291,7 +291,7 @@ export const translations = {
         },
         {
           role: 'Associé EC²R Conseil — Praticien EC²R',
-          bio: 'Place réservée — profil en cours d\'intégration.',
+          bio: 'Profil en cours d\'intégration.',
         },
       ],
       seminaireTitles: [
@@ -464,25 +464,25 @@ export const translations = {
       },
       linkedinPosts: [
         {
-          name: 'Network Director',
-          title: 'National network — #2 real estate',
-          quote: "After the training with the best management practices available, the network achieved results above other franchises.",
-          keywords: ['results', 'management'],
+          name: 'Anil Adiceam',
+          title: 'Deputy General Delegate — AG2R LA MONDIALE Foundation',
+          quote: "A truly innovative model, approach and methodology, devastatingly effective! Caring leadership within reach of all managers.",
+          keywords: ['innovative', 'effective', 'leadership'],
+          type: 'Leadership',
+        },
+        {
+          name: 'Christophe DUBOIS-DAMIEN',
+          title: 'CEO · Chair of the IESF Economics Committee',
+          quote: "Stéphane Flahaut is one of the best specialists in leadership challenges.",
+          keywords: ['leadership', 'specialist'],
+          type: 'Institutional',
+        },
+        {
+          name: 'Florence BEAUCOUSIN',
+          title: 'Head of Training, Laforêt France',
+          quote: "The calls I received after each session were positive, with requests for more sessions to schedule!",
+          keywords: ['results', 'demand', 'recurrence'],
           type: 'Field result',
-        },
-        {
-          name: 'Former AG2R intern',
-          title: 'MEDEF Martinique — spontaneous ambassador',
-          quote: "You address the climate, not the weather. What we tried for a year with AI avatars, you do with a method that holds up.",
-          keywords: ['climate', 'method'],
-          type: 'Field comparison',
-        },
-        {
-          name: 'Accompanied firm',
-          title: 'Accounting firm',
-          quote: "What changes is that we no longer talk about feelings but facts. The diagnosis is surgical: we know exactly what to address, in what order.",
-          keywords: ['surgical', 'facts'],
-          type: 'Diagnosis',
         },
         {
           name: 'Emmanuel ETARD',
@@ -590,7 +590,7 @@ export const translations = {
         },
         {
           role: 'EC²R Conseil Partner — Expert in solutional communication & profiling',
-          bio: "President of Groupe Alard. Associate Professor in Communication Psychosociology at Université Gustave Eiffel for 28 years. Speaker, trainer and executive coach. Author of 'Solutional Communication' and 'Making the Impossible Possible'. Officer of the Palmes Académiques. 1750+ leaders coached.",
+          bio: "President of Groupe Alard. Associate Professor in Communication Psychosociology at Université Gustave Eiffel for 28 years. Speaker, trainer and executive coach. Author of « Solutional Communication » and « Making the Impossible Possible ». Officer of the Palmes Académiques. 1750+ leaders coached.",
         },
         {
           role: 'EC²R Facilitator — Logistics, team, deployment',
