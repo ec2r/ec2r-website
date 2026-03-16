@@ -28,9 +28,9 @@ export const translations = {
       sub1Prefix: 'Pas le Netflix de ',
       sub1Cycling: ['la formation', 'le conseil', 'la RH', 'le co-développement', 'le management'],
       sub1b: 'Le Waze du comportement professionnel.',
-      sub1bPrefix: 'Le Waze du ',
-      sub1bCycling: ['comportement professionnel', 'changement', 'mobilisation collective'],
-      sub2: "Un IRM+ organisationnel qui mesure les énergies collectives, identifie chirurgicalement les leviers de mobilisation et accompagne le passage à l'acte jusqu'au comportement en situation.",
+      sub1bPrefix: 'Le Waze pour guider en temps réel ',
+      sub1bCycling: ['le changement', 'la mobilisation collective', 'les comportements de leadership', 'les micro-comportements décisifs'],
+      sub2: "Votre IRM+ organisationnel qui mesure vos énergies collectives, identifie+ chirurgicalement vos leviers de mobilisation et accompagne votre passage à l'acte jusqu'au micro-comportement dans vos situations quotidiennes.",
       cta1: 'Découvrir la méthode',
       cta2: 'Parlons-en',
       ec2rLines: {
