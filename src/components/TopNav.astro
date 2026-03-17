@@ -1,0 +1,205 @@
+---
+interface Universe {
+  id: string;
+  labelFr: string;
+  labelEn: string;
+}
+interface Props {
+  universes: Universe[];
+  fr: any;
+  en: any;
+}
+const { universes } = Astro.props;
+---
+
+<!-- Progress bar segmentée par univers -->
+<div id="universe-progress" class="fixed top-0 left-0 right-0 h-1.5 z-[100] flex">
+  {universes.map((u, i) => (
+    <div class="universe-progress-segment flex-1 h-full transition-opacity duration-300 opacity-20"
+         data-universe-idx={i}
+         style={`background: var(--energy-color-${i})`}>
+    </div>
+  ))}
+</div>
+
+<nav id="top-nav" class="fixed top-[6px] left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between h-14 lg:h-16">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group" id="logo-home">
+      <img src="/images/logo-ec2r.png" alt="EC²R" class="h-7 lg:h-8 transition-all duration-300" />
+    </a>
+
+    <!-- Desktop : univers tabs -->
+    <ul class="hidden lg:flex items-center gap-1">
+      {universes.map((u, i) => (
+        <li>
+          <button class="universe-tab px-3 py-1.5 rounded-md text-sm font-semibold tracking-wide transition-all duration-200
+                         text-white/50 hover:text-white hover:bg-white/5
+                         data-[active]:text-white data-[active]:bg-white/10"
+                  data-universe-target={u.id}
+                  data-idx={i}>
+            <span data-i18n-lang="fr">{u.labelFr}</span>
+            <span data-i18n-lang="en">{u.labelEn}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile : indicateur univers actif + hamburger -->
+    <div class="flex items-center gap-3 lg:hidden">
+      <span id="mobile-universe-label" class="text-white/70 text-sm font-semibold truncate max-w-[140px]">
+        {universes[0].labelFr}
+      </span>
+      <!-- Dots indicateurs -->
+      <div class="flex gap-1">
+        {universes.map((_, i) => (
+          <span class="universe-dot w-1.5 h-1.5 rounded-full bg-white/20 transition-all duration-200"
+                data-dot-idx={i}></span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Lang toggle -->
+    <div class="flex items-center gap-2">
+      <button id="lang-toggle" aria-label="Switch language"
+        class="flex items-center gap-1 text-xs font-semibold tracking-widest text-white/50
+               hover:text-white/80 transition-colors duration-200 border border-white/10
+               hover:border-white/30 rounded-md px-2 py-1">
+        <span id="lang-fr-flag" class="text-sm leading-none">🇫🇷</span>
+        <span id="lang-current">FR</span>
+        <span class="text-white/15 mx-0.5">·</span>
+        <span id="lang-en-flag" class="text-sm leading-none" style="opacity:0.4">🇬🇧</span>
+        <span id="lang-other" class="text-white/20">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const carousel = document.getElementById('universe-carousel')!;
+  const tabs = document.querySelectorAll<HTMLElement>('.universe-tab');
+  const dots = document.querySelectorAll<HTMLElement>('.universe-dot');
+  const segments = document.querySelectorAll<HTMLElement>('.universe-progress-segment');
+  const mobileLabel = document.getElementById('mobile-universe-label')!;
+  const logoBtn = document.getElementById('logo-home')!;
+  let currentIdx = 0;
+
+  // Labels pour mobile
+  const labelsFr = Array.from(tabs).map(t => t.querySelector('[data-i18n-lang="fr"]')?.textContent || '');
+  const labelsEn = Array.from(tabs).map(t => t.querySelector('[data-i18n-lang="en"]')?.textContent || '');
+
+  function setActiveUniverse(idx: number) {
+    currentIdx = idx;
+    const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+
+    // Tabs
+    tabs.forEach((t, i) => {
+      if (i === idx) t.setAttribute('data-active', '');
+      else t.removeAttribute('data-active');
+    });
+
+    // Dots
+    dots.forEach((d, i) => {
+      d.classList.toggle('bg-white', i === idx);
+      d.classList.toggle('scale-125', i === idx);
+      d.classList.toggle('bg-white/20', i !== idx);
+    });
+
+    // Progress segments
+    segments.forEach((s, i) => {
+      s.style.opacity = i <= idx ? '1' : '0.2';
+    });
+
+    // Mobile label
+    mobileLabel.textContent = lang === 'en' ? labelsEn[idx] : labelsFr[idx];
+
+    // Background nav
+    const nav = document.getElementById('top-nav')!;
+    nav.classList.add('bg-navy-950/95', 'backdrop-blur-lg');
+  }
+
+  // Click tab → scroll to panel
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.universeTarget!;
+      const panel = document.getElementById(targetId);
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      }
+    });
+  });
+
+  // Logo → retour univers 1
+  logoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const first = carousel.querySelector('.universe-panel') as HTMLElement;
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  });
+
+  // IntersectionObserver pour détecter le panneau actif
+  const panels = carousel.querySelectorAll('.universe-panel');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const idx = Array.from(panels).indexOf(entry.target as Element);
+        if (idx >= 0) setActiveUniverse(idx);
+      }
+    });
+  }, {
+    root: carousel,
+    threshold: 0.5
+  });
+
+  panels.forEach(p => observer.observe(p));
+
+  // Init
+  setActiveUniverse(0);
+
+  // Lang toggle
+  const langBtn = document.getElementById('lang-toggle')!;
+  const langCur = document.getElementById('lang-current')!;
+  const langOth = document.getElementById('lang-other')!;
+
+  langBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-lang') || 'fr';
+    const next = cur === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('ec2r-lang', next);
+    document.documentElement.setAttribute('data-lang', next);
+    langCur.textContent = next.toUpperCase();
+    langOth.textContent = next === 'fr' ? 'EN' : 'FR';
+    const frFlag = document.getElementById('lang-fr-flag') as HTMLElement;
+    const enFlag = document.getElementById('lang-en-flag') as HTMLElement;
+    if (frFlag && enFlag) {
+      frFlag.style.opacity = next === 'fr' ? '1' : '0.4';
+      enFlag.style.opacity = next === 'en' ? '1' : '0.4';
+    }
+    // Maj mobile label
+    mobileLabel.textContent = next === 'en' ? labelsEn[currentIdx] : labelsFr[currentIdx];
+  });
+
+  // Swipe mobile pour naviguer entre univers (optionnel, le scroll snap gère déjà)
+  let touchStartX = 0;
+  carousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) < 60) return;
+    const next = dx < 0 ? Math.min(currentIdx + 1, panels.length - 1) : Math.max(currentIdx - 1, 0);
+    (panels[next] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  }, { passive: true });
+</script>
+
+<style>
+  :root {
+    --energy-color-0: #DC2626; /* rouge */
+    --energy-color-1: #EAB308; /* jaune */
+    --energy-color-2: #C9A56E; /* beige */
+    --energy-color-3: #22C55E; /* vert clair */
+    --energy-color-4: #166534; /* vert foncé */
+    --energy-color-5: #3B82F6; /* bleu — parlons-en */
+  }
+
+  .universe-tab[data-active] {
+    color: white;
+    background: rgba(255,255,255,0.1);
+  }
+</style>

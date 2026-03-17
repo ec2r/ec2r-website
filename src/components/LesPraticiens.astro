@@ -1,0 +1,124 @@
+---
+/**
+ * Univers 5 : "Les praticiens"
+ * Fiches praticiens, baseline différenciation
+ */
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+
+const praticiens = [
+  {
+    name: 'Stéphane Flahaut',
+    initials: 'SF',
+    photo: '', // TODO: demander à Stéphane
+    titleFr: 'Fondateur de la méthode EC2R',
+    titleEn: 'Founder of the EC2R method',
+    subtitleFr: 'Cofondateur EC2R Conseil',
+    subtitleEn: 'Co-founder EC2R Conseil',
+    linkedin: 'https://www.linkedin.com/in/stephane-flahaut',
+  },
+  {
+    name: 'Jean-François Morin',
+    initials: 'JFM',
+    photo: '',
+    titleFr: 'Associé méthode EC2R',
+    titleEn: 'EC2R Method Partner',
+    subtitleFr: 'Cofondateur EC2R Conseil',
+    subtitleEn: 'Co-founder EC2R Conseil',
+    linkedin: '',
+  },
+  {
+    name: 'Arnaud Bochurberg',
+    initials: 'AB',
+    photo: '/photos/equipe/arnaud-bochurberg.webp',
+    titleFr: 'Associé EC2R Conseil — Praticien et prescripteur',
+    titleEn: 'EC2R Conseil Partner — Practitioner & prescriber',
+    subtitleFr: 'Expert du profilage comportemental · Palmes académiques',
+    subtitleEn: 'Behavioural profiling expert · Academic distinction',
+    linkedin: '',
+  },
+  {
+    name: 'Jean Zuccarelli',
+    initials: 'JZ',
+    photo: '',
+    titleFr: 'Associé EC2R Conseil',
+    titleEn: 'EC2R Conseil Partner',
+    subtitleFr: '',
+    subtitleEn: '',
+    linkedin: '',
+  },
+  {
+    name: 'Marie-Emilia Garcia',
+    initials: 'MEG',
+    photo: '',
+    titleFr: 'Facilitatrice EC2R Conseil',
+    titleEn: 'EC2R Conseil Facilitator',
+    subtitleFr: 'Logistique · Équipe · Déploiement · Pédagogie',
+    subtitleEn: 'Logistics · Teams · Deployment · Pedagogy',
+    linkedin: '',
+  },
+];
+---
+
+<div class="min-h-full bg-navy-950 relative">
+  <div class="absolute inset-0 bg-gradient-to-bl from-navy-900/30 via-navy-950 to-navy-950"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+
+    <!-- Titre + baseline -->
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-3">
+        <span data-i18n-lang="fr">Experts certifiés qui traduisent et vous aident à passer à l'acte</span>
+        <span data-i18n-lang="en">Certified experts who translate and help you take action</span>
+      </h2>
+      <p class="text-white/40 text-sm mb-3 italic">
+        <span data-i18n-lang="fr">Pas des consultants interchangeables, pas des chefs de profession et ensuite des juniors.</span>
+        <span data-i18n-lang="en">Not interchangeable consultants, not senior partners then juniors.</span>
+      </p>
+      <p class="text-white/50 text-sm leading-relaxed max-w-3xl">
+        <span data-i18n-lang="fr">Des professionnels et des humains qui ont expérimenté, qui croient à la différenciation de la méthode, qui savent dans chaque étape comment vous la faire vivre et traduire dans votre quotidien. La méthode à votre service, pas l'inverse.</span>
+        <span data-i18n-lang="en">Professionals and humans who have experienced it, who believe in the method's differentiation, who know at every stage how to bring it to life and translate it into your daily reality. The method at your service, not the other way around.</span>
+      </p>
+    </div>
+
+    <!-- Grille praticiens -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {praticiens.map(p => (
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 hover:border-white/15 transition-all group">
+          <!-- Photo ou initiales -->
+          <div class="flex items-center gap-3 mb-3">
+            {p.photo ? (
+              <img src={p.photo} alt={p.name} class="w-14 h-14 rounded-full object-cover border-2 border-white/10" loading="lazy" />
+            ) : (
+              <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white/40 font-bold text-lg border-2 border-white/10">
+                {p.initials}
+              </div>
+            )}
+            <div>
+              <h3 class="text-white font-display font-bold text-sm group-hover:text-energy-green transition-colors">
+                {p.name}
+              </h3>
+              {p.linkedin && (
+                <a href={p.linkedin} target="_blank" rel="noopener" class="text-white/20 hover:text-white/50 text-[10px] transition-colors">
+                  LinkedIn →
+                </a>
+              )}
+            </div>
+          </div>
+
+          <p class="text-white/60 text-xs mb-1">
+            <span data-i18n-lang="fr">{p.titleFr}</span>
+            <span data-i18n-lang="en">{p.titleEn}</span>
+          </p>
+          {p.subtitleFr && (
+            <p class="text-white/30 text-[11px]">
+              <span data-i18n-lang="fr">{p.subtitleFr}</span>
+              <span data-i18n-lang="en">{p.subtitleEn}</span>
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,150 @@
+---
+/**
+ * Univers 3 : "Ils l'ont vécu"
+ * Témoignages LinkedIn, nuage de mots, mise en abyme
+ * Porte le contenu de Preuves.astro + Temoignages.astro
+ */
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+
+import { testimonials } from '../data/testimonials';
+
+// Catégories métier (pas conseil/RH/formation)
+const categories = [
+  { id: 'all', labelFr: 'Tous', labelEn: 'All' },
+  { id: 'industrie', labelFr: 'Industrie & Ingénierie', labelEn: 'Industry & Engineering' },
+  { id: 'chiffre', labelFr: 'Métiers du chiffre', labelEn: 'Finance & Accounting' },
+  { id: 'immobilier', labelFr: 'Immobilier & Franchise', labelEn: 'Real Estate & Franchise' },
+  { id: 'assurance', labelFr: 'Assurance & Protection sociale', labelEn: 'Insurance & Social Protection' },
+  { id: 'universite', labelFr: 'Université & Recherche', labelEn: 'University & Research' },
+  { id: 'autre', labelFr: 'Autres secteurs', labelEn: 'Other sectors' },
+];
+
+// Mots-clés pour le nuage
+const cloudWords = [
+  'performance', 'mobilisation', 'énergie', 'collectif', 'leadership',
+  'engagement', 'comportement', 'passage à l\'acte', 'terrain', 'concret',
+  'transformation', 'quotidien', 'résultat', 'pilotage', 'dynamique',
+  'exigence', 'coopération', 'récurrence', 'plaisir', 'efficacité',
+];
+---
+
+<div class="min-h-full bg-navy-950 relative">
+  <div class="absolute inset-0 bg-gradient-to-tr from-navy-950 via-navy-900/30 to-navy-950"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+
+    <!-- Baseline unique -->
+    <div class="mb-8">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-3">
+        <span data-i18n-lang="fr">Ils l'ont vécu</span>
+        <span data-i18n-lang="en">They lived it</span>
+      </h2>
+      <p class="text-base text-white/50 leading-relaxed max-w-3xl">
+        <span data-i18n-lang="fr">Pas de promesse marketing, des résultats concrets avec les mots de nos clients depuis 5 ans. Pas de témoignages sollicités, pas de citations anonymisées. Ce sont les mots publiés spontanément sur LinkedIn — des dirigeants, des managers de terrain, des leaders. Des données <span class="plus-accent">+</span> mesurables, des comportements <span class="plus-accent">+</span> observables, un impact déjà <span class="plus-accent">+</span> réel.</span>
+        <span data-i18n-lang="en">No marketing promises, concrete results in our clients' own words over 5 years. No solicited testimonials, no anonymized quotes. Words published spontaneously on LinkedIn — executives, field managers, leaders. Measurable<span class="plus-accent">+</span> data, observable<span class="plus-accent">+</span> behaviours, already<span class="plus-accent">+</span> real impact.</span>
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+      <!-- Gauche 2/3 : témoignages par thème -->
+      <div class="lg:col-span-2">
+        <!-- Filtres catégories -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          {categories.map(cat => (
+            <button class="temoignage-filter text-xs px-3 py-1 rounded-full border border-white/10 text-white/40
+                           hover:border-white/30 hover:text-white/70 transition-all
+                           data-[active]:bg-energy-green/10 data-[active]:border-energy-green/30 data-[active]:text-energy-green"
+                    data-cat={cat.id}>
+              <span data-i18n-lang="fr">{cat.labelFr}</span>
+              <span data-i18n-lang="en">{cat.labelEn}</span>
+            </button>
+          ))}
+        </div>
+
+        <!-- Grille témoignages -->
+        <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-2" id="testimonials-grid">
+          {testimonials.slice(0, 20).map(t => (
+            <div class="temoignage-card bg-white/[0.03] border border-white/[0.06] rounded-lg p-4 
+                        hover:border-white/15 transition-all group"
+                 data-sector={t.sector || 'autre'}>
+              <p class="text-white/60 text-sm leading-relaxed mb-2">{t.text}</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  {t.photo ? (
+                    <img src={t.photo} alt="" class="w-6 h-6 rounded-full object-cover" loading="lazy" />
+                  ) : (
+                    <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/30 font-bold">
+                      {(t.name || '?')[0]}
+                    </span>
+                  )}
+                  <span class="text-white/30 text-xs">{t.name || 'Anonyme'}</span>
+                </div>
+                <span class="text-white/15 text-[10px]">{t.year || ''}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Droite 1/3 : nuage de mots + mise en abyme -->
+      <div class="space-y-6">
+        <!-- Nuage de mots -->
+        <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5">
+          <p class="text-[10px] uppercase tracking-[0.15em] text-white/20 mb-3">
+            <span data-i18n-lang="fr">Mur de contributions ouvert — les mots grandissent avec les témoignages</span>
+            <span data-i18n-lang="en">Open contribution wall — words grow with testimonials</span>
+          </p>
+          <div class="flex flex-wrap gap-2" id="word-cloud">
+            {cloudWords.map((w, i) => (
+              <span class="text-white/30 hover:text-white/60 transition-colors cursor-default"
+                    style={`font-size: ${10 + Math.random() * 8}px; opacity: ${0.3 + Math.random() * 0.5}`}>
+                {w}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Mise en abyme -->
+        <div class="bg-energy-green/[0.03] border border-energy-green/10 rounded-xl p-5">
+          <h3 class="text-sm font-display font-bold text-energy-green/70 mb-2">
+            <span data-i18n-lang="fr">Ce site est vivant</span>
+            <span data-i18n-lang="en">This site is alive</span>
+          </h3>
+          <p class="text-white/35 text-xs leading-relaxed">
+            <span data-i18n-lang="fr">Il documente sa propre construction et notre dynamique de mobilisation. Ce n'est pas un résultat figé ou un T0 — c'est l'illustration du processus vivant de la méthode. On essaye, on expérimente, on se plante, on traduit, on améliore, on affine, on grandit. La puissance <span class="plus-accent">+</span> dirigée de l'IA EC2R, pour partir du réel.</span>
+            <span data-i18n-lang="en">It documents its own construction and our mobilization dynamics. Not a frozen result or a T0 — it's the illustration of the method's living process. We try, experiment, fail, translate, improve, refine, grow. The directed<span class="plus-accent">+</span> power of EC2R AI, starting from reality.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Filtre catégories
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelectorAll<HTMLElement>('.temoignage-filter');
+    const cards = document.querySelectorAll<HTMLElement>('.temoignage-card');
+
+    // Init : "all" actif
+    filters[0]?.setAttribute('data-active', '');
+
+    filters.forEach(f => {
+      f.addEventListener('click', () => {
+        filters.forEach(ff => ff.removeAttribute('data-active'));
+        f.setAttribute('data-active', '');
+        const cat = f.dataset.cat;
+        cards.forEach(c => {
+          if (cat === 'all' || c.dataset.sector === cat) {
+            c.style.display = '';
+          } else {
+            c.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

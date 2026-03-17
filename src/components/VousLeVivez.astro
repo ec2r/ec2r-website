@@ -1,0 +1,265 @@
+---
+/**
+ * Univers 1 : "Vous le vivez"
+ * Page d'arrivée — Logo batterie, taglines animées, 6+1 onglets énergie
+ * Porte le contenu de l'ancien Hero.astro + Situations.astro
+ */
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+
+const energyColors = ['#DC2626','#EAB308','#C9A56E','#22C55E','#166534','#3B82F6','#8B5CF6'];
+const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
+---
+
+<div class="min-h-full bg-navy-950 relative">
+  <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
+  <div class="absolute inset-0 grid-overlay"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+
+    <!-- Compteurs live -->
+    <div class="flex flex-wrap gap-4 mb-6 text-xs text-white/30">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-energy-green animate-pulse"></span>
+        <span data-i18n-lang="fr">EC2R Conseil depuis le 1er juillet 2021 —</span>
+        <span data-i18n-lang="en">EC2R Conseil since July 1, 2021 —</span>
+        <span id="counter-ec2r" class="font-mono text-white/50"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-energy-green animate-pulse"></span>
+        <span data-i18n-lang="fr">Protocole augmenté depuis le 11 mars 2026 —</span>
+        <span data-i18n-lang="en">Augmented protocol since March 11, 2026 —</span>
+        <span id="counter-proto" class="font-mono text-white/50"></span>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+      <!-- Gauche : branding + taglines -->
+      <div>
+        <!-- Tagline EC2R animée -->
+        <div class="mb-6">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-[1.1] mb-2">
+            <span data-i18n-lang="fr">La méthode vivante</span>
+            <span data-i18n-lang="en">The living method</span>
+            <br/>
+            <span class="energy-gradient-text">EC²R</span>
+          </h1>
+
+          <div class="space-y-0.5 text-base md:text-lg font-mono mt-4" id="ec2r-decomposition">
+            <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
+              <span class="text-energy-green font-bold text-xl w-7">E</span>
+              <span class="text-white/15">···</span>
+              <span class="text-white/60">Énergie</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
+              <span class="text-energy-green font-bold text-xl w-7">C</span>
+              <span class="text-white/15">···</span>
+              <span class="text-white/60">Collective</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
+              <span class="text-energy-green font-bold text-xl w-7">²C</span>
+              <span class="text-white/15">···</span>
+              <span id="c2-cycling" class="text-white font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
+              <span class="text-energy-green font-bold text-xl w-7">R</span>
+              <span class="text-white/15">···</span>
+              <span id="r-cycling" class="text-white font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waze tagline -->
+        <p class="text-base md:text-lg text-white/50 leading-relaxed max-w-lg mb-3">
+          <span class="line-through decoration-white/15">
+            <span data-i18n-lang="fr">Pas le Netflix de </span>
+            <span data-i18n-lang="en">Not the Netflix of </span>
+            <strong id="netflix-word" class="text-white/30">la formation</strong>.
+          </span><br/>
+          <span data-i18n-lang="fr">Le Waze du </span>
+          <span data-i18n-lang="en">The Waze of </span>
+          <strong id="waze-word" class="text-white">comportement professionnel</strong>.
+        </p>
+
+        <!-- IRM baseline -->
+        <p class="text-sm text-white/35 leading-relaxed max-w-lg mb-6">
+          <span data-i18n-lang="fr">Votre IRM<span class="plus-accent">+</span> organisationnel qui mesure vos énergies collectives, identifie <span class="plus-accent">+</span> chirurgicalement vos leviers de mobilisation et accompagne votre passage à l'acte jusqu'au micro-comportement dans vos situations quotidiennes.</span>
+          <span data-i18n-lang="en">Your organizational MRI<span class="plus-accent">+</span> that measures your collective energies, identifies <span class="plus-accent">+</span> surgically your mobilization levers and supports your transition to action down to micro-behaviours in your daily situations.</span>
+        </p>
+      </div>
+
+      <!-- Droite : 6+1 onglets énergie -->
+      <div>
+        <p class="text-xs uppercase tracking-[0.15em] font-semibold text-white/25 mb-1">
+          <span data-i18n-lang="fr">Vous le vivez aussi, vous qui…</span>
+          <span data-i18n-lang="en">You experience this too, you who…</span>
+        </p>
+        <p class="text-xs text-white/15 italic mb-3">
+          <span data-i18n-lang="fr">Créer des équipes qui s'engagent réellement — pas juste qui se sentent bien au travail.</span>
+          <span data-i18n-lang="en">Build teams that truly commit — not just feel good at work.</span>
+        </p>
+
+        <div class="space-y-1" id="situations-accordion">
+          {fr.situations.map((s: any, i: number) => (
+            <div class="sit-item rounded-lg overflow-hidden border border-white/[0.06] transition-colors hover:border-white/15" data-idx={i}>
+              <button class="sit-trigger w-full text-left px-3 py-2.5 flex items-start gap-2.5 group" aria-expanded="false">
+                <span class="shrink-0 mt-0.5 w-7 h-8 flex items-center justify-center rounded border border-white/20 text-white/30 text-[10px] font-bold group-hover:text-white/60 group-hover:border-white/40 transition-colors"
+                      style={`border-color: ${energyColors[i]}40; color: ${energyColors[i]}90`}>
+                  {energyLabels[i]}
+                </span>
+                <span class="text-white/60 text-sm leading-snug flex-1 group-hover:text-white/80 transition-colors sit-accroche"
+                      data-fr={s.accroche} data-en={en.situations[i].accroche}>{s.accroche}</span>
+                <span class="sit-arrow shrink-0 mt-1 text-white/15 transition-all group-hover:text-energy-green">
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                    <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+
+              <div class="sit-panel hidden">
+                <div class="flex border-t border-white/10 text-xs">
+                  <button class="sit-tab active-tab flex-1 py-1.5 px-2 text-center font-semibold tracking-wide transition-colors" data-tab="0">
+                    <span data-i18n-lang="fr">Ce qui se passe</span><span data-i18n-lang="en">What's happening</span>
+                  </button>
+                  <button class="sit-tab flex-1 py-1.5 px-2 text-center font-semibold tracking-wide transition-colors" data-tab="1">
+                    <span data-i18n-lang="fr">Vous avez essayé</span><span data-i18n-lang="en">You've tried</span>
+                  </button>
+                  <button class="sit-tab flex-1 py-1.5 px-2 text-center font-semibold tracking-wide transition-colors" data-tab="2">
+                    <span data-i18n-lang="fr">Notre réponse</span><span data-i18n-lang="en">Our answer</span>
+                  </button>
+                </div>
+                <div class="sit-content border-t border-white/[0.05] relative" style="min-height:80px">
+                  <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="0" style="opacity:1;pointer-events:auto">
+                    <p class="text-slate-300 text-sm leading-relaxed sit-passe" data-fr={s.ceQuiSePasse} data-en={en.situations[i].ceQuiSePasse}>{s.ceQuiSePasse}</p>
+                  </div>
+                  <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="1" style="opacity:0;pointer-events:none">
+                    <ul class="space-y-0.5 mb-1 sit-essaye-list" data-fr={JSON.stringify(s.essaye)} data-en={JSON.stringify(en.situations[i].essaye)}>
+                      {s.essaye.map((e: string) => (
+                        <li class="text-slate-400 text-sm flex items-start gap-1.5">
+                          <span class="text-slate-600 mt-0.5 shrink-0">–</span><span>{e}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p class="text-slate-500 text-xs italic sit-conclusion" data-fr={s.essayeConclusion} data-en={en.situations[i].essayeConclusion}>{s.essayeConclusion}</p>
+                  </div>
+                  <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="2" style="opacity:0;pointer-events:none">
+                    <p class="text-white/70 text-sm leading-relaxed sit-reponse" data-fr={s.reponse} data-en={en.situations[i].reponse}>{s.reponse}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cycling data store -->
+<div id="vlv-cycling-data" hidden
+  data-netflix-fr={JSON.stringify((fr.hero as any).sub1Cycling || ['la formation','le conseil','le co-développement','le management'])}
+  data-netflix-en={JSON.stringify((en.hero as any).sub1Cycling || ['training','consulting','co-development','management'])}
+  data-waze-fr={JSON.stringify((fr.hero as any).sub1bCycling || ['comportement professionnel','mobilisation collective','micro-comportement','leadership décisif'])}
+  data-waze-en={JSON.stringify((en.hero as any).sub1bCycling || ['professional behaviour','collective mobilization','micro-behaviour','decisive leadership'])}
+></div>
+
+<style>
+  .sit-tab { color: rgba(255,255,255,0.25); }
+  .sit-tab:hover { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.03); }
+  .sit-tab.active-tab { color: #4ade80; background: rgba(74,222,128,0.06); }
+</style>
+
+<script>
+  // ── Compteurs live ──
+  function updateCounters() {
+    const ec2rStart = new Date('2021-07-01T00:00:00').getTime();
+    const protoStart = new Date('2026-03-11T00:00:00').getTime();
+    const now = Date.now();
+
+    function fmt(ms: number) {
+      const d = Math.floor(ms / 86400000);
+      const h = Math.floor((ms % 86400000) / 3600000);
+      const m = Math.floor((ms % 3600000) / 60000);
+      const s = Math.floor((ms % 60000) / 1000);
+      return `${d}j ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+
+    const el1 = document.getElementById('counter-ec2r');
+    const el2 = document.getElementById('counter-proto');
+    if (el1) el1.textContent = fmt(now - ec2rStart);
+    if (el2) el2.textContent = fmt(now - protoStart);
+  }
+  setInterval(updateCounters, 1000);
+  updateCounters();
+
+  // ── EC2R decomposition typewriter ──
+  const c2El = document.getElementById('c2-cycling')!;
+  const rEl = document.getElementById('r-cycling')!;
+  const c2Words = ['Croissance','Changement','Comportement'];
+  const rWords = ['Responsable','Réaliste','Rapide','Rassurant'];
+  let c2i = 0, ri = 0;
+
+  function typewriter(el: HTMLElement, words: string[], idxRef: {v:number}, cb: ()=>void) {
+    const word = words[idxRef.v]; idxRef.v = (idxRef.v+1) % words.length;
+    let i=0; el.textContent='';
+    const t = setInterval(()=>{ el.textContent=word.slice(0,++i); if(i>=word.length){clearInterval(t);setTimeout(()=>{let j=word.length;const e=setInterval(()=>{el.textContent=word.slice(0,--j);if(j<=0){clearInterval(e);cb();}},40);},1800);}},55);
+  }
+  function cycleC2(){typewriter(c2El,c2Words,{v:c2i},()=>{c2i=(c2i)%c2Words.length;setTimeout(cycleC2,200);})}
+  function cycleR(){typewriter(rEl,rWords,{v:ri},()=>{ri=(ri)%rWords.length;setTimeout(cycleR,200);})}
+
+  // Reveal lines
+  const lines = document.querySelectorAll<HTMLElement>('#ec2r-decomposition .ec2r-line');
+  lines.forEach((l,i)=>setTimeout(()=>{l.style.opacity='1';if(i===2)setTimeout(cycleC2,200);if(i===3)setTimeout(cycleR,600);},i*300));
+
+  // ── Netflix / Waze cycling ──
+  const data = document.getElementById('vlv-cycling-data')!;
+  const nFr: string[] = JSON.parse(data.dataset.netflixFr||'[]');
+  const wFr: string[] = JSON.parse(data.dataset.wazeFr||'[]');
+  const nEl = document.getElementById('netflix-word');
+  const wEl = document.getElementById('waze-word');
+  let ni=0, wi=0;
+  setInterval(()=>{if(!nEl)return;nEl.style.opacity='0';setTimeout(()=>{nEl.textContent=nFr[ni];nEl.style.opacity='1';ni=(ni+1)%nFr.length;},200);},2500);
+  setInterval(()=>{if(!wEl)return;wEl.style.opacity='0';setTimeout(()=>{wEl.textContent=wFr[wi];wEl.style.opacity='1';wi=(wi+1)%wFr.length;},200);},3200);
+
+  // ── Accordion ──
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('#situations-accordion .sit-item');
+    items.forEach(item => {
+      const trigger = item.querySelector('.sit-trigger')!;
+      const panel = item.querySelector('.sit-panel')!;
+      const arrow = item.querySelector('.sit-arrow') as HTMLElement;
+      const tabs = item.querySelectorAll('.sit-tab');
+      const panes = item.querySelectorAll('.sit-pane');
+      const content = item.querySelector('.sit-content') as HTMLElement;
+
+      function lockHeight(){content.style.height='';let max=0;panes.forEach((p:any)=>{const s={o:p.style.opacity,pe:p.style.pointerEvents,pos:p.style.position};p.style.opacity='0';p.style.pointerEvents='none';p.style.position='relative';max=Math.max(max,p.offsetHeight);p.style.opacity=s.o;p.style.pointerEvents=s.pe;p.style.position=s.pos;});content.style.height=max+'px';}
+
+      trigger.addEventListener('click',()=>{
+        const open=!panel.classList.contains('hidden');
+        items.forEach(it=>{it.querySelector('.sit-panel')!.classList.add('hidden');(it.querySelector('.sit-arrow')as HTMLElement).style.transform='';});
+        if(!open){panel.classList.remove('hidden');arrow.style.transform='rotate(180deg)';lockHeight();switchPane(0);}
+      });
+
+      let cur=0;
+      function switchPane(idx:number){cur=idx;tabs.forEach((t,i)=>t.classList.toggle('active-tab',i===idx));panes.forEach((p:any,i)=>{p.style.opacity=i===idx?'1':'0';p.style.pointerEvents=i===idx?'auto':'none';});}
+      tabs.forEach(t=>t.addEventListener('click',()=>switchPane(parseInt((t as HTMLElement).dataset.tab||'0'))));
+
+      // Swipe
+      let sx=0;
+      content.addEventListener('touchstart',(e:any)=>{sx=e.changedTouches[0].clientX},{passive:true});
+      content.addEventListener('touchend',(e:any)=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)<40)return;switchPane(dx<0?Math.min(cur+1,2):Math.max(cur-1,0));},{passive:true});
+    });
+
+    // i18n situations
+    function updateSitLang(lang:string){
+      document.querySelectorAll('.sit-accroche').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
+      document.querySelectorAll('.sit-passe').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
+      document.querySelectorAll('.sit-conclusion').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
+      document.querySelectorAll('.sit-reponse').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
+      document.querySelectorAll('.sit-essaye-list').forEach((el:any)=>{const items=JSON.parse(el.dataset[lang]||el.dataset.fr);el.innerHTML=items.map((e:string)=>`<li class="text-slate-400 text-sm flex items-start gap-1.5"><span class="text-slate-600 mt-0.5 shrink-0">–</span><span>${e}</span></li>`).join('');});
+    }
+    new MutationObserver(()=>updateSitLang(document.documentElement.getAttribute('data-lang')||'fr')).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
+    updateSitLang(document.documentElement.getAttribute('data-lang')||'fr');
+  });
+</script>

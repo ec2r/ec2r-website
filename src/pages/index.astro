@@ -1,37 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import Methode from '../components/Methode.astro';
-import Chiffres from '../components/Chiffres.astro';
-import Preuves from '../components/Preuves.astro';
-import Temoignages from '../components/Temoignages.astro';
-import Protocole from '../components/Protocole.astro';
-import Equipe from '../components/Equipe.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import TopNav from '../components/TopNav.astro';
+import BottomBar from '../components/BottomBar.astro';
+import VousLeVivez from '../components/VousLeVivez.astro';
+import LaMethode from '../components/LaMethode.astro';
+import IlsLontVecu from '../components/IlsLontVecu.astro';
+import LeProtocole from '../components/LeProtocole.astro';
+import LesPraticiens from '../components/LesPraticiens.astro';
+import ParlonsEn from '../components/ParlonsEn.astro';
 import '../styles/global.css';
 import { translations } from '../i18n/translations';
-import type { Lang } from '../i18n/translations';
 
-// Site statique : on génère les deux langs, le JS côté client sélectionne la bonne
 const fr = translations.fr;
 const en = translations.en;
+
+const universes = [
+  { id: 'vous-le-vivez', labelFr: 'Vous le vivez', labelEn: 'You live it' },
+  { id: 'la-methode', labelFr: 'La méthode', labelEn: 'The method' },
+  { id: 'ils-lont-vecu', labelFr: 'Ils l\'ont vécu', labelEn: 'They lived it' },
+  { id: 'le-protocole', labelFr: 'Le protocole', labelEn: 'The protocol' },
+  { id: 'les-praticiens', labelFr: 'Les praticiens', labelEn: 'Practitioners' },
+  { id: 'parlons-en', labelFr: 'Parlons-en', labelEn: 'Let\'s talk' },
+];
 ---
 
 <Layout>
-  <Nav fr={fr.nav} en={en.nav} />
-  <main>
-    <Hero fr={fr} en={en} />
-    <Methode fr={fr.methode} en={en.methode} />
-    <Chiffres fr={fr.chiffres} en={en.chiffres} />
-    <Preuves fr={fr.preuves} en={en.preuves} frVideos={(fr as any).videos} enVideos={(en as any).videos} frMuseeLabel={(fr as any).museeLabel} enMuseeLabel={(en as any).museeLabel} />
-    <Temoignages />
-    <Protocole fr={fr.protocole} en={en.protocole} />
-    <Equipe fr={fr.equipe} en={en.equipe} />
-    <Contact fr={fr.contact} en={en.contact} />
-    <Footer fr={fr.footer} en={en.footer} />
+  <TopNav universes={universes} fr={fr} en={en} />
+
+  <!-- Carrousel horizontal — 6 univers -->
+  <main id="universe-carousel" class="universe-carousel">
+    <section id="vous-le-vivez" class="universe-panel">
+      <div class="universe-scroll">
+        <VousLeVivez fr={fr} en={en} />
+      </div>
+    </section>
+
+    <section id="la-methode" class="universe-panel">
+      <div class="universe-scroll">
+        <LaMethode fr={fr} en={en} />
+      </div>
+    </section>
+
+    <section id="ils-lont-vecu" class="universe-panel">
+      <div class="universe-scroll">
+        <IlsLontVecu fr={fr} en={en} />
+      </div>
+    </section>
+
+    <section id="le-protocole" class="universe-panel">
+      <div class="universe-scroll">
+        <LeProtocole fr={fr} en={en} />
+      </div>
+    </section>
+
+    <section id="les-praticiens" class="universe-panel">
+      <div class="universe-scroll">
+        <LesPraticiens fr={fr} en={en} />
+      </div>
+    </section>
+
+    <section id="parlons-en" class="universe-panel">
+      <div class="universe-scroll">
+        <ParlonsEn fr={fr} en={en} />
+      </div>
+    </section>
   </main>
+
+  <BottomBar fr={fr} en={en} />
 </Layout>
-
-

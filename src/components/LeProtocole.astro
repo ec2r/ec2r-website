@@ -1,0 +1,134 @@
+---
+/**
+ * Univers 4 : "Le protocole"
+ * 5 étapes IRM, 3 parcours, lien app
+ */
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+
+const steps = [
+  { num: '1', verbFr: 'Mesurer', verbEn: 'Measure', descFr: 'vos énergies collectives de réussite — cibler les leviers', descEn: 'your collective success energies — target the levers', color: '#DC2626' },
+  { num: '2', verbFr: 'Prioriser', verbEn: 'Prioritize', descFr: 'ensemble les axes, priorités et comportements sur lesquels agir', descEn: 'together the areas, priorities and behaviours to act on', color: '#EAB308' },
+  { num: '3', verbFr: 'Restituer', verbEn: 'Present', descFr: 'embarquer vos équipes ou managers en situation', descEn: 'engage your teams or managers in context', color: '#C9A56E' },
+  { num: '4', verbFr: 'Identifier', verbEn: 'Identify', descFr: 'profils, enjeux et leviers de leadership de vos managers', descEn: 'profiles, stakes and leadership levers of your managers', color: '#22C55E' },
+  { num: '5', verbFr: 'Ancrer', verbEn: 'Anchor', descFr: 'le passage à l\'acte jusqu\'au comportement, aux situations', descEn: 'the transition to action down to behaviours, to situations', color: '#166534' },
+];
+
+const parcours = [
+  {
+    titleFr: 'Commencer par votre collectif', titleEn: 'Start with your collective',
+    icon: '👥',
+    itemsFr: ['Baromètre énergétique collectif', 'Diagnostic de mobilisation', 'Restitution en séminaire'],
+    itemsEn: ['Collective energy barometer', 'Mobilization diagnosis', 'Seminar restitution'],
+  },
+  {
+    titleFr: 'Commencer par vos leaders', titleEn: 'Start with your leaders',
+    icon: '🎯',
+    itemsFr: ['Profil de leadership', 'Formation et accompagnement sur mesure', 'Mentoria EC2R'],
+    itemsEn: ['Leadership profile', 'Custom training & support', 'EC2R Mentoria'],
+  },
+  {
+    titleFr: 'Expérimenter / Avancer seul', titleEn: 'Experiment / Go solo',
+    icon: '🚀',
+    itemsFr: ['Mon profil de leader', 'Mentor IA EC2R', 'Se former'],
+    itemsEn: ['My leader profile', 'EC2R AI Mentor', 'Training'],
+    badge: { fr: 'Bientôt opérationnel', en: 'Coming soon' },
+  },
+];
+---
+
+<div class="min-h-full bg-navy-950 relative">
+  <div class="absolute inset-0 bg-gradient-to-br from-navy-900/50 via-navy-950 to-navy-950"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+
+    <!-- Titre animé -->
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold energy-gradient-text inline-block mb-3">
+        <span data-i18n-lang="fr">Protocole augmenté</span>
+        <span data-i18n-lang="en">Augmented protocol</span>
+      </h2>
+      <p class="text-white/40 text-sm max-w-2xl mx-auto">
+        <span data-i18n-lang="fr">Du levier au comportement, du constat au passage à l'acte. Plateforme d'activation du leadership collectif.</span>
+        <span data-i18n-lang="en">From lever to behaviour, from assessment to action. Collective leadership activation platform.</span>
+      </p>
+      <p class="text-white/25 text-xs mt-2 max-w-2xl mx-auto italic">
+        <span data-i18n-lang="fr">Ni seulement un cabinet de conseil, ni seulement un organisme de formation, ni seulement un outil RH : un IRM<span class="plus-accent">+</span> organisationnel — diagnostic chirurgical, passage à l'acte, mesure d'impact.</span>
+        <span data-i18n-lang="en">Not just a consulting firm, not just a training organization, not just an HR tool: an organizational MRI<span class="plus-accent">+</span> — surgical diagnosis, action, impact measurement.</span>
+      </p>
+    </div>
+
+    <!-- 5 étapes IRM -->
+    <div class="mb-14">
+      <div class="space-y-3">
+        {steps.map(s => (
+          <div class="flex items-start gap-4 group">
+            <div class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-navy-950"
+                 style={`background:${s.color}`}>
+              {s.num}
+            </div>
+            <div class="pt-1.5">
+              <span class="text-white font-display font-bold text-lg" style={`color:${s.color}`}>
+                <span data-i18n-lang="fr">{s.verbFr}</span>
+                <span data-i18n-lang="en">{s.verbEn}</span>
+                <span class="plus-accent">+</span>
+              </span>
+              <span class="text-white/50 text-sm ml-2">
+                <span data-i18n-lang="fr">{s.descFr}</span>
+                <span data-i18n-lang="en">{s.descEn}</span>
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 3 parcours -->
+    <div class="grid md:grid-cols-3 gap-4 mb-12">
+      {parcours.map(p => (
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 hover:border-white/15 transition-all relative">
+          {p.badge && (
+            <span class="absolute top-3 right-3 text-[10px] bg-energy-green/10 text-energy-green border border-energy-green/20 rounded-full px-2 py-0.5 font-semibold">
+              <span data-i18n-lang="fr">{p.badge.fr}</span>
+              <span data-i18n-lang="en">{p.badge.en}</span>
+            </span>
+          )}
+          <div class="text-2xl mb-3">{p.icon}</div>
+          <h3 class="text-white font-display font-bold text-sm mb-3">
+            <span data-i18n-lang="fr">{p.titleFr}</span>
+            <span data-i18n-lang="en">{p.titleEn}</span>
+          </h3>
+          <ul class="space-y-1.5">
+            {p.itemsFr.map((item, i) => (
+              <li class="text-white/40 text-xs flex items-start gap-2">
+                <span class="text-energy-green/60 mt-0.5">›</span>
+                <span>
+                  <span data-i18n-lang="fr">{item}</span>
+                  <span data-i18n-lang="en">{p.itemsEn[i]}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Lien app + ce que l'app permet -->
+    <div class="text-center bg-white/[0.02] border border-white/[0.06] rounded-xl p-6">
+      <p class="text-white/40 text-sm mb-3">
+        <span data-i18n-lang="fr">Ce que l'app permet de réussir : Mesurer, piloter, suivre, accompagner — en individuel et en collectif.</span>
+        <span data-i18n-lang="en">What the app enables: Measure, steer, track, support — individually and collectively.</span>
+      </p>
+      <a href="https://app.methode-ec2r.com" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 px-5 py-2.5 bg-energy-green/10 border border-energy-green/20 
+                text-energy-green text-sm font-semibold rounded-lg hover:bg-energy-green/20 transition-all">
+        <span data-i18n-lang="fr">Accéder à la plateforme</span>
+        <span data-i18n-lang="en">Access the platform</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</div>

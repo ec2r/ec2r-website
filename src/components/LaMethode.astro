@@ -1,0 +1,113 @@
+---
+/**
+ * Univers 2 : "La méthode"
+ * Philosophie, points de différenciation, circuit énergétique
+ */
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+
+const diffPoints = [
+  { icon: '⚡', labelFr: '6 énergies + collectives', labelEn: '6 collective energies+', descFr: '18 batteries pour se charger au quotidien', descEn: '18 batteries to charge daily' },
+  { icon: '🎯', labelFr: '9 niveaux pour se repérer', labelEn: '9 levels to find your bearings', descFr: 'Du diagnostic chirurgical au micro-comportement', descEn: 'From surgical diagnosis to micro-behaviour' },
+  { icon: '👤', labelFr: '24 comportements de leadership', labelEn: '24 leadership behaviours', descFr: 'Fiches booster comportementales', descEn: 'Behavioural booster cards' },
+  { icon: '🔄', labelFr: 'Pont diagnostic → action décisive', labelEn: 'Diagnosis → decisive action bridge', descFr: 'Boucle complète du constat au comportement en situation', descEn: 'Full loop from assessment to behaviour in context' },
+  { icon: '🌱', labelFr: 'Méthode vivante auto-entretenue', labelEn: 'Self-sustaining living method', descFr: 'Un système qui évolue avec votre collectif', descEn: 'A system that evolves with your collective' },
+];
+
+const circuitItems = [
+  { labelFr: 'Projeter +', labelEn: 'Project +', color: '#DC2626' },
+  { labelFr: 'Exiger +', labelEn: 'Demand +', color: '#EAB308' },
+  { labelFr: 'Centrer +', labelEn: 'Focus +', color: '#C9A56E' },
+  { labelFr: 'Réguler +', labelEn: 'Regulate +', color: '#22C55E' },
+  { labelFr: 'Remobiliser +', labelEn: 'Remobilize +', color: '#166534' },
+];
+---
+
+<div class="min-h-full bg-navy-950 relative">
+  <div class="absolute inset-0 bg-gradient-to-bl from-navy-950 via-navy-900/50 to-navy-950"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+
+    <!-- Titre animé -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold energy-gradient-text inline-block mb-4">
+        <span data-i18n-lang="fr">La méthode</span>
+        <span data-i18n-lang="en">The method</span>
+      </h2>
+
+      <!-- 3 phrases de différenciation -->
+      <div class="space-y-3 max-w-3xl mx-auto mt-6">
+        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+          <span class="text-red-500 font-bold">MOINS</span>
+          <span data-i18n-lang="fr"> épuiser votre énergie à motiver l'individu à changer</span>
+          <span data-i18n-lang="en"> exhaust your energy trying to motivate individuals to change</span>
+        </p>
+        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+          <span data-i18n-lang="fr">Installer</span>
+          <span data-i18n-lang="en">Build</span>
+          <span class="text-energy-green font-bold"> +</span>
+          <span data-i18n-lang="fr"> les conditions durablement favorables pour mobiliser</span>
+          <span data-i18n-lang="en"> sustainably favourable conditions to mobilize</span>
+        </p>
+        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+          <span data-i18n-lang="fr">Engager</span>
+          <span data-i18n-lang="en">Engage</span>
+          <span class="text-energy-green font-bold"> +</span>
+          <span data-i18n-lang="fr"> le professionnel sur ses situations métier</span>
+          <span data-i18n-lang="en"> the professional in their real work situations</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Points de différenciation -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+      {diffPoints.map(p => (
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 hover:border-white/15 transition-colors group">
+          <div class="text-2xl mb-2">{p.icon}</div>
+          <h3 class="text-white font-semibold text-sm mb-1 group-hover:text-energy-green transition-colors">
+            <span data-i18n-lang="fr">{p.labelFr}</span>
+            <span data-i18n-lang="en">{p.labelEn}</span>
+          </h3>
+          <p class="text-white/40 text-xs">
+            <span data-i18n-lang="fr">{p.descFr}</span>
+            <span data-i18n-lang="en">{p.descEn}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- IRM organisationnel -->
+    <div class="bg-white/[0.02] border border-white/[0.08] rounded-xl p-6 lg:p-8 mb-12">
+      <h3 class="text-xl font-display font-bold text-white mb-3">
+        <span data-i18n-lang="fr">Votre IRM<span class="plus-accent">+</span> organisationnel</span>
+        <span data-i18n-lang="en">Your organizational MRI<span class="plus-accent">+</span></span>
+      </h3>
+      <p class="text-white/50 text-sm leading-relaxed max-w-3xl">
+        <span data-i18n-lang="fr">Votre lecture en temps réel de votre système vivant de mobilisation. La dynamique réelle de votre collectif, ses tensions, ses leviers, ses zones de désengagement, ses comportements décisifs — au plus près du quotidien métier. Pour co-construire la puissance de la méthode, pas l'inverse.</span>
+        <span data-i18n-lang="en">Your real-time reading of your living mobilization system. The real dynamics of your collective — its tensions, levers, disengagement zones, decisive behaviours — as close as possible to daily work reality.</span>
+      </p>
+    </div>
+
+    <!-- Circuit énergétique -->
+    <div class="text-center">
+      <h3 class="text-sm uppercase tracking-[0.15em] text-white/30 font-semibold mb-6">
+        <span data-i18n-lang="fr">Circuit de mobilisation</span>
+        <span data-i18n-lang="en">Mobilization circuit</span>
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        {circuitItems.map((c, i) => (
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full" style={`background:${c.color}`}></span>
+            <span class="text-white/60 text-sm font-semibold">
+              <span data-i18n-lang="fr">{c.labelFr}</span>
+              <span data-i18n-lang="en">{c.labelEn}</span>
+            </span>
+            {i < circuitItems.length - 1 && <span class="text-white/15 ml-1">→</span>}
+          </div>
+        ))}
+        <span class="text-white/15">↻</span>
+      </div>
+    </div>
+
+  </div>
+</div>
