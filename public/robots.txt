@@ -1,5 +1,2 @@
-# Robots.txt — EC2R Website
 User-agent: *
-Allow: /
-
-Sitemap: https://methode-ec2r.com/sitemap-index.xml
+Disallow: /
