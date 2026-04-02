@@ -1,0 +1,60 @@
+---
+/**
+ * Bandeau d'annonce — teaser lancement semaine prochaine
+ * Discret, en haut de page, dismissable
+ */
+---
+
+<div id="announcement-banner"
+     class="fixed top-0 left-0 right-0 z-[100]
+            bg-energy-green/95 text-navy-950
+            px-4 py-2 text-center text-sm font-medium
+            flex items-center justify-center gap-3
+            transition-all duration-300">
+  <span class="inline-flex items-center gap-2">
+    <!-- Pulse indicator -->
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy-950 opacity-50"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-navy-950"></span>
+    </span>
+    <span data-i18n-lang="fr">
+      Accès anticipé — lancement officiel <strong>la semaine prochaine</strong>
+    </span>
+    <span data-i18n-lang="en">
+      Early access — official launch <strong>next week</strong>
+    </span>
+  </span>
+  <a href="https://cal.methode-ec2r.com" target="_blank" rel="noopener"
+     class="ml-2 underline underline-offset-2 font-semibold hover:no-underline transition-all">
+    <span data-i18n-lang="fr">Prendre rendez-vous →</span>
+    <span data-i18n-lang="en">Book a call →</span>
+  </a>
+  <button id="close-announcement"
+          class="absolute right-4 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100 transition-opacity"
+          aria-label="Fermer">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</div>
+
+<!-- Spacer pour compenser la hauteur du bandeau -->
+<div id="announcement-spacer" class="h-9"></div>
+
+<script>
+  const banner = document.getElementById('announcement-banner');
+  const spacer = document.getElementById('announcement-spacer');
+  const closeBtn = document.getElementById('close-announcement');
+
+  // Fermé en session = caché
+  if (sessionStorage.getItem('ec2r-banner-closed') === '1') {
+    banner?.classList.add('hidden');
+    spacer?.classList.add('hidden');
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    banner?.classList.add('hidden');
+    spacer?.classList.add('hidden');
+    sessionStorage.setItem('ec2r-banner-closed', '1');
+  });
+</script>
