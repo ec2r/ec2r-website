@@ -14,8 +14,8 @@ const { fr, en } = Astro.props;
 
 // Founders (données fixes — pas traduites)
 const founders = [
-  { name: 'Stéphane', namePlus: 'FLAHAUT', initials: 'SF', linkedin: 'https://www.linkedin.com/in/stephane-flahaut' },
-  { name: 'Luc', namePlus: 'LÉTOFFÉ', initials: 'LL', linkedin: '' },
+  { name: 'Stéphane', namePlus: 'FLAHAUT', initials: 'SF', photo: '/photos/equipe/flahaut.webp', linkedin: 'https://www.linkedin.com/in/stephane-flahaut' },
+  { name: 'Luc', namePlus: 'LÉTOFFÉ', initials: 'LL', photo: '', linkedin: '' },
 ];
 
 // Praticiens (données fixes)
@@ -23,7 +23,7 @@ const praticiens = [
   {
     name: 'Jean-François Morin',
     initials: 'JFM',
-    photo: '',
+    photo: '/photos/equipe/morin.webp',
     titleFr: 'Associé méthode EC2R',
     titleEn: 'EC2R Method Partner',
     subtitleFr: 'Cofondateur EC2R Conseil',
@@ -45,7 +45,7 @@ const praticiens = [
   {
     name: 'Jean Zuccarelli',
     initials: 'JZ',
-    photo: '',
+    photo: '/photos/equipe/zuccarelli.webp',
     titleFr: 'Associé EC2R Conseil',
     titleEn: 'EC2R Conseil Partner',
     subtitleFr: '',
@@ -102,26 +102,34 @@ const seminairePlaceholders = [
     <div class="grid md:grid-cols-2 gap-6">
       {founders.map((member, i) => (
         <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/15 transition-all group h-full">
-          <!-- Photo placeholder avec plus accent -->
+          <!-- Photo ou placeholder -->
           <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
                       relative flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 opacity-[0.03]">
-              <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-white"></div>
-              <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-white"></div>
-            </div>
-            <div class="text-center relative z-10">
-              <div class="w-24 h-24 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-3 
-                          flex items-center justify-center backdrop-blur-sm
-                          group-hover:border-energy-green/30 transition-colors duration-500">
-                <span class="text-white/50 text-2xl font-display font-bold group-hover:text-energy-green/70 transition-colors">
-                  {member.initials}
-                </span>
-              </div>
-              <p class="text-white/25 text-xs tracking-wider uppercase">
-                <span data-i18n-lang="fr">Portrait à venir</span>
-                <span data-i18n-lang="en">Portrait coming soon</span>
-              </p>
-            </div>
+            {member.photo ? (
+              <img src={member.photo} alt={`${member.name} ${member.namePlus}`}
+                   class="absolute inset-0 w-full h-full object-cover object-top"
+                   loading="lazy" />
+            ) : (
+              <Fragment>
+                <div class="absolute inset-0 opacity-[0.03]">
+                  <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-white"></div>
+                  <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-white"></div>
+                </div>
+                <div class="text-center relative z-10">
+                  <div class="w-24 h-24 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-3 
+                              flex items-center justify-center backdrop-blur-sm
+                              group-hover:border-energy-green/30 transition-colors duration-500">
+                    <span class="text-white/50 text-2xl font-display font-bold group-hover:text-energy-green/70 transition-colors">
+                      {member.initials}
+                    </span>
+                  </div>
+                  <p class="text-white/25 text-xs tracking-wider uppercase">
+                    <span data-i18n-lang="fr">Portrait à venir</span>
+                    <span data-i18n-lang="en">Portrait coming soon</span>
+                  </p>
+                </div>
+              </Fragment>
+            )}
           </div>
 
           <!-- Contenu carte -->
