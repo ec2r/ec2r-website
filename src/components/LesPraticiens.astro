@@ -12,55 +12,67 @@
 interface Props { fr: any; en: any; }
 const { fr, en } = Astro.props;
 
-// Founders (données fixes — pas traduites)
-const founders = [
-  { name: 'Stéphane', namePlus: 'FLAHAUT', initials: 'SF', photo: '/photos/equipe/flahaut.webp', linkedin: 'https://www.linkedin.com/in/stephane-flahaut' },
-  { name: 'Luc', namePlus: 'LÉTOFFÉ', initials: 'LL', photo: '', linkedin: '' },
-];
-
-// Praticiens (données fixes)
-const praticiens = [
+// Toute l'équipe dans une seule liste — layout géré par la grille CSS
+const team = [
   {
-    name: 'Jean-François Morin',
-    initials: 'JFM',
-    photo: '/photos/equipe/morin.webp',
-    titleFr: 'Associé méthode EC²R',
-    titleEn: 'EC²R Method Partner',
-    subtitleFr: 'Cofondateur EC²R Conseil',
-    subtitleEn: 'Co-founder EC²R Conseil',
-    linkedin: '',
+    name: 'Stéphane', namePlus: 'FLAHAUT',
+    initials: 'SF', photo: '/photos/equipe/flahaut.webp',
+    linkedin: 'https://www.linkedin.com/in/stephane-flahaut',
+    roleFr: 'Fondateur de la méthode EC²R et du protocole augmenté',
+    roleEn: 'Founder of the EC²R method and augmented protocol',
+    bioFr: "Porte et incarne la méthode EC²R depuis plus de 5 ans. Accompagne des collectifs vers la performance depuis plus de 20 ans. Assure l'amélioration continue de la méthode — garant, avec l'IA, de son intégrité et de son développement.",
+    bioEn: "Carries and embodies the EC²R method for over 5 years. Supports collectives towards performance for over 20 years. Ensures continuous improvement — guardian, with AI, of the method's integrity and development.",
+    size: 'hero', photoPos: 'center 20%',
   },
   {
-    name: 'Arnaud Bochurberg',
-    initials: 'AB',
-    photo: '/photos/equipe/arnaud-bochurberg.webp',
-    titleFr: 'Associé EC²R Conseil — Praticien et prescripteur',
-    titleEn: 'EC²R Conseil Partner — Practitioner & prescriber',
-    subtitleFr: 'Expert du profilage comportemental · Palmes académiques',
-    subtitleEn: 'Behavioural profiling expert · Academic distinction',
+    name: 'Luc', namePlus: 'LÉTOFFÉ',
+    initials: 'LL', photo: '/photos/equipe/letoffe.webp',
     linkedin: '',
-    bioFr: "Président du Groupe Alard. Professeur associé en Psycho-sociologie de la Communication à l'Université Gustave Eiffel depuis 28 ans. Conférencier, formateur et coach de dirigeants. Auteur de « La Communication Solutionnelle » et « Rendre Possible l'Impossible ». Officier des Palmes Académiques. 1750+ leaders accompagnés.",
-    bioEn: "President of Groupe Alard. Associate Professor in Psycho-sociology of Communication at Gustave Eiffel University for 28 years. Speaker, trainer and executive coach. Author of « La Communication Solutionnelle » and « Rendre Possible l'Impossible ». Officer of the Palmes Académiques. 1750+ leaders supported.",
+    roleFr: 'Genèse technique de la méthode EC²R et du protocole augmenté',
+    roleEn: 'Technical genesis of the EC²R method and augmented protocol',
+    bioFr: "Passe de l'idéation à la situation. Co-construit la promesse de valeur avec les experts métiers, traduit en produit, fait passer de l'idée à l'acte — en direct, avec vous.",
+    bioEn: "Moves from ideation to situation. Co-builds the value promise with business experts, translates into product, moves from idea to action — directly, with you.",
+    size: 'regular', photoPos: 'center 50%',
   },
   {
-    name: 'Jean Zuccarelli',
-    initials: 'JZ',
-    photo: '/photos/equipe/zuccarelli.webp',
-    titleFr: 'Associé EC²R Conseil',
-    titleEn: 'EC²R Conseil Partner',
-    subtitleFr: '',
-    subtitleEn: '',
+    name: 'Marie-Emilia', namePlus: 'GARCIA',
+    initials: 'MEG', photo: '/photos/equipe/garcia.webp',
     linkedin: '',
+    roleFr: 'Facilitatrice EC²R — Logistique, team, déploiement',
+    roleEn: 'EC²R Facilitator — Logistics, team, deployment',
+    bioFr: "Facilite le déploiement des sessions EC²R, coordonne la logistique team. Formée aux débriefs de profils individuels.",
+    bioEn: "Facilitates EC²R session deployment, coordinates team logistics. Trained in individual profile debriefs.",
+    size: 'regular', photoPos: 'center 15%',
   },
   {
-    name: 'Marie-Emilia Garcia',
-    initials: 'MEG',
-    photo: '',
-    titleFr: 'Facilitatrice EC²R Conseil',
-    titleEn: 'EC²R Conseil Facilitator',
-    subtitleFr: 'Logistique · Équipe · Déploiement · Pédagogie',
-    subtitleEn: 'Logistics · Teams · Deployment · Pedagogy',
+    name: 'Jean-François', namePlus: 'MORIN',
+    initials: 'JFM', photo: '/photos/equipe/morin.webp',
     linkedin: '',
+    roleFr: 'Cofondateur EC²R Conseil',
+    roleEn: 'Co-founder EC²R Conseil',
+    bioFr: "Entraîneur d'entraîneurs et de sportifs professionnels, de champions. Ancrage terrain et transmission. Associé depuis les origines de la méthode EC²R.",
+    bioEn: "Coaches' coach and trainer of professional athletes and champions. Field grounding and transmission. Partner since the origins of the EC²R method.",
+    size: 'regular', photoPos: 'center top',
+  },
+  {
+    name: 'Arnaud', namePlus: 'BOCHURBERG',
+    initials: 'AB', photo: '/photos/equipe/arnaud-bochurberg.webp',
+    linkedin: '',
+    roleFr: 'Associé EC²R Conseil — Expert en profilage comportemental',
+    roleEn: 'EC²R Conseil Partner — Behavioural profiling expert',
+    bioFr: "Président du Groupe Alard. Professeur associé en Psycho-sociologie de la Communication à l'Université Gustave Eiffel depuis 28 ans. Conférencier, formateur et coach de dirigeants. Officier des Palmes Académiques. 1750+ leaders accompagnés.",
+    bioEn: "President of Groupe Alard. Associate Professor in Psycho-sociology of Communication at Gustave Eiffel University for 28 years. Speaker, trainer and executive coach. Officer of the Palmes Académiques. 1750+ leaders supported.",
+    size: 'regular', photoPos: 'center 20%',
+  },
+  {
+    name: 'Jean', namePlus: 'ZUCCARELLI',
+    initials: 'JZ', photo: '/photos/equipe/zuccarelli.webp',
+    linkedin: 'https://www.linkedin.com/in/jean-zuccarelli-0807796/',
+    roleFr: 'Associé EC²R Conseil — Praticien EC²R',
+    roleEn: 'EC²R Conseil Partner — EC²R Practitioner',
+    bioFr: "Accompagne les organisations dans la mise en acte de la méthode.",
+    bioEn: "Supports organisations in implementing the method.",
+    size: 'regular', photoPos: 'center 25%',
   },
 ];
 
@@ -97,44 +109,34 @@ const seminairePlaceholders = [
     </div>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 2. FOUNDERS (2 grandes cartes avec bios) -->
+    <!-- 2. ÉQUIPE — Grille unifiée 3 colonnes                               -->
+    <!--    Stéphane = 2col × 2row (hero), reste = 1×1 chacun                -->
+    <!--    Layout :  [Stéphane] [Stéphane] [Luc     ]                        -->
+    <!--              [Stéphane] [Stéphane] [Emilia  ]                        -->
+    <!--              [JF Morin] [Arnaud  ] [Jean Z  ]                        -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <div class="grid md:grid-cols-2 gap-6">
-      {founders.map((member, i) => (
-        <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/15 transition-all group h-full">
-          <!-- Photo ou placeholder -->
-          <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+      {team.map((member) => member.size === 'hero' ? (
+        <!-- ── Carte hero : Stéphane (2col × 2row) ── -->
+        <div class="sm:col-span-2 sm:row-span-2 bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/15 transition-all group flex flex-col">
+          <div class="flex-1 min-h-[280px] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
                       relative flex items-center justify-center overflow-hidden">
             {member.photo ? (
               <img src={member.photo} alt={`${member.name} ${member.namePlus}`}
-                   class="absolute inset-0 w-full h-full object-cover object-top"
+                   class="absolute inset-0 w-full h-full object-cover"
+                   style={`object-position: ${member.photoPos}`}
                    loading="lazy" />
             ) : (
-              <Fragment>
-                <div class="absolute inset-0 opacity-[0.03]">
-                  <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-white"></div>
-                  <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-white"></div>
+              <div class="text-center relative z-10">
+                <div class="w-24 h-24 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-3 
+                            flex items-center justify-center backdrop-blur-sm">
+                  <span class="text-white/50 text-2xl font-display font-bold">{member.initials}</span>
                 </div>
-                <div class="text-center relative z-10">
-                  <div class="w-24 h-24 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-3 
-                              flex items-center justify-center backdrop-blur-sm
-                              group-hover:border-energy-green/30 transition-colors duration-500">
-                    <span class="text-white/50 text-2xl font-display font-bold group-hover:text-energy-green/70 transition-colors">
-                      {member.initials}
-                    </span>
-                  </div>
-                  <p class="text-white/25 text-xs tracking-wider uppercase">
-                    <span data-i18n-lang="fr">Portrait à venir</span>
-                    <span data-i18n-lang="en">Portrait coming soon</span>
-                  </p>
-                </div>
-              </Fragment>
+              </div>
             )}
           </div>
-
-          <!-- Contenu carte -->
-          <div class="p-6">
-            <h3 class="font-display font-bold text-xl text-white mb-2 flex items-center gap-2">
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-white mb-1 flex items-center gap-2">
               {member.name}<span class="plus-accent">+</span> {member.namePlus}
               {member.linkedin && (
                 <a href={member.linkedin} target="_blank" rel="noopener" 
@@ -145,75 +147,61 @@ const seminairePlaceholders = [
                 </a>
               )}
             </h3>
-            <p class="text-energy-green font-semibold text-sm mb-4">
-              <span data-i18n-lang="fr">{fr.equipe?.founders?.[i]?.role || 'Co-fondateur méthode EC²R'}</span>
-              <span data-i18n-lang="en">{en.equipe?.founders?.[i]?.role || 'Co-founder EC²R method'}</span>
+            <p class="text-energy-green font-semibold text-sm mb-2">
+              <span data-i18n-lang="fr">{member.roleFr}</span>
+              <span data-i18n-lang="en">{member.roleEn}</span>
             </p>
             <p class="text-white/60 text-sm leading-relaxed">
-              <span data-i18n-lang="fr">{fr.equipe?.founders?.[i]?.bio || ''}</span>
-              <span data-i18n-lang="en">{en.equipe?.founders?.[i]?.bio || ''}</span>
+              <span data-i18n-lang="fr">{member.bioFr}</span>
+              <span data-i18n-lang="en">{member.bioEn}</span>
+            </p>
+          </div>
+        </div>
+      ) : (
+        <!-- ── Carte regular : 1 colonne ── -->
+        <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/15 transition-all group flex flex-col">
+          <div class="aspect-[4/3] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
+                      relative flex items-center justify-center overflow-hidden">
+            {member.photo ? (
+              <img src={member.photo} alt={`${member.name} ${member.namePlus}`}
+                   class="absolute inset-0 w-full h-full object-cover"
+                   style={`object-position: ${member.photoPos}`}
+                   loading="lazy" />
+            ) : (
+              <div class="text-center relative z-10">
+                <div class="w-16 h-16 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-2 
+                            flex items-center justify-center backdrop-blur-sm
+                            group-hover:border-energy-green/30 transition-colors duration-500">
+                  <span class="text-white/50 text-lg font-display font-bold group-hover:text-energy-green/70 transition-colors">
+                    {member.initials}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+          <div class="p-4 flex-1 flex flex-col">
+            <h4 class="font-display font-bold text-sm text-white mb-1 flex items-center gap-1">
+              {member.name}<span class="plus-accent text-xs">+</span> {member.namePlus}
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noopener" 
+                   class="text-white/20 hover:text-energy-green text-xs transition-colors ml-auto">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              )}
+            </h4>
+            <p class="text-energy-green/80 font-semibold text-xs mb-2">
+              <span data-i18n-lang="fr">{member.roleFr}</span>
+              <span data-i18n-lang="en">{member.roleEn}</span>
+            </p>
+            <p class="text-white/50 text-[11px] leading-relaxed flex-1">
+              <span data-i18n-lang="fr">{member.bioFr}</span>
+              <span data-i18n-lang="en">{member.bioEn}</span>
             </p>
           </div>
         </div>
       ))}
-    </div>
-
-    <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 3. PRATICIENS (grille 4 cartes) -->
-    <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <div>
-      <h3 class="text-lg font-display font-bold text-white/70 mb-4 uppercase tracking-wider text-xs">
-        <span data-i18n-lang="fr">Praticiens & Facilitateurs</span>
-        <span data-i18n-lang="en">Practitioners & Facilitators</span>
-      </h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {praticiens.map((member, i) => (
-          <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 hover:border-white/15 transition-all group h-full flex flex-col">
-            <!-- Photo ou initiales -->
-            <div class="flex items-start gap-3 mb-4">
-              {member.photo ? (
-                <img src={member.photo} alt={member.name} 
-                     class="w-14 h-14 rounded-xl object-cover border-2 border-white/10 group-hover:border-energy-green/30 transition-colors" 
-                     loading="lazy" />
-              ) : (
-                <div class="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center text-white/40 font-bold text-lg border-2 border-white/10 group-hover:border-energy-green/30 transition-colors">
-                  {member.initials}
-                </div>
-              )}
-              <div class="flex-1 min-w-0">
-                <h4 class="text-white font-display font-bold text-sm group-hover:text-energy-green transition-colors leading-tight">
-                  {member.name}
-                </h4>
-                {member.linkedin && (
-                  <a href={member.linkedin} target="_blank" rel="noopener" 
-                     class="text-white/20 hover:text-white/50 text-[10px] transition-colors">
-                    LinkedIn →
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <div class="flex-1 space-y-2">
-              <p class="text-white/60 text-xs leading-snug">
-                <span data-i18n-lang="fr">{member.titleFr}</span>
-                <span data-i18n-lang="en">{member.titleEn}</span>
-              </p>
-              {member.subtitleFr && (
-                <p class="text-white/30 text-[11px] leading-snug">
-                  <span data-i18n-lang="fr">{member.subtitleFr}</span>
-                  <span data-i18n-lang="en">{member.subtitleEn}</span>
-                </p>
-              )}
-              {member.bioFr && (
-                <p class="text-white/40 text-[11px] leading-relaxed pt-2 border-t border-white/5">
-                  <span data-i18n-lang="fr">{member.bioFr}</span>
-                  <span data-i18n-lang="en">{member.bioEn}</span>
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->

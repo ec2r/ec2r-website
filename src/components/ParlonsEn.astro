@@ -142,7 +142,9 @@ const { fr, en } = Astro.props;
     if (!btn) return;
     const originalHTML = btn.innerHTML;
     btn.addEventListener('click', () => {
-      btn.innerHTML = '<span class="text-amber-400 font-bold">Dommage 😏</span>';
+      const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+      const msg = lang === 'en' ? 'Too bad 😏' : 'Dommage 😏';
+      btn.innerHTML = `<span class="text-amber-400 font-bold">${msg}</span>`;
       btn.disabled = true;
       btn.classList.add('border-amber-400/30');
       setTimeout(() => {
