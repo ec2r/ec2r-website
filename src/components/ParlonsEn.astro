@@ -54,20 +54,25 @@ const { fr, en } = Astro.props;
 
     <!-- 2 CTA -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-      <a href="https://cal.methode-ec2r.com/stephaneflahaut" target="_blank" rel="noopener"
-         class="bg-energy-green hover:bg-energy-green/90 text-navy-950 font-display font-bold text-base
-                px-8 py-4 rounded-lg transition-all shadow-lg shadow-energy-green/20 hover:shadow-energy-green/30
-                flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span data-i18n-lang="fr">Ça résonne — prendre rendez-vous</span>
-        <span data-i18n-lang="en">It resonates — book a call</span>
-      </a>
+      <div class="flex flex-col items-center gap-1">
+        <a href="#parlons-en"
+           class="bg-energy-green hover:bg-energy-green/90 text-navy-950 font-display font-bold text-base
+                  px-8 py-4 rounded-lg transition-all shadow-lg shadow-energy-green/20 hover:shadow-energy-green/30
+                  flex items-center gap-2"
+           onclick="event.preventDefault(); document.getElementById('contact-form-wrapper').scrollIntoView({behavior:'smooth'})">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span data-i18n-lang="fr">Ça résonne — prendre rendez-vous</span>
+          <span data-i18n-lang="en">It resonates — book a call</span>
+        </a>
+        <span class="text-white/20 text-[10px] italic" data-i18n-lang="fr">(bientôt)</span>
+        <span class="text-white/20 text-[10px] italic" data-i18n-lang="en">(coming soon)</span>
+      </div>
 
       <span class="text-white/15 text-sm hidden sm:block">ou</span>
 
-      <button id="show-budget-form" class="text-white/30 hover:text-white/60 border border-white/10 hover:border-white/30
+      <button id="budget-btn" class="text-white/30 hover:text-white/60 border border-white/10 hover:border-white/30
               text-xs px-5 py-2.5 rounded-lg transition-all">
         <span data-i18n-lang="fr">Je cherche juste un budget</span>
         <span data-i18n-lang="en">I just need a budget</span>
@@ -129,3 +134,21 @@ const { fr, en } = Astro.props;
 
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('budget-btn');
+    if (!btn) return;
+    const originalHTML = btn.innerHTML;
+    btn.addEventListener('click', () => {
+      btn.innerHTML = '<span class="text-amber-400 font-bold">Dommage 😏</span>';
+      btn.disabled = true;
+      btn.classList.add('border-amber-400/30');
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        btn.classList.remove('border-amber-400/30');
+      }, 5000);
+    });
+  });
+</script>
