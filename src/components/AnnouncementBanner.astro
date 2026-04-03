@@ -8,29 +8,30 @@
 <div id="announcement-banner"
      class="fixed top-0 left-0 right-0 z-[100]
             bg-energy-green/95 text-navy-950
-            px-4 py-2 text-center text-sm font-medium
-            flex items-center justify-center gap-3
+            px-3 py-2 text-center text-sm font-medium
             transition-all duration-300">
-  <span class="inline-flex items-center gap-2">
-    <!-- Pulse indicator -->
-    <span class="relative flex h-2 w-2">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy-950 opacity-50"></span>
-      <span class="relative inline-flex rounded-full h-2 w-2 bg-navy-950"></span>
+  <div class="flex items-center justify-center gap-2 pr-8">
+    <span class="inline-flex items-center gap-2 flex-wrap justify-center">
+      <!-- Pulse indicator (hidden on mobile to save space) -->
+      <span class="relative hidden sm:flex h-2 w-2 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy-950 opacity-50"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-navy-950"></span>
+      </span>
+      <span data-i18n-lang="fr" class="text-xs sm:text-sm">
+        Accès anticipé — lancement officiel <strong>la semaine prochaine</strong>
+      </span>
+      <span data-i18n-lang="en" class="text-xs sm:text-sm">
+        Early access — official launch <strong>next week</strong>
+      </span>
+      <a href="https://cal.methode-ec2r.com" target="_blank" rel="noopener"
+         class="underline underline-offset-2 font-semibold hover:no-underline transition-all text-xs sm:text-sm whitespace-nowrap">
+        <span data-i18n-lang="fr">Prendre rendez-vous →</span>
+        <span data-i18n-lang="en">Book a call →</span>
+      </a>
     </span>
-    <span data-i18n-lang="fr">
-      Accès anticipé — lancement officiel <strong>la semaine prochaine</strong>
-    </span>
-    <span data-i18n-lang="en">
-      Early access — official launch <strong>next week</strong>
-    </span>
-  </span>
-  <a href="https://cal.methode-ec2r.com" target="_blank" rel="noopener"
-     class="ml-2 underline underline-offset-2 font-semibold hover:no-underline transition-all">
-    <span data-i18n-lang="fr">Prendre rendez-vous →</span>
-    <span data-i18n-lang="en">Book a call →</span>
-  </a>
+  </div>
   <button id="close-announcement"
-          class="absolute right-4 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100 transition-opacity"
+          class="absolute right-2 top-1/2 -translate-y-1/2 p-1 opacity-50 hover:opacity-100 transition-opacity"
           aria-label="Fermer">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -39,7 +40,7 @@
 </div>
 
 <!-- Spacer pour compenser la hauteur du bandeau -->
-<div id="announcement-spacer" class="h-9"></div>
+<div id="announcement-spacer" class="h-10 sm:h-9"></div>
 
 <script>
   const banner = document.getElementById('announcement-banner');
