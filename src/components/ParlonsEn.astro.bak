@@ -1,0 +1,157 @@
+---
+/**
+ * Univers 6 : "Parlons-en"
+ * Échange humain, prise de RDV, formulaire contact
+ */
+import EC2R from './EC2R.astro';
+interface Props { fr: any; en: any; }
+const { fr, en } = Astro.props;
+---
+
+<div class="min-h-full bg-navy-950 relative flex items-center">
+  <div class="absolute inset-0 bg-gradient-to-tr from-navy-950 via-navy-900/30 to-navy-950"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 w-full">
+
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4">
+        <span data-i18n-lang="fr">Parlons-en !</span>
+        <span data-i18n-lang="en">Let's talk!</span>
+      </h2>
+
+      <p class="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto mb-6">
+        <span data-i18n-lang="fr">Un vrai échange humain et rapide, pas un pitch ou un formulaire commercial, 10 minutes, pas d'agent conversationnel, une vraie présence.</span>
+        <span data-i18n-lang="en">A real human and quick exchange, not a pitch or commercial form, 10 minutes, no chatbot, a real presence.</span>
+      </p>
+
+      <!-- 3 intentions -->
+      <div class="flex flex-wrap justify-center gap-3 mb-6 text-xs">
+        <div class="bg-white/[0.03] border border-white/10 rounded-lg px-4 py-2">
+          <span class="text-energy-green font-bold" data-i18n-lang="fr">En être</span>
+          <span class="text-energy-green font-bold" data-i18n-lang="en">Be part of it</span>
+          <span class="text-white/40" data-i18n-lang="fr"> : vous voulez vivre la méthode</span>
+          <span class="text-white/40" data-i18n-lang="en"> : you want to experience the method</span>
+        </div>
+        <div class="bg-white/[0.03] border border-white/10 rounded-lg px-4 py-2">
+          <span class="text-energy-green font-bold" data-i18n-lang="fr">Le vivre</span>
+          <span class="text-energy-green font-bold" data-i18n-lang="en">Live it</span>
+          <span class="text-white/40" data-i18n-lang="fr"> : vous avez un projet collectif</span>
+          <span class="text-white/40" data-i18n-lang="en"> : you have a collective project</span>
+        </div>
+        <div class="bg-white/[0.03] border border-white/10 rounded-lg px-4 py-2">
+          <span class="text-energy-green font-bold" data-i18n-lang="fr">Prescrire</span>
+          <span class="text-energy-green font-bold" data-i18n-lang="en">Prescribe</span>
+          <span class="text-white/40" data-i18n-lang="fr"> : vous pensez à quelqu'un</span>
+          <span class="text-white/40" data-i18n-lang="en"> : you're thinking of someone</span>
+        </div>
+      </div>
+
+      <!-- Petit texte arrogant -->
+      <p class="text-xs text-white/20 italic max-w-lg mx-auto">
+        <span data-i18n-lang="fr">Si ça résonne et que vous voulez construire, parlons-en.</span>
+        <span data-i18n-lang="en">If it resonates and you want to build, let's talk.</span>
+      </p>
+    </div>
+
+    <!-- 2 CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+      <div class="flex flex-col items-center gap-1">
+        <a href="#parlons-en"
+           class="bg-energy-green hover:bg-energy-green/90 text-navy-950 font-display font-bold text-base
+                  px-8 py-4 rounded-lg transition-all shadow-lg shadow-energy-green/20 hover:shadow-energy-green/30
+                  flex items-center gap-2"
+           onclick="event.preventDefault(); document.getElementById('contact-form-wrapper').scrollIntoView({behavior:'smooth'})">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span data-i18n-lang="fr">Ça résonne — prendre rendez-vous</span>
+          <span data-i18n-lang="en">It resonates — book a call</span>
+        </a>
+        <span class="text-white/20 text-[10px] italic" data-i18n-lang="fr">(bientôt)</span>
+        <span class="text-white/20 text-[10px] italic" data-i18n-lang="en">(coming soon)</span>
+      </div>
+
+      <span class="text-white/15 text-sm hidden sm:block">ou</span>
+
+      <button id="budget-btn" class="text-white/30 hover:text-white/60 border border-white/10 hover:border-white/30
+              text-xs px-5 py-2.5 rounded-lg transition-all">
+        <span data-i18n-lang="fr">Je cherche juste un budget</span>
+        <span data-i18n-lang="en">I just need a budget</span>
+      </button>
+    </div>
+
+    <!-- Formulaire de contact -->
+    <div id="contact-form-wrapper" class="max-w-lg mx-auto">
+      <form action="https://formspree.io/f/xdkopajd" method="POST" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" name="name" required
+                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm
+                        placeholder-white/25 focus:border-energy-green/50 focus:ring-1 focus:ring-energy-green/30 
+                        outline-none transition-all"
+                 data-placeholder-fr="Votre nom" data-placeholder-en="Your name"
+                 placeholder="Votre nom" />
+          <input type="email" name="email" required
+                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm
+                        placeholder-white/25 focus:border-energy-green/50 focus:ring-1 focus:ring-energy-green/30 
+                        outline-none transition-all"
+                 data-placeholder-fr="Votre email" data-placeholder-en="Your email"
+                 placeholder="Votre email" />
+        </div>
+        <input type="text" name="organization"
+               class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm
+                      placeholder-white/25 focus:border-energy-green/50 focus:ring-1 focus:ring-energy-green/30 
+                      outline-none transition-all"
+               data-placeholder-fr="Organisation (optionnel)" data-placeholder-en="Organization (optional)"
+               placeholder="Organisation (optionnel)" />
+        <textarea name="message" rows="3"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm
+                         placeholder-white/25 focus:border-energy-green/50 focus:ring-1 focus:ring-energy-green/30 
+                         outline-none transition-all resize-none"
+                  data-placeholder-fr="En quelques mots, ce qui résonne chez vous…" data-placeholder-en="In a few words, what resonates with you…"
+                  placeholder="En quelques mots, ce qui résonne chez vous…"></textarea>
+        <button type="submit"
+                class="w-full bg-white/10 hover:bg-white/15 text-white font-semibold py-3 rounded-lg
+                       border border-white/10 hover:border-white/20 transition-all text-sm">
+          <span data-i18n-lang="fr">Envoyer</span>
+          <span data-i18n-lang="en">Send</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Footer minimal -->
+    <div class="mt-12 pt-6 border-t border-white/5 text-center text-white/15 text-xs space-y-1">
+      <p>© {new Date().getFullYear()} Méthode <EC2R /> · <EC2R /> Conseil</p>
+      <div class="flex justify-center gap-4">
+        <a href="/mentions-legales" class="hover:text-white/30 transition-colors">
+          <span data-i18n-lang="fr">Mentions légales</span>
+          <span data-i18n-lang="en">Legal</span>
+        </a>
+        <a href="/politique-de-confidentialite" class="hover:text-white/30 transition-colors">
+          <span data-i18n-lang="fr">Confidentialité</span>
+          <span data-i18n-lang="en">Privacy</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('budget-btn');
+    if (!btn) return;
+    const originalHTML = btn.innerHTML;
+    btn.addEventListener('click', () => {
+      const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+      const msg = lang === 'en' ? 'Too bad 😏' : 'Dommage 😏';
+      btn.innerHTML = `<span class="text-amber-400 font-bold">${msg}</span>`;
+      btn.disabled = true;
+      btn.classList.add('border-amber-400/30');
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        btn.classList.remove('border-amber-400/30');
+      }, 5000);
+    });
+  });
+</script>
