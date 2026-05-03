@@ -108,13 +108,16 @@ const parcours = [
       </div>
     </div>
 
-    <!-- 3 parcours empilés — alternance visuel/texte -->
+    <!-- 3 parcours empilés — alternance visuel/texte
+         Palette stricte EC²R (tma_gauge_controller.js) :
+         0-20 #C00000 rouge / 21-40 #FCB118 jaune / 41-60 #FFCC99 beige
+         61-80 #92D050 vert clair / 81-100 #00B050 vert foncé -->
     <div class="space-y-6 mb-12">
 
       <!-- ─── LIGNE 1 : Mon collectif (visuel 2/3 gauche · texte 1/3 droite) ─── -->
       <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all">
         <div class="grid md:grid-cols-3 gap-0">
-          <!-- Visuel reconstruit : Baromètre 6 énergies + score central -->
+          <!-- Visuel reconstruit : Baromètre 6 énergies + score central (moyenne) -->
           <div class="md:col-span-2 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 p-6 lg:p-8 relative">
             <p class="text-[10px] uppercase tracking-widest text-white/30 font-semibold mb-4">
               <span data-i18n-lang="fr">Reconstruction illustrative — données fictives</span>
@@ -122,13 +125,15 @@ const parcours = [
             </p>
             <div class="grid grid-cols-2 gap-3 lg:gap-4">
               {[
-                { name: 'Projeter', file: 'projeter', score: 75, color: '#DC2626' },
-                { name: 'Centrer', file: 'centrer', score: 60, color: '#EAB308' },
-                { name: 'Exiger', file: 'exiger', score: 51, color: '#C9A56E' },
-                { name: 'Animer', file: 'animer', score: 56, color: '#22C55E' },
-                { name: 'Réguler', file: 'recentrer', score: 71, color: '#166534' },
-                { name: 'Remobiliser', file: 'remobiliser', score: 59, color: '#3B82F6' },
-              ].map(e => (
+                { name: 'Projeter', file: 'projeter', score: 75 },     // 61-80 vert clair
+                { name: 'Centrer', file: 'centrer', score: 56 },        // 41-60 beige
+                { name: 'Exiger', file: 'exiger', score: 51 },          // 41-60 beige
+                { name: 'Animer', file: 'animer', score: 60 },          // 41-60 beige (limite)
+                { name: 'Réguler', file: 'recentrer', score: 71 },      // 61-80 vert clair
+                { name: 'Remobiliser', file: 'remobiliser', score: 59 },// 41-60 beige
+              ].map(e => {
+                const c = e.score <= 20 ? '#C00000' : e.score <= 40 ? '#FCB118' : e.score <= 60 ? '#FFCC99' : e.score <= 80 ? '#92D050' : '#00B050';
+                return (
                 <div class="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-lg p-2.5">
                   <img src={`/images/energies/${e.file}-thumb.webp`}
                        srcset={`/images/energies/${e.file}-thumb.webp 1x, /images/energies/${e.file}.webp 2x`}
@@ -136,29 +141,29 @@ const parcours = [
                   <div class="flex-1 min-w-0">
                     <div class="flex items-baseline justify-between mb-1">
                       <span class="text-white text-xs font-semibold uppercase tracking-wide">{e.name}<span class="plus-accent text-[10px]">+</span></span>
-                      <span class="text-sm font-display font-bold" style={`color:${e.color}`}>{e.score}</span>
+                      <span class="text-sm font-display font-bold" style={`color:${c}`}>{e.score}</span>
                     </div>
                     <div class="h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div class="h-full rounded-full" style={`width:${e.score}%;background:${e.color}`}></div>
+                      <div class="h-full rounded-full" style={`width:${e.score}%;background:${c}`}></div>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
-            <!-- Score central -->
+            <!-- Score central = moyenne arithmétique des 6 (62 → vert clair) -->
             <div class="mt-5 flex items-center justify-center">
               <div class="bg-white/[0.04] border border-white/10 rounded-xl px-6 py-3 text-center">
-                <div class="font-display font-extrabold text-3xl bg-gradient-to-r from-energy-red via-energy-yellow to-energy-green bg-clip-text text-transparent leading-none">63<span class="text-base text-white/30">/100</span></div>
+                <div class="font-display font-extrabold text-3xl leading-none" style="color:#92D050">62<span class="text-base text-white/30">/100</span></div>
                 <div class="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
-                  <span data-i18n-lang="fr">Énergie collective</span>
-                  <span data-i18n-lang="en">Collective energy</span>
+                  <span data-i18n-lang="fr">Énergie collective (moyenne)</span>
+                  <span data-i18n-lang="en">Collective energy (average)</span>
                 </div>
               </div>
             </div>
           </div>
           <!-- Texte 1/3 -->
           <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/5">
-            <div class="text-2xl mb-2">👥</div>
             <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
               <span data-i18n-lang="fr">Mon collectif</span>
               <span data-i18n-lang="en">My collective</span>
@@ -185,7 +190,6 @@ const parcours = [
         <div class="grid md:grid-cols-3 gap-0">
           <!-- Texte 1/3 -->
           <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center md:order-1 order-2 border-t md:border-t-0 md:border-r border-white/5">
-            <div class="text-2xl mb-2">🎯</div>
             <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
               <span data-i18n-lang="fr">Mes leaders</span>
               <span data-i18n-lang="en">My leaders</span>
@@ -210,37 +214,40 @@ const parcours = [
               <span data-i18n-lang="fr">Reconstruction illustrative — données fictives</span>
               <span data-i18n-lang="en">Illustrative reconstruction — fictional data</span>
             </p>
-            <!-- Score central -->
+            <!-- Score central — palier 51-60 = ENGAGEANT (tma_profiles_helper.rb) -->
             <div class="text-center mb-5">
               <div class="text-[10px] uppercase tracking-widest text-energy-green/70 font-semibold mb-1">
                 <span data-i18n-lang="fr">Leadership global</span>
                 <span data-i18n-lang="en">Global leadership</span>
               </div>
-              <div class="font-display font-extrabold text-5xl text-white leading-none">55<span class="text-energy-green/80">.6</span><span class="text-base text-white/30 ml-1">/100</span></div>
-              <div class="inline-block mt-2 bg-energy-yellow/20 border border-energy-yellow/40 text-energy-yellow text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                Engageant
+              <div class="font-display font-extrabold text-5xl leading-none" style="color:#FFCC99">55<span style="color:#FFCC99cc">.6</span><span class="text-base text-white/30 ml-1">/100</span></div>
+              <div class="inline-block mt-2 border text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style="background:#FFCC9920;border-color:#FFCC9966;color:#FFCC99">
+                ENGAGEANT
               </div>
             </div>
-            <!-- Mini-batteries (dimensions abstraites, pas les 6 énergies) -->
+            <!-- Mini-batteries — 6 dimensions, somme 334 → moyenne 55.7 ≈ 55.6 -->
             <div class="grid grid-cols-2 gap-3 lg:gap-4">
               {[
-                { labelFr: 'Endurance', labelEn: 'Endurance', score: 36, color: '#EAB308' },
-                { labelFr: 'M\'affirmer', labelEn: 'Assertiveness', score: 63, color: '#22C55E' },
-                { labelFr: 'Souplesse', labelEn: 'Flexibility', score: 63, color: '#22C55E' },
-                { labelFr: 'Adaptabilité', labelEn: 'Adaptability', score: 67, color: '#22C55E' },
-                { labelFr: 'Délégation', labelEn: 'Delegation', score: 44, color: '#C9A56E' },
-                { labelFr: 'Négociation', labelEn: 'Negotiation', score: 70, color: '#166534' },
-              ].map(d => (
+                { labelFr: 'Endurance', labelEn: 'Endurance', score: 36 },         // 21-40 jaune
+                { labelFr: 'M\'affirmer', labelEn: 'Assertiveness', score: 56 },   // 41-60 beige
+                { labelFr: 'Souplesse', labelEn: 'Flexibility', score: 51 },       // 41-60 beige
+                { labelFr: 'Adaptabilité', labelEn: 'Adaptability', score: 65 },   // 61-80 vert clair
+                { labelFr: 'Délégation', labelEn: 'Delegation', score: 44 },       // 41-60 beige
+                { labelFr: 'Négociation', labelEn: 'Negotiation', score: 82 },     // 81-100 vert foncé
+              ].map(d => {
+                const c = d.score <= 20 ? '#C00000' : d.score <= 40 ? '#FCB118' : d.score <= 60 ? '#FFCC99' : d.score <= 80 ? '#92D050' : '#00B050';
+                return (
                 <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-2.5">
                   <div class="flex items-baseline justify-between mb-1.5">
                     <span class="text-white/80 text-xs font-semibold uppercase tracking-wide"><span data-i18n-lang="fr">{d.labelFr}<span class="plus-accent text-[10px]">+</span></span><span data-i18n-lang="en">{d.labelEn}<span class="plus-accent text-[10px]">+</span></span></span>
-                    <span class="text-sm font-display font-bold" style={`color:${d.color}`}>{d.score}<span class="text-[9px] text-white/30">%</span></span>
+                    <span class="text-sm font-display font-bold" style={`color:${c}`}>{d.score}<span class="text-[9px] text-white/30">%</span></span>
                   </div>
                   <div class="h-1 bg-white/10 rounded-full overflow-hidden">
-                    <div class="h-full rounded-full" style={`width:${d.score}%;background:${d.color}`}></div>
+                    <div class="h-full rounded-full" style={`width:${d.score}%;background:${c}`}></div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -249,62 +256,71 @@ const parcours = [
       <!-- ─── LIGNE 3 : Moi (visuel 2/3 gauche · texte 1/3 droite) — chat + avatar ─── -->
       <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all">
         <div class="grid md:grid-cols-3 gap-0">
-          <!-- Visuel : simili-chat (gauche) + avatar crop (droite) -->
+          <!-- Visuel : simili-chat (gauche) + avatar carré centré (droite) -->
           <div class="md:col-span-2 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 relative overflow-hidden">
             <p class="absolute top-3 left-4 text-[10px] uppercase tracking-widest text-white/30 font-semibold z-10">
               <span data-i18n-lang="fr">Mode simulation — Méntôr EC²R</span>
               <span data-i18n-lang="en">Simulation mode — Méntôr EC²R</span>
             </p>
-            <div class="grid grid-cols-2 h-full min-h-[340px]">
-              <!-- Simili-chat avec lignes (pas de texte réel) -->
-              <div class="p-6 pt-12 flex flex-col justify-end gap-3">
-                <!-- Bulle mentor (gauche) -->
+            <div class="grid grid-cols-2 h-full min-h-[420px]">
+              <!-- Simili-chat — bulles 2/3 largeur, chevauchement, traits 3/2/2/1 -->
+              <div class="px-4 pt-12 pb-16 flex flex-col justify-end gap-2.5 relative">
+                <!-- Bulle 1 mentor (gauche, 3 traits, déborde à droite) -->
                 <div class="flex justify-start">
-                  <div class="bg-white/[0.06] rounded-lg rounded-bl-sm px-3 py-2.5 max-w-[90%] space-y-1.5">
-                    <div class="h-1.5 bg-white/15 rounded-full" style="width:85%"></div>
-                    <div class="h-1.5 bg-white/15 rounded-full" style="width:70%"></div>
-                    <div class="h-1.5 bg-white/15 rounded-full" style="width:55%"></div>
+                  <div class="bg-white/[0.07] border border-white/10 rounded-xl rounded-bl-sm px-4 py-3 space-y-2" style="width:88%; margin-right:-12%">
+                    <div class="h-2 bg-white/20 rounded-full" style="width:92%"></div>
+                    <div class="h-2 bg-white/20 rounded-full" style="width:78%"></div>
+                    <div class="h-2 bg-white/20 rounded-full" style="width:55%"></div>
                   </div>
                 </div>
-                <!-- Bulle user (droite) -->
+                <!-- Bulle 2 user (droite, 2 traits, déborde à gauche) -->
                 <div class="flex justify-end">
-                  <div class="bg-energy-green/15 rounded-lg rounded-br-sm px-3 py-2.5 max-w-[80%] space-y-1.5">
-                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:75%"></div>
-                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:50%"></div>
+                  <div class="bg-energy-green/15 border border-energy-green/25 rounded-xl rounded-br-sm px-4 py-3 space-y-2" style="width:85%; margin-left:-15%">
+                    <div class="h-2 bg-energy-green/45 rounded-full" style="width:88%"></div>
+                    <div class="h-2 bg-energy-green/45 rounded-full" style="width:62%"></div>
                   </div>
                 </div>
-                <!-- Bulle mentor (gauche) -->
+                <!-- Bulle 3 mentor (gauche, 2 traits, déborde à droite) -->
                 <div class="flex justify-start">
-                  <div class="bg-white/[0.06] rounded-lg rounded-bl-sm px-3 py-2.5 max-w-[90%] space-y-1.5">
-                    <div class="h-1.5 bg-white/15 rounded-full" style="width:90%"></div>
-                    <div class="h-1.5 bg-white/15 rounded-full" style="width:65%"></div>
+                  <div class="bg-white/[0.07] border border-white/10 rounded-xl rounded-bl-sm px-4 py-3 space-y-2" style="width:80%; margin-right:-10%">
+                    <div class="h-2 bg-white/20 rounded-full" style="width:80%"></div>
+                    <div class="h-2 bg-white/20 rounded-full" style="width:65%"></div>
                   </div>
                 </div>
-                <!-- Bulle user (droite) -->
+                <!-- Bulle 4 user (droite, 1 trait, déborde à gauche) -->
                 <div class="flex justify-end">
-                  <div class="bg-energy-green/15 rounded-lg rounded-br-sm px-3 py-2.5 max-w-[70%] space-y-1.5">
-                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:60%"></div>
+                  <div class="bg-energy-green/15 border border-energy-green/25 rounded-xl rounded-br-sm px-4 py-3" style="width:75%; margin-left:-12%">
+                    <div class="h-2 bg-energy-green/45 rounded-full" style="width:70%"></div>
                   </div>
+                </div>
+                <!-- 3 badges modes en bas -->
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  {[
+                    { fr: 'Texte', en: 'Text' },
+                    { fr: 'Audio', en: 'Audio' },
+                    { fr: 'Simulation', en: 'Simulation' },
+                  ].map(b => (
+                    <div class="flex items-center gap-1.5 bg-energy-green/15 backdrop-blur-sm border border-energy-green/30 rounded-full px-2.5 py-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-energy-green"></span>
+                      <span class="text-[10px] uppercase tracking-wider text-energy-green font-semibold">
+                        <span data-i18n-lang="fr">{b.fr}</span>
+                        <span data-i18n-lang="en">{b.en}</span>
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <!-- Avatar -->
-              <div class="relative bg-navy-950 overflow-hidden">
-                <img src="/images/app-preview/mentor-avatar-crop.webp" alt="Avatar Méntôr EC²R"
-                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-950 to-transparent h-20"></div>
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-energy-green/20 backdrop-blur-sm border border-energy-green/40 rounded-full px-3 py-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-energy-green animate-pulse"></span>
-                  <span class="text-[10px] uppercase tracking-wider text-energy-green font-semibold">
-                    <span data-i18n-lang="fr">À l'écoute</span>
-                    <span data-i18n-lang="en">Listening</span>
-                  </span>
+              <!-- Avatar centré dans son carré -->
+              <div class="relative bg-navy-950 flex items-center justify-center overflow-hidden">
+                <div class="aspect-square w-full max-w-[420px] relative">
+                  <img src="/images/app-preview/mentor-avatar-crop.webp" alt="Avatar Méntôr EC²R"
+                       class="absolute inset-0 w-full h-full object-cover object-center rounded-lg" loading="lazy" />
                 </div>
               </div>
             </div>
           </div>
           <!-- Texte 1/3 -->
           <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/5">
-            <div class="text-2xl mb-2">🚀</div>
             <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
               <span data-i18n-lang="fr">Moi</span>
               <span data-i18n-lang="en">Me</span>
