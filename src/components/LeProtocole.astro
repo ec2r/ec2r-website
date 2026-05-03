@@ -16,22 +16,37 @@ const steps = [
 
 const parcours = [
   {
-    titleFr: 'Mon collectif', titleEn: 'My collective',
+    titleFr: 'Mon collectif',
+    titleEn: 'My collective',
     icon: '👥',
-    itemsFr: ['Baromètre énergétique collectif', 'Diagnostic de mobilisation', 'Restitution en séminaire'],
-    itemsEn: ['Collective energy barometer', 'Mobilization diagnosis', 'Seminar restitution'],
+    headlineFr: 'Baromètre énergétique EC²R',
+    headlineEn: 'EC²R energy barometer',
+    subFr: 'Diagnostic et levier+ immédiat pour mobiliser+ mes équipes',
+    subEn: 'Diagnosis and immediate+ lever to mobilize+ my teams',
+    itemsFr: ['Baromètre énergétique collectif', 'Restitution+ embarquement', 'Temps fort de restitution et d\'embarquement'],
+    itemsEn: ['Collective energy barometer', 'Restitution+ onboarding', 'Strong restitution and onboarding moment'],
   },
   {
-    titleFr: 'Évaluer mes leaders', titleEn: 'Assess my leaders',
+    titleFr: 'Mes leaders',
+    titleEn: 'My leaders',
     icon: '🎯',
-    itemsFr: ['Profil de leadership', 'Formation et accompagnement sur mesure', 'Mentoria EC²R'],
-    itemsEn: ['Leadership profile', 'Custom training & support', 'EC²R Mentoria'],
+    headlineFr: 'Accompagner mes leaders',
+    headlineEn: 'Support my leaders',
+    subFr: 'Profil de leadership EC²R — faire ma part pour mobiliser ou remobiliser mes équipes, sans épuiser mes batteries',
+    subEn: 'EC²R leadership profile — do my part to mobilize or remobilize my teams without draining my batteries',
+    itemsFr: ['Profiling de leadership', 'Formation+ accompagnement', 'Mentoring sur situations'],
+    itemsEn: ['Leadership profiling', 'Training+ support', 'Situation-based mentoring'],
   },
   {
-    titleFr: 'Expérimenter / Avancer seul', titleEn: 'Experiment / Go solo',
+    titleFr: 'Moi',
+    titleEn: 'Me',
     icon: '🚀',
-    itemsFr: ['Je me forme', 'Mentor IA EC²R'],
-    itemsEn: ['Training', 'EC²R AI Mentor'],
+    headlineFr: 'Mentor IA EC²R sur mes situations terrain',
+    headlineEn: 'EC²R AI Mentor on my field situations',
+    subFr: 'Expérimenter, avancer en autonomie',
+    subEn: 'Experiment, advance autonomously',
+    itemsFr: ['Je me forme sur la Méthode', 'Je m\'entraîne sur mes situations métiers', 'Mentor IA EC²R'],
+    itemsEn: ['I learn the Method', 'I train on my work situations', 'EC²R AI Mentor'],
     badge: null,
   },
 ];
@@ -45,20 +60,20 @@ const parcours = [
     <!-- Titre animé -->
     <div class="text-center mb-10">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white inline-block mb-1">
-        <span data-i18n-lang="fr">Plateforme de leadership</span>
-        <span data-i18n-lang="en">Leadership platform</span>
+        <span data-i18n-lang="fr">Plateforme d'activation du leadership</span>
+        <span data-i18n-lang="en">Leadership activation platform</span>
       </h2>
       <p class="text-lg energy-gradient-text font-display font-bold mb-3">
-        <span data-i18n-lang="fr">Protocole augmenté</span>
-        <span data-i18n-lang="en">Augmented protocol</span>
+        <span data-i18n-lang="fr">individuel et collectif</span>
+        <span data-i18n-lang="en">individual and collective</span>
       </p>
-      <p class="text-white/40 text-sm max-w-2xl mx-auto">
-        <span data-i18n-lang="fr">Du levier au comportement, du constat au passage à l'acte. Plateforme d'activation du leadership collectif.</span>
-        <span data-i18n-lang="en">From lever to behaviour, from assessment to action. Collective leadership activation platform.</span>
+      <p class="text-white/60 text-base max-w-2xl mx-auto font-medium">
+        <span data-i18n-lang="fr">Un IRM<span class="plus-accent">+</span> organisationnel : diagnostic<span class="plus-accent">+</span> chirurgical, passage<span class="plus-accent">+</span> rapide à l'acte, mesure<span class="plus-accent">+</span> immédiate d'impact.</span>
+        <span data-i18n-lang="en">An organizational MRI<span class="plus-accent">+</span>: surgical<span class="plus-accent">+</span> diagnosis, fast<span class="plus-accent">+</span> transition to action, immediate<span class="plus-accent">+</span> impact measurement.</span>
       </p>
       <p class="text-white/25 text-xs mt-2 max-w-2xl mx-auto italic">
-        <span data-i18n-lang="fr">Ni seulement un cabinet de conseil, ni seulement un organisme de formation, ni seulement un outil RH : un IRM<span class="plus-accent">+</span> organisationnel — diagnostic chirurgical, passage à l'acte, mesure d'impact.</span>
-        <span data-i18n-lang="en">Not just a consulting firm, not just a training organization, not just an HR tool: an organizational MRI<span class="plus-accent">+</span> — surgical diagnosis, action, impact measurement.</span>
+        <span data-i18n-lang="fr">Ni seulement un cabinet de conseil, ni seulement un organisme de formation, ni seulement un outil RH.</span>
+        <span data-i18n-lang="en">Not just a consulting firm, not just a training organization, not just an HR tool.</span>
       </p>
     </div>
 
@@ -87,22 +102,24 @@ const parcours = [
       </div>
     </div>
 
-    <!-- 3 parcours -->
+    <!-- 3 parcours — cartes Mon collectif / Mes leaders / Moi -->
     <div class="grid md:grid-cols-3 gap-4 mb-12">
       {parcours.map(p => (
         <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 hover:border-white/15 transition-all relative">
-          {p.badge && (
-            <span class="absolute top-3 right-3 text-[10px] bg-energy-green/10 text-energy-green border border-energy-green/20 rounded-full px-2 py-0.5 font-semibold">
-              <span data-i18n-lang="fr">{p.badge.fr}</span>
-              <span data-i18n-lang="en">{p.badge.en}</span>
-            </span>
-          )}
           <div class="text-2xl mb-3">{p.icon}</div>
-          <h3 class="text-white font-display font-bold text-sm mb-3">
+          <p class="text-energy-green/70 text-[10px] uppercase tracking-wider font-semibold mb-1">
             <span data-i18n-lang="fr">{p.titleFr}</span>
             <span data-i18n-lang="en">{p.titleEn}</span>
+          </p>
+          <h3 class="text-white font-display font-bold text-base mb-2 leading-tight">
+            <span data-i18n-lang="fr">{p.headlineFr}</span>
+            <span data-i18n-lang="en">{p.headlineEn}</span>
           </h3>
-          <ul class="space-y-1.5">
+          <p class="text-white/60 text-xs leading-relaxed mb-3 italic">
+            <span data-i18n-lang="fr">{p.subFr}</span>
+            <span data-i18n-lang="en">{p.subEn}</span>
+          </p>
+          <ul class="space-y-1.5 border-t border-white/5 pt-3">
             {p.itemsFr.map((item, i) => (
               <li class="text-white/40 text-xs flex items-start gap-2">
                 <span class="text-energy-green/60 mt-0.5">›</span>
@@ -123,22 +140,20 @@ const parcours = [
         <span data-i18n-lang="fr">Ce que l'app permet de réussir : Mesurer, piloter, suivre, accompagner — en individuel et en collectif.</span>
         <span data-i18n-lang="en">What the app enables: Measure, steer, track, support — individually and collectively.</span>
       </p>
-      <div class="flex flex-wrap justify-center gap-3">
+      <div class="flex flex-col items-center gap-2">
         <a href="https://app.methode-ec2r.com" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 px-5 py-2.5 bg-energy-green/10 border border-energy-green/20 
-                  text-energy-green text-sm font-semibold rounded-lg hover:bg-energy-green/20 transition-all">
+           class="inline-flex items-center gap-2 px-6 py-3 bg-energy-green/10 border border-energy-green/30
+                  text-energy-green text-base font-semibold rounded-lg hover:bg-energy-green/20 hover:border-energy-green/50 transition-all">
           <span data-i18n-lang="fr">Accéder à la plateforme</span>
           <span data-i18n-lang="en">Access the platform</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
-        <a href="https://app.methode-ec2r.com" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 
-                  text-white/50 text-xs font-medium rounded-lg hover:bg-white/10 hover:border-white/20 hover:text-white/70 transition-all">
-          <span data-i18n-lang="fr">Mon espace praticien</span>
-          <span data-i18n-lang="en">Practitioner space</span>
-        </a>
+        <p class="text-white/40 text-xs">
+          <span data-i18n-lang="fr">mon espace praticien / partenaire</span>
+          <span data-i18n-lang="en">my practitioner / partner space</span>
+        </p>
       </div>
     </div>
 

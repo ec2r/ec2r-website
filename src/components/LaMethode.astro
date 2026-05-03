@@ -7,11 +7,11 @@ interface Props { fr: any; en: any; }
 const { fr, en } = Astro.props;
 
 const diffPoints = [
-  { icon: '⚡', labelFr: '6 énergies + collectives', labelEn: '6 collective energies+', descFr: '18 batteries pour se charger au quotidien', descEn: '18 batteries to charge daily' },
-  { icon: '🎯', labelFr: '9 niveaux pour se repérer', labelEn: '9 levels to find your bearings', descFr: 'Du diagnostic chirurgical au micro-comportement', descEn: 'From surgical diagnosis to micro-behaviour' },
+  { icon: '⚡', labelFr: '6 énergies+ collectives', labelEn: '6 collective energies+', descFr: '18 batteries pour se recharger au quotidien', descEn: '18 batteries to recharge daily' },
+  { icon: '🎯', labelFr: '9 niveaux d\'énergie pour se repérer', labelEn: '9 energy levels to find your bearings', descFr: 'Du diagnostic chirurgical au micro-comportement', descEn: 'From surgical diagnosis to micro-behaviour' },
   { icon: '👤', labelFr: '24 comportements de leadership', labelEn: '24 leadership behaviours', descFr: 'Fiches booster comportementales', descEn: 'Behavioural booster cards' },
-  { icon: '🔄', labelFr: 'Pont diagnostic → action décisive', labelEn: 'Diagnosis → decisive action bridge', descFr: 'Boucle complète du constat au comportement en situation', descEn: 'Full loop from assessment to behaviour in context' },
-  { icon: '🌱', labelFr: 'Méthode vivante auto-entretenue', labelEn: 'Self-sustaining living method', descFr: 'Un système qui évolue avec votre collectif', descEn: 'A system that evolves with your collective' },
+  { icon: '🔄', labelFr: 'Pont diagnostic → action → comportement décisif', labelEn: 'Diagnosis → action → decisive behaviour bridge', descFr: 'Boucle complète du constat au comportement en situation', descEn: 'Full loop from assessment to behaviour in context' },
+  { icon: '📊', labelFr: 'Mesure d\'impact en temps réel', labelEn: 'Real-time impact measurement', descFr: 'Plateforme de leadership qui évolue avec votre collectif', descEn: 'Leadership platform that evolves with your collective' },
 ];
 
 const circuitItems = [
@@ -39,17 +39,29 @@ const circuitItems = [
       <!-- 3 phrases de différenciation -->
       <div class="space-y-3 max-w-3xl mx-auto mt-6">
         <p class="text-base md:text-lg text-white/70 leading-relaxed">
-          <span class="text-red-500 font-bold">MOINS</span>
-          <span data-i18n-lang="fr"> épuiser votre énergie à vouloir absolument motiver l'individu à changer</span>
-          <span data-i18n-lang="en"> exhaust your energy trying to absolutely motivate the individual to change</span>
+          <span class="text-red-500 font-bold">ARRÊTEZ</span>
+          <span data-i18n-lang="fr"> d'épuiser votre énergie à vouloir absolument <strong>motiver</strong> tous les <strong>individus</strong> à changer</span>
+          <span data-i18n-lang="en"> exhausting your energy trying to absolutely <strong>motivate</strong> all <strong>individuals</strong> to change</span>
         </p>
         <p class="text-base md:text-lg text-white/70 leading-relaxed">
-          <span data-i18n-lang="fr">INSTALLER<span class="plus-accent">+</span> les conditions durablement favorables pour mobiliser le professionnel</span>
-          <span data-i18n-lang="en">INSTALL<span class="plus-accent">+</span> sustainably favourable conditions to mobilize the professional</span>
+          <span data-i18n-lang="fr">INSTALLER<span class="plus-accent">+</span> les conditions durablement favorables pour mobiliser les <strong>professionnels</strong></span>
+          <span data-i18n-lang="en">INSTALL<span class="plus-accent">+</span> sustainably favourable conditions to mobilize the <strong>professionals</strong></span>
         </p>
         <p class="text-base md:text-lg text-white/70 leading-relaxed">
-          <span data-i18n-lang="fr">ENGAGER<span class="plus-accent">+</span> le professionnel sur ses situations au plus près de ses réalités et gestes métiers</span>
-          <span data-i18n-lang="en">ENGAGE<span class="plus-accent">+</span> the professional in their situations as close as possible to their realities and professional actions</span>
+          <span data-i18n-lang="fr">ENGAGER<span class="plus-accent">+</span> les professionnels sur leur situation, réalité et comportement métier décisif</span>
+          <span data-i18n-lang="en">ENGAGE<span class="plus-accent">+</span> professionals on their situation, reality and decisive professional behaviour</span>
+        </p>
+      </div>
+
+      <!-- Méthode vivante auto-entretenue + plateforme -->
+      <div class="mt-8 max-w-3xl mx-auto space-y-2 text-sm text-white/50 italic">
+        <p>
+          <span data-i18n-lang="fr"><strong class="text-energy-green not-italic">Méthode vivante auto-entretenue</strong> — une plateforme de leadership qui évolue avec votre collectif.</span>
+          <span data-i18n-lang="en"><strong class="text-energy-green not-italic">Self-sustaining living method</strong> — a leadership platform that evolves with your collective.</span>
+        </p>
+        <p>
+          <span data-i18n-lang="fr">Mesure d'impact en temps réel — du diagnostic chirurgical au micro-comportement de leadership.</span>
+          <span data-i18n-lang="en">Real-time impact measurement — from surgical diagnosis to leadership micro-behaviour.</span>
         </p>
       </div>
     </div>
@@ -78,7 +90,7 @@ const circuitItems = [
         <span data-i18n-lang="en">Your organizational MRI<span class="plus-accent">+</span></span>
       </h3>
       <p class="text-white/50 text-sm leading-relaxed max-w-3xl">
-        <span data-i18n-lang="fr">Votre lecture en temps réel de votre système vivant de mobilisation. La dynamique réelle de votre collectif, ses tensions, ses leviers, ses zones de désengagement, ses comportements décisifs — au plus près du quotidien métier. Pour co-construire la puissance de la méthode, pas l'inverse.</span>
+        <span data-i18n-lang="fr">Votre lecture en temps réel de votre système vivant de mobilisation. La dynamique réelle de votre collectif, ses tensions, ses leviers, ses zones de désengagement, ses comportements décisifs — au plus près du quotidien métier. Pour co-construire la puissance de la Méthode, pas l'inverse.</span>
         <span data-i18n-lang="en">Your real-time reading of your living mobilization system. The real dynamics of your collective — its tensions, levers, disengagement zones, decisive behaviours — as close as possible to daily work reality.</span>
       </p>
     </div>

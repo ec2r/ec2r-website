@@ -15,11 +15,10 @@ const fr = translations.fr;
 const en = translations.en;
 
 const universes = [
-  { id: 'vous-le-vivez', labelFr: 'Vous le vivez', labelEn: 'You live it' },
-  { id: 'la-methode', labelFr: 'La méthode', labelEn: 'The method' },
+  { id: 'la-methode', labelFr: 'Méthode', labelEn: 'Method' },
   { id: 'ils-lont-vecu', labelFr: 'Ils l\'ont vécu', labelEn: 'They lived it' },
-  { id: 'le-protocole', labelFr: 'Le protocole', labelEn: 'The protocol' },
-  { id: 'les-praticiens', labelFr: 'Les praticiens', labelEn: 'Practitioners' },
+  { id: 'le-protocole', labelFr: 'Plateforme', labelEn: 'Platform' },
+  { id: 'les-praticiens', labelFr: 'La team', labelEn: 'The team' },
   { id: 'parlons-en', labelFr: 'Parlons-en !', labelEn: 'Let\'s talk!' },
 ];
 ---
@@ -27,20 +26,8 @@ const universes = [
 <Layout>
   <TopNav universes={universes} fr={fr} en={en} />
 
-  <!-- Carrousel horizontal — 6 univers -->
+  <!-- Carrousel horizontal — 5 univers (Méthode = hero/intro fusionné) -->
   <main id="universe-carousel" class="universe-carousel">
-    <section id="vous-le-vivez" class="universe-panel">
-      <!-- Bouton "Univers suivant" -->
-      <button class="universe-next-btn" data-next-universe="la-methode">
-        <span data-i18n-lang="fr">Avancer</span>
-        <span data-i18n-lang="en">Next</span>
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </button>
-      <div class="universe-scroll">
-        <VousLeVivez fr={fr} en={en} />
-      </div>
-    </section>
-
     <section id="la-methode" class="universe-panel">
       <button class="universe-next-btn" data-next-universe="ils-lont-vecu">
         <span data-i18n-lang="fr">Avancer</span>
@@ -48,6 +35,7 @@ const universes = [
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </button>
       <div class="universe-scroll">
+        <VousLeVivez fr={fr} en={en} />
         <LaMethode fr={fr} en={en} />
       </div>
     </section>

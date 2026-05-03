@@ -12,37 +12,17 @@
 interface Props { fr: any; en: any; }
 const { fr, en } = Astro.props;
 
-// Toute l'équipe dans une seule liste — layout géré par la grille CSS
+// Toute l'équipe — Stéphane même taille que les autres (req fNizKtDs)
 const team = [
   {
     name: 'Stéphane', namePlus: 'FLAHAUT',
     initials: 'SF', photo: '/photos/equipe/flahaut.webp',
     linkedin: 'https://www.linkedin.com/in/stephane-flahaut',
-    roleFr: 'Fondateur de la méthode EC²R et du protocole augmenté',
-    roleEn: 'Founder of the EC²R method and augmented protocol',
-    bioFr: "Porte et incarne la méthode EC²R depuis plus de 5 ans. Accompagne des collectifs vers la performance depuis plus de 20 ans. Assure l'amélioration continue de la méthode — garant, avec l'IA, de son intégrité et de son développement.",
-    bioEn: "Carries and embodies the EC²R method for over 5 years. Supports collectives towards performance for over 20 years. Ensures continuous improvement — guardian, with AI, of the method's integrity and development.",
-    size: 'hero', photoPos: 'center 20%',
-  },
-  {
-    name: 'Luc', namePlus: 'LÉTOFFÉ',
-    initials: 'LL', photo: '/photos/equipe/letoffe.webp',
-    linkedin: '',
-    roleFr: 'Genèse technique de la méthode EC²R et du protocole augmenté',
-    roleEn: 'Technical genesis of the EC²R method and augmented protocol',
-    bioFr: "Passe de l'idéation à la situation. Co-construit la promesse de valeur avec les experts métiers, traduit en produit, fait passer de l'idée à l'acte — en direct, avec vous.",
-    bioEn: "Moves from ideation to situation. Co-builds the value promise with business experts, translates into product, moves from idea to action — directly, with you.",
-    size: 'regular', photoPos: 'center 50%',
-  },
-  {
-    name: 'Marie-Emilia', namePlus: 'GARCIA',
-    initials: 'MEG', photo: '/photos/equipe/garcia.webp',
-    linkedin: '',
-    roleFr: 'Facilitatrice EC²R — Logistique, team, déploiement',
-    roleEn: 'EC²R Facilitator — Logistics, team, deployment',
-    bioFr: "Facilite le déploiement des sessions EC²R, coordonne la logistique team. Formée aux débriefs de profils individuels.",
-    bioEn: "Facilitates EC²R session deployment, coordinates team logistics. Trained in individual profile debriefs.",
-    size: 'regular', photoPos: 'center 15%',
+    roleFr: 'Fondateur de la Méthode EC²R et du protocole augmenté',
+    roleEn: 'Founder of the EC²R Method and augmented protocol',
+    bioFr: "Porte et incarne la Méthode EC²R depuis l'origine. Accompagne des collectifs en France et à l'étranger vers la performance depuis plus de 20 ans. Assure l'amélioration continue de la Méthode — garant, avec l'IA, de son intégrité, de sa diffusion et de son développement.",
+    bioEn: "Carries and embodies the EC²R Method since its origin. Supports collectives in France and abroad towards performance for over 20 years. Ensures continuous improvement of the Method — guardian, with AI, of its integrity, diffusion and development.",
+    size: 'regular', photoPos: 'center 20%',
   },
   {
     name: 'Jean-François', namePlus: 'MORIN',
@@ -50,9 +30,19 @@ const team = [
     linkedin: '',
     roleFr: 'Cofondateur EC²R Conseil',
     roleEn: 'Co-founder EC²R Conseil',
-    bioFr: "Entraîneur d'entraîneurs et de sportifs professionnels, de champions. Ancrage terrain et transmission. Associé depuis les origines de la méthode EC²R.",
-    bioEn: "Coaches' coach and trainer of professional athletes and champions. Field grounding and transmission. Partner since the origins of the EC²R method.",
+    bioFr: "Entraîneur d'entraîneurs et de sportifs professionnels, de champions. Ancrage terrain et transmission. Associé depuis les origines d'EC²R Conseil.",
+    bioEn: "Coaches' coach and trainer of professional athletes and champions. Field grounding and transmission. Partner since EC²R Conseil's origins.",
     size: 'regular', photoPos: 'center top',
+  },
+  {
+    name: 'Jean', namePlus: 'ZUCCARELLI',
+    initials: 'JZ', photo: '/photos/equipe/zuccarelli.webp',
+    linkedin: 'https://www.linkedin.com/in/jean-zuccarelli-0807796/',
+    roleFr: 'Associé EC²R Conseil',
+    roleEn: 'EC²R Conseil Partner',
+    bioFr: "Expert en accompagnement des organisations et en transformation. Associé EC²R Conseil — apporte 30 ans d'expérience dans le pilotage de la performance collective et le coaching de dirigeants.",
+    bioEn: "Expert in organisational support and transformation. EC²R Conseil partner — brings 30 years of experience in collective performance steering and executive coaching.",
+    size: 'regular', photoPos: 'center 25%',
   },
   {
     name: 'Arnaud', namePlus: 'BOCHURBERG',
@@ -65,14 +55,24 @@ const team = [
     size: 'regular', photoPos: 'center 20%',
   },
   {
-    name: 'Jean', namePlus: 'ZUCCARELLI',
-    initials: 'JZ', photo: '/photos/equipe/zuccarelli.webp',
-    linkedin: 'https://www.linkedin.com/in/jean-zuccarelli-0807796/',
-    roleFr: 'Associé EC²R Conseil — Praticien EC²R',
-    roleEn: 'EC²R Conseil Partner — EC²R Practitioner',
-    bioFr: "Accompagne les organisations dans la mise en acte de la méthode.",
-    bioEn: "Supports organisations in implementing the method.",
-    size: 'regular', photoPos: 'center 25%',
+    name: 'Marie-Emilia', namePlus: 'GARCIA',
+    initials: 'MEG', photo: '/photos/equipe/garcia.webp',
+    linkedin: '',
+    roleFr: 'Psychologue — Débriefings & profils individuels',
+    roleEn: 'Psychologist — Debriefs & individual profiles',
+    bioFr: "Psychologue. Débriefings de profils individuels EC²R. Accompagne le déploiement des sessions et la traduction des profils en quotidien métier.",
+    bioEn: "Psychologist. EC²R individual profile debriefs. Supports session deployment and translation of profiles into daily work reality.",
+    size: 'regular', photoPos: 'center 15%',
+  },
+  {
+    name: 'Luc', namePlus: 'LÉTOFFÉ',
+    initials: 'LL', photo: '/photos/equipe/letoffe.webp',
+    linkedin: '',
+    roleFr: 'Genèse technique de la Méthode EC²R',
+    roleEn: 'Technical genesis of the EC²R Method',
+    bioFr: "De l'idée à l'acte, en direct, avec vous.",
+    bioEn: "From idea to action, live, with you.",
+    size: 'regular', photoPos: 'center 50%',
   },
 ];
 
@@ -91,20 +91,20 @@ const seminairePlaceholders = [
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-12">
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 1. TITRE : PRATICIENS + PRESCRIPTEURS -->
+    <!-- 1. TITRE : LA TEAM AUGMENTÉE -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     <div>
-      <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-3">
-        <span data-i18n-lang="fr">Praticiens certifiés qui vous aident à passer à l'acte</span>
-        <span data-i18n-lang="en">Certified practitioners who help you take action</span>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-2">
+        <span data-i18n-lang="fr">La team augmentée</span>
+        <span data-i18n-lang="en">The augmented team</span>
       </h2>
-      <p class="text-white/40 text-sm mb-3 italic">
-        <span data-i18n-lang="fr">Pas des consultants interchangeables, pas des associés ou des seniors et ensuite des juniors.</span>
-        <span data-i18n-lang="en">Not interchangeable consultants, not partners or seniors then juniors.</span>
+      <p class="text-energy-green text-base font-semibold mb-4">
+        <span data-i18n-lang="fr">Une <strong class="text-white">Méthode</strong> à votre service, pas l'inverse.</span>
+        <span data-i18n-lang="en">A <strong class="text-white">Method</strong> at your service, not the other way around.</span>
       </p>
       <p class="text-white/50 text-sm leading-relaxed max-w-3xl">
-        <span data-i18n-lang="fr">Des professionnels et des humains qui ont expérimenté, qui croient à la différenciation de la méthode, qui savent dans chaque étape comment vous la faire vivre et traduire dans votre quotidien. La méthode à votre service, pas l'inverse.</span>
-        <span data-i18n-lang="en">Professionals and humans who have experienced it, who believe in the method's differentiation, who know at every stage how to bring it to life and translate it into your daily reality. The method at your service, not the other way around.</span>
+        <span data-i18n-lang="fr">Pas des consultants interchangeables, pas une querelle d'associés ou de seniors qui vendent des missions et ensuite des juniors. Des professionnels et des humains qui ont expérimenté la différenciation de la <strong>Méthode</strong>, qui savent à chaque étape comment vous aider à la traduire et la faire vivre dans votre quotidien professionnel.</span>
+        <span data-i18n-lang="en">Not interchangeable consultants, not a dispute between partners or seniors selling missions to juniors. Professionals and humans who have experienced the <strong>Method</strong>'s differentiation, who at each step know how to help you translate and bring it to life in your daily professional reality.</span>
       </p>
     </div>
 
@@ -205,37 +205,53 @@ const seminairePlaceholders = [
     </div>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 4. PRESCRIPTEURS : Ils l'ont vécu ou ils veulent nous recommander -->
+    <!-- 4. PRATICIENS & PARTENAIRES (req hAKlAZnu — pas "prescripteurs") -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     <div>
-      <h3 class="text-lg font-display font-bold text-white/70 mb-4 uppercase tracking-wider text-xs">
-        <span data-i18n-lang="fr">Prescripteurs</span>
-        <span data-i18n-lang="en">Prescribers</span>
+      <h3 class="text-2xl font-display font-bold text-white mb-2">
+        <span data-i18n-lang="fr">Praticiens &amp; Partenaires</span>
+        <span data-i18n-lang="en">Practitioners &amp; Partners</span>
       </h3>
-      <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 text-center">
-        <p class="text-white/50 text-sm leading-relaxed max-w-2xl mx-auto mb-4">
-          <span data-i18n-lang="fr">Ils l'ont vécu ou ils veulent nous recommander</span>
-          <span data-i18n-lang="en">They experienced it or they want to recommend us</span>
-        </p>
-        <p class="text-white/30 text-xs italic">
-          <span data-i18n-lang="fr">Section en construction</span>
-          <span data-i18n-lang="en">Under construction</span>
-        </p>
+      <p class="text-white/40 text-sm mb-6 italic">
+        <span data-i18n-lang="fr">Ils incarnent la Méthode EC²R sur leurs terrains et écosystèmes.</span>
+        <span data-i18n-lang="en">They embody the EC²R Method on their grounds and ecosystems.</span>
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:border-white/15 transition-all">
+          <p class="text-white text-sm font-display font-bold mb-1">CSHR Partners</p>
+          <p class="text-white/40 text-xs"><span data-i18n-lang="fr">Suisse</span><span data-i18n-lang="en">Switzerland</span></p>
+        </div>
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:border-white/15 transition-all">
+          <p class="text-white text-sm font-display font-bold mb-1">Pro-A</p>
+          <p class="text-white/40 text-xs"><span data-i18n-lang="fr">Label métier des agenceurs</span><span data-i18n-lang="en">Furnishing professionals label</span></p>
+        </div>
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:border-white/15 transition-all">
+          <p class="text-white text-sm font-display font-bold mb-1">Copilote</p>
+          <p class="text-white/40 text-xs"><span data-i18n-lang="fr">Label experts comptables</span><span data-i18n-lang="en">Accounting experts label</span></p>
+        </div>
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:border-white/15 transition-all">
+          <p class="text-white text-sm font-display font-bold mb-1">Environnaissance</p>
+          <p class="text-white/40 text-xs"><span data-i18n-lang="fr">Monaco</span><span data-i18n-lang="en">Monaco</span></p>
+        </div>
       </div>
+      <p class="text-white/25 text-xs mt-4 italic text-center">
+        <span data-i18n-lang="fr">Liste enrichie au fur et à mesure</span>
+        <span data-i18n-lang="en">List grows over time</span>
+      </p>
     </div>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 5. LIEN LINKEDIN EC²R -->
+    <!-- 5. LIEN LINKEDIN EC²R (page entreprise — req mQWhw704) -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     <div class="text-center">
       <a href="https://www.linkedin.com/company/ec2r-conseil" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 
+         class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20
                 text-white text-sm font-semibold px-6 py-3 rounded-lg transition-all group">
         <svg class="w-5 h-5 text-white/70 group-hover:text-energy-green transition-colors" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
-        <span data-i18n-lang="fr">Suivre EC²R sur LinkedIn</span>
-        <span data-i18n-lang="en">Follow EC²R on LinkedIn</span>
+        <span data-i18n-lang="fr">Suivre la Méthode EC²R sur LinkedIn</span>
+        <span data-i18n-lang="en">Follow the EC²R Method on LinkedIn</span>
       </a>
     </div>
 

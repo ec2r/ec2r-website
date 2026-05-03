@@ -24,9 +24,12 @@ const { universes } = Astro.props;
 
 <nav id="top-nav" class="fixed top-[calc(2.25rem+6px)] left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between h-16 lg:h-18">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 group" id="logo-home">
-      <img src="/images/logo-ec2r.png" alt="EC²R" class="h-7 lg:h-8 transition-all duration-300" />
+    <!-- Logo : Méthode EC²R (² collé) -->
+    <a href="/" class="flex items-center gap-2 group" id="logo-home" aria-label="Méthode EC²R">
+      <img src="/images/logo-ec2r.png" alt="" class="h-7 lg:h-8 transition-all duration-300" />
+      <span class="font-display font-extrabold text-white text-base lg:text-lg leading-none whitespace-nowrap">
+        Méthode&nbsp;EC<sup style="font-size:0.62em;margin:0 -0.08em;vertical-align:0.4em">2</sup>R
+      </span>
     </a>
 
     <!-- Desktop : univers tabs -->
@@ -59,8 +62,21 @@ const { universes } = Astro.props;
       </div>
     </div>
 
-    <!-- Lang toggle -->
+    <!-- Theme + Lang toggles -->
     <div class="flex items-center gap-2">
+      <!-- Theme toggle (mode clair par défaut, gros bouton — req TGlT0tmZ) -->
+      <button id="theme-toggle" aria-label="Basculer mode clair/sombre"
+        class="flex items-center gap-1.5 text-xs font-semibold text-white/60
+               hover:text-white transition-colors duration-200 border border-white/15
+               hover:border-white/40 rounded-md px-3 py-1.5">
+        <svg id="theme-icon-sun" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <svg id="theme-icon-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <span id="theme-label">Clair</span>
+      </button>
       <button id="lang-toggle" aria-label="Switch language"
         class="flex items-center gap-1 text-xs font-semibold tracking-widest text-white/50
                hover:text-white/80 transition-colors duration-200 border border-white/10
@@ -175,6 +191,31 @@ const { universes } = Astro.props;
     }
     // Maj mobile label
     mobileLabel.textContent = next === 'en' ? labelsEn[currentIdx] : labelsFr[currentIdx];
+  });
+
+  // ── Theme toggle (light default, persisted in localStorage) ────────
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeLabel = document.getElementById('theme-label');
+  const themeIconSun = document.getElementById('theme-icon-sun');
+  const themeIconMoon = document.getElementById('theme-icon-moon');
+
+  function applyTheme(theme: string) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeLabel) themeLabel.textContent = theme === 'light' ? 'Sombre' : 'Clair';
+    if (themeIconSun && themeIconMoon) {
+      themeIconSun.classList.toggle('hidden', theme === 'light');
+      themeIconMoon.classList.toggle('hidden', theme !== 'light');
+    }
+  }
+
+  const savedTheme = localStorage.getItem('ec2r-theme') || 'dark';
+  applyTheme(savedTheme);
+
+  themeBtn?.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = cur === 'light' ? 'dark' : 'light';
+    localStorage.setItem('ec2r-theme', next);
+    applyTheme(next);
   });
 
   // Swipe mobile pour naviguer entre univers (optionnel, le scroll snap gère déjà)

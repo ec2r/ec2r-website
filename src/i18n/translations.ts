@@ -31,7 +31,7 @@ export const translations = {
       sub1bPrefix: 'Le Waze ',
       sub1bCycling: ['de la mobilisation collective', 'des comportements de leadership', 'des micro-comportements décisifs', 'du changement'],
       sub2: 'Énergie + Collective pour des comportements plus responsables, plus réalistes, plus rapides',
-      cta1: 'Découvrir la méthode',
+      cta1: 'Découvrir la Méthode',
       cta2: 'Parlons-en',
       ec2rLines: {
         e: 'Énergie',
@@ -39,8 +39,8 @@ export const translations = {
         c2cycling: ['Croissance', 'Changement', 'Comportement'],
         rCycling: ['Responsable', 'Réaliste', 'Rapide', 'Rassurant'],
       },
-      situationsLabel: 'Vous le vivez aussi, vous qui…',
-      situationsHint: 'Créer des équipes qui s\'engagent réellement : pas juste qui se sentent bien au travail.',
+      situationsLabel: '',
+      situationsHint: 'Créer des collectifs qui agissent réellement : pas juste qui veulent faire ou se sentent bien au travail.',
       tabCeQuiSePasse: 'Ce qui se passe',
       tabEssaye: 'Vous avez essayé',
       tabPromesse: 'Notre promesse',
@@ -63,7 +63,7 @@ export const translations = {
         reponse: "Rendre visibles les freins réels. Activer collectivement ce que vous avez individuellement.",
       },
       {
-        accroche: "Les résultats doivent progresser, pas dans 12 mois.",
+        accroche: "Les résultats doivent progresser, mais pas dans 12 mois.",
         ceQuiSePasse: "Vous connaissez la cible, mais certains jouent le jeu et d'autres moins. Pendant ce temps, vos concurrents avancent.",
         essaye: ["Plans à 18 mois", "Rapports de consultants", "Formations management"],
         essayeConclusion: "Vous avez le constat, pas les comportements.",
@@ -91,7 +91,7 @@ export const translations = {
         reponse: "Mesurer et progresser dans le temps. Des solutions structurelles qui deviennent des rituels.",
       },
       {
-        accroche: "Vous visualisez la nouvelle valeur ajoutée souhaitée. Vous avez des experts connectés au métier. Mais la traduction opérationnelle et organisationnelle reste bloquée.",
+        accroche: "Vous visualisez votre nouvelle valeur ajoutée souhaitée, mais sa traduction technique reste bloquée.",
         ceQuiSePasse: "Vous avez des experts métiers dépositaires de la vision. Peut-être des interlocuteurs SI. Ce qui manque : quelqu'un capable de faire le lien entre la promesse humaine et la brique technologique, et de la faire exister.",
         essaye: ["Former une partie des équipes sur les prompts", "Les logiciels auteurs et outils sans appropriation", "Les agences qui livrent sans comprendre le métier", "Les POC qui ne passent jamais en production"],
         essayeConclusion: "La vision est là. La traduction opérationnelle reste bloquée entre l'idée et l'acte.",
@@ -177,7 +177,7 @@ export const translations = {
         {
           name: 'Emmanuel ETARD',
           title: 'Gérant Laforêt · Spécialiste Immobilier',
-          quote: "Ayant vu la méthode EC²R à l'œuvre, je ne peux que valider son efficacité. C'est une approche vraiment différenciante et impactante.",
+          quote: "Ayant vu la Méthode EC²R à l'œuvre, je ne peux que valider son efficacité. C'est une approche vraiment différenciante et impactante.",
           keywords: ['efficacité', 'différenciante'],
           type: 'Validation terrain',
         },
@@ -195,11 +195,11 @@ export const translations = {
       museeSub: "Des premiers séminaires au déploiement multi-sites en national. Des slides originels qui font peur au protocole augmenté par l'IA. Chaque année a été un point de rupture : on essaye, on expérimente, on traduit, on améliore, on affine, on grandit.",
       museeTimeline: [
         { year: '2021', label: 'Genèse', sub: 'Les premiers séminaires. On naît.' },
-        { year: '2022', label: 'Terrain', sub: 'Premiers déploiements. On tâtonne.' },
-        { year: '2023', label: 'Formalisation', sub: 'On améliore, on sanctuarise. On diffuse.' },
-        { year: '2024', label: 'Diffusion', sub: 'Les référents apparaissent. Ça prend.' },
-        { year: '2025', label: 'Augmentation', sub: "L'IA EC2R entre dans la boucle. Du savoir-faire au faire-savoir." },
-        { year: '2026', label: '…', sub: 'Ce site : mise en abyme. On expérimente en direct.' },
+        { year: '2022', label: 'Terrain', sub: "Premiers déploiements. On expérimente." },
+        { year: '2023', label: 'Formalisation', sub: 'On formalise, on sanctuarise.' },
+        { year: '2024', label: 'Diffusion', sub: "L'équipe s'étoffe, des référents apparaissent. Ça s'installe." },
+        { year: '2025', label: 'Internalisation', sub: 'Nos clients s\'approprient et internalisent la Méthode.' },
+        { year: '2026', label: "Changement d'échelle", sub: 'Structuration de notre savoir-faire pour diffusion à plus grande échelle.' },
       ],
     },
 
@@ -268,8 +268,8 @@ export const translations = {
       fieldNote: 'Photos des séminaires et ateliers à intégrer.',
       founders: [
         {
-          role: 'Fondateur de la méthode · Président EC²R Conseil',
-          bio: "Porte et incarne la méthode EC²R depuis plus de 5 ans. Accompagne des collectifs vers la performance depuis plus de 20 ans. Assure l'amélioration continue de la méthode : garant, avec l'IA, de son intégrité et de son développement.",
+          role: 'Fondateur de la Méthode · Président EC²R Conseil',
+          bio: "Porte et incarne la Méthode EC²R depuis plus de 5 ans. Accompagne des collectifs vers la performance depuis plus de 20 ans. Assure l'amélioration continue de la méthode : garant, avec l'IA, de son intégrité et de son développement.",
         },
         {
           role: 'Copilote technique · Architecte',
@@ -278,7 +278,7 @@ export const translations = {
       ],
       team: [
         {
-          role: 'Cofondateur EC²R Conseil : Associé de la méthode EC²R',
+          role: 'Cofondateur EC²R Conseil : Associé de la Méthode EC²R',
           bio: "Entraîneur d'entraîneurs et de sportifs professionnels et champions. Ancrage terrain et transmission. Associé depuis les origines.",
         },
         {

@@ -73,33 +73,44 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-16">
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <!-- 1. SECTION CHIFFRES (début) -->
+    <!-- 1. NUAGE DE MOTS-CLÉS + BANNIÈRE "CE SITE EST VIVANT" — EN HAUT -->
+    <!--    (remplace l'ancienne section "En chiffres" — req 6gZ0QrEG/0sqfNTUS) -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
-    <section class="py-10 bg-white/[0.02] border border-white/[0.06] rounded-2xl">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <p class="text-center text-white/30 text-sm font-medium tracking-wider mb-8">
-          <span data-i18n-lang="fr">{fr.preuves?.eyebrow || 'En chiffres'}</span>
-          <span data-i18n-lang="en">{en.preuves?.eyebrow || 'In numbers'}</span>
+    <section class="grid lg:grid-cols-3 gap-6">
+      <!-- Word cloud dynamique (2/3) -->
+      <div class="lg:col-span-2 bg-white/[0.02] border border-white/[0.06] rounded-xl p-6">
+        <h3 class="font-display font-semibold text-white text-lg mb-4">
+          <span data-i18n-lang="fr">Ce que retiennent ceux qui ont vécu la <strong class="text-energy-green">Méthode</strong></span>
+          <span data-i18n-lang="en">What those who lived the <strong class="text-energy-green">Method</strong> retain</span>
+        </h3>
+        <div id="word-cloud-top" class="relative h-[160px] md:h-[200px] overflow-hidden"></div>
+        <p class="text-white/25 text-xs mt-3 italic">
+          <span data-i18n-lang="fr">Mots-clés en temps réel — extraits des témoignages spontanés</span>
+          <span data-i18n-lang="en">Real-time keywords — extracted from spontaneous testimonials</span>
         </p>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {fr.preuves?.stats?.map((stat: any, i: number) => (
-            <div class="text-center">
-              <div class="mb-3">
-                <span class="counter-value text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white"
-                      data-target={statsValues[i]}>0</span>
-                <span class="text-xl md:text-2xl lg:text-3xl font-display font-bold text-energy-green"
-                      data-i18n-lang="fr">{stat.suffix}</span>
-                <span class="text-xl md:text-2xl lg:text-3xl font-display font-bold text-energy-green"
-                      data-i18n-lang="en">{en.preuves?.stats?.[i]?.suffix || stat.suffix}</span>
-              </div>
-              <p class="text-white/50 text-sm md:text-base leading-relaxed">
-                <span data-i18n-lang="fr">{stat.label}</span>
-                <span data-i18n-lang="en">{en.preuves?.stats?.[i]?.label || stat.label}</span>
-              </p>
-            </div>
-          )) || []}
-        </div>
       </div>
+      <!-- Bannière "Ce site est vivant" — clic pour développer -->
+      <details class="bg-energy-green/[0.04] border border-energy-green/15 rounded-xl p-5 group">
+        <summary class="cursor-pointer list-none">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-display font-bold text-energy-green/90">
+              <span data-i18n-lang="fr">Ce site est vivant</span>
+              <span data-i18n-lang="en">This site is alive</span>
+            </h3>
+            <svg class="w-4 h-4 text-energy-green/60 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <p class="text-white/40 text-xs mt-2 italic">
+            <span data-i18n-lang="fr">Pourquoi ? Cliquez pour lire.</span>
+            <span data-i18n-lang="en">Why? Click to read.</span>
+          </p>
+        </summary>
+        <p class="text-white/40 text-xs leading-relaxed mt-3">
+          <span data-i18n-lang="fr">Il documente sa propre construction et notre dynamique de mobilisation. Pas un résultat figé — l'illustration du processus vivant. Nous avons utilisé la puissance<span class="plus-accent">+</span> dirigée de l'IA pour partir du réel et passer d'un savoir-faire artisanal à un mode augmenté. On essaye, on expérimente, on traduit, on améliore.</span>
+          <span data-i18n-lang="en">It documents its own construction and our mobilization dynamics. Not a frozen result — the illustration of the living process. We used the directed<span class="plus-accent">+</span> power of AI to start from reality and move from artisanal know-how to augmented mode.</span>
+        </p>
+      </details>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
@@ -108,12 +119,12 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
     <section>
       <div class="mb-8">
         <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-3">
-          <span data-i18n-lang="fr">Ils l'ont vécu</span>
-          <span data-i18n-lang="en">They lived it</span>
+          <span data-i18n-lang="fr">Ils l'ont vécu, la <strong class="text-energy-green">Méthode</strong></span>
+          <span data-i18n-lang="en">They lived the <strong class="text-energy-green">Method</strong></span>
         </h2>
         <p class="text-base text-white/50 leading-relaxed max-w-3xl mb-6">
-          <span data-i18n-lang="fr">Pas de promesse marketing, des résultats concrets avec les mots de nos clients depuis 5 ans. Pas de témoignages sollicités, pas de citations anonymisées. Ce sont les mots publiés spontanément sur LinkedIn — des dirigeants, des managers de terrain, des leaders. Des données <span class="plus-accent">+</span> mesurables, des comportements <span class="plus-accent">+</span> observables, un impact déjà <span class="plus-accent">+</span> réel.</span>
-          <span data-i18n-lang="en">No marketing promises, concrete results in our clients' own words over 5 years. No solicited testimonials, no anonymized quotes. Words published spontaneously on LinkedIn — executives, field managers, leaders. Measurable<span class="plus-accent">+</span> data, observable<span class="plus-accent">+</span> behaviours, already<span class="plus-accent">+</span> real impact.</span>
+          <span data-i18n-lang="fr">Pas de promesses marketing, des résultats concrets avec les mots de nos clients depuis l'origine. Pas de témoignages sollicités, pas de citations anonymisées — ce sont les mots publiés <strong>spontanément</strong> par des dirigeants, des managers de terrain, des leaders. Des données <span class="plus-accent">+</span> mesurables, des comportements <span class="plus-accent">+</span> observables, un impact déjà <span class="plus-accent">+</span> réel.</span>
+          <span data-i18n-lang="en">No marketing promises, concrete results in our clients' own words from the start. No solicited testimonials, no anonymized quotes — words published <strong>spontaneously</strong> by executives, field managers, leaders. Measurable<span class="plus-accent">+</span> data, observable<span class="plus-accent">+</span> behaviours, already<span class="plus-accent">+</span> real impact.</span>
         </p>
 
         <!-- Stats bar -->
@@ -280,8 +291,8 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
         <span data-i18n-lang="en">{en.preuves?.trajSub || 'Real testimonial videos'}</span>
       </p>
       <p class="text-white/25 text-xs mb-6 ml-5 italic">
-        <span data-i18n-lang="fr">5 ans de retour terrain, pas 3.</span>
-        <span data-i18n-lang="en">5 years of field feedback, not 3.</span>
+        <span data-i18n-lang="fr">Vidéos de la trajectoire <strong class="text-energy-green not-italic">Méthode EC²R</strong> — pour l'avenir.</span>
+        <span data-i18n-lang="en">Videos of the <strong class="text-energy-green not-italic">EC²R Method</strong> trajectory — for the future.</span>
       </p>
       <div class="grid md:grid-cols-2 gap-6">
         {(fr.preuves?.videos || []).slice(0, 2).map((video: any, i: number) => (
@@ -335,7 +346,7 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
           <span data-i18n-lang="en">This site is alive</span>
         </h3>
         <p class="text-white/35 text-xs leading-relaxed">
-          <span data-i18n-lang="fr">Il documente sa propre construction et notre dynamique de mobilisation. Ce n'est pas un résultat figé ou un T0 — c'est l'illustration du processus vivant de la méthode. Nous avons utilisé la puissance<span class="plus-accent">+</span> dirigée de l'IA pour partir du réel et construire notre plateforme de leadership augmenté. La plupart des entreprises réfléchissent à comment faire savoir leur valeur ajoutée. Nous, ça fait 5 ans qu'on a construit un savoir-faire : et on a voulu passer d'un mode artisanal à un mode augmenté. On essaye, on expérimente, on se plante, on traduit, on améliore, on affine, on grandit.</span>
+          <span data-i18n-lang="fr">Il documente sa propre construction et notre dynamique de mobilisation. Ce n'est pas un résultat figé ou un T0 — c'est l'illustration du processus vivant de la Méthode. Nous avons utilisé la puissance<span class="plus-accent">+</span> dirigée de l'IA pour partir du réel et construire notre plateforme de leadership augmenté. On essaye, on expérimente, on se plante, on traduit, on améliore, on affine, on grandit.</span>
           <span data-i18n-lang="en">It documents its own construction and our mobilization dynamics. Not a frozen result or a T0 — it's the illustration of the method's living process. We used the directed<span class="plus-accent">+</span> power of AI to start from reality and build our augmented leadership platform. Most companies think about how to communicate their value. We spent 5 years building expertise: and we wanted to move from artisanal to augmented mode. We try, experiment, fail, translate, improve, refine, grow.</span>
         </p>
       </div>
