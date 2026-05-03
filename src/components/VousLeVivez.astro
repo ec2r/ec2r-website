@@ -76,15 +76,15 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
           </div>
         </div>
 
-        <!-- Waze tagline -->
-        <p class="text-base md:text-lg text-white/50 leading-relaxed max-w-lg mb-3">
-          <span class="line-through decoration-white/15">
+        <!-- Waze tagline (tout en blanc, "Le Waze" en gradient énergie) -->
+        <p class="text-lg md:text-xl text-white leading-relaxed max-w-lg mb-3 font-semibold">
+          <span class="line-through decoration-white/40">
             <span data-i18n-lang="fr">Pas le Netflix </span>
             <span data-i18n-lang="en">Not the Netflix of </span>
-            <strong id="netflix-word" class="text-white/30">de la formation</strong>.
+            <strong id="netflix-word" class="text-white">de la formation</strong>.
           </span><br/>
-          <span data-i18n-lang="fr">Le Waze </span>
-          <span data-i18n-lang="en">The Waze of </span>
+          <span class="energy-gradient-text font-bold" data-i18n-lang="fr">Le Waze </span>
+          <span class="energy-gradient-text font-bold" data-i18n-lang="en">The Waze of </span>
           <strong id="waze-word" class="text-white">de la mobilisation collective</strong>.
         </p>
 
@@ -97,9 +97,9 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
 
       <!-- Droite : 6+1 onglets énergie -->
       <div>
-        <p class="text-xs text-white/40 italic mb-3">
-          <span data-i18n-lang="fr">Créer des collectifs qui agissent réellement : pas juste qui veulent faire ou se sentent bien au travail.</span>
-          <span data-i18n-lang="en">Build collectives that truly act: not just want to or feel good at work.</span>
+        <p class="text-sm text-white/85 mb-3 font-medium">
+          <span data-i18n-lang="fr">Créez des collectifs qui agissent réellement — pas juste qui veulent faire ou se sentent bien au travail.</span>
+          <span data-i18n-lang="en">Build collectives that truly act — not just want to or feel good at work.</span>
         </p>
 
         <div class="space-y-1" id="situations-accordion">
@@ -110,7 +110,7 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
                       style={`border-color: ${energyColors[i]}40; color: ${energyColors[i]}90`}>
                   {energyLabels[i]}
                 </span>
-                <span class="text-white/60 text-sm leading-snug flex-1 group-hover:text-white/80 transition-colors sit-accroche"
+                <span class="text-white/90 text-sm leading-snug flex-1 group-hover:text-white transition-colors sit-accroche"
                       data-fr={s.accroche} data-en={en.situations[i].accroche}>{s.accroche}</span>
                 <span class="sit-arrow shrink-0 mt-1 text-white/15 transition-all group-hover:text-energy-green">
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
