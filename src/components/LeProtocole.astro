@@ -108,54 +108,224 @@ const parcours = [
       </div>
     </div>
 
-    <!-- 3 parcours — cartes Mon collectif / Mes leaders / Moi -->
-    <div class="grid md:grid-cols-3 gap-4 mb-12">
-      {parcours.map(p => (
-        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all relative group">
-          {p.preview ? (
-            <div class="relative aspect-[16/10] bg-navy-900 border-b border-white/5 overflow-hidden">
-              <img src={p.preview} alt={p.previewAlt}
-                   class="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                   loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent"></div>
-              <span class="absolute top-2 right-2 text-[9px] uppercase tracking-wider text-white/50 bg-navy-950/70 px-2 py-0.5 rounded backdrop-blur-sm">aperçu app</span>
-            </div>
-          ) : (
-            <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 flex flex-col items-center justify-center gap-2 border-b border-white/5 relative overflow-hidden">
-              <span class="text-5xl opacity-30">{p.icon}</span>
-              <span class="text-[10px] uppercase tracking-wider text-white/30 font-semibold">
-                <span data-i18n-lang="fr">Aperçu — données privées</span>
-                <span data-i18n-lang="en">Preview — private data</span>
-              </span>
-            </div>
-          )}
-          <div class="p-5">
-            <p class="text-energy-green/70 text-[10px] uppercase tracking-wider font-semibold mb-1">
-              <span data-i18n-lang="fr">{p.titleFr}</span>
-              <span data-i18n-lang="en">{p.titleEn}</span>
+    <!-- 3 parcours empilés — alternance visuel/texte -->
+    <div class="space-y-6 mb-12">
+
+      <!-- ─── LIGNE 1 : Mon collectif (visuel 2/3 gauche · texte 1/3 droite) ─── -->
+      <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all">
+        <div class="grid md:grid-cols-3 gap-0">
+          <!-- Visuel reconstruit : Baromètre 6 énergies + score central -->
+          <div class="md:col-span-2 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 p-6 lg:p-8 relative">
+            <p class="text-[10px] uppercase tracking-widest text-white/30 font-semibold mb-4">
+              <span data-i18n-lang="fr">Reconstruction illustrative — données fictives</span>
+              <span data-i18n-lang="en">Illustrative reconstruction — fictional data</span>
             </p>
-            <h3 class="text-white font-display font-bold text-base mb-2 leading-tight">
-              <span data-i18n-lang="fr">{p.headlineFr}</span>
-              <span data-i18n-lang="en">{p.headlineEn}</span>
+            <div class="grid grid-cols-2 gap-3 lg:gap-4">
+              {[
+                { name: 'Projeter', file: 'projeter', score: 75, color: '#DC2626' },
+                { name: 'Centrer', file: 'centrer', score: 60, color: '#EAB308' },
+                { name: 'Exiger', file: 'exiger', score: 51, color: '#C9A56E' },
+                { name: 'Animer', file: 'animer', score: 56, color: '#22C55E' },
+                { name: 'Réguler', file: 'recentrer', score: 71, color: '#166534' },
+                { name: 'Remobiliser', file: 'remobiliser', score: 59, color: '#3B82F6' },
+              ].map(e => (
+                <div class="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-lg p-2.5">
+                  <img src={`/images/energies/${e.file}-thumb.webp`}
+                       srcset={`/images/energies/${e.file}-thumb.webp 1x, /images/energies/${e.file}.webp 2x`}
+                       alt={e.name} class="w-12 h-12 object-cover rounded shrink-0" loading="lazy" />
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-baseline justify-between mb-1">
+                      <span class="text-white text-xs font-semibold uppercase tracking-wide">{e.name}<span class="plus-accent text-[10px]">+</span></span>
+                      <span class="text-sm font-display font-bold" style={`color:${e.color}`}>{e.score}</span>
+                    </div>
+                    <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div class="h-full rounded-full" style={`width:${e.score}%;background:${e.color}`}></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <!-- Score central -->
+            <div class="mt-5 flex items-center justify-center">
+              <div class="bg-white/[0.04] border border-white/10 rounded-xl px-6 py-3 text-center">
+                <div class="font-display font-extrabold text-3xl bg-gradient-to-r from-energy-red via-energy-yellow to-energy-green bg-clip-text text-transparent leading-none">63<span class="text-base text-white/30">/100</span></div>
+                <div class="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
+                  <span data-i18n-lang="fr">Énergie collective</span>
+                  <span data-i18n-lang="en">Collective energy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Texte 1/3 -->
+          <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/5">
+            <div class="text-2xl mb-2">👥</div>
+            <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
+              <span data-i18n-lang="fr">Mon collectif</span>
+              <span data-i18n-lang="en">My collective</span>
+            </p>
+            <h3 class="text-white font-display font-bold text-xl mb-3 leading-tight">
+              <span data-i18n-lang="fr">Baromètre énergétique EC²R</span>
+              <span data-i18n-lang="en">EC²R energy barometer</span>
             </h3>
-            <p class="text-white/60 text-xs leading-relaxed mb-3 italic">
-              <span data-i18n-lang="fr">{p.subFr}</span>
-              <span data-i18n-lang="en">{p.subEn}</span>
+            <p class="text-white/60 text-sm leading-relaxed mb-4 italic">
+              <span data-i18n-lang="fr">Diagnostic et levier<span class="plus-accent">+</span> immédiat pour mobiliser<span class="plus-accent">+</span> mes équipes</span>
+              <span data-i18n-lang="en">Diagnosis and immediate<span class="plus-accent">+</span> lever to mobilize<span class="plus-accent">+</span> my teams</span>
             </p>
             <ul class="space-y-1.5 border-t border-white/5 pt-3">
-              {p.itemsFr.map((item, i) => (
-                <li class="text-white/40 text-xs flex items-start gap-2">
-                  <span class="text-energy-green/60 mt-0.5">›</span>
-                  <span>
-                    <span data-i18n-lang="fr">{item}</span>
-                    <span data-i18n-lang="en">{p.itemsEn[i]}</span>
-                  </span>
-                </li>
-              ))}
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Baromètre énergétique collectif</span><span data-i18n-lang="en">Collective energy barometer</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Restitution<span class="plus-accent">+</span> embarquement</span><span data-i18n-lang="en">Restitution<span class="plus-accent">+</span> onboarding</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Temps fort de restitution et d'embarquement</span><span data-i18n-lang="en">Strong restitution and onboarding moment</span></span></li>
             </ul>
           </div>
         </div>
-      ))}
+      </div>
+
+      <!-- ─── LIGNE 2 : Mes leaders (texte 1/3 gauche · visuel 2/3 droite) ─── -->
+      <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all">
+        <div class="grid md:grid-cols-3 gap-0">
+          <!-- Texte 1/3 -->
+          <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center md:order-1 order-2 border-t md:border-t-0 md:border-r border-white/5">
+            <div class="text-2xl mb-2">🎯</div>
+            <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
+              <span data-i18n-lang="fr">Mes leaders</span>
+              <span data-i18n-lang="en">My leaders</span>
+            </p>
+            <h3 class="text-white font-display font-bold text-xl mb-3 leading-tight">
+              <span data-i18n-lang="fr">Accompagner mes leaders</span>
+              <span data-i18n-lang="en">Support my leaders</span>
+            </h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-4 italic">
+              <span data-i18n-lang="fr">Profil de leadership EC²R — faire ma part pour mobiliser ou remobiliser mes équipes, sans épuiser mes batteries</span>
+              <span data-i18n-lang="en">EC²R leadership profile — do my part to mobilize or remobilize my teams without draining my batteries</span>
+            </p>
+            <ul class="space-y-1.5 border-t border-white/5 pt-3">
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Profiling de leadership</span><span data-i18n-lang="en">Leadership profiling</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Formation<span class="plus-accent">+</span> accompagnement</span><span data-i18n-lang="en">Training<span class="plus-accent">+</span> support</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Mentoring sur situations</span><span data-i18n-lang="en">Situation-based mentoring</span></span></li>
+            </ul>
+          </div>
+          <!-- Visuel reconstruit : Profil leader avec score "Engageant" + dimensions abstraites -->
+          <div class="md:col-span-2 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 p-6 lg:p-8 md:order-2 order-1 relative">
+            <p class="text-[10px] uppercase tracking-widest text-white/30 font-semibold mb-4">
+              <span data-i18n-lang="fr">Reconstruction illustrative — données fictives</span>
+              <span data-i18n-lang="en">Illustrative reconstruction — fictional data</span>
+            </p>
+            <!-- Score central -->
+            <div class="text-center mb-5">
+              <div class="text-[10px] uppercase tracking-widest text-energy-green/70 font-semibold mb-1">
+                <span data-i18n-lang="fr">Leadership global</span>
+                <span data-i18n-lang="en">Global leadership</span>
+              </div>
+              <div class="font-display font-extrabold text-5xl text-white leading-none">55<span class="text-energy-green/80">.6</span><span class="text-base text-white/30 ml-1">/100</span></div>
+              <div class="inline-block mt-2 bg-energy-yellow/20 border border-energy-yellow/40 text-energy-yellow text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                Engageant
+              </div>
+            </div>
+            <!-- Mini-batteries (dimensions abstraites, pas les 6 énergies) -->
+            <div class="grid grid-cols-2 gap-3 lg:gap-4">
+              {[
+                { labelFr: 'Endurance', labelEn: 'Endurance', score: 36, color: '#EAB308' },
+                { labelFr: 'M\'affirmer', labelEn: 'Assertiveness', score: 63, color: '#22C55E' },
+                { labelFr: 'Souplesse', labelEn: 'Flexibility', score: 63, color: '#22C55E' },
+                { labelFr: 'Adaptabilité', labelEn: 'Adaptability', score: 67, color: '#22C55E' },
+                { labelFr: 'Délégation', labelEn: 'Delegation', score: 44, color: '#C9A56E' },
+                { labelFr: 'Négociation', labelEn: 'Negotiation', score: 70, color: '#166534' },
+              ].map(d => (
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-2.5">
+                  <div class="flex items-baseline justify-between mb-1.5">
+                    <span class="text-white/80 text-xs font-semibold uppercase tracking-wide"><span data-i18n-lang="fr">{d.labelFr}<span class="plus-accent text-[10px]">+</span></span><span data-i18n-lang="en">{d.labelEn}<span class="plus-accent text-[10px]">+</span></span></span>
+                    <span class="text-sm font-display font-bold" style={`color:${d.color}`}>{d.score}<span class="text-[9px] text-white/30">%</span></span>
+                  </div>
+                  <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style={`width:${d.score}%;background:${d.color}`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── LIGNE 3 : Moi (visuel 2/3 gauche · texte 1/3 droite) — chat + avatar ─── -->
+      <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all">
+        <div class="grid md:grid-cols-3 gap-0">
+          <!-- Visuel : simili-chat (gauche) + avatar crop (droite) -->
+          <div class="md:col-span-2 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 relative overflow-hidden">
+            <p class="absolute top-3 left-4 text-[10px] uppercase tracking-widest text-white/30 font-semibold z-10">
+              <span data-i18n-lang="fr">Mode simulation — Méntôr EC²R</span>
+              <span data-i18n-lang="en">Simulation mode — Méntôr EC²R</span>
+            </p>
+            <div class="grid grid-cols-2 h-full min-h-[340px]">
+              <!-- Simili-chat avec lignes (pas de texte réel) -->
+              <div class="p-6 pt-12 flex flex-col justify-end gap-3">
+                <!-- Bulle mentor (gauche) -->
+                <div class="flex justify-start">
+                  <div class="bg-white/[0.06] rounded-lg rounded-bl-sm px-3 py-2.5 max-w-[90%] space-y-1.5">
+                    <div class="h-1.5 bg-white/15 rounded-full" style="width:85%"></div>
+                    <div class="h-1.5 bg-white/15 rounded-full" style="width:70%"></div>
+                    <div class="h-1.5 bg-white/15 rounded-full" style="width:55%"></div>
+                  </div>
+                </div>
+                <!-- Bulle user (droite) -->
+                <div class="flex justify-end">
+                  <div class="bg-energy-green/15 rounded-lg rounded-br-sm px-3 py-2.5 max-w-[80%] space-y-1.5">
+                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:75%"></div>
+                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:50%"></div>
+                  </div>
+                </div>
+                <!-- Bulle mentor (gauche) -->
+                <div class="flex justify-start">
+                  <div class="bg-white/[0.06] rounded-lg rounded-bl-sm px-3 py-2.5 max-w-[90%] space-y-1.5">
+                    <div class="h-1.5 bg-white/15 rounded-full" style="width:90%"></div>
+                    <div class="h-1.5 bg-white/15 rounded-full" style="width:65%"></div>
+                  </div>
+                </div>
+                <!-- Bulle user (droite) -->
+                <div class="flex justify-end">
+                  <div class="bg-energy-green/15 rounded-lg rounded-br-sm px-3 py-2.5 max-w-[70%] space-y-1.5">
+                    <div class="h-1.5 bg-energy-green/40 rounded-full" style="width:60%"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Avatar -->
+              <div class="relative bg-navy-950 overflow-hidden">
+                <img src="/images/app-preview/mentor-avatar-crop.webp" alt="Avatar Méntôr EC²R"
+                     class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-950 to-transparent h-20"></div>
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-energy-green/20 backdrop-blur-sm border border-energy-green/40 rounded-full px-3 py-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-energy-green animate-pulse"></span>
+                  <span class="text-[10px] uppercase tracking-wider text-energy-green font-semibold">
+                    <span data-i18n-lang="fr">À l'écoute</span>
+                    <span data-i18n-lang="en">Listening</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Texte 1/3 -->
+          <div class="md:col-span-1 p-6 lg:p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/5">
+            <div class="text-2xl mb-2">🚀</div>
+            <p class="text-energy-green/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
+              <span data-i18n-lang="fr">Moi</span>
+              <span data-i18n-lang="en">Me</span>
+            </p>
+            <h3 class="text-white font-display font-bold text-xl mb-3 leading-tight">
+              <span data-i18n-lang="fr">Mentor IA EC²R sur mes situations terrain</span>
+              <span data-i18n-lang="en">EC²R AI Mentor on my field situations</span>
+            </h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-4 italic">
+              <span data-i18n-lang="fr">Expérimenter, avancer en autonomie</span>
+              <span data-i18n-lang="en">Experiment, advance autonomously</span>
+            </p>
+            <ul class="space-y-1.5 border-t border-white/5 pt-3">
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Je me forme sur la Méthode</span><span data-i18n-lang="en">I learn the Method</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Je m'entraîne sur mes situations métiers</span><span data-i18n-lang="en">I train on my work situations</span></span></li>
+              <li class="text-white/50 text-xs flex items-start gap-2"><span class="text-energy-green/60 mt-0.5">›</span><span><span data-i18n-lang="fr">Mentor IA EC²R</span><span data-i18n-lang="en">EC²R AI Mentor</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Lien app + ce que l'app permet -->

@@ -102,19 +102,23 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
           <span data-i18n-lang="en">Build collectives that truly act — not just want to or feel good at work.</span>
         </p>
 
-        <div class="space-y-1" id="situations-accordion">
+        <div class="space-y-1.5" id="situations-accordion">
           {fr.situations.map((s: any, i: number) => (
-            <div class="sit-item rounded-lg overflow-hidden border border-white/[0.06] transition-colors hover:border-white/15" data-idx={i}>
-              <button class="sit-trigger w-full text-left px-3 py-2.5 flex items-start gap-2.5 group" aria-expanded="false">
-                <span class="shrink-0 mt-0.5 w-7 h-8 flex items-center justify-center rounded border border-white/20 text-white/30 text-[10px] font-bold group-hover:text-white/60 group-hover:border-white/40 transition-colors"
-                      style={`border-color: ${energyColors[i]}40; color: ${energyColors[i]}90`}>
+            <div class="sit-item rounded-lg overflow-hidden bg-white/[0.04] border border-white/[0.10] transition-all duration-200 hover:bg-white/[0.08] hover:border-energy-green/40 hover:shadow-lg hover:shadow-energy-green/5" data-idx={i}>
+              <button class="sit-trigger w-full text-left px-3 py-3 flex items-center gap-2.5 group cursor-pointer" aria-expanded="false">
+                <span class="shrink-0 w-7 h-8 flex items-center justify-center rounded border text-[10px] font-bold transition-colors"
+                      style={`border-color: ${energyColors[i]}60; color: ${energyColors[i]}; background: ${energyColors[i]}12`}>
                   {energyLabels[i]}
                 </span>
-                <span class="text-white/90 text-sm leading-snug flex-1 group-hover:text-white transition-colors sit-accroche"
+                <span class="text-white text-sm leading-snug flex-1 sit-accroche font-medium"
                       data-fr={s.accroche} data-en={en.situations[i].accroche}>{s.accroche}</span>
-                <span class="sit-arrow shrink-0 mt-1 text-white/15 transition-all group-hover:text-energy-green">
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                    <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <span class="sit-cta shrink-0 hidden md:flex items-center gap-1 text-[10px] uppercase tracking-wider text-energy-green/60 group-hover:text-energy-green font-semibold transition-colors">
+                  <span data-i18n-lang="fr">Voir</span>
+                  <span data-i18n-lang="en">View</span>
+                </span>
+                <span class="sit-arrow shrink-0 text-energy-green/70 group-hover:text-energy-green group-hover:translate-y-0.5 transition-all">
+                  <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                    <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
               </button>
