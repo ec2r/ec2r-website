@@ -19,8 +19,8 @@ const parcours = [
     titleFr: 'Mon collectif',
     titleEn: 'My collective',
     icon: '👥',
-    preview: '/images/app-preview/barometre.webp',
-    previewAlt: "Aperçu Baromètre énergétique EC²R dans l'app",
+    preview: null,
+    previewAlt: '',
     headlineFr: 'Baromètre énergétique EC²R',
     headlineEn: 'EC²R energy barometer',
     subFr: 'Diagnostic et levier+ immédiat pour mobiliser+ mes équipes',
@@ -32,8 +32,8 @@ const parcours = [
     titleFr: 'Mes leaders',
     titleEn: 'My leaders',
     icon: '🎯',
-    preview: '/images/app-preview/profil-leader.webp',
-    previewAlt: "Aperçu Profil Leader Augmenté EC²R dans l'app",
+    preview: null,
+    previewAlt: '',
     headlineFr: 'Accompagner mes leaders',
     headlineEn: 'Support my leaders',
     subFr: 'Profil de leadership EC²R — faire ma part pour mobiliser ou remobiliser mes équipes, sans épuiser mes batteries',
@@ -45,8 +45,8 @@ const parcours = [
     titleFr: 'Moi',
     titleEn: 'Me',
     icon: '🚀',
-    preview: '/images/app-preview/mentor-ia.webp',
-    previewAlt: "Aperçu Mentor IA EC²R dans l'app — avatar + chat sur situations terrain",
+    preview: null,
+    previewAlt: '',
     headlineFr: 'Mentor IA EC²R sur mes situations terrain',
     headlineEn: 'EC²R AI Mentor on my field situations',
     subFr: 'Expérimenter, avancer en autonomie',
@@ -121,8 +121,12 @@ const parcours = [
               <span class="absolute top-2 right-2 text-[9px] uppercase tracking-wider text-white/50 bg-navy-950/70 px-2 py-0.5 rounded backdrop-blur-sm">aperçu app</span>
             </div>
           ) : (
-            <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 flex items-center justify-center border-b border-white/5">
+            <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 flex flex-col items-center justify-center gap-2 border-b border-white/5 relative overflow-hidden">
               <span class="text-5xl opacity-30">{p.icon}</span>
+              <span class="text-[10px] uppercase tracking-wider text-white/30 font-semibold">
+                <span data-i18n-lang="fr">Aperçu — données privées</span>
+                <span data-i18n-lang="en">Preview — private data</span>
+              </span>
             </div>
           )}
           <div class="p-5">
