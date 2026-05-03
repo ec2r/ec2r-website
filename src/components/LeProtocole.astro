@@ -19,6 +19,8 @@ const parcours = [
     titleFr: 'Mon collectif',
     titleEn: 'My collective',
     icon: '👥',
+    preview: '/images/app-preview/barometre.webp',
+    previewAlt: "Aperçu Baromètre énergétique EC²R dans l'app",
     headlineFr: 'Baromètre énergétique EC²R',
     headlineEn: 'EC²R energy barometer',
     subFr: 'Diagnostic et levier+ immédiat pour mobiliser+ mes équipes',
@@ -30,6 +32,8 @@ const parcours = [
     titleFr: 'Mes leaders',
     titleEn: 'My leaders',
     icon: '🎯',
+    preview: '/images/app-preview/profil-leader.webp',
+    previewAlt: "Aperçu Profil Leader Augmenté EC²R dans l'app",
     headlineFr: 'Accompagner mes leaders',
     headlineEn: 'Support my leaders',
     subFr: 'Profil de leadership EC²R — faire ma part pour mobiliser ou remobiliser mes équipes, sans épuiser mes batteries',
@@ -41,6 +45,8 @@ const parcours = [
     titleFr: 'Moi',
     titleEn: 'Me',
     icon: '🚀',
+    preview: null,
+    previewAlt: '',
     headlineFr: 'Mentor IA EC²R sur mes situations terrain',
     headlineEn: 'EC²R AI Mentor on my field situations',
     subFr: 'Expérimenter, avancer en autonomie',
@@ -105,31 +111,45 @@ const parcours = [
     <!-- 3 parcours — cartes Mon collectif / Mes leaders / Moi -->
     <div class="grid md:grid-cols-3 gap-4 mb-12">
       {parcours.map(p => (
-        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 hover:border-white/15 transition-all relative">
-          <div class="text-2xl mb-3">{p.icon}</div>
-          <p class="text-energy-green/70 text-[10px] uppercase tracking-wider font-semibold mb-1">
-            <span data-i18n-lang="fr">{p.titleFr}</span>
-            <span data-i18n-lang="en">{p.titleEn}</span>
-          </p>
-          <h3 class="text-white font-display font-bold text-base mb-2 leading-tight">
-            <span data-i18n-lang="fr">{p.headlineFr}</span>
-            <span data-i18n-lang="en">{p.headlineEn}</span>
-          </h3>
-          <p class="text-white/60 text-xs leading-relaxed mb-3 italic">
-            <span data-i18n-lang="fr">{p.subFr}</span>
-            <span data-i18n-lang="en">{p.subEn}</span>
-          </p>
-          <ul class="space-y-1.5 border-t border-white/5 pt-3">
-            {p.itemsFr.map((item, i) => (
-              <li class="text-white/40 text-xs flex items-start gap-2">
-                <span class="text-energy-green/60 mt-0.5">›</span>
-                <span>
-                  <span data-i18n-lang="fr">{item}</span>
-                  <span data-i18n-lang="en">{p.itemsEn[i]}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-xl overflow-hidden hover:border-white/15 transition-all relative group">
+          {p.preview ? (
+            <div class="relative aspect-[16/10] bg-navy-900 border-b border-white/5 overflow-hidden">
+              <img src={p.preview} alt={p.previewAlt}
+                   class="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                   loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent"></div>
+              <span class="absolute top-2 right-2 text-[9px] uppercase tracking-wider text-white/50 bg-navy-950/70 px-2 py-0.5 rounded backdrop-blur-sm">aperçu app</span>
+            </div>
+          ) : (
+            <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 flex items-center justify-center border-b border-white/5">
+              <span class="text-5xl opacity-30">{p.icon}</span>
+            </div>
+          )}
+          <div class="p-5">
+            <p class="text-energy-green/70 text-[10px] uppercase tracking-wider font-semibold mb-1">
+              <span data-i18n-lang="fr">{p.titleFr}</span>
+              <span data-i18n-lang="en">{p.titleEn}</span>
+            </p>
+            <h3 class="text-white font-display font-bold text-base mb-2 leading-tight">
+              <span data-i18n-lang="fr">{p.headlineFr}</span>
+              <span data-i18n-lang="en">{p.headlineEn}</span>
+            </h3>
+            <p class="text-white/60 text-xs leading-relaxed mb-3 italic">
+              <span data-i18n-lang="fr">{p.subFr}</span>
+              <span data-i18n-lang="en">{p.subEn}</span>
+            </p>
+            <ul class="space-y-1.5 border-t border-white/5 pt-3">
+              {p.itemsFr.map((item, i) => (
+                <li class="text-white/40 text-xs flex items-start gap-2">
+                  <span class="text-energy-green/60 mt-0.5">›</span>
+                  <span>
+                    <span data-i18n-lang="fr">{item}</span>
+                    <span data-i18n-lang="en">{p.itemsEn[i]}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ))}
     </div>
