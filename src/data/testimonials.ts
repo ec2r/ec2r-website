@@ -715,6 +715,34 @@ export const testimonials: Testimonial[] = [
     tags: ['qualité', 'passage à l\'acte', 'suite'],
     year: 2021,
   },
+
+  // ── Témoignages pivot extraits de fils sous publications EC²R (2022) ──
+  {
+    id: 'gotto-bienveillance',
+    name: 'Moana GOTTO',
+    title: 'Conseiller client',
+    company: 'AG2R LA MONDIALE',
+    linkedinUrl: '',
+    postUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:6933136954024706048/',
+    quote: "Merci pour votre bienveillance. À bientôt.",
+    sector: 'assurance-protection',
+    impact: 'operationnel',
+    tags: ['bienveillance', 'humain'],
+    year: 2022,
+  },
+  {
+    id: 'longueville-keynote',
+    name: 'Remy LONGUEVILLE',
+    title: 'CEO · Co-fondateur',
+    company: 'Weekera',
+    linkedinUrl: '',
+    postUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:6981609260656787456/',
+    quote: "Merci Stéphane pour ton intervention.",
+    sector: 'direction-generale',
+    impact: 'direction',
+    tags: ['intervention', 'keynote'],
+    year: 2022,
+  },
 ];
 
 // ── Derived data ──

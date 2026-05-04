@@ -14,6 +14,7 @@ interface Props { fr: any; en: any; }
 const { fr, en } = Astro.props;
 
 import { testimonials, sectorLabels, impactLabels, allTags, allSectors, type Sector, type ImpactLevel } from '../data/testimonials';
+import { fieldMoments, fieldMomentColors, fieldMomentLabels } from '../data/onTerrain';
 
 // IDs YouTube fixes
 const videoIds = ["jhq47z0GanA", "e3KEgfNuNzQ"];
@@ -111,6 +112,85 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
           <span data-i18n-lang="en">It documents its own construction and our mobilization dynamics. Not a frozen result — the illustration of the living process. We used the directed<span class="plus-accent">+</span> power of AI to start from reality and move from artisanal know-how to augmented mode.</span>
         </p>
       </details>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- 1bis. SUR LE TERRAIN — preuves d'activité (séminaires, keynotes) -->
+    <!--       Pas de citations : documente la présence terrain, partenaires, dates. -->
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <section>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-2 h-8 bg-gradient-to-b from-energy-green to-accent rounded-full"></div>
+        <h3 class="font-display font-bold text-2xl text-ink">
+          <span data-i18n-lang="fr">Sur le terrain</span>
+          <span data-i18n-lang="en">In the field</span>
+        </h3>
+      </div>
+      <p class="text-ink-subtle text-sm mb-6 ml-5 max-w-3xl">
+        <span data-i18n-lang="fr">Séminaires, keynotes, ateliers de mobilisation. Des preuves d'activité publiques — partenaires nommés, dates, contextes. Les retours des participants se trouvent dans le mur ci-dessous.</span>
+        <span data-i18n-lang="en">Off-sites, keynotes, mobilization workshops. Public proof of activity — named partners, dates, contexts. Participant feedback is in the wall below.</span>
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {fieldMoments.map((m) => (
+          <a
+            href={m.postUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block bg-surface-alt border border-border-subtle rounded-xl p-5
+                   hover:border-accent/40 hover:shadow-lg hover:shadow-brand-anchor/5
+                   transition-all duration-300"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${fieldMomentColors[m.univers]}`}>
+                <span data-i18n-lang="fr">{fieldMomentLabels[m.univers].fr}</span>
+                <span data-i18n-lang="en">{fieldMomentLabels[m.univers].en}</span>
+              </span>
+              <time class="text-xs text-ink-faint font-medium" datetime={m.date}>
+                {new Date(m.date).toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' })}
+              </time>
+            </div>
+
+            <h4 class="font-display font-semibold text-ink text-base leading-snug mb-2 group-hover:text-accent transition-colors">
+              <span data-i18n-lang="fr">{m.titleFr}</span>
+              <span data-i18n-lang="en">{m.titleEn}</span>
+            </h4>
+
+            <p class="text-ink-subtle text-sm mb-3">
+              <span data-i18n-lang="fr">{m.subtitleFr}</span>
+              <span data-i18n-lang="en">{m.subtitleEn}</span>
+            </p>
+
+            <p class="text-ink-faint text-xs leading-relaxed border-t border-border-subtle pt-3">
+              <span class="font-medium text-ink-subtle">
+                <span data-i18n-lang="fr">Avec :</span>
+                <span data-i18n-lang="en">With:</span>
+              </span>
+              {' '}{m.partners}
+            </p>
+
+            <div class="flex items-center justify-between mt-3 text-xs text-ink-faint">
+              <span class="flex items-center gap-3">
+                <span class="flex items-center gap-1" title="Likes">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  {m.likes}
+                </span>
+                {m.comments > 0 && (
+                  <span class="flex items-center gap-1" title="Commentaires">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/></svg>
+                    {m.comments}
+                  </span>
+                )}
+              </span>
+              <span class="text-accent/70 group-hover:text-accent flex items-center gap-1 transition-colors">
+                <span data-i18n-lang="fr">Voir le post</span>
+                <span data-i18n-lang="en">See post</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════════════════ -->
