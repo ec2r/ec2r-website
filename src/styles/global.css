@@ -19,9 +19,11 @@
   --ink-faint: 100 116 139;
   --ink-disabled: 71 85 105;
   --ink-inverse: 10 19 48;
-  --border: 255 255 255;
-  --border-strong: 255 255 255;
-  --border-subtle: 255 255 255;
+  /* Borders dark : valeurs pré-mixées (white/X over navy 950) pour rendre
+     les borders subtils sans blanc plein. /opacity dans le markup s'applique en plus. */
+  --border: 47 54 79;          /* ≈ white/15 over navy */
+  --border-strong: 84 90 110;  /* ≈ white/30 over navy */
+  --border-subtle: 30 38 65;   /* ≈ white/8  over navy */
   --border-inverse: 10 19 48;
   --accent: 34 197 94;
   --accent-strong: 22 101 52;
