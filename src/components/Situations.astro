@@ -51,16 +51,16 @@ const situations = [
 ];
 ---
 
-<section id="situations" class="py-24 bg-navy-950 text-white">
+<section id="situations" class="py-24 bg-surface text-ink">
   <div class="max-w-5xl mx-auto px-6">
 
     <!-- Header -->
     <div class="mb-16 text-center">
-      <p class="section-label text-energy-green/70 mb-4">Reconnaissez-vous votre situation ?</p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-[1.15]">
+      <p class="section-label text-accent/70 mb-4">Reconnaissez-vous votre situation ?</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-ink leading-[1.15]">
         Nos énergies plus collectives
       </h2>
-      <p class="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
+      <p class="mt-4 text-ink-subtle text-lg max-w-2xl mx-auto">
         Choisissez ce qui résonne. Déployez pour voir notre réponse.
       </p>
     </div>
@@ -68,7 +68,7 @@ const situations = [
     <!-- Accordion -->
     <div class="space-y-3" id="situations-accordion">
       {situations.map((s, i) => (
-        <div class="situation-item border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-white/20">
+        <div class="situation-item border border-border-subtle rounded-xl overflow-hidden transition-all duration-300 hover:border-border">
 
           <!-- Trigger -->
           <button
@@ -76,13 +76,13 @@ const situations = [
             data-index={i}
             aria-expanded="false"
           >
-            <span class="text-energy-green font-display font-bold text-xl shrink-0 mt-0.5">
+            <span class="text-accent font-display font-bold text-xl shrink-0 mt-0.5">
               {s.num}
             </span>
-            <span class="text-white/90 font-display text-base md:text-lg leading-snug flex-1 group-hover:text-white transition-colors">
+            <span class="text-ink font-display text-base md:text-lg leading-snug flex-1 group-hover:text-ink transition-colors">
               {s.accroche}
             </span>
-            <span class="situation-arrow shrink-0 mt-1 text-energy-green transition-transform duration-300">
+            <span class="situation-arrow shrink-0 mt-1 text-accent transition-transform duration-300">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -91,32 +91,32 @@ const situations = [
 
           <!-- Panel -->
           <div class="situation-panel hidden px-6 pb-6 ml-10">
-            <div class="grid md:grid-cols-3 gap-6 pt-4 border-t border-white/10">
+            <div class="grid md:grid-cols-3 gap-6 pt-4 border-t border-border-subtle">
 
               <!-- Ce qui se passe -->
               <div>
-                <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Ce qui se passe</p>
-                <p class="text-slate-300 text-sm leading-relaxed">{s.ceQuiSePasse}</p>
+                <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Ce qui se passe</p>
+                <p class="text-ink-faint text-sm leading-relaxed">{s.ceQuiSePasse}</p>
               </div>
 
               <!-- Vous avez essayé -->
               <div>
-                <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Vous avez essayé — ou vous y pensez</p>
+                <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Vous avez essayé — ou vous y pensez</p>
                 <ul class="space-y-1 mb-3">
                   {s.essaye.map(e => (
-                    <li class="text-slate-400 text-sm flex items-start gap-2">
-                      <span class="text-slate-600 mt-0.5 shrink-0">–</span>
+                    <li class="text-ink-subtle text-sm flex items-start gap-2">
+                      <span class="text-ink-muted mt-0.5 shrink-0">–</span>
                       <span>{e}</span>
                     </li>
                   ))}
                 </ul>
-                <p class="text-slate-500 text-xs italic">{s.essayeConclusion}</p>
+                <p class="text-ink-subtle text-xs italic">{s.essayeConclusion}</p>
               </div>
 
               <!-- Notre réponse -->
               <div>
-                <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Notre promesse</p>
-                <p class="text-white/80 text-sm leading-relaxed">{s.reponse}</p>
+                <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Notre promesse</p>
+                <p class="text-ink text-sm leading-relaxed">{s.reponse}</p>
               </div>
 
             </div>
@@ -126,48 +126,48 @@ const situations = [
       ))}
 
       <!-- Item Luc / brique techno -->
-      <div class="situation-item border border-energy-green/20 rounded-xl overflow-hidden bg-energy-green/5 transition-all duration-300 hover:border-energy-green/40">
+      <div class="situation-item border border-accent/20 rounded-xl overflow-hidden bg-energy-green/5 transition-all duration-300 hover:border-accent/40">
         <button
           class="situation-trigger w-full text-left px-6 py-5 flex items-start gap-4 group"
           data-index="6"
           aria-expanded="false"
         >
-          <span class="text-energy-green font-display font-bold text-xl shrink-0 mt-0.5">↗</span>
-          <span class="text-white/90 font-display text-base md:text-lg leading-snug flex-1 group-hover:text-white transition-colors">
+          <span class="text-accent font-display font-bold text-xl shrink-0 mt-0.5">↗</span>
+          <span class="text-ink font-display text-base md:text-lg leading-snug flex-1 group-hover:text-ink transition-colors">
             Vous avez une vision claire de ce qu'il faudrait faire — intégrer l'IA, construire de nouvelles briques, faire évoluer votre valeur ajoutée. Mais comment lui donner vie ?
           </span>
-          <span class="situation-arrow shrink-0 mt-1 text-energy-green transition-transform duration-300">
+          <span class="situation-arrow shrink-0 mt-1 text-accent transition-transform duration-300">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
         </button>
         <div class="situation-panel hidden px-6 pb-6 ml-10">
-          <div class="grid md:grid-cols-3 gap-6 pt-4 border-t border-white/10">
+          <div class="grid md:grid-cols-3 gap-6 pt-4 border-t border-border-subtle">
             <div>
-              <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Ce qui se passe</p>
-              <p class="text-slate-300 text-sm leading-relaxed">
+              <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Ce qui se passe</p>
+              <p class="text-ink-faint text-sm leading-relaxed">
                 Vous avez des experts métiers en interne — dépositaires de la compréhension des évolutions, de la vision. Vous avez peut-être des interlocuteurs sur la partie système d'information. Ce qui manque : quelqu'un capable de faire le lien entre la promesse humaine et la brique technologique, et de la faire exister.
               </p>
             </div>
             <div>
-              <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Vous cherchez</p>
+              <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Vous cherchez</p>
               <ul class="space-y-2">
                 {[
                   'Co-construire la promesse de valeur+ avec vos experts métiers',
                   'Traduire+ cette promesse en produit ou en système concret',
                   'Un sparring partner+ qui fait passer de l\'idée à l\'acte — sans équipe de codeurs, sans mois de spécification',
                 ].map(e => (
-                  <li class="text-slate-400 text-sm flex items-start gap-2">
-                    <span class="text-energy-green mt-0.5 shrink-0">+</span>
+                  <li class="text-ink-subtle text-sm flex items-start gap-2">
+                    <span class="text-accent mt-0.5 shrink-0">+</span>
                     <span>{e}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p class="text-xs uppercase tracking-widest text-slate-500 mb-3 font-semibold">Notre promesse</p>
-              <p class="text-white/80 text-sm leading-relaxed">
+              <p class="text-xs uppercase tracking-widest text-ink-subtle mb-3 font-semibold">Notre promesse</p>
+              <p class="text-ink text-sm leading-relaxed">
                 Luc lui donne vie — en direct, avec vous. Le lien entre la ⑥ et la ①.
               </p>
             </div>

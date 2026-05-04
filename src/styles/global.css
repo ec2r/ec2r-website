@@ -2,6 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════════════════════════
+   THEME TOKENS — dark = défaut (absence de data-theme), light explicite
+   Format RGB triplet pour compat Tailwind rgb(var(--x) / <alpha-value>)
+   ══════════════════════════════════════════════════════════════════ */
+:root,
+:root[data-theme="dark"] {
+  --surface: 10 19 48;
+  --surface-alt: 0 32 96;
+  --surface-raised: 16 28 64;
+  --surface-inverse: 255 255 255;
+  --ink: 255 255 255;
+  --ink-strong: 255 255 255;
+  --ink-muted: 203 213 225;
+  --ink-subtle: 148 163 184;
+  --ink-faint: 100 116 139;
+  --ink-disabled: 71 85 105;
+  --ink-inverse: 10 19 48;
+  --border: 255 255 255;
+  --border-strong: 255 255 255;
+  --border-subtle: 255 255 255;
+  --border-inverse: 10 19 48;
+  --accent: 34 197 94;
+  --accent-strong: 22 101 52;
+  --accent-soft: 22 101 52;
+  --accent-on: 10 19 48;
+  --brand-anchor: 0 32 96;
+  --shadow-color: 0 0 0;
+  --grid-line-rgb: 255 255 255;
+  --grid-line-alpha: 0.02;
+  --scrollbar-thumb: 0 32 96 / 0.15;
+  --scrollbar-thumb-hover: 0 32 96 / 0.30;
+  --battery-glow-rgb: 22 101 52;
+  --battery-glow-low: 0.20;
+  --battery-glow-high: 0.35;
+  --selection-bg: 22 101 52 / 0.12;
+  --universe-next-bg: 34 197 94 / 0.10;
+  --universe-next-bg-hover: 34 197 94 / 0.20;
+  --universe-next-border: 34 197 94 / 0.20;
+  --universe-next-border-hover: 34 197 94 / 0.40;
+  --universe-next-color: 34 197 94 / 0.80;
+  --universe-next-color-hover: 34 197 94;
+  --nav-bg: 10 19 48 / 0.95;
+}
+
+:root[data-theme="light"] {
+  --surface: 255 255 255;
+  --surface-alt: 248 250 252;
+  --surface-raised: 241 245 249;
+  --surface-inverse: 10 19 48;
+  --ink: 10 19 48;
+  --ink-strong: 0 32 96;
+  --ink-muted: 71 85 105;
+  --ink-subtle: 100 116 139;
+  --ink-faint: 148 163 184;
+  --ink-disabled: 203 213 225;
+  --ink-inverse: 255 255 255;
+  --border: 226 232 240;
+  --border-strong: 203 213 225;
+  --border-subtle: 241 245 249;
+  --border-inverse: 10 19 48;
+  --accent: 22 101 52;
+  --accent-strong: 20 83 45;
+  --accent-soft: 220 252 231;
+  --accent-on: 255 255 255;
+  --brand-anchor: 0 32 96;
+  --shadow-color: 15 23 42;
+  --grid-line-rgb: 10 19 48;
+  --grid-line-alpha: 0.04;
+  --scrollbar-thumb: 0 32 96 / 0.25;
+  --scrollbar-thumb-hover: 0 32 96 / 0.45;
+  --battery-glow-rgb: 22 101 52;
+  --battery-glow-low: 0.10;
+  --battery-glow-high: 0.18;
+  --selection-bg: 22 101 52 / 0.18;
+  --universe-next-bg: 22 101 52 / 0.08;
+  --universe-next-bg-hover: 22 101 52 / 0.16;
+  --universe-next-border: 22 101 52 / 0.30;
+  --universe-next-border-hover: 22 101 52 / 0.55;
+  --universe-next-color: 22 101 52;
+  --universe-next-color-hover: 20 83 45;
+  --nav-bg: 255 255 255 / 0.92;
+}
+
 /* EC²R brand kerning — the Unicode ² has wider metrics than normal letters.
    This tightens the spacing so it doesn't look detached from C and R. */
 @layer base {
@@ -79,7 +162,7 @@
   }
 
   body {
-    @apply font-body text-slate-800 bg-navy-950;
+    @apply font-body bg-surface text-ink;
     overflow: hidden;
     height: 100vh;
   }
@@ -89,35 +172,35 @@
   }
 
   ::selection {
-    background: rgba(22, 101, 52, 0.12);
+    background: rgb(var(--selection-bg));
   }
 }
 
 @layer components {
   .section-label {
-    @apply text-xs uppercase tracking-[0.2em] font-semibold text-energy-dark mb-4;
+    @apply text-xs uppercase tracking-[0.2em] font-semibold text-accent-strong mb-4;
     letter-spacing: 0.2em;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-navy-950 leading-[1.15] mb-6;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-ink leading-[1.15] mb-6;
   }
 
   .section-text {
-    @apply text-lg text-slate-600 leading-relaxed max-w-2xl;
+    @apply text-lg text-ink-muted leading-relaxed max-w-2xl;
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 bg-navy-900 text-white font-display font-semibold 
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-brand-anchor text-white font-display font-semibold 
            text-sm tracking-wide rounded-lg transition-all duration-300
            hover:bg-energy-dark hover:shadow-lg hover:shadow-energy-dark/20
            active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 
+    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-brand-anchor text-brand-anchor 
            font-display font-semibold text-sm tracking-wide rounded-lg transition-all duration-300
-           hover:bg-navy-900 hover:text-white active:scale-[0.98];
+           hover:bg-brand-anchor hover:text-white active:scale-[0.98];
   }
 
   .energy-gradient-text {
@@ -193,15 +276,15 @@
 /* ── Futuristic grid overlay ── */
 .grid-overlay {
   background-image: 
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgb(var(--grid-line-rgb) / var(--grid-line-alpha)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--grid-line-rgb) / var(--grid-line-alpha)) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 /* ── Battery glow ── */
 @keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(22, 101, 52, 0.2)); }
-  50% { filter: drop-shadow(0 0 20px rgba(22, 101, 52, 0.35)); }
+  0%, 100% { filter: drop-shadow(0 0 6px rgb(var(--battery-glow-rgb) / var(--battery-glow-low))); }
+  50% { filter: drop-shadow(0 0 20px rgb(var(--battery-glow-rgb) / var(--battery-glow-high))); }
 }
 
 .battery-glow {
@@ -210,7 +293,7 @@
 
 /* ── Plus accent (superscript +) ── */
 .plus-accent {
-  color: #22C55E;
+  color: rgb(var(--accent));
   font-weight: 800;
   font-size: 0.7em;
   vertical-align: super;
@@ -234,11 +317,11 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 32, 96, 0.15);
+  background: rgb(var(--scrollbar-thumb));
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 32, 96, 0.3);
+  background: rgb(var(--scrollbar-thumb-hover));
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -251,10 +334,10 @@
   bottom: 30px;
   right: 30px;
   z-index: 20;
-  background: rgba(34, 197, 94, 0.1);
+  background: rgb(var(--universe-next-bg));
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  color: rgba(34, 197, 94, 0.8);
+  border: 1px solid rgb(var(--universe-next-border));
+  color: rgb(var(--universe-next-color));
   font-size: 0.875rem;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
@@ -269,11 +352,11 @@
 }
 
 .universe-next-btn:hover {
-  background: rgba(34, 197, 94, 0.2);
-  border-color: rgba(34, 197, 94, 0.4);
-  color: rgba(34, 197, 94, 1);
+  background: rgb(var(--universe-next-bg-hover));
+  border-color: rgb(var(--universe-next-border-hover));
+  color: rgb(var(--universe-next-color-hover));
   transform: translateX(3px);
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.15);
+  box-shadow: 0 10px 30px rgb(var(--universe-next-color-hover) / 0.15);
 }
 
 .universe-next-btn svg {

@@ -3,53 +3,53 @@ interface Props { fr: any; en: any; }
 const { fr, en } = Astro.props;
 ---
 
-<section id="contact" class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+<section id="contact" class="py-24 lg:py-32 bg-surface relative overflow-hidden">
   <div class="absolute top-0 left-0 right-0 energy-gradient-bar h-1"></div>
-  <div class="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full border border-white/[0.03] translate-x-1/2"></div>
+  <div class="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full border border-border-subtle translate-x-1/2"></div>
   <div class="absolute inset-0 grid-overlay"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
     <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <p class="text-energy-green text-sm font-semibold tracking-[0.2em] uppercase mb-6"
+      <p class="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-6"
          data-i18n-fr={fr.label} data-i18n-en={en.label}>{fr.label}</p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-8">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-ink leading-tight mb-8">
         <span data-i18n-fr={fr.title1} data-i18n-en={en.title1}>{fr.title1}</span><br/>
-        <span class="text-white/50" data-i18n-fr={fr.title2} data-i18n-en={en.title2}>{fr.title2}</span>
+        <span class="text-ink-subtle" data-i18n-fr={fr.title2} data-i18n-en={en.title2}>{fr.title2}</span>
       </h2>
-      <p class="text-white/50 text-lg leading-relaxed max-w-xl mx-auto"
+      <p class="text-ink-subtle text-lg leading-relaxed max-w-xl mx-auto"
          data-i18n-fr={fr.intro} data-i18n-en={en.intro}>{fr.intro}</p>
     </div>
 
     <!-- Segmentation cards -->
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
       <div class="reveal reveal-delay-1">
-        <div class="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-8 border border-energy-green/20 hover:border-energy-green/40 transition-all duration-300 h-full">
-          <div class="w-12 h-12 bg-energy-dark/20 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-surface-raised backdrop-blur-sm rounded-2xl p-8 border border-accent/20 hover:border-accent/40 transition-all duration-300 h-full">
+          <div class="w-12 h-12 bg-accent-strong/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3"
+          <h3 class="font-display font-bold text-xl text-ink mb-3"
               data-i18n-fr={fr.cardYes.title} data-i18n-en={en.cardYes.title}>{fr.cardYes.title}</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-6"
+          <p class="text-ink-subtle text-sm leading-relaxed mb-6"
              data-i18n-fr={fr.cardYes.text} data-i18n-en={en.cardYes.text}>{fr.cardYes.text}</p>
-          <p class="text-energy-green font-display font-semibold text-sm"
+          <p class="text-accent font-display font-semibold text-sm"
              data-i18n-fr={fr.cardYes.cta} data-i18n-en={en.cardYes.cta}>{fr.cardYes.cta}</p>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="bg-white/[0.03] rounded-2xl p-8 border border-white/10 h-full">
-          <div class="w-12 h-12 bg-white/[0.04] rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-surface-alt rounded-2xl p-8 border border-border-subtle h-full">
+          <div class="w-12 h-12 bg-surface-raised rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-ink-faint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
             </svg>
           </div>
-          <h3 class="font-display font-bold text-xl text-white/40 mb-3"
+          <h3 class="font-display font-bold text-xl text-ink-subtle mb-3"
               data-i18n-fr={fr.cardNo.title} data-i18n-en={en.cardNo.title}>{fr.cardNo.title}</h3>
-          <p class="text-white/30 text-sm leading-relaxed mb-6"
+          <p class="text-ink-faint text-sm leading-relaxed mb-6"
              data-i18n-fr={fr.cardNo.text} data-i18n-en={en.cardNo.text}>{fr.cardNo.text}</p>
-          <p class="text-white/30 font-display font-semibold text-sm"
+          <p class="text-ink-faint font-display font-semibold text-sm"
              data-i18n-fr={fr.cardNo.cta} data-i18n-en={en.cardNo.cta}>{fr.cardNo.cta}</p>
         </div>
       </div>
@@ -58,10 +58,10 @@ const { fr, en } = Astro.props;
     <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
       <!-- Left -->
       <div class="reveal">
-        <div class="space-y-6 text-white/50 text-sm">
+        <div class="space-y-6 text-ink-subtle text-sm">
           {fr.checks.map((check: string, i: number) => (
             <p class="flex items-center gap-3">
-              <svg class="w-5 h-5 text-energy-green flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               <span data-i18n-fr={check} data-i18n-en={en.checks[i]}>{check}</span>
@@ -69,32 +69,32 @@ const { fr, en } = Astro.props;
           ))}
         </div>
 
-        <div class="mt-10 bg-white/[0.04] rounded-xl p-6 border border-white/10">
+        <div class="mt-10 bg-surface-raised rounded-xl p-6 border border-border-subtle">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-10 h-10 rounded-lg bg-energy-dark/20 flex items-center justify-center">
-              <svg class="w-5 h-5 text-energy-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg bg-accent-strong/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
               </svg>
             </div>
             <div>
-              <h4 class="font-display font-semibold text-white text-sm"
+              <h4 class="font-display font-semibold text-ink text-sm"
                   data-i18n-fr={fr.booking.title} data-i18n-en={en.booking.title}>{fr.booking.title}</h4>
-              <p class="text-white/40 text-xs"
+              <p class="text-ink-subtle text-xs"
                  data-i18n-fr={fr.booking.sub} data-i18n-en={en.booking.sub}>{fr.booking.sub}</p>
             </div>
           </div>
-          <a href="mailto:contact@methode-ec2r.com?subject=Demande%20de%20cr%C3%A9neau%20EC%C2%B2R" class="btn-primary w-full justify-center bg-energy-dark hover:bg-energy-green hover:text-navy-950 text-sm py-3">
+          <a href="mailto:contact@methode-ec2r.com?subject=Demande%20de%20cr%C3%A9neau%20EC%C2%B2R" class="btn-primary w-full justify-center bg-accent-strong hover:bg-accent hover:text-accent-on text-sm py-3">
             <span data-i18n-fr={fr.booking.cta} data-i18n-en={en.booking.cta}>{fr.booking.cta}</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </a>
-          <p class="text-white/20 text-xs text-center mt-3"
+          <p class="text-ink-disabled text-xs text-center mt-3"
              data-i18n-fr={fr.booking.note} data-i18n-en={en.booking.note}>{fr.booking.note}</p>
         </div>
 
-        <div class="mt-8 pt-8 border-t border-white/5">
-          <p class="text-white/20 text-xs italic leading-relaxed"
+        <div class="mt-8 pt-8 border-t border-border-subtle">
+          <p class="text-ink-disabled text-xs italic leading-relaxed"
              data-i18n-fr={fr.quote} data-i18n-en={en.quote}>{fr.quote}</p>
         </div>
       </div>
@@ -102,81 +102,81 @@ const { fr, en } = Astro.props;
       <!-- Right: form -->
       <div class="reveal reveal-delay-2">
         <form action="https://formspree.io/f/xdkopajd" method="POST"
-              class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 space-y-5">
+              class="bg-surface-alt backdrop-blur-sm rounded-xl p-8 border border-border-subtle space-y-5">
           <div>
-            <label for="name" class="block text-white/70 text-sm font-medium mb-2"
+            <label for="name" class="block text-ink-muted text-sm font-medium mb-2"
                    data-i18n-fr={fr.form.name} data-i18n-en={en.form.name}>{fr.form.name}</label>
             <input type="text" id="name" name="name" required
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base
+              class="w-full bg-surface-alt border border-border-subtle rounded-lg px-4 py-3 text-ink text-base
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50
-                     focus:ring-1 focus:ring-energy-green/30 transition-colors"
+                     focus:ring-1 focus:ring-accent/30 transition-colors"
               data-placeholder-fr={fr.form.namePlaceholder} data-placeholder-en={en.form.namePlaceholder}
               placeholder={fr.form.namePlaceholder} />
           </div>
           <div>
-            <label for="email" class="block text-white/70 text-sm font-medium mb-2">Email</label>
+            <label for="email" class="block text-ink-muted text-sm font-medium mb-2">Email</label>
             <input type="email" id="email" name="email" required
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base
+              class="w-full bg-surface-alt border border-border-subtle rounded-lg px-4 py-3 text-ink text-base
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50
-                     focus:ring-1 focus:ring-energy-green/30 transition-colors"
+                     focus:ring-1 focus:ring-accent/30 transition-colors"
               placeholder="votre@email.com" />
           </div>
           <div>
-            <label for="intent" class="block text-white/70 text-sm font-medium mb-2"
+            <label for="intent" class="block text-ink-muted text-sm font-medium mb-2"
                    data-i18n-fr={fr.form.situation} data-i18n-en={en.form.situation}>{fr.form.situation}</label>
             <select id="intent" name="intent"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base
-                     focus:outline-none focus:border-energy-green/50 focus:ring-1 focus:ring-energy-green/30 transition-colors">
-              <option value="" class="bg-navy-950"
+              class="w-full bg-surface-alt border border-border-subtle rounded-lg px-4 py-3 text-ink text-base
+                     focus:outline-none focus:border-energy-green/50 focus:ring-1 focus:ring-accent/30 transition-colors">
+              <option value="" class="bg-surface"
                       data-i18n-fr={fr.form.situationDefault} data-i18n-en={en.form.situationDefault}>{fr.form.situationDefault}</option>
               {fr.form.situationOptions.map((opt: string, i: number) => (
-                <option value={`opt${i}`} class="bg-navy-950"
+                <option value={`opt${i}`} class="bg-surface"
                         data-i18n-fr={opt} data-i18n-en={en.form.situationOptions[i]}>{opt}</option>
               ))}
             </select>
-            <div id="referral-details" class="hidden mt-3 p-4 bg-white/5 rounded-lg border border-white/10 space-y-3">
-              <p class="text-white/50 text-xs">Vous pensez à quelqu'un pour qui ça résonnerait ?</p>
+            <div id="referral-details" class="hidden mt-3 p-4 bg-surface-alt rounded-lg border border-border-subtle space-y-3">
+              <p class="text-ink-subtle text-xs">Vous pensez à quelqu'un pour qui ça résonnerait ?</p>
               <input type="text" name="referral-name" placeholder="Nom de la personne"
-                     class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder-white/30 focus:outline-none focus:border-energy-green/50" />
+                     class="w-full bg-surface-alt border border-border-subtle rounded-lg px-3 py-2 text-ink text-sm placeholder-white/30 focus:outline-none focus:border-energy-green/50" />
               <input type="email" name="referral-email" placeholder="Son email (optionnel)"
-                     class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder-white/30 focus:outline-none focus:border-energy-green/50" />
-              <p class="text-white/30 text-xs italic">On valorise chaque mise en relation sérieuse.</p>
+                     class="w-full bg-surface-alt border border-border-subtle rounded-lg px-3 py-2 text-ink text-sm placeholder-white/30 focus:outline-none focus:border-energy-green/50" />
+              <p class="text-ink-faint text-xs italic">On valorise chaque mise en relation sérieuse.</p>
             </div>
           </div>
           <div>
-            <label for="referral" class="block text-white/70 text-sm font-medium mb-2"
+            <label for="referral" class="block text-ink-muted text-sm font-medium mb-2"
                    data-i18n-fr={fr.form.referral} data-i18n-en={en.form.referral}>{fr.form.referral}</label>
             <input type="text" id="referral" name="referral"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base
+              class="w-full bg-surface-alt border border-border-subtle rounded-lg px-4 py-3 text-ink text-base
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50
-                     focus:ring-1 focus:ring-energy-green/30 transition-colors"
+                     focus:ring-1 focus:ring-accent/30 transition-colors"
               data-placeholder-fr={fr.form.referralPlaceholder} data-placeholder-en={en.form.referralPlaceholder}
               placeholder={fr.form.referralPlaceholder} />
           </div>
           <div>
-            <label for="message" class="block text-white/70 text-sm font-medium mb-2"
+            <label for="message" class="block text-ink-muted text-sm font-medium mb-2"
                    data-i18n-fr={fr.form.message} data-i18n-en={en.form.message}>{fr.form.message}</label>
             <textarea id="message" name="message" rows="3"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-base
+              class="w-full bg-surface-alt border border-border-subtle rounded-lg px-4 py-3 text-ink text-base
                      placeholder-white/30 focus:outline-none focus:border-energy-green/50
-                     focus:ring-1 focus:ring-energy-green/30 transition-colors resize-none"
+                     focus:ring-1 focus:ring-accent/30 transition-colors resize-none"
               data-placeholder-fr={fr.form.messagePlaceholder} data-placeholder-en={en.form.messagePlaceholder}
               placeholder={fr.form.messagePlaceholder}></textarea>
           </div>
           <div class="flex items-start gap-3">
             <input type="checkbox" id="consent" name="consent" required
-              class="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-energy-green
-                     focus:ring-energy-green/30 focus:ring-offset-0 cursor-pointer" />
-            <label for="consent" class="text-white/50 text-xs leading-relaxed cursor-pointer">
+              class="mt-1 w-4 h-4 rounded border-border bg-surface-alt text-accent
+                     focus:ring-accent/30 focus:ring-offset-0 cursor-pointer" />
+            <label for="consent" class="text-ink-subtle text-xs leading-relaxed cursor-pointer">
               <span data-i18n-fr={fr.form.consent} data-i18n-en={en.form.consent}>{fr.form.consent}</span>
-              &nbsp;<a href="/politique-de-confidentialite" class="text-energy-green/70 hover:text-energy-green underline"
+              &nbsp;<a href="/politique-de-confidentialite" class="text-accent/70 hover:text-accent underline"
                       data-i18n-fr={fr.form.consentLink} data-i18n-en={en.form.consentLink}>{fr.form.consentLink}</a>.
             </label>
           </div>
-          <button type="submit" class="btn-primary w-full justify-center bg-energy-dark hover:bg-energy-green hover:text-navy-950">
+          <button type="submit" class="btn-primary w-full justify-center bg-accent-strong hover:bg-accent hover:text-accent-on">
             <span data-i18n-fr={fr.form.submit} data-i18n-en={en.form.submit}>{fr.form.submit}</span>
           </button>
-          <p class="text-white/30 text-xs text-center"
+          <p class="text-ink-faint text-xs text-center"
              data-i18n-fr={fr.form.note} data-i18n-en={en.form.note}>{fr.form.note}</p>
         </form>
       </div>

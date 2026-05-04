@@ -8,25 +8,25 @@ const { fr, en } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-navy-950 border-t border-white/5">
+<footer class="bg-surface border-t border-border-subtle">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-4">
         <img src="/images/logo-ec2r.png" alt="EC²R" class="h-6 opacity-60" />
-        <span class="text-white/30 text-sm">© {currentYear} <EC2R /> Conseil. Méthode <EC2R /> ©</span>
+        <span class="text-ink-faint text-sm">© {currentYear} <EC2R /> Conseil. Méthode <EC2R /> ©</span>
       </div>
       <!-- NOTE JURIDIQUE : La méthode EC²R est un asset intellectuel distinct d'EC²R Conseil.
            Ce site représente la méthode. L'adresse Neuilly = siège d'EC²R Conseil uniquement.
            L'adresse reste dans mentions-legales.astro. -->
-      <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-white/30 text-sm text-center sm:text-left">
+      <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-ink-faint text-sm text-center sm:text-left">
         {fr.address && (
           <span data-i18n-fr={fr.address} data-i18n-en={en.address}>{fr.address}</span>
         )}
         {fr.address && <span class="hidden md:inline">·</span>}
-        <a href="/mentions-legales" class="hover:text-white/60 transition-colors"
+        <a href="/mentions-legales" class="hover:text-ink-muted transition-colors"
            data-i18n-fr={fr.legal} data-i18n-en={en.legal}>{fr.legal}</a>
         <span class="hidden md:inline">·</span>
-        <a href="/politique-de-confidentialite" class="hover:text-white/60 transition-colors"
+        <a href="/politique-de-confidentialite" class="hover:text-ink-muted transition-colors"
            data-i18n-fr={fr.privacy} data-i18n-en={en.privacy}>{fr.privacy}</a>
       </div>
     </div>

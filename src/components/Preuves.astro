@@ -11,7 +11,7 @@ const timelineColors = [
   'bg-amber-300',
   'bg-green-300',
   'bg-green-600',
-  'bg-gradient-to-r from-green-600 to-green-400',
+  'bg-gradient-to-r from-accent-strong to-accent',
 ];
 
 const timelineTextColors = [
@@ -24,7 +24,7 @@ const timelineTextColors = [
 ];
 ---
 
-<section id="preuves" class="py-24 lg:py-32 bg-slate-50">
+<section id="preuves" class="py-24 lg:py-32 bg-surface-alt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
     <div class="max-w-3xl mb-16 reveal">
@@ -38,11 +38,11 @@ const timelineTextColors = [
 
     <!-- Word cloud -->
     <div class="mb-16 reveal">
-      <div class="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
-        <h3 class="font-display font-semibold text-navy-950 text-lg mb-6"
+      <div class="bg-surface rounded-2xl border border-border p-8 md:p-10">
+        <h3 class="font-display font-semibold text-ink text-lg mb-6"
             data-i18n-fr={fr.wallTitle} data-i18n-en={en.wallTitle}>{fr.wallTitle}</h3>
         <div id="word-cloud" class="relative h-[220px] md:h-[280px] overflow-hidden"></div>
-        <p class="text-slate-400 text-xs mt-6 italic"
+        <p class="text-ink-subtle text-xs mt-6 italic"
            data-i18n-fr={fr.wallCloudNote} data-i18n-en={en.wallCloudNote}>{fr.wallCloudNote}</p>
       </div>
     </div>
@@ -51,25 +51,25 @@ const timelineTextColors = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
       {fr.linkedinPosts.map((post: any, i: number) => (
         <div class={`reveal reveal-delay-${(i % 3) + 1}`}>
-          <div class="bg-white rounded-xl p-6 h-full border border-slate-200 relative group
-                      hover:shadow-lg hover:shadow-navy-900/5 hover:border-energy-dark/20 transition-all duration-500">
+          <div class="bg-surface rounded-xl p-6 h-full border border-border relative group
+                      hover:shadow-lg hover:shadow-brand-anchor/5 hover:border-energy-dark/20 transition-all duration-500">
             <!-- Header avec avatar placeholder -->
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-full bg-navy-950/[0.06] border border-slate-200 flex items-center justify-center">
-                <span class="text-navy-900/30 text-xs font-bold">{post.name.split(' ').map((w: string) => w[0]).join('')}</span>
+              <div class="w-10 h-10 rounded-full bg-surface-inverse/[0.06] border border-border flex items-center justify-center">
+                <span class="text-ink-strong/30 text-xs font-bold">{post.name.split(' ').map((w: string) => w[0]).join('')}</span>
               </div>
               <div>
-                <p class="font-display font-semibold text-navy-950 text-sm"
+                <p class="font-display font-semibold text-ink text-sm"
                    data-i18n-fr={post.name} data-i18n-en={en.linkedinPosts[i].name}>{post.name}</p>
-                <p class="text-slate-500 text-xs"
+                <p class="text-ink-subtle text-xs"
                    data-i18n-fr={post.title} data-i18n-en={en.linkedinPosts[i].title}>{post.title}</p>
               </div>
             </div>
             <!-- Type badge -->
-            <span class="inline-block text-xs font-medium text-energy-dark bg-energy-dark/[0.08] px-3 py-1 rounded-full mb-4"
+            <span class="inline-block text-xs font-medium text-accent-strong bg-energy-dark/[0.08] px-3 py-1 rounded-full mb-4"
                   data-i18n-fr={post.type} data-i18n-en={en.linkedinPosts[i].type}>{post.type}</span>
             <!-- Quote -->
-            <blockquote class="text-slate-700 text-sm leading-relaxed"
+            <blockquote class="text-ink-muted text-sm leading-relaxed"
                         data-i18n-fr={post.quote} data-i18n-en={en.linkedinPosts[i].quote}>{post.quote}</blockquote>
           </div>
         </div>
@@ -79,8 +79,8 @@ const timelineTextColors = [
     <!-- CTA bridge → Temoignages -->
     <div class="text-center mb-20 reveal">
       <a href="#temoignages"
-         class="inline-flex items-center gap-2 text-energy-dark font-display font-semibold text-base
-                hover:text-navy-950 transition-colors duration-300 group"
+         class="inline-flex items-center gap-2 text-accent-strong font-display font-semibold text-base
+                hover:text-ink transition-colors duration-300 group"
          data-i18n-fr="Lire les {count} témoignages complets →"
          data-i18n-en="Read all {count} testimonials →">
         <span data-i18n-fr="Lire les témoignages complets" data-i18n-en="Read all testimonials">Lire les témoignages complets</span>
@@ -88,7 +88,7 @@ const timelineTextColors = [
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
-      <p class="text-slate-400 text-sm mt-2"
+      <p class="text-ink-subtle text-sm mt-2"
          data-i18n-fr="100 % non sollicités, publiés sur LinkedIn, vérifiables."
          data-i18n-en="100% unsolicited, published on LinkedIn, verifiable.">
         100 % non sollicités, publiés sur LinkedIn, vérifiables.
@@ -99,26 +99,26 @@ const timelineTextColors = [
     <div class="reveal">
       <div class="flex items-center gap-3 mb-2">
         <div class="w-2 h-8 bg-gradient-to-b from-energy-red to-energy-dark rounded-full"></div>
-        <h3 class="font-display font-bold text-2xl text-navy-950"
+        <h3 class="font-display font-bold text-2xl text-ink"
             data-i18n-fr={fr.trajTitle} data-i18n-en={en.trajTitle}>{fr.trajTitle}</h3>
       </div>
-      <p class="text-slate-500 text-sm mb-8 ml-5"
+      <p class="text-ink-subtle text-sm mb-8 ml-5"
          data-i18n-fr={fr.trajSub} data-i18n-en={en.trajSub}>{fr.trajSub}</p>
       <div class="grid md:grid-cols-2 gap-8">
         {frVideos.map((video: any, i: number) => (
           <div class="group">
-            <div class="relative aspect-video bg-navy-950 rounded-xl overflow-hidden shadow-lg shadow-navy-900/10 group-hover:shadow-xl transition-shadow duration-300">
+            <div class="relative aspect-video bg-surface rounded-xl overflow-hidden shadow-lg shadow-brand-anchor/10 group-hover:shadow-xl transition-shadow duration-300">
               <iframe src={`https://www.youtube-nocookie.com/embed/${videoIds[i]}`}
                 title={video.title} class="absolute inset-0 w-full h-full" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="mt-4">
-              <h4 class="font-display font-semibold text-navy-950"
+              <h4 class="font-display font-semibold text-ink"
                   data-i18n-fr={video.title} data-i18n-en={enVideos[i].title}>{video.title}</h4>
-              <p class="text-sm text-energy-dark font-medium"
+              <p class="text-sm text-accent-strong font-medium"
                  data-i18n-fr={video.subtitle} data-i18n-en={enVideos[i].subtitle}>{video.subtitle}</p>
-              <p class="text-sm text-slate-500 mt-1"
+              <p class="text-sm text-ink-subtle mt-1"
                  data-i18n-fr={video.description} data-i18n-en={enVideos[i].description}>{video.description}</p>
             </div>
           </div>
@@ -128,23 +128,23 @@ const timelineTextColors = [
 
     <!-- Musée / Trajectoire timeline -->
     <div class="mt-16 reveal">
-      <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12">
-        <p class="text-xs text-slate-400 uppercase tracking-wider font-medium mb-3"
+      <div class="bg-surface border border-border rounded-2xl p-8 md:p-12">
+        <p class="text-xs text-ink-subtle uppercase tracking-wider font-medium mb-3"
            data-i18n-fr={frMuseeLabel} data-i18n-en={enMuseeLabel}>{frMuseeLabel}</p>
-        <h4 class="font-display font-bold text-xl text-navy-950 mb-3"
+        <h4 class="font-display font-bold text-xl text-ink mb-3"
             data-i18n-fr={fr.museeTitle} data-i18n-en={en.museeTitle}>{fr.museeTitle}</h4>
-        <p class="text-slate-600 leading-relaxed mb-8"
+        <p class="text-ink-muted leading-relaxed mb-8"
            data-i18n-fr={fr.museeSub} data-i18n-en={en.museeSub}>{fr.museeSub}</p>
 
         <!-- Timeline horizontale -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {fr.museeTimeline.map((item: any, i: number) => (
-            <div class={`reveal reveal-delay-${i + 1} ${i === 5 ? 'ring-1 ring-green-500/30 bg-green-500/[0.03]' : ''} rounded-lg p-4`}>
+            <div class={`reveal reveal-delay-${i + 1} ${i === 5 ? 'ring-1 ring-accent/30 bg-green-500/[0.03]' : ''} rounded-lg p-4`}>
               <div class={`h-1 ${timelineColors[i]} rounded-full mb-3`}></div>
               <p class={`font-display font-bold text-lg ${timelineTextColors[i]}`}>{item.year}</p>
-              <p class="font-display font-semibold text-navy-950 text-sm mb-1"
+              <p class="font-display font-semibold text-ink text-sm mb-1"
                  data-i18n-fr={item.label} data-i18n-en={en.museeTimeline[i].label}>{item.label}</p>
-              <p class="text-slate-500 text-xs leading-relaxed"
+              <p class="text-ink-subtle text-xs leading-relaxed"
                  data-i18n-fr={item.sub} data-i18n-en={en.museeTimeline[i].sub}>{item.sub}</p>
             </div>
           ))}
@@ -174,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const sizeClasses: Record<string, string> = {
-    large: 'text-xl md:text-2xl font-bold text-navy-950',
-    medium: 'text-sm md:text-base font-medium text-slate-600',
-    small: 'text-xs text-slate-400',
+    large: 'text-xl md:text-2xl font-bold text-ink',
+    medium: 'text-sm md:text-base font-medium text-ink-muted',
+    small: 'text-xs text-ink-subtle',
   };
 
   const sizeOpacity: Record<string, number> = { large: 1, medium: 0.7, small: 0.4 };

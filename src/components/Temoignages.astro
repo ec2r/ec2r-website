@@ -44,21 +44,21 @@ const sectorColors: Record<Sector, string> = {
   'expertise-comptable': 'bg-blue-50 text-blue-700 border-blue-200',
   'immobilier':          'bg-green-50 text-green-700 border-green-200',
   'assurance-protection':'bg-amber-50 text-amber-700 border-amber-200',
-  'industrie':           'bg-slate-100 text-slate-700 border-slate-300',
+  'industrie':           'bg-surface-raised text-ink-muted border-border-strong',
   'hospitality':         'bg-purple-50 text-purple-700 border-purple-200',
   'conseil-rh':          'bg-rose-50 text-rose-700 border-rose-200',
-  'direction-generale':  'bg-navy-950/5 text-navy-950 border-navy-950/20',
+  'direction-generale':  'bg-surface-inverse/5 text-ink border-ink/20',
 };
 
 const impactBadge: Record<ImpactLevel, string> = {
   'institutionnel': 'bg-yellow-400/20 text-yellow-800',
-  'direction':      'bg-energy-dark/10 text-energy-dark',
-  'operationnel':   'bg-slate-100 text-slate-600',
+  'direction':      'bg-accent-strong/10 text-accent-strong',
+  'operationnel':   'bg-surface-raised text-ink-muted',
   'prescripteur':   'bg-blue-100 text-blue-700',
 };
 ---
 
-<section id="temoignages" class="py-24 lg:py-32 bg-white">
+<section id="temoignages" class="py-24 lg:py-32 bg-surface">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
     <!-- Header -->
@@ -74,32 +74,32 @@ const impactBadge: Record<ImpactLevel, string> = {
     <!-- Stats bar -->
     <div class="flex flex-wrap gap-6 mb-12 reveal">
       <div class="flex items-center gap-2">
-        <span class="text-3xl font-display font-bold text-navy-950">{testimonials.length}</span>
-        <span class="text-sm text-slate-500 whitespace-pre-line" data-i18n-fr={i18n.statVerif.fr} data-i18n-en={i18n.statVerif.en}>{i18n.statVerif.fr}</span>
+        <span class="text-3xl font-display font-bold text-ink">{testimonials.length}</span>
+        <span class="text-sm text-ink-subtle whitespace-pre-line" data-i18n-fr={i18n.statVerif.fr} data-i18n-en={i18n.statVerif.en}>{i18n.statVerif.fr}</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-3xl font-display font-bold text-navy-950">{allSectors.length}</span>
-        <span class="text-sm text-slate-500 whitespace-pre-line" data-i18n-fr={i18n.statSectors.fr} data-i18n-en={i18n.statSectors.en}>{i18n.statSectors.fr}</span>
+        <span class="text-3xl font-display font-bold text-ink">{allSectors.length}</span>
+        <span class="text-sm text-ink-subtle whitespace-pre-line" data-i18n-fr={i18n.statSectors.fr} data-i18n-en={i18n.statSectors.en}>{i18n.statSectors.fr}</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-3xl font-display font-bold text-energy-dark">100%</span>
-        <span class="text-sm text-slate-500 whitespace-pre-line" data-i18n-fr={i18n.statUnsolit.fr} data-i18n-en={i18n.statUnsolit.en}>{i18n.statUnsolit.fr}</span>
+        <span class="text-3xl font-display font-bold text-accent-strong">100%</span>
+        <span class="text-sm text-ink-subtle whitespace-pre-line" data-i18n-fr={i18n.statUnsolit.fr} data-i18n-en={i18n.statUnsolit.en}>{i18n.statUnsolit.fr}</span>
       </div>
     </div>
 
     <!-- Tag cloud (clickable filters) -->
     <div class="mb-10 reveal" id="temoignages-tags">
       <div class="flex flex-wrap gap-2">
-        <button class="tag-filter active px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 bg-navy-950 text-white border-navy-950" data-tag="all"
+        <button class="tag-filter active px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 bg-surface text-ink border-ink" data-tag="all"
                 data-i18n-fr={i18n.filterAll.fr} data-i18n-en={i18n.filterAll.en}>
           {i18n.filterAll.fr}
         </button>
         {topTags.map(([tag, freq]) => (
           <button
-            class="tag-filter px-4 py-2 rounded-full text-sm border transition-all duration-300 bg-white text-slate-600 border-slate-200 hover:border-energy-dark hover:text-energy-dark"
+            class="tag-filter px-4 py-2 rounded-full text-sm border transition-all duration-300 bg-surface text-ink-muted border-border hover:border-accent-strong hover:text-accent-strong"
             data-tag={tag}
           >
-            {tag} <span class="text-xs text-slate-400 ml-1">{freq}</span>
+            {tag} <span class="text-xs text-ink-subtle ml-1">{freq}</span>
           </button>
         ))}
       </div>
@@ -108,7 +108,7 @@ const impactBadge: Record<ImpactLevel, string> = {
     <!-- Sector tabs -->
     <div class="mb-8 reveal overflow-x-auto">
       <div class="flex gap-2 min-w-max">
-        <button class="sector-tab active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-navy-950 text-white" data-sector="all"
+        <button class="sector-tab active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-surface text-ink" data-sector="all"
                 data-i18n-fr={i18n.sectorAll.fr} data-i18n-en={i18n.sectorAll.en}>
           {i18n.sectorAll.fr}
         </button>
@@ -130,8 +130,8 @@ const impactBadge: Record<ImpactLevel, string> = {
     <div id="temoignages-wall" class="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
       {testimonials.map((t, i) => (
         <div
-          class={`temoignage-card break-inside-avoid bg-white rounded-xl p-6 border border-slate-200
-                  hover:shadow-lg hover:shadow-navy-900/5 hover:border-energy-dark/20 
+          class={`temoignage-card break-inside-avoid bg-surface rounded-xl p-6 border border-border
+                  hover:shadow-lg hover:shadow-brand-anchor/5 hover:border-energy-dark/20 
                   transition-all duration-500 reveal reveal-delay-${(i % 4) + 1}`}
           data-tags={JSON.stringify(t.tags)}
           data-sector={t.sector}
@@ -140,25 +140,25 @@ const impactBadge: Record<ImpactLevel, string> = {
           <!-- Header: photo + name -->
           <div class="flex items-start gap-3 mb-4">
             <a href={t.linkedinUrl || '#'} target="_blank" rel="noopener noreferrer"
-               class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 
-                      border border-slate-200 flex items-center justify-center overflow-hidden
+               class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-surface-raised to-surface-raised 
+                      border border-border flex items-center justify-center overflow-hidden
                       hover:border-energy-dark/40 transition-colors group"
                title={`Voir le profil LinkedIn de ${t.name}`}>
               {t.photoUrl ? (
                 <img src={t.photoUrl} alt={t.name} class="w-full h-full object-cover rounded-full" />
               ) : (
-                <span class="text-navy-900/40 text-xs font-bold group-hover:text-energy-dark transition-colors">
+                <span class="text-ink-strong/40 text-xs font-bold group-hover:text-accent-strong transition-colors">
                   {t.name.split(' ').map(w => w[0]).filter(c => c && c === c.toUpperCase()).slice(0, 2).join('')}
                 </span>
               )}
             </a>
             <div class="min-w-0">
               <a href={t.linkedinUrl || '#'} target="_blank" rel="noopener noreferrer"
-                 class="font-display font-semibold text-navy-950 text-sm hover:text-energy-dark transition-colors block truncate">
+                 class="font-display font-semibold text-ink text-sm hover:text-accent-strong transition-colors block truncate">
                 {t.name}
               </a>
-              <p class="text-slate-500 text-xs leading-snug">{t.title}</p>
-              {t.company && <p class="text-slate-400 text-xs">{t.company}</p>}
+              <p class="text-ink-subtle text-xs leading-snug">{t.title}</p>
+              {t.company && <p class="text-ink-subtle text-xs">{t.company}</p>}
             </div>
           </div>
 
@@ -175,13 +175,13 @@ const impactBadge: Record<ImpactLevel, string> = {
           </div>
 
           <!-- Quote -->
-          <blockquote class="text-slate-700 text-sm leading-relaxed italic">
+          <blockquote class="text-ink-muted text-sm leading-relaxed italic">
             "{t.quote}"
           </blockquote>
 
           <!-- Footer: year + LinkedIn link -->
-          <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100">
-            <span class="text-xs text-slate-400">{t.year}</span>
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-border-subtle">
+            <span class="text-xs text-ink-subtle">{t.year}</span>
             <a href={t.postUrl} target="_blank" rel="noopener noreferrer"
                class="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
                title="Voir le post original sur LinkedIn"
@@ -198,8 +198,8 @@ const impactBadge: Record<ImpactLevel, string> = {
 
     <!-- Empty state -->
     <div id="temoignages-empty" class="hidden text-center py-16">
-      <p class="text-slate-400 text-lg" data-i18n-fr={i18n.emptyState.fr} data-i18n-en={i18n.emptyState.en}>{i18n.emptyState.fr}</p>
-      <button class="mt-4 text-energy-dark text-sm font-medium hover:underline" id="temoignages-reset"
+      <p class="text-ink-subtle text-lg" data-i18n-fr={i18n.emptyState.fr} data-i18n-en={i18n.emptyState.en}>{i18n.emptyState.fr}</p>
+      <button class="mt-4 text-accent-strong text-sm font-medium hover:underline" id="temoignages-reset"
               data-i18n-fr={i18n.resetFilter.fr} data-i18n-en={i18n.resetFilter.en}>
         {i18n.resetFilter.fr}
       </button>
@@ -245,12 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
     activeTag = tag;
     tagBtns.forEach(btn => {
       const isActive = btn.dataset.tag === tag;
-      btn.classList.toggle('bg-navy-950', isActive);
-      btn.classList.toggle('text-white', isActive);
-      btn.classList.toggle('border-navy-950', isActive);
-      btn.classList.toggle('bg-white', !isActive);
-      btn.classList.toggle('text-slate-600', !isActive);
-      btn.classList.toggle('border-slate-200', !isActive);
+      btn.classList.toggle('bg-surface', isActive);
+      btn.classList.toggle('text-ink', isActive);
+      btn.classList.toggle('border-ink', isActive);
+      btn.classList.toggle('bg-surface', !isActive);
+      btn.classList.toggle('text-ink-muted', !isActive);
+      btn.classList.toggle('border-border', !isActive);
       if (isActive) btn.classList.add('active');
       else btn.classList.remove('active');
     });
@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
     sectorBtns.forEach(btn => {
       const isActive = btn.dataset.sector === sector;
       if (isActive) {
-        btn.classList.add('bg-navy-950', 'text-white', 'active');
+        btn.classList.add('bg-surface', 'text-ink', 'active');
         btn.classList.remove('border');
       } else {
-        btn.classList.remove('bg-navy-950', 'text-white', 'active');
+        btn.classList.remove('bg-surface', 'text-ink', 'active');
         btn.classList.add('border');
       }
     });

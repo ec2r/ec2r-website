@@ -31,22 +31,22 @@ const sectorColors: Record<Sector, string> = {
   'expertise-comptable': 'bg-blue-50 text-blue-700 border-blue-200',
   'immobilier':          'bg-green-50 text-green-700 border-green-200',
   'assurance-protection':'bg-amber-50 text-amber-700 border-amber-200',
-  'industrie':           'bg-slate-100 text-slate-700 border-slate-300',
+  'industrie':           'bg-surface-raised text-ink-muted border-border-strong',
   'hospitality':         'bg-purple-50 text-purple-700 border-purple-200',
   'conseil-rh':          'bg-rose-50 text-rose-700 border-rose-200',
-  'direction-generale':  'bg-navy-950/5 text-navy-950 border-navy-950/20',
+  'direction-generale':  'bg-surface-inverse/5 text-ink border-ink/20',
 };
 
 const impactBadge: Record<ImpactLevel, string> = {
   'institutionnel': 'bg-yellow-400/20 text-yellow-800',
-  'direction':      'bg-energy-dark/10 text-energy-dark',
-  'operationnel':   'bg-slate-100 text-slate-600',
+  'direction':      'bg-accent-strong/10 text-accent-strong',
+  'operationnel':   'bg-surface-raised text-ink-muted',
   'prescripteur':   'bg-blue-100 text-blue-700',
 };
 
 // Timeline colors (Preuves)
 const timelineColors = [
-  'bg-red-500', 'bg-yellow-400', 'bg-amber-300', 'bg-green-300', 'bg-green-600', 'bg-gradient-to-r from-green-600 to-green-400',
+  'bg-red-500', 'bg-yellow-400', 'bg-amber-300', 'bg-green-300', 'bg-green-600', 'bg-gradient-to-r from-accent-strong to-accent',
 ];
 const timelineTextColors = [
   'text-red-500', 'text-yellow-500', 'text-amber-500', 'text-green-500', 'text-green-700', 'text-green-500',
@@ -67,8 +67,8 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
 };
 ---
 
-<div class="min-h-full bg-navy-950 relative">
-  <div class="absolute inset-0 bg-gradient-to-tr from-navy-950 via-navy-900/30 to-navy-950"></div>
+<div class="min-h-full bg-surface relative">
+  <div class="absolute inset-0 bg-gradient-to-tr from-surface via-surface-alt/30 to-surface"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-16">
 
@@ -78,35 +78,35 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     <section class="grid lg:grid-cols-3 gap-6">
       <!-- Word cloud dynamique (2/3) -->
-      <div class="lg:col-span-2 bg-white/[0.02] border border-white/[0.06] rounded-xl p-6">
-        <h3 class="font-display font-semibold text-white text-lg mb-4">
-          <span data-i18n-lang="fr">Ce que retiennent ceux qui ont vécu la <strong class="text-energy-green">Méthode</strong></span>
-          <span data-i18n-lang="en">What those who lived the <strong class="text-energy-green">Method</strong> retain</span>
+      <div class="lg:col-span-2 bg-surface-alt border border-border-subtle rounded-xl p-6">
+        <h3 class="font-display font-semibold text-ink text-lg mb-4">
+          <span data-i18n-lang="fr">Ce que retiennent ceux qui ont vécu la <strong class="text-accent">Méthode</strong></span>
+          <span data-i18n-lang="en">What those who lived the <strong class="text-accent">Method</strong> retain</span>
         </h3>
         <div id="word-cloud-top" class="relative h-[160px] md:h-[200px] overflow-hidden"></div>
-        <p class="text-white/25 text-xs mt-3 italic">
+        <p class="text-ink-faint text-xs mt-3 italic">
           <span data-i18n-lang="fr">Mots-clés en temps réel — extraits des témoignages spontanés</span>
           <span data-i18n-lang="en">Real-time keywords — extracted from spontaneous testimonials</span>
         </p>
       </div>
       <!-- Bannière "Ce site est vivant" — clic pour développer -->
-      <details class="bg-energy-green/[0.04] border border-energy-green/15 rounded-xl p-5 md:p-6 group flex flex-col justify-center">
+      <details class="bg-energy-green/[0.04] border border-accent/15 rounded-xl p-5 md:p-6 group flex flex-col justify-center">
         <summary class="cursor-pointer list-none">
           <div class="flex items-center justify-between mb-3">
-            <h3 class="text-xl md:text-2xl font-display font-extrabold text-energy-green leading-tight">
+            <h3 class="text-xl md:text-2xl font-display font-extrabold text-accent leading-tight">
               <span data-i18n-lang="fr">Ce site est vivant</span>
               <span data-i18n-lang="en">This site is alive</span>
             </h3>
-            <svg class="w-5 h-5 text-energy-green/70 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-accent/70 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
-          <p class="text-white/70 text-base leading-snug">
-            <span data-i18n-lang="fr">Pourquoi ? <span class="text-energy-green/80 font-semibold">Cliquez pour lire.</span></span>
-            <span data-i18n-lang="en">Why? <span class="text-energy-green/80 font-semibold">Click to read.</span></span>
+          <p class="text-ink-muted text-base leading-snug">
+            <span data-i18n-lang="fr">Pourquoi ? <span class="text-accent/80 font-semibold">Cliquez pour lire.</span></span>
+            <span data-i18n-lang="en">Why? <span class="text-accent/80 font-semibold">Click to read.</span></span>
           </p>
         </summary>
-        <p class="text-white/55 text-sm leading-relaxed mt-4 pt-4 border-t border-energy-green/10">
+        <p class="text-ink-subtle text-sm leading-relaxed mt-4 pt-4 border-t border-accent/10">
           <span data-i18n-lang="fr">Il documente sa propre construction et notre dynamique de mobilisation. Pas un résultat figé — l'illustration du processus vivant. Nous avons utilisé la puissance<span class="plus-accent">+</span> dirigée de l'IA pour partir du réel et passer d'un savoir-faire artisanal à un mode augmenté. On essaye, on expérimente, on traduit, on améliore.</span>
           <span data-i18n-lang="en">It documents its own construction and our mobilization dynamics. Not a frozen result — the illustration of the living process. We used the directed<span class="plus-accent">+</span> power of AI to start from reality and move from artisanal know-how to augmented mode.</span>
         </p>
@@ -118,11 +118,11 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     <section>
       <div class="mb-8">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white mb-3">
-          <span data-i18n-lang="fr">Ils l'ont vécu, la <strong class="text-energy-green">Méthode</strong></span>
-          <span data-i18n-lang="en">They lived the <strong class="text-energy-green">Method</strong></span>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-ink mb-3">
+          <span data-i18n-lang="fr">Ils l'ont vécu, la <strong class="text-accent">Méthode</strong></span>
+          <span data-i18n-lang="en">They lived the <strong class="text-accent">Method</strong></span>
         </h2>
-        <p class="text-base text-white/50 leading-relaxed max-w-3xl mb-6">
+        <p class="text-base text-ink-subtle leading-relaxed max-w-3xl mb-6">
           <span data-i18n-lang="fr">Pas de promesses marketing, des résultats concrets avec les mots de nos clients depuis l'origine. Pas de témoignages sollicités, pas de citations anonymisées — ce sont les mots publiés <strong>spontanément</strong> par des dirigeants, des managers de terrain, des leaders. Des données <span class="plus-accent">+</span> mesurables, des comportements <span class="plus-accent">+</span> observables, un impact déjà <span class="plus-accent">+</span> réel.</span>
           <span data-i18n-lang="en">No marketing promises, concrete results in our clients' own words from the start. No solicited testimonials, no anonymized quotes — words published <strong>spontaneously</strong> by executives, field managers, leaders. Measurable<span class="plus-accent">+</span> data, observable<span class="plus-accent">+</span> behaviours, already<span class="plus-accent">+</span> real impact.</span>
         </p>
@@ -130,22 +130,22 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
         <!-- Stats bar -->
         <div class="flex flex-wrap gap-6 mb-6">
           <div class="flex items-center gap-2">
-            <span class="text-3xl font-display font-bold text-white">{testimonials.length}</span>
-            <span class="text-sm text-white/40">
+            <span class="text-3xl font-display font-bold text-ink">{testimonials.length}</span>
+            <span class="text-sm text-ink-subtle">
               <span data-i18n-lang="fr">témoignages<br/>vérifiables</span>
               <span data-i18n-lang="en">verifiable<br/>testimonials</span>
             </span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-3xl font-display font-bold text-white">{allSectors.length}</span>
-            <span class="text-sm text-white/40">
+            <span class="text-3xl font-display font-bold text-ink">{allSectors.length}</span>
+            <span class="text-sm text-ink-subtle">
               <span data-i18n-lang="fr">secteurs<br/>d'activité</span>
               <span data-i18n-lang="en">sectors<br/>of activity</span>
             </span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-3xl font-display font-bold text-energy-green">100%</span>
-            <span class="text-sm text-white/40">
+            <span class="text-3xl font-display font-bold text-accent">100%</span>
+            <span class="text-sm text-ink-subtle">
               <span data-i18n-lang="fr">non sollicités<br/>publics sur LinkedIn</span>
               <span data-i18n-lang="en">unsolicited<br/>public on LinkedIn</span>
             </span>
@@ -156,16 +156,16 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
       <!-- Tag cloud (clickable filters) -->
       <div class="mb-6" id="temoignages-tags">
         <div class="flex flex-wrap gap-2">
-          <button class="tag-filter active px-3 py-2 rounded-full text-xs font-medium border transition-all duration-300 bg-energy-green/10 border-energy-green/30 text-energy-green" data-tag="all">
+          <button class="tag-filter active px-3 py-2 rounded-full text-xs font-medium border transition-all duration-300 bg-accent/10 border-accent/30 text-accent" data-tag="all">
             <span data-i18n-lang="fr">Tous</span>
             <span data-i18n-lang="en">All</span>
           </button>
           {topTags.map(([tag, freq]) => (
             <button
-              class="tag-filter px-3 py-2 rounded-full text-xs border transition-all duration-300 bg-white/5 text-white/40 border-white/10 hover:border-white/30 hover:text-white/70"
+              class="tag-filter px-3 py-2 rounded-full text-xs border transition-all duration-300 bg-surface-alt text-ink-subtle border-border-subtle hover:border-border-strong hover:text-ink-muted"
               data-tag={tag}
             >
-              {tag} <span class="text-[10px] text-white/20 ml-1">{freq}</span>
+              {tag} <span class="text-[10px] text-ink-disabled ml-1">{freq}</span>
             </button>
           ))}
         </div>
@@ -174,7 +174,7 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
       <!-- Sector tabs -->
       <div class="mb-6 overflow-x-auto">
         <div class="flex gap-2 min-w-max">
-          <button class="sector-tab active px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 bg-energy-green/10 border border-energy-green/30 text-energy-green" data-sector="all">
+          <button class="sector-tab active px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 bg-accent/10 border border-accent/30 text-accent" data-sector="all">
             <span data-i18n-lang="fr">Tous les secteurs</span>
             <span data-i18n-lang="en">All sectors</span>
           </button>
@@ -182,7 +182,7 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
             const count = testimonials.filter(t => t.sector === sector).length;
             return (
               <button
-                class="sector-tab px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 bg-white/5 border border-white/10 text-white/40 hover:border-white/30 hover:text-white/70"
+                class="sector-tab px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 bg-surface-alt border border-border-subtle text-ink-subtle hover:border-border-strong hover:text-ink-muted"
                 data-sector={sector}
               >
                 <span data-i18n-lang="fr">{sectorLabels[sector].fr}</span>
@@ -198,8 +198,8 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
       <div id="temoignages-wall" class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
         {testimonials.map((t) => (
           <div
-            class="temoignage-card break-inside-avoid bg-white/[0.03] rounded-xl p-5 border border-white/[0.06]
-                   hover:border-white/15 hover:shadow-lg hover:shadow-navy-900/5
+            class="temoignage-card break-inside-avoid bg-surface-alt rounded-xl p-5 border border-border-subtle
+                   hover:border-border hover:shadow-lg hover:shadow-brand-anchor/5
                    transition-all duration-300"
             data-tags={JSON.stringify(t.tags)}
             data-sector={t.sector}
@@ -208,48 +208,48 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
             <!-- Header: photo + name -->
             <div class="flex items-start gap-3 mb-3">
               <a href={t.linkedinUrl || '#'} target="_blank" rel="noopener noreferrer"
-                 class="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden hover:border-energy-green/40 transition-colors group"
+                 class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-raised border border-border-subtle flex items-center justify-center overflow-hidden hover:border-accent/40 transition-colors group"
                  title={`Voir le profil LinkedIn de ${t.name}`}>
                 {t.photoUrl ? (
                   <img src={t.photoUrl} alt={t.name} class="w-full h-full object-cover rounded-full" loading="lazy" />
                 ) : (
-                  <span class="text-white/30 text-xs font-bold group-hover:text-energy-green transition-colors">
+                  <span class="text-ink-faint text-xs font-bold group-hover:text-accent transition-colors">
                     {t.name.split(' ').map(w => w[0]).filter(c => c && c === c.toUpperCase()).slice(0, 2).join('')}
                   </span>
                 )}
               </a>
               <div class="min-w-0">
                 <a href={t.linkedinUrl || '#'} target="_blank" rel="noopener noreferrer"
-                   class="font-display font-semibold text-white text-sm hover:text-energy-green transition-colors block truncate">
+                   class="font-display font-semibold text-ink text-sm hover:text-accent transition-colors block truncate">
                   {t.name}
                 </a>
-                <p class="text-white/40 text-xs leading-snug">{t.title}</p>
-                {t.company && <p class="text-white/25 text-xs">{t.company}</p>}
+                <p class="text-ink-subtle text-xs leading-snug">{t.title}</p>
+                {t.company && <p class="text-ink-faint text-xs">{t.company}</p>}
               </div>
             </div>
 
             <!-- Badges -->
             <div class="flex flex-wrap gap-1.5 mb-3">
-              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/10 text-white/40 border border-white/10">
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-raised text-ink-subtle border border-border-subtle">
                 <span data-i18n-lang="fr">{sectorLabels[t.sector].fr}</span>
                 <span data-i18n-lang="en">{sectorLabels[t.sector].en}</span>
               </span>
-              <span class="inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-white/5 text-white/30">
+              <span class="inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-surface-alt text-ink-faint">
                 <span data-i18n-lang="fr">{impactLabels[t.impact].fr}</span>
                 <span data-i18n-lang="en">{impactLabels[t.impact].en}</span>
               </span>
             </div>
 
             <!-- Quote -->
-            <blockquote class="text-white/60 text-sm leading-relaxed italic mb-3">
+            <blockquote class="text-ink-muted text-sm leading-relaxed italic mb-3">
               "{t.quote}"
             </blockquote>
 
             <!-- Footer: year + LinkedIn link -->
-            <div class="flex items-center justify-between pt-3 border-t border-white/5">
-              <span class="text-xs text-white/25">{t.year}</span>
+            <div class="flex items-center justify-between pt-3 border-t border-border-subtle">
+              <span class="text-xs text-ink-faint">{t.year}</span>
               <a href={t.postUrl} target="_blank" rel="noopener noreferrer"
-                 class="text-xs text-energy-green/70 hover:text-energy-green flex items-center gap-1 transition-colors"
+                 class="text-xs text-accent/70 hover:text-accent flex items-center gap-1 transition-colors"
                  title="Voir le post original sur LinkedIn">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -264,11 +264,11 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
 
       <!-- Empty state -->
       <div id="temoignages-empty" class="hidden text-center py-16">
-        <p class="text-white/40 text-lg">
+        <p class="text-ink-subtle text-lg">
           <span data-i18n-lang="fr">Aucun témoignage pour ce filtre.</span>
           <span data-i18n-lang="en">No testimonials for this filter.</span>
         </p>
-        <button class="mt-4 text-energy-green text-sm font-medium hover:underline" id="temoignages-reset">
+        <button class="mt-4 text-accent text-sm font-medium hover:underline" id="temoignages-reset">
           <span data-i18n-lang="fr">Voir tous les témoignages</span>
           <span data-i18n-lang="en">See all testimonials</span>
         </button>
@@ -281,38 +281,38 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
     <section>
       <div class="flex items-center gap-3 mb-4">
         <div class="w-2 h-8 bg-gradient-to-b from-energy-red to-energy-dark rounded-full"></div>
-        <h3 class="font-display font-bold text-2xl text-white">
+        <h3 class="font-display font-bold text-2xl text-ink">
           <span data-i18n-lang="fr">{fr.preuves?.trajTitle || 'Trajectoires'}</span>
           <span data-i18n-lang="en">{en.preuves?.trajTitle || 'Trajectories'}</span>
         </h3>
       </div>
-      <p class="text-white/40 text-sm mb-2 ml-5">
+      <p class="text-ink-subtle text-sm mb-2 ml-5">
         <span data-i18n-lang="fr">{fr.preuves?.trajSub || 'Vidéos de témoignages réels'}</span>
         <span data-i18n-lang="en">{en.preuves?.trajSub || 'Real testimonial videos'}</span>
       </p>
-      <p class="text-white/25 text-xs mb-6 ml-5 italic">
-        <span data-i18n-lang="fr">Vidéos de la trajectoire <strong class="text-energy-green not-italic">Méthode EC²R</strong> — pour l'avenir.</span>
-        <span data-i18n-lang="en">Videos of the <strong class="text-energy-green not-italic">EC²R Method</strong> trajectory — for the future.</span>
+      <p class="text-ink-faint text-xs mb-6 ml-5 italic">
+        <span data-i18n-lang="fr">Vidéos de la trajectoire <strong class="text-accent not-italic">Méthode EC²R</strong> — pour l'avenir.</span>
+        <span data-i18n-lang="en">Videos of the <strong class="text-accent not-italic">EC²R Method</strong> trajectory — for the future.</span>
       </p>
       <div class="grid md:grid-cols-2 gap-6">
         {(fr.preuves?.videos || []).slice(0, 2).map((video: any, i: number) => (
           <div class="group">
-            <div class="relative aspect-video bg-navy-900 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+            <div class="relative aspect-video bg-surface-alt rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
               <iframe src={`https://www.youtube-nocookie.com/embed/${videoIds[i]}`}
                 title={video.title} class="absolute inset-0 w-full h-full" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="mt-4">
-              <h4 class="font-display font-semibold text-white">
+              <h4 class="font-display font-semibold text-ink">
                 <span data-i18n-lang="fr">{video.title}</span>
                 <span data-i18n-lang="en">{en.preuves?.videos?.[i]?.title || video.title}</span>
               </h4>
-              <p class="text-sm text-energy-green font-medium">
+              <p class="text-sm text-accent font-medium">
                 <span data-i18n-lang="fr">{video.subtitle}</span>
                 <span data-i18n-lang="en">{en.preuves?.videos?.[i]?.subtitle || video.subtitle}</span>
               </p>
-              <p class="text-sm text-white/40 mt-1">
+              <p class="text-sm text-ink-subtle mt-1">
                 <span data-i18n-lang="fr">{video.description}</span>
                 <span data-i18n-lang="en">{en.preuves?.videos?.[i]?.description || video.description}</span>
               </p>
@@ -330,30 +330,30 @@ const wordsData: Record<string, { large: string[]; medium: string[]; small: stri
     <!-- 6. MUSÉE / TIMELINE -->
     <!-- ════════════════════════════════════════════════════════════════════════ -->
     {fr.preuves?.museeTimeline && (
-      <section class="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-10">
-        <p class="text-xs text-white/30 uppercase tracking-wider font-medium mb-3">
+      <section class="bg-surface-alt border border-border-subtle rounded-2xl p-8 md:p-10">
+        <p class="text-xs text-ink-faint uppercase tracking-wider font-medium mb-3">
           <span data-i18n-lang="fr">{fr.preuves?.museeLabel || 'Musée'}</span>
           <span data-i18n-lang="en">{en.preuves?.museeLabel || 'Museum'}</span>
         </p>
-        <h4 class="font-display font-bold text-xl text-white mb-3">
+        <h4 class="font-display font-bold text-xl text-ink mb-3">
           <span data-i18n-lang="fr">{fr.preuves?.museeTitle || 'Trajectoire énergétique'}</span>
           <span data-i18n-lang="en">{en.preuves?.museeTitle || 'Energy trajectory'}</span>
         </h4>
-        <p class="text-white/50 leading-relaxed mb-8">
+        <p class="text-ink-subtle leading-relaxed mb-8">
           <span data-i18n-lang="fr">{fr.preuves?.museeSub || '2018 → 2025'}</span>
           <span data-i18n-lang="en">{en.preuves?.museeSub || '2018 → 2025'}</span>
         </p>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {fr.preuves.museeTimeline.map((item: any, i: number) => (
-            <div class={`${i === 5 ? 'ring-1 ring-green-500/30 bg-green-500/[0.03]' : ''} rounded-lg p-4`}>
+            <div class={`${i === 5 ? 'ring-1 ring-accent/30 bg-green-500/[0.03]' : ''} rounded-lg p-4`}>
               <div class={`h-1 ${timelineColors[i]} rounded-full mb-3`}></div>
               <p class={`font-display font-bold text-lg ${timelineTextColors[i]}`}>{item.year}</p>
-              <p class="font-display font-semibold text-white text-sm mb-1">
+              <p class="font-display font-semibold text-ink text-sm mb-1">
                 <span data-i18n-lang="fr">{item.label}</span>
                 <span data-i18n-lang="en">{en.preuves?.museeTimeline?.[i]?.label || item.label}</span>
               </p>
-              <p class="text-white/40 text-xs leading-relaxed">
+              <p class="text-ink-subtle text-xs leading-relaxed">
                 <span data-i18n-lang="fr">{item.sub}</span>
                 <span data-i18n-lang="en">{en.preuves?.museeTimeline?.[i]?.sub || item.sub}</span>
               </p>
@@ -405,11 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tagBtns.forEach(btn => {
       const isActive = btn.dataset.tag === tag;
       if (isActive) {
-        btn.classList.add('bg-energy-green/10', 'border-energy-green/30', 'text-energy-green', 'active');
-        btn.classList.remove('bg-white/5', 'text-white/40', 'border-white/10');
+        btn.classList.add('bg-accent/10', 'border-accent/30', 'text-accent', 'active');
+        btn.classList.remove('bg-surface-alt', 'text-ink-subtle', 'border-border-subtle');
       } else {
-        btn.classList.remove('bg-energy-green/10', 'border-energy-green/30', 'text-energy-green', 'active');
-        btn.classList.add('bg-white/5', 'text-white/40', 'border-white/10');
+        btn.classList.remove('bg-accent/10', 'border-accent/30', 'text-accent', 'active');
+        btn.classList.add('bg-surface-alt', 'text-ink-subtle', 'border-border-subtle');
       }
     });
     filterCards();
@@ -420,11 +420,11 @@ document.addEventListener('DOMContentLoaded', () => {
     sectorBtns.forEach(btn => {
       const isActive = btn.dataset.sector === sector;
       if (isActive) {
-        btn.classList.add('bg-energy-green/10', 'border-energy-green/30', 'text-energy-green', 'active');
-        btn.classList.remove('bg-white/5', 'text-white/40', 'border-white/10');
+        btn.classList.add('bg-accent/10', 'border-accent/30', 'text-accent', 'active');
+        btn.classList.remove('bg-surface-alt', 'text-ink-subtle', 'border-border-subtle');
       } else {
-        btn.classList.remove('bg-energy-green/10', 'border-energy-green/30', 'text-energy-green', 'active');
-        btn.classList.add('bg-white/5', 'text-white/40', 'border-white/10');
+        btn.classList.remove('bg-accent/10', 'border-accent/30', 'text-accent', 'active');
+        btn.classList.add('bg-surface-alt', 'text-ink-subtle', 'border-border-subtle');
       }
     });
     filterCards();
@@ -486,9 +486,9 @@ counters.forEach(counter => counterObserver.observe(counter));
   };
 
   const sizeClasses: Record<string, string> = {
-    large: 'text-xl md:text-2xl font-bold text-white',
-    medium: 'text-sm md:text-base font-medium text-white/60',
-    small: 'text-xs text-white/30',
+    large: 'text-xl md:text-2xl font-bold text-ink',
+    medium: 'text-sm md:text-base font-medium text-ink-muted',
+    small: 'text-xs text-ink-faint',
   };
 
   const sizeOpacity: Record<string, number> = { large: 1, medium: 0.7, small: 0.4 };

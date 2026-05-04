@@ -24,8 +24,8 @@ const circuitItems = [
 ];
 ---
 
-<div class="min-h-full bg-navy-950 relative">
-  <div class="absolute inset-0 bg-gradient-to-bl from-navy-950 via-navy-900/50 to-navy-950"></div>
+<div class="min-h-full bg-surface relative">
+  <div class="absolute inset-0 bg-gradient-to-bl from-surface via-surface-alt/50 to-surface"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
 
@@ -38,26 +38,26 @@ const circuitItems = [
 
       <!-- 3 phrases de différenciation -->
       <div class="space-y-3 max-w-3xl mx-auto mt-6">
-        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+        <p class="text-base md:text-lg text-ink-muted leading-relaxed">
           <span class="text-red-500 font-bold">ARRÊTEZ</span>
           <span data-i18n-lang="fr"> d'épuiser votre énergie à vouloir absolument <strong>motiver</strong> tous les <strong>individus</strong> à changer</span>
           <span data-i18n-lang="en"> exhausting your energy trying to absolutely <strong>motivate</strong> all <strong>individuals</strong> to change</span>
         </p>
-        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+        <p class="text-base md:text-lg text-ink-muted leading-relaxed">
           <span data-i18n-lang="fr">INSTALLER<span class="plus-accent">+</span> les conditions durablement favorables pour mobiliser les <strong>professionnels</strong></span>
           <span data-i18n-lang="en">INSTALL<span class="plus-accent">+</span> sustainably favourable conditions to mobilize the <strong>professionals</strong></span>
         </p>
-        <p class="text-base md:text-lg text-white/70 leading-relaxed">
+        <p class="text-base md:text-lg text-ink-muted leading-relaxed">
           <span data-i18n-lang="fr">ENGAGER<span class="plus-accent">+</span> les professionnels sur leur situation, réalité et comportement métier décisif</span>
           <span data-i18n-lang="en">ENGAGE<span class="plus-accent">+</span> professionals on their situation, reality and decisive professional behaviour</span>
         </p>
       </div>
 
       <!-- Méthode vivante auto-entretenue + plateforme -->
-      <div class="mt-8 max-w-3xl mx-auto space-y-2 text-sm text-white/50 italic">
+      <div class="mt-8 max-w-3xl mx-auto space-y-2 text-sm text-ink-subtle italic">
         <p>
-          <span data-i18n-lang="fr"><strong class="text-energy-green not-italic">Méthode vivante auto-entretenue</strong> — une plateforme de leadership qui évolue avec votre collectif.</span>
-          <span data-i18n-lang="en"><strong class="text-energy-green not-italic">Self-sustaining living method</strong> — a leadership platform that evolves with your collective.</span>
+          <span data-i18n-lang="fr"><strong class="text-accent not-italic">Méthode vivante auto-entretenue</strong> — une plateforme de leadership qui évolue avec votre collectif.</span>
+          <span data-i18n-lang="en"><strong class="text-accent not-italic">Self-sustaining living method</strong> — a leadership platform that evolves with your collective.</span>
         </p>
         <p>
           <span data-i18n-lang="fr">Mesure d'impact en temps réel — du diagnostic chirurgical au micro-comportement de leadership.</span>
@@ -69,13 +69,13 @@ const circuitItems = [
     <!-- Points de différenciation -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
       {diffPoints.map(p => (
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-5 hover:border-white/15 transition-colors group">
+        <div class="bg-surface-alt border border-border-subtle rounded-lg p-5 hover:border-border transition-colors group">
           <div class="text-2xl mb-2">{p.icon}</div>
-          <h3 class="text-white font-semibold text-sm mb-1 group-hover:text-energy-green transition-colors">
+          <h3 class="text-ink font-semibold text-sm mb-1 group-hover:text-accent transition-colors">
             <span data-i18n-lang="fr">{p.labelFr}</span>
             <span data-i18n-lang="en">{p.labelEn}</span>
           </h3>
-          <p class="text-white/40 text-xs">
+          <p class="text-ink-subtle text-xs">
             <span data-i18n-lang="fr">{p.descFr}</span>
             <span data-i18n-lang="en">{p.descEn}</span>
           </p>
@@ -84,12 +84,12 @@ const circuitItems = [
     </div>
 
     <!-- IRM organisationnel -->
-    <div class="bg-white/[0.02] border border-white/[0.08] rounded-xl p-6 lg:p-8 mb-12">
-      <h3 class="text-xl font-display font-bold text-white mb-3">
+    <div class="bg-surface-alt border border-border-subtle rounded-xl p-6 lg:p-8 mb-12">
+      <h3 class="text-xl font-display font-bold text-ink mb-3">
         <span data-i18n-lang="fr">Votre IRM<span class="plus-accent">+</span> organisationnel</span>
         <span data-i18n-lang="en">Your organizational MRI<span class="plus-accent">+</span></span>
       </h3>
-      <p class="text-white/50 text-sm leading-relaxed max-w-3xl">
+      <p class="text-ink-subtle text-sm leading-relaxed max-w-3xl">
         <span data-i18n-lang="fr">Votre lecture en temps réel de votre système vivant de mobilisation. La dynamique réelle de votre collectif, ses tensions, ses leviers, ses zones de désengagement, ses comportements décisifs — au plus près du quotidien métier. Pour co-construire la puissance de la Méthode, pas l'inverse.</span>
         <span data-i18n-lang="en">Your real-time reading of your living mobilization system. The real dynamics of your collective — its tensions, levers, disengagement zones, decisive behaviours — as close as possible to daily work reality.</span>
       </p>
@@ -97,7 +97,7 @@ const circuitItems = [
 
     <!-- Circuit énergétique -->
     <div class="text-center">
-      <h3 class="text-sm uppercase tracking-[0.15em] text-white/30 font-semibold mb-6">
+      <h3 class="text-sm uppercase tracking-[0.15em] text-ink-faint font-semibold mb-6">
         <span data-i18n-lang="fr">Circuit de mobilisation</span>
         <span data-i18n-lang="en">Mobilization circuit</span>
       </h3>
@@ -105,14 +105,14 @@ const circuitItems = [
         {circuitItems.map((c, i) => (
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full" style={`background:${c.color}`}></span>
-            <span class="text-white/60 text-sm font-semibold">
+            <span class="text-ink-muted text-sm font-semibold">
               <span data-i18n-lang="fr">{c.labelFr}</span>
               <span data-i18n-lang="en">{c.labelEn}</span>
             </span>
-            {i < circuitItems.length - 1 && <span class="text-white/15 ml-1">→</span>}
+            {i < circuitItems.length - 1 && <span class="text-ink-disabled ml-1">→</span>}
           </div>
         ))}
-        <span class="text-white/15">↻</span>
+        <span class="text-ink-disabled">↻</span>
       </div>
     </div>
 

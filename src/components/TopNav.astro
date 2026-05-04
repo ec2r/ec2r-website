@@ -25,7 +25,7 @@ const { universes } = Astro.props;
 <nav id="top-nav" class="fixed top-[calc(2.25rem+6px)] left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between h-16 lg:h-18">
     <!-- Logo : Méthode EC²R (² collé) — batterie SVG identique à ec2r-app (shared/_ec2r_battery) -->
-    <a href="/" class="flex items-center gap-2 group text-white" id="logo-home" aria-label="Méthode EC²R">
+    <a href="/" class="flex items-center gap-2 group text-ink" id="logo-home" aria-label="Méthode EC²R">
       <svg class="h-7 lg:h-8 w-auto transition-all duration-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect x="2" y="6" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
         <rect x="20.5" y="9.5" width="1.5" height="5" rx="0.75" fill="currentColor"/>
@@ -35,7 +35,7 @@ const { universes } = Astro.props;
         <rect x="12" y="8.5" width="2" height="7" rx="0.5" fill="#22C55E"/>
         <rect x="14.5" y="8.5" width="2" height="7" rx="0.5" fill="#166534"/>
       </svg>
-      <span class="font-display font-extrabold text-white text-base lg:text-lg leading-none whitespace-nowrap">
+      <span class="font-display font-extrabold text-ink text-base lg:text-lg leading-none whitespace-nowrap">
         Méthode&nbsp;EC<sup style="font-size:0.62em;margin:0 -0.08em;vertical-align:0.4em">2</sup>R
       </span>
     </a>
@@ -45,8 +45,8 @@ const { universes } = Astro.props;
       {universes.map((u, i) => (
         <li>
           <button class="universe-tab px-3 py-1.5 rounded-md text-sm font-semibold tracking-wide transition-all duration-200
-                         text-white/50 hover:text-white hover:bg-white/5
-                         data-[active]:text-white data-[active]:bg-white/10"
+                         text-ink-subtle hover:text-ink hover:bg-surface-alt
+                         data-[active]:text-ink data-[active]:bg-surface-raised"
                   data-universe-target={u.id}
                   data-idx={i}>
             <span data-i18n-lang="fr">{u.labelFr}</span>
@@ -58,13 +58,13 @@ const { universes } = Astro.props;
 
     <!-- Mobile : indicateur univers actif + hamburger -->
     <div class="flex items-center gap-3 lg:hidden">
-      <span id="mobile-universe-label" class="text-white/70 text-sm font-semibold truncate max-w-[140px]">
+      <span id="mobile-universe-label" class="text-ink-muted text-sm font-semibold truncate max-w-[140px]">
         {universes[0].labelFr}
       </span>
       <!-- Dots indicateurs -->
       <div class="flex gap-1">
         {universes.map((_, i) => (
-          <span class="universe-dot w-1.5 h-1.5 rounded-full bg-white/20 transition-all duration-200"
+          <span class="universe-dot w-1.5 h-1.5 rounded-full bg-surface-raised transition-all duration-200"
                 data-dot-idx={i}></span>
         ))}
       </div>
@@ -74,9 +74,9 @@ const { universes } = Astro.props;
     <div class="flex items-center gap-2">
       <!-- Theme toggle (mode clair par défaut, gros bouton — req TGlT0tmZ) -->
       <button id="theme-toggle" aria-label="Basculer mode clair/sombre"
-        class="flex items-center gap-1.5 text-xs font-semibold text-white/60
-               hover:text-white transition-colors duration-200 border border-white/15
-               hover:border-white/40 rounded-md px-3 py-1.5">
+        class="flex items-center gap-1.5 text-xs font-semibold text-ink-muted
+               hover:text-ink transition-colors duration-200 border border-border
+               hover:border-border/40 rounded-md px-3 py-1.5">
         <svg id="theme-icon-sun" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
@@ -86,14 +86,14 @@ const { universes } = Astro.props;
         <span id="theme-label">Clair</span>
       </button>
       <button id="lang-toggle" aria-label="Switch language"
-        class="flex items-center gap-1 text-xs font-semibold tracking-widest text-white/50
-               hover:text-white/80 transition-colors duration-200 border border-white/10
-               hover:border-white/30 rounded-md px-2 py-1">
+        class="flex items-center gap-1 text-xs font-semibold tracking-widest text-ink-subtle
+               hover:text-ink transition-colors duration-200 border border-border-subtle
+               hover:border-border-strong rounded-md px-2 py-1">
         <span id="lang-fr-flag" class="text-sm leading-none">🇫🇷</span>
         <span id="lang-current">FR</span>
-        <span class="text-white/15 mx-0.5">·</span>
+        <span class="text-ink-disabled mx-0.5">·</span>
         <span id="lang-en-flag" class="text-sm leading-none" style="opacity:0.4">🇬🇧</span>
-        <span id="lang-other" class="text-white/20">EN</span>
+        <span id="lang-other" class="text-ink-disabled">EN</span>
       </button>
     </div>
   </div>
@@ -128,9 +128,9 @@ const { universes } = Astro.props;
 
     // Dots
     dots.forEach((d, i) => {
-      d.classList.toggle('bg-white', i === idx);
+      d.classList.toggle('bg-surface', i === idx);
       d.classList.toggle('scale-125', i === idx);
-      d.classList.toggle('bg-white/20', i !== idx);
+      d.classList.toggle('bg-surface-raised', i !== idx);
     });
 
     // Progress segments
@@ -143,7 +143,7 @@ const { universes } = Astro.props;
 
     // Background nav
     const nav = document.getElementById('top-nav')!;
-    nav.classList.add('bg-navy-950/95', 'backdrop-blur-lg');
+    nav.classList.add('bg-[rgb(var(--nav-bg))]', 'backdrop-blur-lg');
 
     // Reset scroll vertical du nouveau panneau selon direction
     // (sauf si click nav: déjà reset top en amont du scrollIntoView)
@@ -330,7 +330,7 @@ const { universes } = Astro.props;
   }
 
   .universe-tab[data-active] {
-    color: white;
-    background: rgba(255,255,255,0.1);
+    color: rgb(var(--ink));
+    background: rgb(var(--surface-inverse) / 0.08);
   }
 </style>

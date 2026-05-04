@@ -11,25 +11,25 @@ const energyColors = ['#DC2626','#EAB308','#C9A56E','#22C55E','#166534','#3B82F6
 const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
 ---
 
-<div class="min-h-full bg-navy-950 relative flex flex-col">
-  <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
+<div class="min-h-full bg-surface relative flex flex-col">
+  <div class="absolute inset-0 bg-gradient-to-br from-surface via-surface-alt to-surface"></div>
   <div class="absolute inset-0 grid-overlay"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex-1 flex flex-col justify-center">
 
     <!-- Compteurs live -->
-    <div class="flex flex-wrap justify-center text-center gap-4 mb-4 text-xs text-white/30">
+    <div class="flex flex-wrap justify-center text-center gap-4 mb-4 text-xs text-ink-faint">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-energy-green animate-pulse"></span>
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
         <span data-i18n-lang="fr">EC2R Conseil depuis le 1er juillet 2021 —</span>
         <span data-i18n-lang="en">EC2R Conseil since July 1, 2021 —</span>
-        <span id="counter-ec2r" class="font-mono text-white/50"></span>
+        <span id="counter-ec2r" class="font-mono text-ink-subtle"></span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-energy-green animate-pulse"></span>
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
         <span data-i18n-lang="fr">Protocole augmenté depuis le 11 mars 2026 —</span>
         <span data-i18n-lang="en">Augmented protocol since March 11, 2026 —</span>
-        <span id="counter-proto" class="font-mono text-white/50"></span>
+        <span id="counter-proto" class="font-mono text-ink-subtle"></span>
       </div>
     </div>
 
@@ -38,14 +38,14 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
       <!-- Gauche : branding + taglines -->
       <div>
         <!-- Phrase d'accroche unique dominante -->
-        <p class="text-2xl md:text-3xl lg:text-4xl font-display text-white leading-tight max-w-lg mb-6">
+        <p class="text-2xl md:text-3xl lg:text-4xl font-display text-ink leading-tight max-w-lg mb-6">
           <span data-i18n-lang="fr">Vos collectifs ont besoin d'énergie et de savoir comment passer<span class="plus-accent">+</span> vite à l'acte.</span>
           <span data-i18n-lang="en">Your collectives need energy and to know how to take action faster<span class="plus-accent">+</span>.</span>
         </p>
 
         <!-- Tagline EC2R animée -->
         <div class="mb-6">
-          <h1 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-white leading-[1.1] mb-2">
+          <h1 class="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-ink leading-[1.1] mb-2">
             <span data-i18n-lang="fr">La méthode<span class="plus-accent">+</span> vivante</span>
             <span data-i18n-lang="en">The living method<span class="plus-accent">+</span></span>
             <br/>
@@ -54,42 +54,42 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
 
           <div class="space-y-0.5 text-base md:text-lg font-mono mt-4" id="ec2r-decomposition">
             <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
-              <span class="text-energy-green font-bold text-xl w-7">E</span>
-              <span class="text-white/15">···</span>
-              <span class="text-white/60"><span class="plus-accent">+</span>Énergies</span>
+              <span class="text-accent font-bold text-xl w-7">E</span>
+              <span class="text-ink-disabled">···</span>
+              <span class="text-ink-muted"><span class="plus-accent">+</span>Énergies</span>
             </div>
             <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
-              <span class="text-energy-green font-bold text-xl w-7">C</span>
-              <span class="text-white/15">···</span>
-              <span class="text-white/60">Collectives</span>
+              <span class="text-accent font-bold text-xl w-7">C</span>
+              <span class="text-ink-disabled">···</span>
+              <span class="text-ink-muted">Collectives</span>
             </div>
             <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
-              <span class="text-energy-green font-bold text-xl w-7">C</span>
-              <span class="text-white/15">···</span>
-              <span id="c2-cycling" class="text-white font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
+              <span class="text-accent font-bold text-xl w-7">C</span>
+              <span class="text-ink-disabled">···</span>
+              <span id="c2-cycling" class="text-ink font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
             </div>
             <div class="flex items-center gap-2 opacity-0 ec2r-line" style="transition:opacity 0.3s">
-              <span class="text-energy-green font-bold text-xl w-7">R</span>
-              <span class="text-white/15">···</span>
-              <span id="r-cycling" class="text-white font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
+              <span class="text-accent font-bold text-xl w-7">R</span>
+              <span class="text-ink-disabled">···</span>
+              <span id="r-cycling" class="text-ink font-semibold"></span><span class="text-energy-green/50 animate-pulse">_</span>
             </div>
           </div>
         </div>
 
         <!-- Waze tagline (tout en blanc, "Le Waze" en gradient énergie) -->
-        <p class="text-lg md:text-xl text-white leading-relaxed max-w-lg mb-3 font-semibold">
+        <p class="text-lg md:text-xl text-ink leading-relaxed max-w-lg mb-3 font-semibold">
           <span class="line-through decoration-white/40">
             <span data-i18n-lang="fr">Pas le Netflix </span>
             <span data-i18n-lang="en">Not the Netflix of </span>
-            <strong id="netflix-word" class="text-white">de la formation</strong>.
+            <strong id="netflix-word" class="text-ink">de la formation</strong>.
           </span><br/>
           <span class="energy-gradient-text font-bold" data-i18n-lang="fr">Le Waze </span>
           <span class="energy-gradient-text font-bold" data-i18n-lang="en">The Waze of </span>
-          <strong id="waze-word" class="text-white">de la mobilisation collective</strong>.
+          <strong id="waze-word" class="text-ink">de la mobilisation collective</strong>.
         </p>
 
         <!-- IRM baseline -->
-        <p class="text-sm text-white/35 leading-relaxed max-w-lg mb-6">
+        <p class="text-sm text-ink-faint leading-relaxed max-w-lg mb-6">
           <span data-i18n-lang="fr">Votre IRM<span class="plus-accent">+</span> organisationnel qui mesure vos énergies collectives, identifie <span class="plus-accent">+</span> chirurgicalement vos leviers de mobilisation et accompagne votre passage à l'acte jusqu'au micro-comportement dans vos situations quotidiennes.</span>
           <span data-i18n-lang="en">Your organizational MRI<span class="plus-accent">+</span> that measures your collective energies, identifies <span class="plus-accent">+</span> surgically your mobilization levers and supports your transition to action down to micro-behaviours in your daily situations.</span>
         </p>
@@ -97,26 +97,26 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
 
       <!-- Droite : 6+1 onglets énergie -->
       <div>
-        <p class="text-sm text-white/85 mb-3 font-medium">
+        <p class="text-sm text-ink mb-3 font-medium">
           <span data-i18n-lang="fr">Créez des collectifs qui agissent réellement — pas juste qui veulent faire ou se sentent bien au travail.</span>
           <span data-i18n-lang="en">Build collectives that truly act — not just want to or feel good at work.</span>
         </p>
 
         <div class="space-y-1.5" id="situations-accordion">
           {fr.situations.map((s: any, i: number) => (
-            <div class="sit-item rounded-lg overflow-hidden bg-white/[0.04] border border-white/[0.10] transition-all duration-200 hover:bg-white/[0.08] hover:border-energy-green/40 hover:shadow-lg hover:shadow-energy-green/5" data-idx={i}>
+            <div class="sit-item rounded-lg overflow-hidden bg-surface-raised border border-border-subtle transition-all duration-200 hover:bg-surface-raised hover:border-accent/40 hover:shadow-lg hover:shadow-energy-green/5" data-idx={i}>
               <button class="sit-trigger w-full text-left px-3 py-3 flex items-center gap-2.5 group cursor-pointer" aria-expanded="false">
                 <span class="shrink-0 w-7 h-8 flex items-center justify-center rounded border text-[10px] font-bold transition-colors"
                       style={`border-color: ${energyColors[i]}60; color: ${energyColors[i]}; background: ${energyColors[i]}12`}>
                   {energyLabels[i]}
                 </span>
-                <span class="text-white text-sm leading-snug flex-1 sit-accroche font-medium"
+                <span class="text-ink text-sm leading-snug flex-1 sit-accroche font-medium"
                       data-fr={s.accroche} data-en={en.situations[i].accroche}>{s.accroche}</span>
-                <span class="sit-cta shrink-0 hidden md:flex items-center gap-1 text-[10px] uppercase tracking-wider text-energy-green/60 group-hover:text-energy-green font-semibold transition-colors">
+                <span class="sit-cta shrink-0 hidden md:flex items-center gap-1 text-[10px] uppercase tracking-wider text-accent/60 group-hover:text-accent font-semibold transition-colors">
                   <span data-i18n-lang="fr">Voir</span>
                   <span data-i18n-lang="en">View</span>
                 </span>
-                <span class="sit-arrow shrink-0 text-energy-green/70 group-hover:text-energy-green group-hover:translate-y-0.5 transition-all">
+                <span class="sit-arrow shrink-0 text-accent/70 group-hover:text-accent group-hover:translate-y-0.5 transition-all">
                   <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
                     <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -124,7 +124,7 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
               </button>
 
               <div class="sit-panel hidden">
-                <div class="flex border-t border-white/10 text-xs">
+                <div class="flex border-t border-border-subtle text-xs">
                   <button class="sit-tab active-tab flex-1 py-1.5 px-2 text-center font-semibold tracking-wide transition-colors" data-tab="0">
                     <span data-i18n-lang="fr">Ce qui se passe</span><span data-i18n-lang="en">What's happening</span>
                   </button>
@@ -135,22 +135,22 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
                     <span data-i18n-lang="fr">Notre réponse</span><span data-i18n-lang="en">Our answer</span>
                   </button>
                 </div>
-                <div class="sit-content border-t border-white/[0.05] relative" style="min-height:80px">
+                <div class="sit-content border-t border-border-subtle relative" style="min-height:80px">
                   <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="0" style="opacity:1;pointer-events:auto">
-                    <p class="text-slate-300 text-sm leading-relaxed sit-passe" data-fr={s.ceQuiSePasse} data-en={en.situations[i].ceQuiSePasse}>{s.ceQuiSePasse}</p>
+                    <p class="text-ink-faint text-sm leading-relaxed sit-passe" data-fr={s.ceQuiSePasse} data-en={en.situations[i].ceQuiSePasse}>{s.ceQuiSePasse}</p>
                   </div>
                   <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="1" style="opacity:0;pointer-events:none">
                     <ul class="space-y-0.5 mb-1 sit-essaye-list" data-fr={JSON.stringify(s.essaye)} data-en={JSON.stringify(en.situations[i].essaye)}>
                       {s.essaye.map((e: string) => (
-                        <li class="text-slate-400 text-sm flex items-start gap-1.5">
-                          <span class="text-slate-600 mt-0.5 shrink-0">–</span><span>{e}</span>
+                        <li class="text-ink-subtle text-sm flex items-start gap-1.5">
+                          <span class="text-ink-muted mt-0.5 shrink-0">–</span><span>{e}</span>
                         </li>
                       ))}
                     </ul>
-                    <p class="text-slate-500 text-xs italic sit-conclusion" data-fr={s.essayeConclusion} data-en={en.situations[i].essayeConclusion}>{s.essayeConclusion}</p>
+                    <p class="text-ink-subtle text-xs italic sit-conclusion" data-fr={s.essayeConclusion} data-en={en.situations[i].essayeConclusion}>{s.essayeConclusion}</p>
                   </div>
                   <div class="sit-pane px-3 py-2.5 absolute inset-0 transition-opacity" data-pane="2" style="opacity:0;pointer-events:none">
-                    <p class="text-white/70 text-sm leading-relaxed sit-reponse" data-fr={s.reponse} data-en={en.situations[i].reponse}>{s.reponse}</p>
+                    <p class="text-ink-muted text-sm leading-relaxed sit-reponse" data-fr={s.reponse} data-en={en.situations[i].reponse}>{s.reponse}</p>
                   </div>
                 </div>
               </div>
@@ -175,9 +175,9 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
 ></div>
 
 <style>
-  .sit-tab { color: rgba(255,255,255,0.25); }
-  .sit-tab:hover { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.03); }
-  .sit-tab.active-tab { color: #4ade80; background: rgba(74,222,128,0.06); }
+  .sit-tab { color: rgb(var(--ink-faint)); }
+  .sit-tab:hover { color: rgb(var(--ink-muted)); background: rgb(var(--surface-raised) / 0.6); }
+  .sit-tab.active-tab { color: rgb(var(--accent)); background: rgb(var(--accent) / 0.08); }
 </style>
 
 <script>
@@ -301,7 +301,7 @@ const energyLabels = ['E1','E2','E3','E4','E5','E6','↗'];
       document.querySelectorAll('.sit-passe').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
       document.querySelectorAll('.sit-conclusion').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
       document.querySelectorAll('.sit-reponse').forEach((el:any)=>{el.textContent=el.dataset[lang]||el.dataset.fr;});
-      document.querySelectorAll('.sit-essaye-list').forEach((el:any)=>{const items=JSON.parse(el.dataset[lang]||el.dataset.fr);el.innerHTML=items.map((e:string)=>`<li class="text-slate-400 text-sm flex items-start gap-1.5"><span class="text-slate-600 mt-0.5 shrink-0">–</span><span>${e}</span></li>`).join('');});
+      document.querySelectorAll('.sit-essaye-list').forEach((el:any)=>{const items=JSON.parse(el.dataset[lang]||el.dataset.fr);el.innerHTML=items.map((e:string)=>`<li class="text-ink-subtle text-sm flex items-start gap-1.5"><span class="text-ink-muted mt-0.5 shrink-0">–</span><span>${e}</span></li>`).join('');});
     }
     new MutationObserver(()=>updateSitLang(document.documentElement.getAttribute('data-lang')||'fr')).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
     updateSitLang(document.documentElement.getAttribute('data-lang')||'fr');

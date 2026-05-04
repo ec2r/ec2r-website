@@ -19,7 +19,7 @@ const team = [
 ];
 ---
 
-<section id="equipe" class="py-24 lg:py-32 bg-slate-50">
+<section id="equipe" class="py-24 lg:py-32 bg-surface-alt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     
     <div class="max-w-3xl mb-16 reveal">
@@ -35,33 +35,33 @@ const team = [
     <div class="grid md:grid-cols-2 gap-8 mb-12">
       {founders.map((member, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 h-full 
-                      hover:shadow-xl hover:shadow-navy-900/5 transition-all duration-500 group">
+          <div class="bg-surface rounded-2xl overflow-hidden border border-border h-full 
+                      hover:shadow-xl hover:shadow-brand-anchor/5 transition-all duration-500 group">
             <!-- Photo placeholder -->
-            <div class="aspect-[16/10] bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 
+            <div class="aspect-[16/10] bg-gradient-to-br from-surface-alt via-surface to-surface-alt 
                         relative flex items-center justify-center overflow-hidden">
               <div class="absolute inset-0 opacity-[0.03]">
-                <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-white"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-white"></div>
+                <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full border border-border"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full border border-border"></div>
               </div>
               <div class="text-center relative z-10">
-                <div class="w-24 h-24 rounded-full bg-white/[0.08] border border-white/10 mx-auto mb-3 
+                <div class="w-24 h-24 rounded-full bg-surface-raised border border-border-subtle mx-auto mb-3 
                             flex items-center justify-center backdrop-blur-sm
-                            group-hover:border-energy-green/30 transition-colors duration-500">
-                  <span class="text-white/50 text-2xl font-display font-bold group-hover:text-energy-green/70 transition-colors">
+                            group-hover:border-accent/30 transition-colors duration-500">
+                  <span class="text-ink-subtle text-2xl font-display font-bold group-hover:text-accent/70 transition-colors">
                     {member.initials}
                   </span>
                 </div>
-                <p class="text-white/25 text-xs tracking-wider uppercase" data-i18n-fr={fr.portraitPlaceholder} data-i18n-en={en.portraitPlaceholder}>{fr.portraitPlaceholder}</p>
+                <p class="text-ink-faint text-xs tracking-wider uppercase" data-i18n-fr={fr.portraitPlaceholder} data-i18n-en={en.portraitPlaceholder}>{fr.portraitPlaceholder}</p>
               </div>
             </div>
             <div class="p-8">
-              <h3 class="font-display font-bold text-xl text-navy-950 mb-1">
+              <h3 class="font-display font-bold text-xl text-ink mb-1">
                 {member.name}<span class="plus-accent">+</span> {member.namePlus}
               </h3>
-              <p class="text-energy-dark font-semibold text-sm mb-4"
+              <p class="text-accent-strong font-semibold text-sm mb-4"
                  data-i18n-fr={fr.founders[i].role} data-i18n-en={en.founders[i].role}>{fr.founders[i].role}</p>
-              <p class="text-slate-600 leading-relaxed"
+              <p class="text-ink-muted leading-relaxed"
                  data-i18n-fr={fr.founders[i].bio} data-i18n-en={en.founders[i].bio}>{fr.founders[i].bio}</p>
             </div>
           </div>
@@ -73,26 +73,26 @@ const team = [
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       {team.map((member, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
-          <div class="bg-white rounded-xl p-6 border border-slate-200 h-full 
+          <div class="bg-surface rounded-xl p-6 border border-border h-full 
                       hover:border-energy-dark/20 hover:shadow-md transition-all duration-300 group">
             {member.photo ? (
               <img src={member.photo} alt={member.name} 
-                   class="w-14 h-14 rounded-xl object-cover border border-slate-200 mb-4 
-                          group-hover:border-navy-950 transition-all duration-300" loading="lazy" />
+                   class="w-14 h-14 rounded-xl object-cover border border-border mb-4 
+                          group-hover:border-ink transition-all duration-300" loading="lazy" />
             ) : (
-              <div class="w-14 h-14 rounded-xl bg-navy-950/[0.04] border border-slate-200 mb-4 
+              <div class="w-14 h-14 rounded-xl bg-surface-inverse/[0.04] border border-border mb-4 
                           flex items-center justify-center
-                          group-hover:bg-navy-950 group-hover:border-navy-950 transition-all duration-300">
-                <span class="text-navy-900/30 text-sm font-display font-bold 
-                            group-hover:text-energy-green transition-colors duration-300">
+                          group-hover:bg-surface group-hover:border-ink transition-all duration-300">
+                <span class="text-ink-strong/30 text-sm font-display font-bold 
+                            group-hover:text-accent transition-colors duration-300">
                   {member.initials}
                 </span>
               </div>
             )}
-            <h3 class="font-display font-semibold text-navy-950 mb-1">{member.name}</h3>
-            <p class="text-energy-dark text-sm font-medium mb-3"
+            <h3 class="font-display font-semibold text-ink mb-1">{member.name}</h3>
+            <p class="text-accent-strong text-sm font-medium mb-3"
                data-i18n-fr={fr.team[i].role} data-i18n-en={en.team[i].role}>{fr.team[i].role}</p>
-            <p class="text-slate-500 text-sm leading-relaxed"
+            <p class="text-ink-subtle text-sm leading-relaxed"
                data-i18n-fr={fr.team[i].bio} data-i18n-en={en.team[i].bio}>{fr.team[i].bio}</p>
           </div>
         </div>
@@ -101,19 +101,19 @@ const team = [
 
     <!-- Seminar photos teaser -->
     <div class="reveal">
-      <div class="bg-white rounded-2xl border border-slate-200 p-8 md:p-12 text-center">
-        <p class="text-sm text-slate-400 uppercase tracking-wider font-medium mb-4" data-i18n-fr={fr.fieldTitle} data-i18n-en={en.fieldTitle}>{fr.fieldTitle}</p>
+      <div class="bg-surface rounded-2xl border border-border p-8 md:p-12 text-center">
+        <p class="text-sm text-ink-subtle uppercase tracking-wider font-medium mb-4" data-i18n-fr={fr.fieldTitle} data-i18n-en={en.fieldTitle}>{fr.fieldTitle}</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
           {fr.seminaireTitles.map((label: string, i: number) => (
-            <div class="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg 
-                        flex items-center justify-center border border-slate-200 
+            <div class="aspect-[4/3] bg-gradient-to-br from-surface-alt to-surface-raised rounded-lg 
+                        flex items-center justify-center border border-border 
                         hover:border-energy-dark/20 transition-colors duration-300">
-              <p class="text-slate-400 text-xs text-center px-4 leading-relaxed"
+              <p class="text-ink-subtle text-xs text-center px-4 leading-relaxed"
                  data-i18n-fr={label} data-i18n-en={en.seminaireTitles[i]}>{label}</p>
             </div>
           ))}
         </div>
-        <p class="text-slate-400 text-sm italic" data-i18n-fr={fr.fieldNote} data-i18n-en={en.fieldNote}>{fr.fieldNote}</p>
+        <p class="text-ink-subtle text-sm italic" data-i18n-fr={fr.fieldNote} data-i18n-en={en.fieldNote}>{fr.fieldNote}</p>
       </div>
     </div>
 

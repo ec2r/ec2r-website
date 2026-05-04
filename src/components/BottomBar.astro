@@ -8,23 +8,23 @@ const { fr, en } = Astro.props;
 
 <!-- Bandeau bas permanent — CTA "Parlons-en" -->
 <div id="bottom-bar" class="fixed bottom-0 left-0 right-0 z-50
-     bg-navy-950/95 backdrop-blur-lg border-t border-white/10
+     bg-surface/95 backdrop-blur-lg border-t border-border-subtle
      transition-all duration-300">
   
   <!-- Desktop -->
   <div class="hidden sm:flex max-w-7xl mx-auto px-6 py-3.5 items-center justify-between">
-    <p class="text-white/50 text-sm">
+    <p class="text-ink-subtle text-sm">
       <span data-i18n-lang="fr">Un vrai échange humain — 10 minutes pour voir comment ça résonne.</span>
       <span data-i18n-lang="en">A real human conversation — 10 minutes to see how it resonates.</span>
     </p>
     <div class="flex items-center gap-3">
-      <button class="bottom-bar-navigate text-xs text-white/30 hover:text-white/60 border border-white/10 
-                     hover:border-white/30 rounded-md px-3 py-1.5 transition-all"
+      <button class="bottom-bar-navigate text-xs text-ink-faint hover:text-ink-muted border border-border-subtle 
+                     hover:border-border-strong rounded-md px-3 py-1.5 transition-all"
               data-target="parlons-en">
         <span data-i18n-lang="fr">Je cherche juste un budget</span>
         <span data-i18n-lang="en">I just need a budget</span>
       </button>
-      <button class="bottom-bar-navigate bg-energy-green/90 hover:bg-energy-green text-navy-950 font-semibold 
+      <button class="bottom-bar-navigate bg-energy-green/90 hover:bg-accent text-ink font-semibold 
                      text-sm rounded-md px-4 py-1.5 transition-all"
               data-target="parlons-en">
         <span data-i18n-lang="fr">Ça résonne — parlons-en</span>
@@ -35,7 +35,7 @@ const { fr, en } = Astro.props;
 
   <!-- Mobile : bouton flottant compact -->
   <div class="sm:hidden flex justify-center py-3">
-    <button class="bottom-bar-navigate bg-energy-green/90 hover:bg-energy-green text-navy-950 font-semibold 
+    <button class="bottom-bar-navigate bg-energy-green/90 hover:bg-accent text-ink font-semibold 
                    text-sm rounded-full px-5 py-2 shadow-lg transition-all flex items-center gap-2"
             data-target="parlons-en">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
