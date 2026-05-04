@@ -24,9 +24,17 @@ const { universes } = Astro.props;
 
 <nav id="top-nav" class="fixed top-[calc(2.25rem+6px)] left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between h-16 lg:h-18">
-    <!-- Logo : Méthode EC²R (² collé) -->
-    <a href="/" class="flex items-center gap-2 group" id="logo-home" aria-label="Méthode EC²R">
-      <img src="/images/logo-ec2r.png" alt="" class="h-7 lg:h-8 transition-all duration-300" />
+    <!-- Logo : Méthode EC²R (² collé) — batterie SVG identique à ec2r-app (shared/_ec2r_battery) -->
+    <a href="/" class="flex items-center gap-2 group text-white" id="logo-home" aria-label="Méthode EC²R">
+      <svg class="h-7 lg:h-8 w-auto transition-all duration-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="6" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="20.5" y="9.5" width="1.5" height="5" rx="0.75" fill="currentColor"/>
+        <rect x="4.5" y="8.5" width="2" height="7" rx="0.5" fill="#DC2626"/>
+        <rect x="7" y="8.5" width="2" height="7" rx="0.5" fill="#EAB308"/>
+        <rect x="9.5" y="8.5" width="2" height="7" rx="0.5" fill="#C9A56E"/>
+        <rect x="12" y="8.5" width="2" height="7" rx="0.5" fill="#22C55E"/>
+        <rect x="14.5" y="8.5" width="2" height="7" rx="0.5" fill="#166534"/>
+      </svg>
       <span class="font-display font-extrabold text-white text-base lg:text-lg leading-none whitespace-nowrap">
         Méthode&nbsp;EC<sup style="font-size:0.62em;margin:0 -0.08em;vertical-align:0.4em">2</sup>R
       </span>
